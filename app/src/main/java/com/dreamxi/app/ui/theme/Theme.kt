@@ -1,58 +1,52 @@
 package com.dreamxi.app.ui.theme
 
-import android.app.Activity
-import android.os.Build
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
-import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
 
-private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
-)
+/**
+ * Dream XI's theme is a fixed, deliberately-designed dark brand look (§10.1) —
+ * not an adaptive light/dark Material theme, and not dynamic color. Every
+ * screen renders against this same near-black + gold palette regardless of
+ * system theme, matching the reference mood (FUT pack openings, broadcast
+ * graphics).
+ */
+private val DreamXiColorScheme = darkColorScheme(
+    primary = AccentGold,
+    onPrimary = OnAccentGold,
+    primaryContainer = AccentGoldDim,
+    onPrimaryContainer = OnAccentGold,
 
-private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
+    secondary = PositionMidfielder,
+    onSecondary = OnAccentGold,
 
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+    tertiary = PositionGoalkeeper,
+    onTertiary = OnSurfacePrimary,
+
+    background = SurfaceBase,
+    onBackground = OnSurfacePrimary,
+
+    surface = SurfaceRaised1,
+    onSurface = OnSurfacePrimary,
+    surfaceVariant = SurfaceRaised2,
+    onSurfaceVariant = OnSurfaceMuted,
+    surfaceContainer = SurfaceRaised1,
+    surfaceContainerHigh = SurfaceRaised2,
+    surfaceContainerHighest = SurfaceRaised3,
+
+    outline = OutlineSubtle,
+    outlineVariant = OutlineSubtle,
+
+    error = ResultLoss,
+    onError = OnSurfacePrimary,
 )
 
 @Composable
-fun DreamXITheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
-    content: @Composable () -> Unit
-) {
-    val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
-
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
-    }
-
+fun DreamXITheme(content: @Composable () -> Unit) {
     MaterialTheme(
-        colorScheme = colorScheme,
-        typography = Typography,
-        content = content
+        colorScheme = DreamXiColorScheme,
+        typography = DreamXiTypography,
+        shapes = DreamXiShapes,
+        content = content,
     )
 }

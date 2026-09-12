@@ -17,3 +17,51 @@ replay_pid*.log
 # Claude Code session-local state (not project content)
 .claude/
 local.properties
+
+# ETL: never commit credentials or raw scraped source data (redistribution/ToS
+# concerns per PROJECT_SPEC_v2.md §6.1) — only the transform/load code is checked in.
+etl/.env
+etl/raw/
+etl/__pycache__/
+etl/*.pyc
+# Third-party rating datasets (Kaggle) + everything derived from them. Same
+# redistribution concern as etl/raw/, plus male_players.csv alone is 92MB —
+# past GitHub's 50MB warning and close to its 100MB hard limit. Re-download
+# from the Kaggle link in the dream-xi-rating-anchor memory instead.
+etl/archive/
+etl/fifa/
+
+# Downloaded rating datasets. Large, third-party, and re-downloadable — they
+# live on each machine rather than in the repo (see fifa_ratings.py for where
+# to get them). Same reason etl/archive/ and etl/fifa/ are ignored.
+etl/29 Aug Files/
+
+# Cached worldfootballR .rds archive — third-party, re-downloadable (fbref_archive.py)
+etl/wfr/
+
+# Fetched Understat pull — re-runnable via etl/understat.py
+etl/understat/
+
+# Scraped FBref live pulls — re-runnable
+etl/fbref_live/
+
+# sofifa roster scrapes (club-era + World Cup). Raw third-party data, same §6.1
+# redistribution concern as etl/raw/, and lists.json alone is 8.5MB. The code
+# that collects and converts them (sofifa_collect.py, sofifa_editions.py) IS
+# checked in, so a re-scrape reproduces these exactly.
+etl/sofifa/
+etl/sofifa_wc_rosters.tsv
+
+# World Cup results: the worldfootballR mirror (re-downloadable) and the FBref
+# pull for 2022/2026. NOTE: the 2022/2026 TSV is only 12KB but was read in a
+# real browser because Cloudflare blocks scripts, so it is the one scraped file
+# that is genuinely painful to regenerate — worth committing if the ToS concern
+# is ever judged not to apply to 168 match scorelines.
+etl/wc_results.rds
+etl/wc_results_2022_2026.tsv
+
+# Staged loader output — derived from the (ignored) rating and stats sources by
+# the stage_*.py scripts, so it is regenerated rather than versioned.
+etl/staged/
+etl/staged_prev/
+etl/staged_before_fix/

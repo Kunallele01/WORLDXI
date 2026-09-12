@@ -30,25 +30,73 @@ for the full design system spec.
 
 ---
 
-## 2. Core Game Loop (unchanged from v1, confirmed from reference screenshots)
+## 2. Core Game Loop (RESOLVED 2026-08-28 — replaces v1's single-season framing)
 
-1. **Setup screen** — choose Sim Year (or Random), choose formation on a visual
-   pitch layout, "Start Run"
-2. **Draft screen** — round-by-round: SPIN → reveals a real club-season with its
-   real record (position, W-D-L, GF/GA, Pts) → shows eligible player pool for the
-   current empty slot's position → user filters (GK/DEF/MID/FWD), inspects player
-   cards (overall rating, six sub-attributes, trait chips, real-stat blurb), picks
-   one → repeat until all slots filled. Limited rerolls per draft.
-3. **Finalize screen** — full XI on pitch, last position swaps, "Simulate Season"
-4. **Simulation** — XI is simulated across a real historical league season length
-   against real historical opponent strength
-5. **Results/Report screen** — final position/points/record, radar chart of XI
-   attributes vs. that season's real champion, aggregated trait tags, tactical
-   write-up
-6. **History screen** — all past draft runs and results, pulled from the user's
-   account, browsable/re-viewable from any device they log into
+The defining mechanic: **every draft round independently spins a random
+season**, not just a random club within one season chosen up front. A
+single draft can hand you 2011 Real Madrid in round 1 and 2022 Sevilla in
+round 4 — that cross-era mixing is the actual point of the game, not an
+edge case.
+
+1. **Setup screen** — choose **League** (Premier League or La Liga for MVP),
+   choose formation on a visual pitch layout, "Start Run". No year/season
+   choice here — see step 2.
+2. **Draft screen** — round-by-round: SPIN → randomly picks **both** a season
+   (from every season of the chosen league we have full data for) **and** a
+   club within it → reveals that real club-season with its real record
+   (position, W-D-L, GF/GA, Pts) → shows eligible player pool for the current
+   empty slot's position, drawn from that club-season's real squad → user
+   filters (GK/DEF/MID/FWD, or the finer 8-role tags — see
+   ATTRIBUTE_FORMULA_SPEC.md §1.2), inspects player cards (overall rating,
+   six sub-attributes, trait chips, real-stat blurb, season label), picks one
+   → repeat until all slots filled. Limited rerolls per draft.
+   - **Player identity is unique across the whole draft, not per pick.** A
+     real person, once drafted in any season, must not appear in any later
+     round's eligible pool under a different season/club — enforce this by
+     excluding already-picked `player_id`s (not `player_season_stat_id`s)
+     from every subsequent spin's pool.
+3. **Finalize screen** — full XI on pitch (each player shown with their
+   season label, e.g. "Messi — Barcelona '09"), last position swaps,
+   "Simulate Season"
+4. **Simulation** — only now does a specific season get chosen: the system
+   randomly picks **any one season of the chosen league** we have full data
+   for (independent of which seasons the drafted players actually came
+   from), then randomly picks **one of that season's real bottom-3 clubs**
+   (18th/19th/20th — the actual relegation zone, not always dead-last) for
+   the XI to replace. The XI then plays that club's real 38-fixture home/away
+   schedule against the other 19 real clubs from that season. See §8.1.
+5. **Results/Report screen** — final position/points/record, radar chart of
+   XI attributes vs. that (randomly chosen) season's real champion,
+   aggregated trait tags, tactical write-up
+6. **History screen** — all past draft runs and results, pulled from the
+   user's account, browsable/re-viewable from any device they log into
 
 ---
+
+### 2.1 Free Mode (REQUESTED 2026-08-30 — to be specified in detail, then built)
+
+A second, unrestricted way to assemble an XI, alongside the spin draft rather
+than replacing it.
+
+1. Pick a **league**.
+2. Tap a **position** on the pitch.
+3. Two dropdowns — **club** × **season of that club** — open that squad; take
+   whoever you want.
+4. Repeat for all eleven, then simulate exactly as a drafted XI does: takeover
+   draw, counterfactual season, match reports, season statistics. One engine,
+   one set of season screens, no duplication.
+
+**This mode is explicitly for fun, and it is meant to be easy.** In the user's
+words it "guarantees 90 OVR squads easily". That is the intent: do NOT add
+rating caps, budgets, balancing or squad-strength weighting. Scarcity is what
+the spin draft is for; the absence of it is what this mode is for.
+
+Reusable unchanged from the draft: formation lock, out-of-position pricing off
+the EA positional grid, the goalkeeper boundary, and player uniqueness (one real
+person once per XI).
+
+Open: the user wants the player-picking flow "simplified" for this mode and will
+describe how. Get that before building.
 
 ## 3. Explicit Design Differences From the Reference App
 
@@ -83,6 +131,13 @@ for the full design system spec.
 
 Attribute formulas must degrade gracefully across tiers — always fall back to the
 best available stat, never leave an attribute blank or crash.
+
+> **2026-01-20 update:** FBref's advanced-stats provider terminated their
+> license and the data was deleted site-wide, so the "Tier A (rich)" band
+> above (xG, xA, progressive actions) no longer exists as a free option from
+> any source, including a paid Stathead subscription. See
+> `ATTRIBUTE_FORMULA_SPEC.md` §0 for the actual field-by-field availability
+> this project is now designed around.
 
 ---
 
@@ -129,12 +184,13 @@ requirement for a good experience)
   error state, retry option) rather than crash if connectivity drops mid-draft.
 
 ### 5.4 Auth flow
-- Sign up / log in screen (email+password and/or Google Sign-In) before or after
-  a first "guest" draft — **decision point**: do you want to let users try one
-  draft before requiring an account (better conversion/onboarding), or require
-  login up front (simpler to build first)? Recommend allowing a **guest draft
-  locally**, then prompting to create an account to save it — this is a common,
-  effective onboarding pattern.
+- **RESOLVED:** allow a **guest draft locally first** — the user can complete a
+  full draft + simulation with no account, then is prompted to sign up
+  (email+password and/or Google Sign-In) to save it. Requires local run state
+  that can be migrated/attached to a `user_id` once the account is created,
+  rather than assuming every draft starts with an authenticated session.
+- Google Sign-In should be implemented via the modern **Credential Manager API**
+  (Sign in with Google), not the older/deprecated `GoogleSignInClient` flow.
 - Supabase Auth session tokens stored securely (Android Keystore-backed encrypted
   storage, not raw SharedPreferences) and refreshed automatically via the
   Supabase Kotlin client's session management.
@@ -154,8 +210,12 @@ bundled local DB.
 
 ### 6.2 Data needed per league/season
 1. Final league table (club, position, W-D-L, GF, GA, Pts)
-2. Fixture list (or a synthetic round-robin of correct length — decision point,
-   see v1 §9, still open)
+2. **Real fixture list** (who played whom, home/away, in order) — **RESOLVED**
+   (see §8.1/§12): the drafted XI replaces the real 20th-place (last-place)
+   club for that season and plays that club's actual 38-fixture schedule (19
+   opponents, home and away) against the other 19 real clubs. No synthetic
+   round-robin. This means the ETL must scrape/validate full fixture-by-fixture
+   results, not just final tables — heavier scope than a table-only pull.
 3. Full squad list per club/season (players with meaningful minutes/appearances)
 4. Per-player per-season stat line (fields vary by tier — see §4)
 
@@ -191,15 +251,28 @@ Press-resistant, etc.)
   refine further when present
 - Traits as transparent, tunable, threshold-based tags off underlying stats
 
-### 7.3 Next step
-Define the literal stat → 0–99 mapping per position group per tier as its own
-structured reference (spreadsheet or doc) before/alongside writing the Python
-ETL's attribute-calculation step. This is the single most important "fairness/
-correctness" piece of the whole app.
+### 7.3 Next step — DONE, see ATTRIBUTE_FORMULA_SPEC.md
+The literal stat → 0–99 mapping is now written up as its own structured
+reference: **`ATTRIBUTE_FORMULA_SPEC.md`** at the repo root. Built after the
+§13 Milestone 2 pilot (2023/24 Premier League) once the real data landscape
+was known — note that FBref's advanced-stats feed (xG, xA, progressive
+actions, touches) was permanently deleted site-wide in January 2026, well
+after this spec's §4 tier assumptions were written, so the formula doc
+documents a real, narrower data reality rather than the original Tier A
+ambition. Also introduces an 8-group role-tagging system (GK/CB/FB/DM/CM/
+CAM/Winger/ST, sourced from Transfermarkt) for draft slot eligibility,
+separate from the coarser 4-group system used for attribute percentile
+normalization — see that doc's §1 for why these are deliberately different.
 
 ---
 
 ## 8. Simulation Engine
+
+**STATUS 2026-08-30: BUILT, CALIBRATED AND ON-DEVICE.** 71 unit tests passing.
+Code in `app/src/main/java/com/dreamxi/app/sim/` (pure Kotlin, no Android
+imports, so it lifts into the Ktor service unchanged). Calibration scripts in
+`etl/sim_*.py`. The subsections below are the original design; what was actually
+built follows it in §8.5, and where the two disagree, §8.5 is authoritative.
 
 ### 8.1 v1 approach: Poisson-based match simulation
 - Compute team Attack Strength / Defense Strength from the drafted XI's
@@ -209,9 +282,18 @@ correctness" piece of the whole app.
   a Poisson distribution
 - Aggregate across full season length into final points, W-D-L, GF, GA, table
   position
-- **Decision point (carried over from v1):** does the drafted XI replace a real
-  team 1:1 in real fixtures, or play a synthetic round-robin against all real
-  teams as an extra entrant? Affects data needs and realism framing.
+- **RESOLVED (updated 2026-08-28 — see §2):** which season gets simulated is
+  decided at simulate time, not draft time — a random season of the chosen
+  league (among those we have full data for) is picked once the draft is
+  complete, independent of which seasons the drafted players came from. The
+  drafted XI then **replaces a randomly chosen one of that season's real
+  bottom-3 clubs** (18th/19th/20th — the actual relegation zone that year,
+  not always dead-last), playing that club's actual 38-game fixture schedule
+  (home and away vs. the other 19 real clubs). The final table is a full
+  20-team table, regenerated from real results for the 19 other clubs plus
+  the user's simulated results in the replaced club's fixtures. This
+  requires real fixture-by-fixture data per season, not just the final table
+  (see §6.2).
 
 ### 8.2 v2+ enhancements (not MVP)
 Home/away splits, form/fatigue, possession-adjusted event simulation, narrative
@@ -223,20 +305,67 @@ Compare "Your XI" against the **real champion / real table** of that season
 (1st)"). No cross-user percentile needed since there's no leaderboard.
 
 ### 8.4 Where does simulation run?
-Given we now have a backend, consider running the simulation **server-side**
-(e.g., a Supabase Edge Function, or a small dedicated backend function) rather
-than on-device:
-- Pros: single source of truth for sim logic, easy to tune/fix without an app
-  update, keeps the "black box" fair and consistent, avoids exposing/duplicating
-  the algorithm client-side
-- Cons: requires connectivity for this step (acceptable per your note), adds a
-  bit of backend complexity (writing a Supabase Edge Function in
-  Deno/TypeScript, or a small separate serverless function)
-- **Recommendation:** run it server-side. It's a small, well-defined function
-  (input: XI + season context, output: result + report data) and keeps your
-  Android codebase focused on UI/UX rather than game-logic duplication risk.
+**RESOLVED:** runs server-side, as a **small dedicated Kotlin/Ktor service**
+(not a Supabase Edge Function). Reasoning:
+- Keeps the entire stack in one language — the sim service can share data
+  classes/DTOs with the Android app (via a shared Gradle module or a small
+  published library) and be tested with the same JUnit suite, instead of
+  re-implementing the same logic/shapes in Deno/TypeScript.
+- Still gets all the server-side benefits: single source of truth for sim
+  logic, tunable/fixable without an app release, keeps the "black box" fair
+  and consistent, avoids exposing the algorithm client-side.
+- Needs its own light hosting (Fly.io, Railway, or Cloud Run are all
+  reasonable free/cheap-tier options) and a simple Retrofit/Ktor client call
+  from the app — slightly more infra than an Edge Function, but low ongoing
+  maintenance for a function this small and well-defined.
+- Input: drafted XI + season context (including which club it replaces and
+  that club's real fixture list). Output: match-by-match/aggregated result +
+  report data, written back to `simulation_results` in Supabase.
 
 ---
+
+### 8.5 What was actually built (authoritative)
+
+**The rule for the sim package: no constant that was not measured.** Every value
+in `SimModel.kt` is fitted against the 200 real club-seasons and carries its fit
+quality beside it.
+
+- **Attack is additive** — an XI's summed npxG/90 predicts real goals at
+  r = +0.864. Saturates above 3.00 npxG (Man City 2019/20, the highest real XI).
+- **Defence is priced on RATING, never on defensive volume.** Tackles,
+  interceptions and clearances correlate the WRONG WAY with defensive quality.
+  Back four r = −0.748, GK OVR r = −0.798, position-weighted; keeper save% adds
+  independent signal at r = −0.308 on the residual.
+- **Out-of-position play** blends a player's own rate into the POSITION's rate
+  as he is moved, anchored on EA's per-player positional grid.
+- Poisson scoreline; home advantage **1.2452**, measured over 3,800 fixtures.
+- **Validated** by replaying 156 real club-seasons through the shipped Kotlin:
+  league points r = 0.916, RMSE 7.1; real champion in the predicted top four in
+  6 of 6 seasons. Reference for judging a reported result — mean XI rating by
+  real finishing position: 1st 85.5, 4th 81.6, 8th 79.1, 20th 74.8.
+
+**§8.1's "re-simulate the whole league" was replaced by a COUNTERFACTUAL
+season** (2026-08-30). The season's real 380 fixtures are loaded from the
+`fixtures` table; the replaced club's 38 are handed to the user's XI keeping
+matchday and venue; the other 342 keep their real scorelines. Real Madrid still
+wins 2021/22 unless the user takes points off them. A club's record therefore
+changes only through its two matches against the user. Do not revert to
+simulating all 380 — the question is "could my eleven have done it?", which only
+means something against the season that really happened.
+
+**Match reports** (scorers, assists, cards) are attributed from the scoreline
+rather than producing it, so real matches get scorers too and the top-scorer
+list covers the whole league. The attribution is deliberately asymmetric: real
+clubs are weighted by whole-squad SEASON TOTALS (which already contain missed
+games), the user's XI by PER-90 RATES over 38 full matches (it has no bench,
+rotation or injuries). Getting this wrong gave Isak 32 goals against a real 21.
+
+**Two numbers are judgement, not measurement**, and both say so in the source:
+`ATTACK_SATURATION_ASYMPTOTE = 3.30` and `POSITION_TRANSFER_RANGE = 25.0`.
+
+**Seeds must be scrambled through `sim/Seeding.kt`.** Run ids are sequential and
+Kotlin's generator correlates across neighbouring seeds; feeding them in raw
+measurably skewed the takeover draw.
 
 ## 9. Data Schema (Postgres / Supabase)
 
@@ -254,6 +383,15 @@ seasons (
 club_seasons (
   id, season_id FK, club_name, final_position,
   wins, draws, losses, goals_for, goals_against, points
+)
+
+-- Real fixture-by-fixture results (added post-v2: the drafted XI replaces the
+-- real last-place club and plays that club's actual 38-game schedule, §8.1 —
+-- this needs real fixtures, not just the final table)
+fixtures (
+  id, season_id FK, matchday,
+  home_club_season_id FK, away_club_season_id FK,
+  home_goals, away_goals
 )
 
 players (
@@ -281,7 +419,10 @@ profiles (
 )
 
 draft_runs (
-  id, user_id FK, league_id FK, season_scope, formation, created_at
+  id, user_id FK, league_id FK, formation, created_at
+  -- no season_scope / replaced_club_season_id here — each draft round spins
+  -- its own random season (§2), so no single season is tied to a draft run;
+  -- which season+club to simulate against is decided at simulate time, below.
 )
 
 draft_picks (
@@ -290,14 +431,16 @@ draft_picks (
 
 simulation_results (
   id, run_id FK, simulated_season_id FK,
+  replaced_club_season_id FK,  -- randomly chosen from that season's real bottom-3 (§8.1)
   final_position, points, wins, draws, losses, gf, ga,
   report_json, created_at
 )
 ```
 
 RLS policy summary:
-- `leagues`, `seasons`, `club_seasons`, `players`, `player_season_stats`: public
-  `SELECT`, no client `INSERT`/`UPDATE`/`DELETE` (ETL writes via service role key)
+- `leagues`, `seasons`, `club_seasons`, `fixtures`, `players`,
+  `player_season_stats`: public `SELECT`, no client `INSERT`/`UPDATE`/`DELETE`
+  (ETL writes via service role key)
 - `profiles`, `draft_runs`, `draft_picks`, `simulation_results`: `SELECT`/
   `INSERT`/`UPDATE`/`DELETE` restricted to rows where `user_id = auth.uid()`
 
@@ -423,38 +566,59 @@ not one-off per screen)
   to include them — flag as an open scope question, since real player photos/
   crests raise their own licensing considerations, similar to the data-sourcing
   legal note in §6)
-- **Networking:** handled via the Supabase client; if a separate Edge
-  Function/serverless endpoint is used for simulation (§8.4), a simple
-  Retrofit/Ktor client call to that function
+- **Networking:** handled via the Supabase client; a simple Retrofit/Ktor
+  client call to the standalone Kotlin/Ktor simulation service (§8.4)
 - **Security:** Android Keystore-backed encrypted storage for auth session
   tokens, standard Supabase RLS enforcing data access rules server-side (never
   trust client-side checks alone for who can see/edit what)
-- **Testing:** JUnit + Turbine for ViewModel/StateFlow logic, plus dedicated
-  unit tests for the attribute-calculation and simulation logic (if any of that
-  ends up client-side) given how central correctness there is to the game
-  feeling fair
+- **Testing:** JUnit + Turbine for ViewModel/StateFlow logic, dedicated unit
+  tests for the attribute-calculation logic and the Kotlin/Ktor simulation
+  service given how central correctness there is to the game feeling fair,
+  plus **Compose UI tests / Paparazzi screenshot tests** to catch visual and
+  animation regressions given how much of the product's quality bar rides on
+  motion (§10.4)
+- **Crash reporting / analytics:** Firebase Crashlytics (or Sentry) — not
+  optional for a polish-first product; you need visibility into animation/state
+  crashes on real devices you don't control
+- **Google Sign-In:** Credential Manager API (Sign in with Google), not the
+  deprecated `GoogleSignInClient`
 
 ---
 
-## 12. Open Decisions (Need Your Input Before/During Build)
+## 12. Decisions (Resolved 2026-08-28)
 
-1. **Monetization model?** Free, one-time purchase, ads, or none for now?
-2. **Guest mode vs. required login up front?** (Recommend: allow a guest draft,
-   prompt to save via account afterward.)
-3. **Fixture realism:** real historical fixture list vs. synthetic round-robin?
-4. **Does the drafted XI replace a real team in the table, or play alongside as
-   an extra entrant?**
-5. **Simulation logic location:** server-side (recommended, §8.4) vs. on-device?
-6. **Player photos / club crests:** include real images (licensing question) or
-   stick to text/initials/generic position icons for v1?
-7. **Save-history limits:** unlimited runs stored per user, or a cap (storage/
-   cost management on the Supabase side)?
-8. **Formation flexibility:** full custom drag-and-drop vs. fixed formation
-   templates for v1?
-9. **Trait system tuning:** rule-based thresholds (recommended) vs. weighted/
-   statistical model?
-10. **Backend platform confirmation:** proceeding with Supabase, or worth a
-    quick comparison pass against Firebase/a custom backend first?
+All open decisions from this section have been made:
+
+1. **Monetization:** None for v1. Free, no ads, no IAP — focus effort on the
+   core loop and polish.
+2. **Guest mode vs. required login:** Guest draft allowed locally; prompt to
+   create an account to save it afterward. See §5.4.
+3. **Fixture realism:** Real historical fixture list (not synthetic
+   round-robin). See §6.2, §8.1.
+4. **Real team replacement:** The drafted XI replaces the real **20th-place
+   (last-place)** club for that season and plays its actual 38-fixture
+   schedule against the other 19 real clubs; the final table is regenerated
+   with the XI's results in place of the replaced club's real results. See
+   §8.1.
+5. **Simulation logic location:** Server-side, as a standalone **Kotlin/Ktor
+   service** (not a Supabase Edge Function — kept in one language with the
+   rest of the stack). See §8.4.
+6. **Player photos / club crests:** Generic icons/initials for v1 — no real
+   player photos or crests, avoiding licensing risk entirely. Can revisit once
+   the core product is proven.
+7. **Save-history limits:** Unlimited runs per user for v1. No pruning/cap
+   logic needed; Supabase Postgres storage cost isn't a real concern yet.
+8. **Formation flexibility:** Fixed formation templates for v1 (4-4-2, 4-3-3,
+   3-5-2, etc., chosen at Setup) — not full custom drag-and-drop.
+9. **Trait system tuning:** Rule-based thresholds (not a weighted/statistical
+   model) — transparent and tunable, consistent with the rest of §7's formula
+   design principles.
+10. **Backend platform:** Confirmed — Supabase (Postgres + Auth).
+
+Also decided alongside the tech stack review (§11): add **Crashlytics/Sentry**
+for crash reporting, use the **Credential Manager API** for Google Sign-In (not
+the deprecated `GoogleSignInClient`), and add **Compose UI/Paparazzi screenshot
+tests** given how much of the product's quality bar rides on animation.
 
 ---
 
@@ -474,8 +638,8 @@ not one-off per screen)
    animation and player-card interactions — this is the core loop, get it
    feeling great before moving on
 7. **Finalize screen**
-8. **Simulation engine v1** (recommend as a Supabase Edge Function per §8.4),
-   using pilot data's league tables
+8. **Simulation engine v1** (Kotlin/Ktor service per §8.4), using pilot data's
+   real fixture lists
 9. **Results/Report screen**, including the animated radar chart
 10. **History screen**, synced from Supabase with local caching
 11. **Full data backfill**: scale ETL to all 25 seasons × PL + La Liga
@@ -499,8 +663,9 @@ When working on this project, always keep in mind:
   on-device.
 - Data tier (A/B/C) varies by season/league; all attribute logic must degrade
   gracefully.
-- Simulation logic should default to running **server-side** (Edge Function)
-  unless a later decision moves it on-device.
+- Simulation logic runs **server-side**, as a standalone **Kotlin/Ktor
+  service** (not a Supabase Edge Function) — kept in one language with the
+  rest of the stack, sharing DTOs and test tooling with the Android app.
 - **Visual/UX polish is a hard requirement, not a stretch goal** — build the
   Compose design system and shared component library (§10) deliberately and
   early, rather than styling screens ad hoc as they're built. Motion design
@@ -509,6 +674,9 @@ When working on this project, always keep in mind:
 - MVP league scope: Premier League + La Liga, 2000–2025, architected to extend
   to Serie A, Bundesliga, Ligue 1 later.
 - Tech stack: Kotlin, Jetpack Compose, MVVM, Supabase (Postgres+Auth), Room
-  (cache), Hilt.
-- Treat §12 "Open Decisions" as things to raise with the human before assuming
-  an answer and building around it.
+  (cache), Hilt, standalone Kotlin/Ktor sim service, Crashlytics/Sentry.
+- The drafted XI replaces the real last-place club and plays a real 38-fixture
+  season against the other 19 real clubs (§8.1) — the ETL needs real
+  fixture-by-fixture data, not just final tables.
+- §12 decisions are all resolved as of 2026-08-28 — build against them as
+  settled, don't re-litigate.

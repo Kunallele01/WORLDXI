@@ -1,0 +1,1717 @@
+club_season_id	club	season	league_id	goals_for	goals_against	points	role	npxg90	overall_rating	save_pct	name	goals	assists	yellows	reds	minutes
+103	Manchester Utd	2022/23	4	58	43	75	GK	0.0	87	69.9	David de Gea	0	0	0	0	3420
+103	Manchester Utd	2022/23	4	58	43	75	CAM	0.21341	88		Bruno Fernandes	8	8	6	0	3316
+103	Manchester Utd	2022/23	4	58	43	75	Winger	0.58652	85		Marcus Rashford	17	5	2	0	2879
+103	Manchester Utd	2022/23	4	58	43	75	FB	0.03435	83		Luke Shaw	1	2	8	0	2552
+103	Manchester Utd	2022/23	4	58	43	75	FB	0.09226	81		Diogo Dalot	1	2	6	0	2154
+103	Manchester Utd	2022/23	4	58	43	75	DM	0.13309	89		Casemiro	4	3	7	2	2124
+103	Manchester Utd	2022/23	4	58	43	75	CB	0.02235	84		Lisandro Martínez	1	0	6	0	2114
+103	Manchester Utd	2022/23	4	58	43	75	CAM	0.21388	83		Christian Eriksen	1	8	3	0	2048
+103	Manchester Utd	2022/23	4	58	43	75	CB	0.0429	83		Raphaël Varane	0	0	1	0	1911
+103	Manchester Utd	2022/23	4	58	43	75	Winger	0.29257	78		Antony	4	2	5	0	1802
+103	Manchester Utd	2022/23	4	58	43	75	Winger	0.20226	81		Jadon Sancho	6	3	0	0	1686
+114	West Ham	2022/23	4	42	55	40	CM	0.04053	84		Declan Rice	4	2	5	0	3273
+114	West Ham	2022/23	4	42	55	40	Winger	0.23612	79		Jarrod Bowen	6	5	2	0	3233
+114	West Ham	2022/23	4	42	55	40	GK	0.0	78	69.2	Łukasz Fabiański	0	0	1	0	3111
+114	West Ham	2022/23	4	42	55	40	DM	0.12232	80		Tomáš Souček	2	3	3	0	2815
+114	West Ham	2022/23	4	42	55	40	FB	0.01687	76		Aaron Cresswell	0	1	3	0	2235
+114	West Ham	2022/23	4	42	55	40	CB	0.02643	77		Thilo Kehrer	0	2	4	0	2230
+114	West Ham	2022/23	4	42	55	40	CAM	0.17933	82		Lucas Paquetá	4	3	5	0	2151
+114	West Ham	2022/23	4	42	55	40	FB	0.00763	79		Vladimír Coufal	0	1	5	0	2136
+114	West Ham	2022/23	4	42	55	40	Winger	0.14381	78		Saïd Benrahma	6	3	0	0	2069
+114	West Ham	2022/23	4	42	55	40	CB	0.09615	76		Kurt Zouma	2	0	0	0	1989
+114	West Ham	2022/23	4	42	55	40	ST	0.35439	78		Michail Antonio	5	3	2	0	1829
+111	Crystal Palace	2022/23	4	40	49	45	CB	0.04493	79		Marc Guéhi	1	0	8	0	3329
+111	Crystal Palace	2022/23	4	40	49	45	FB	0.02789	78		Tyrick Mitchell	0	2	5	1	2891
+111	Crystal Palace	2022/23	4	40	49	45	CB	0.05985	78		Joachim Andersen	1	0	8	0	2782
+111	Crystal Palace	2022/23	4	40	49	45	DM	0.03244	79		Cheick Doucouré	0	3	10	1	2769
+111	Crystal Palace	2022/23	4	40	49	45	Winger	0.08705	81		Michael Olise	2	11	2	0	2749
+111	Crystal Palace	2022/23	4	40	49	45	ST	0.09123	77		Jordan Ayew	4	3	5	0	2714
+111	Crystal Palace	2022/23	4	40	49	45	CAM	0.20728	80		Eberechi Eze	10	4	3	0	2636
+111	Crystal Palace	2022/23	4	40	49	45	Winger	0.12254	78		Jeffrey Schlupp	3	1	7	0	2531
+111	Crystal Palace	2022/23	4	40	49	45	GK	0.0	79	70.9	Vicente Guaita	0	0	1	0	2430
+111	Crystal Palace	2022/23	4	40	49	45	Winger	0.24683	79		Wilfried Zaha	7	2	5	0	2288
+111	Crystal Palace	2022/23	4	40	49	45	FB	0.05848	76		Joel Ward	1	0	6	0	2256
+119	Leeds United	2022/23	4	48	78	31	CB	0.03002	75		Robin Koch	0	0	7	0	3175
+119	Leeds United	2022/23	4	48	78	31	GK	0.00168	72	58.4	Illan Meslier	0	0	3	0	3060
+119	Leeds United	2022/23	4	48	78	31	Winger	0.16664	80		Jack Harrison	5	7	2	0	2708
+119	Leeds United	2022/23	4	48	78	31	CAM	0.14965	74		Brenden Aaronson	1	3	2	0	2372
+119	Leeds United	2022/23	4	48	78	31	DM	0.08133	78		Marc Roca	1	2	7	0	2315
+119	Leeds United	2022/23	4	48	78	31	CB	0.05461	76		Pascal Struijk	2	1	5	0	2200
+119	Leeds United	2022/23	4	48	78	31	DM	0.00284	77		Tyler Adams	0	0	6	1	2156
+119	Leeds United	2022/23	4	48	78	31	FB	0.11888	75		Luke Ayling	2	1	3	0	2054
+119	Leeds United	2022/23	4	48	78	31	FB	0.03623	77		Rasmus Kristensen	3	1	4	0	1960
+119	Leeds United	2022/23	4	48	78	31	ST	0.07526	71		Rodrigo	13	1	6	0	1935
+119	Leeds United	2022/23	4	48	78	31	ST	0.49022	77		Patrick Bamford	4	2	3	0	1515
+143	Liverpool	2020/21	4	68	42	69	FB	0.03826	87		Andy Robertson	1	7	2	0	3383
+143	Liverpool	2020/21	4	68	42	69	Winger	0.4586	89		Mohamed Salah	22	5	0	0	3078
+143	Liverpool	2020/21	4	68	42	69	FB	0.07699	87		Trent Alexander-Arnold	2	7	2	0	3031
+143	Liverpool	2020/21	4	68	42	69	GK	0.00327	88	72.2	Alisson	1	0	1	0	2970
+143	Liverpool	2020/21	4	68	42	69	CM	0.08621	79		Georginio Wijnaldum	2	0	1	0	2941
+143	Liverpool	2020/21	4	68	42	69	ST	0.40782	83		Roberto Firmino	9	7	2	0	2838
+143	Liverpool	2020/21	4	68	42	69	Winger	0.47495	87		Sadio Mané	11	7	3	0	2810
+143	Liverpool	2020/21	4	68	42	69	DM	0.01269	86		Fabinho	0	0	6	0	2567
+143	Liverpool	2020/21	4	68	42	69	CM	0.05879	82		Thiago Alcántara	1	0	4	0	1854
+143	Liverpool	2020/21	4	68	42	69	CM	0.06	81		Jordan Henderson	1	1	0	0	1704
+143	Liverpool	2020/21	4	68	42	69	CB	0.06354	75		Nathaniel Phillips	1	1	2	0	1456
+118	Leicester City	2022/23	4	51	68	34	FB	0.05327	78		Timothy Castagne	2	3	3	0	3254
+118	Leicester City	2022/23	4	51	68	34	CB	0.03553	77		Wout Faes	1	2	6	1	2786
+118	Leicester City	2022/23	4	51	68	34	Winger	0.30277	76		Harvey Barnes	13	1	3	0	2711
+118	Leicester City	2022/23	4	51	68	34	CAM	0.25283	84		James Maddison	10	9	10	0	2480
+118	Leicester City	2022/23	4	51	68	34	CM	0.02753	81		Youri Tielemans	3	2	4	0	2344
+118	Leicester City	2022/23	4	51	68	34	GK	0.0	73	62.3	Danny Ward	0	0	0	0	2340
+118	Leicester City	2022/23	4	51	68	34	CM	0.0724	78		Kiernan Dewsbury-Hall	2	2	5	1	2306
+118	Leicester City	2022/23	4	51	68	34	ST	0.28512	76		Jamie Vardy	3	4	1	0	1857
+118	Leicester City	2022/23	4	51	68	34	DM	0.00815	78		Wilfred Ndidi	0	0	4	0	1679
+118	Leicester City	2022/23	4	51	68	34	DM	0.00116	77		Boubakary Soumaré	0	0	9	0	1629
+118	Leicester City	2022/23	4	51	68	34	CB	0.05892	72		Daniel Amartey	0	0	1	0	1610
+112	Chelsea	2022/23	4	38	47	44	ST	0.42092	78		Kai Havertz	7	1	5	0	2569
+112	Chelsea	2022/23	4	38	47	44	GK	0.0	82	73.4	Kepa Arrizabalaga	0	0	1	0	2565
+112	Chelsea	2022/23	4	38	47	44	CB	0.05526	84		Thiago Silva	0	2	2	0	2352
+112	Chelsea	2022/23	4	38	47	44	Winger	0.35243	81		Raheem Sterling	6	3	4	0	1891
+112	Chelsea	2022/23	4	38	47	44	CB	0.0527	84		Kalidou Koulibaly	2	1	7	1	1800
+112	Chelsea	2022/23	4	38	47	44	CM	0.06991	80		Mateo Kovačić	1	2	8	0	1707
+112	Chelsea	2022/23	4	38	47	44	FB	0.01912	80		Marc Cucurella	0	2	4	0	1671
+112	Chelsea	2022/23	4	38	47	44	CAM	0.11665	79		Mason Mount	3	2	4	0	1648
+112	Chelsea	2022/23	4	38	47	44	CM	0.14086	79		Conor Gallagher	3	1	11	1	1621
+112	Chelsea	2022/23	4	38	47	44	CB	0.0445	78		Trevoh Chalobah	0	0	4	0	1608
+112	Chelsea	2022/23	4	38	47	44	CM	0.03595	81		Enzo Fernández	0	2	3	0	1547
+101	Manchester City	2022/23	4	94	33	89	GK	0.0	86	59.0	Ederson Moraes	0	1	3	0	3150
+101	Manchester City	2022/23	4	94	33	89	DM	0.12735	88		Rodri	2	6	5	0	2911
+101	Manchester City	2022/23	4	94	33	89	ST	0.89165	91		Erling Haaland	36	8	5	0	2769
+101	Manchester City	2022/23	4	94	33	89	CAM	0.17717	91		Kevin De Bruyne	7	16	1	0	2417
+101	Manchester City	2022/23	4	94	33	89	CM	0.27088	85		İlkay Gündoğan	8	4	0	0	2353
+101	Manchester City	2022/23	4	94	33	89	CB	0.04207	82		Manuel Akanji	0	1	2	0	2287
+101	Manchester City	2022/23	4	94	33	89	CAM	0.09208	87		Bernardo Silva	4	5	5	0	2205
+101	Manchester City	2022/23	4	94	33	89	Winger	0.21889	82		Jack Grealish	5	7	4	0	2055
+101	Manchester City	2022/23	4	94	33	89	CB	0.08721	88		Rúben Dias	0	0	3	0	1998
+101	Manchester City	2022/23	4	94	33	89	FB	0.01494	82		Kyle Walker	0	0	3	0	1958
+101	Manchester City	2022/23	4	94	33	89	Winger	0.2392	86		Riyad Mahrez	5	10	2	0	1920
+110	Fulham	2022/23	4	55	53	52	GK	0.0	81	73.7	Bernd Leno	0	0	3	0	3240
+110	Fulham	2022/23	4	55	53	52	DM	0.07804	82		João Palhinha	3	0	14	0	3108
+110	Fulham	2022/23	4	55	53	52	FB	0.00169	78		Antonee Robinson	0	1	8	0	3088
+110	Fulham	2022/23	4	55	53	52	CB	0.01535	76		Tim Ream	1	0	2	0	2897
+110	Fulham	2022/23	4	55	53	52	CM	0.06855	78		Harrison Reed	3	4	5	0	2866
+110	Fulham	2022/23	4	55	53	52	CM	0.18943	78		Andreas Pereira	4	6	8	0	2692
+110	Fulham	2022/23	4	55	53	52	FB	0.02522	78		Kenny Tete	1	5	8	0	2569
+110	Fulham	2022/23	4	55	53	52	CAM	0.15367	74		Bobby De Cordova-Reid	4	1	8	0	2475
+110	Fulham	2022/23	4	55	53	52	Winger	0.14321	79		Willian	5	5	2	0	2126
+110	Fulham	2022/23	4	55	53	52	CB	0.02495	76		Tosin Adarabioyo	1	0	4	0	2085
+110	Fulham	2022/23	4	55	53	52	CB	0.00854	78		Issa Diop	1	0	2	0	2012
+105	Liverpool	2022/23	4	75	47	67	GK	0.0	88	70.5	Alisson	0	1	1	0	3330
+105	Liverpool	2022/23	4	75	47	67	Winger	0.55518	89		Mohamed Salah	19	12	2	0	3290
+105	Liverpool	2022/23	4	75	47	67	FB	0.05785	86		Trent Alexander-Arnold	2	9	5	0	2923
+105	Liverpool	2022/23	4	75	47	67	CB	0.09911	87		Virgil van Dijk	3	1	3	0	2835
+105	Liverpool	2022/23	4	75	47	67	DM	0.022	82		Fabinho	0	2	11	0	2671
+105	Liverpool	2022/23	4	75	47	67	FB	0.03798	85		Andy Robertson	0	8	3	0	2583
+105	Liverpool	2022/23	4	75	47	67	CM	0.03728	76		Jordan Henderson	0	2	2	0	2074
+105	Liverpool	2022/23	4	75	47	67	ST	0.76327	82		Darwin Núñez	9	3	1	1	1695
+105	Liverpool	2022/23	4	75	47	67	CAM	0.1131	77		Harvey Elliott	1	2	2	0	1613
+105	Liverpool	2022/23	4	75	47	67	CB	0.09052	81		Ibrahima Konaté	0	0	5	0	1552
+105	Liverpool	2022/23	4	75	47	67	CB	0.00737	79		Joe Gomez	0	0	3	0	1466
+104	Newcastle	2022/23	4	68	33	71	FB	0.02349	85		Kieran Trippier	1	7	5	0	3341
+104	Newcastle	2022/23	4	68	33	71	GK	0.0	85	72.6	Nick Pope	0	0	3	1	3261
+104	Newcastle	2022/23	4	68	33	71	CB	0.14297	82		Fabian Schär	1	3	7	0	3206
+104	Newcastle	2022/23	4	68	33	71	CB	0.0704	83		Sven Botman	0	0	2	0	3127
+104	Newcastle	2022/23	4	68	33	71	CB	0.06529	80		Dan Burn	1	0	5	0	3111
+104	Newcastle	2022/23	4	68	33	71	CM	0.09003	84		Bruno Guimarães	4	5	7	0	2726
+104	Newcastle	2022/23	4	68	33	71	CM	0.21149	82		Joelinton	6	1	12	0	2661
+104	Newcastle	2022/23	4	68	33	71	CM	0.25565	80		Joe Willock	3	6	1	0	2558
+104	Newcastle	2022/23	4	68	33	71	CM	0.16177	78		Sean Longstaff	1	4	2	0	2518
+104	Newcastle	2022/23	4	68	33	71	Winger	0.31531	81		Miguel Almirón	11	2	2	0	2491
+104	Newcastle	2022/23	4	68	33	71	ST	0.79466	84		Callum Wilson	18	5	4	0	1877
+61	Manchester City	2023/24	4	96	34	91	DM	0.13185	91		Rodri	8	9	8	1	2931
+61	Manchester City	2023/24	4	96	34	91	CAM	0.35622	87		Phil Foden	19	8	2	0	2857
+61	Manchester City	2023/24	4	96	34	91	GK	0.0	88	67.9	Ederson Moraes	0	0	5	0	2785
+61	Manchester City	2023/24	4	96	34	91	FB	0.01187	83		Kyle Walker	0	4	2	0	2767
+61	Manchester City	2023/24	4	96	34	91	ST	0.43694	83		Julián Álvarez	11	8	2	0	2647
+61	Manchester City	2023/24	4	96	34	91	CAM	0.14303	88		Bernardo Silva	6	9	8	0	2578
+61	Manchester City	2023/24	4	96	34	91	CB	0.06429	87		Rúben Dias	0	0	0	0	2559
+61	Manchester City	2023/24	4	96	34	91	ST	0.90159	91		Erling Haaland	27	5	1	0	2552
+61	Manchester City	2023/24	4	96	34	91	CB	0.07885	84		Manuel Akanji	2	0	4	1	2511
+61	Manchester City	2023/24	4	96	34	91	CB	0.11915	83		Joško Gvardiol	4	1	3	0	2328
+61	Manchester City	2023/24	4	96	34	91	CB	0.09608	82		Nathan Aké	2	2	0	0	2042
+108	Tottenham	2022/23	4	70	63	60	ST	0.48891	90		Harry Kane	30	3	6	0	3405
+108	Tottenham	2022/23	4	70	63	60	DM	0.04398	83		Pierre Højbjerg	4	5	5	0	3131
+108	Tottenham	2022/23	4	70	63	60	Winger	0.29911	86		Son Heung-min	10	6	2	0	2888
+108	Tottenham	2022/23	4	70	63	60	CB	0.04701	76		Eric Dier	2	1	3	0	2818
+108	Tottenham	2022/23	4	70	63	60	CB	0.03274	82		Cristian Romero	0	1	11	1	2364
+108	Tottenham	2022/23	4	70	63	60	CB	0.03906	73		Ben Davies	2	2	4	0	2288
+108	Tottenham	2022/23	4	70	63	60	GK	0.0	80	66.9	Hugo Lloris	0	0	0	0	2205
+108	Tottenham	2022/23	4	70	63	60	Winger	0.12881	81		Ivan Perišić	1	8	6	0	2108
+108	Tottenham	2022/23	4	70	63	60	CAM	0.11364	81		Dejan Kulusevski	2	7	2	0	2067
+108	Tottenham	2022/23	4	70	63	60	CB	0.04284	76		Clément Lenglet	0	2	4	0	2019
+108	Tottenham	2022/23	4	70	63	60	FB	0.05213	78		Emerson	2	1	2	1	1735
+106	Brighton	2022/23	4	72	53	62	CM	0.16544	80		Pascal Groß	9	8	6	0	3239
+106	Brighton	2022/23	4	72	53	62	CB	0.05671	79		Lewis Dunk	1	0	4	0	3239
+106	Brighton	2022/23	4	72	53	62	DM	0.03544	78		Moisés Caicedo	1	1	10	0	3139
+106	Brighton	2022/23	4	72	53	62	CM	0.2172	81		Alexis Mac Allister	10	2	8	0	2886
+106	Brighton	2022/23	4	72	53	62	Winger	0.26751	81		Solly March	6	7	2	0	2715
+106	Brighton	2022/23	4	72	53	62	FB	0.07822	80		Pervis Estupiñán	1	5	4	0	2675
+106	Brighton	2022/23	4	72	53	62	Winger	0.35899	81		Kaoru Mitoma	7	5	0	0	2318
+106	Brighton	2022/23	4	72	53	62	FB	0.0552	78		Joël Veltman	1	1	6	0	2188
+106	Brighton	2022/23	4	72	53	62	GK	0.0	77	61.0	Robert Sánchez	0	0	2	0	2070
+106	Brighton	2022/23	4	72	53	62	CB	0.06955	76		Adam Webster	0	0	2	0	1985
+106	Brighton	2022/23	4	72	53	62	ST	0.46359	80		Danny Welbeck	6	3	0	0	1854
+117	Everton	2022/23	4	34	57	36	CB	0.07947	79		James Tarkowski	1	1	6	0	3420
+117	Everton	2022/23	4	34	57	36	Winger	0.07321	79		Alex Iwobi	2	7	2	0	3378
+117	Everton	2022/23	4	34	57	36	GK	0.0	78	68.3	Jordan Pickford	0	1	6	0	3330
+117	Everton	2022/23	4	34	57	36	FB	0.02356	77		Vitaliy Mykolenko	0	0	4	0	2655
+117	Everton	2022/23	4	34	57	36	DM	0.01757	78		Idrissa Gueye	0	1	7	0	2577
+117	Everton	2022/23	4	34	57	36	Winger	0.17243	73		Demarai Gray	4	1	3	0	2507
+117	Everton	2022/23	4	34	57	36	Winger	0.13947	80		Dwight McNeil	7	3	5	0	2498
+117	Everton	2022/23	4	34	57	36	DM	0.1116	79		Amadou Onana	1	2	9	0	2488
+117	Everton	2022/23	4	34	57	36	CB	0.02641	74		Conor Coady	1	1	2	0	2096
+117	Everton	2022/23	4	34	57	36	FB	0.01451	76		Séamus Coleman	1	0	1	0	1656
+117	Everton	2022/23	4	34	57	36	CAM	0.18869	78		Abdoulaye Doucouré	5	2	6	1	1533
+107	Aston Villa	2022/23	4	51	46	61	CB	0.02184	79		Ezri Konsa	0	0	6	0	3322
+107	Aston Villa	2022/23	4	51	46	61	CB	0.0346	79		Tyrone Mings	1	2	7	0	3150
+107	Aston Villa	2022/23	4	51	46	61	GK	0.0	84	71.9	Emiliano Martínez	0	0	7	0	3139
+107	Aston Villa	2022/23	4	51	46	61	ST	0.45947	82		Ollie Watkins	15	6	4	0	3127
+107	Aston Villa	2022/23	4	51	46	61	CM	0.09812	81		Douglas Luiz	6	6	6	1	2927
+107	Aston Villa	2022/23	4	51	46	61	CM	0.06507	77		John McGinn	1	3	7	0	2693
+107	Aston Villa	2022/23	4	51	46	61	CM	0.1785	81		Jacob Ramsey	6	7	5	0	2636
+107	Aston Villa	2022/23	4	51	46	61	Winger	0.20996	78		Emi Buendía	5	2	0	0	2412
+107	Aston Villa	2022/23	4	51	46	61	FB	0.01746	78		Ashley Young	1	0	7	0	2036
+107	Aston Villa	2022/23	4	51	46	61	Winger	0.21862	78		Leon Bailey	4	4	4	0	1967
+107	Aston Villa	2022/23	4	51	46	61	FB	0.00826	80		Matty Cash	0	1	4	0	1820
+246	Real Sociedad	2019/20	5	56	48	56	CM	0.08008	80		Mikel Merino	5	1	9	0	3139
+246	Real Sociedad	2019/20	5	56	48	56	ST	0.14941	84		Mikel Oyarzabal	10	11	4	0	3051
+246	Real Sociedad	2019/20	5	56	48	56	CB	0.01377	74		Igor Zubeldia	0	1	9	0	2640
+246	Real Sociedad	2019/20	5	56	48	56	FB	0.00902	80		Joseba Zaldúa	0	2	8	1	2545
+246	Real Sociedad	2019/20	5	56	48	56	CAM	0.11696	82		Martin Ødegaard	4	6	3	0	2527
+246	Real Sociedad	2019/20	5	56	48	56	CB	0.0518	76		Robin Le Normand	1	0	6	0	2394
+246	Real Sociedad	2019/20	5	56	48	56	Winger	0.20463	83		Portu	7	7	5	0	2393
+246	Real Sociedad	2019/20	5	56	48	56	FB	0.09603	80		Nacho Monreal	2	0	3	0	2390
+246	Real Sociedad	2019/20	5	56	48	56	CB	0.05643	76		Diego Llorente	1	1	7	1	2327
+246	Real Sociedad	2019/20	5	56	48	56	GK	0.0034	78	66.0	Álex Remiro	0	0	0	0	2250
+246	Real Sociedad	2019/20	5	56	48	56	ST	0.52425	81		Willian José	11	1	4	0	2011
+99	Almería	2023/24	5	43	75	21	GK	0.0	73	63.2	Luís Maximiano	0	0	1	0	2970
+99	Almería	2023/24	5	43	75	21	CB	0.06927	76		Édgar González	2	0	7	1	2522
+99	Almería	2023/24	5	43	75	21	Winger	0.14394	77		Adri Embarba	3	2	5	0	2476
+99	Almería	2023/24	5	43	75	21	CB	0.02936	69		Chumi	0	1	4	0	2434
+99	Almería	2023/24	5	43	75	21	CM	0.03912	79		Lucas Robertone	0	5	11	0	2381
+99	Almería	2023/24	5	43	75	21	CAM	0.42393	78		Sergio Arribas	9	4	1	0	2047
+99	Almería	2023/24	5	43	75	21	DM	0.03725	74		Dion Lopy	0	0	5	0	1916
+99	Almería	2023/24	5	43	75	21	CB	0.03943	71		Marc Pubill	1	3	2	0	1883
+99	Almería	2023/24	5	43	75	21	Winger	0.28602	77		Léo Baptistão	6	0	6	1	1837
+99	Almería	2023/24	5	43	75	21	CB	0.02824	72		César Montes	0	0	5	0	1788
+99	Almería	2023/24	5	43	75	21	FB	0.07082	72		Sergio Akieme	2	0	2	0	1675
+189	Mallorca	2022/23	5	37	43	50	GK	0.0	79	68.5	Predrag Rajković	0	0	3	0	3240
+189	Mallorca	2022/23	5	37	43	50	FB	0.05978	79		Pablo Maffeo	2	4	6	1	2975
+189	Mallorca	2022/23	5	37	43	50	ST	0.31339	82		Vedat Muriqi	15	3	6	1	2937
+189	Mallorca	2022/23	5	37	43	50	CAM	0.15985	80		Lee Kang-in	6	6	10	0	2823
+189	Mallorca	2022/23	5	37	43	50	CB	0.02157	76		Antonio Raillo	2	3	11	1	2766
+189	Mallorca	2022/23	5	37	43	50	CB	0.00783	77		Martin Valjent	0	0	8	0	2656
+189	Mallorca	2022/23	5	37	43	50	FB	0.06811	77		Jaume Costa	0	1	10	0	2599
+189	Mallorca	2022/23	5	37	43	50	CM	0.00889	74		Iñigo Ruiz de Galarreta	0	1	12	0	2449
+189	Mallorca	2022/23	5	37	43	50	CB	0.0317	77		Copete	1	0	7	1	2206
+189	Mallorca	2022/23	5	37	43	50	CAM	0.1242	80		Dani Rodríguez	3	6	8	0	2100
+189	Mallorca	2022/23	5	37	43	50	CM	0.0323	71		Iddrisu Baba	0	0	5	0	1705
+109	Brentford	2022/23	4	58	46	59	GK	0.00274	82	77.0	David Raya	0	0	1	0	3420
+109	Brentford	2022/23	4	58	46	59	CB	0.08876	80		Ben Mee	3	2	2	0	3269
+109	Brentford	2022/23	4	58	46	59	FB	0.05406	79		Rico Henry	0	2	4	0	3238
+109	Brentford	2022/23	4	58	46	59	ST	0.49904	82		Ivan Toney	20	4	9	0	2951
+109	Brentford	2022/23	4	58	46	59	Winger	0.28926	80		Bryan Mbeumo	9	8	5	0	2906
+109	Brentford	2022/23	4	58	46	59	CM	0.06197	80		Mathias Jensen	5	6	5	0	2803
+109	Brentford	2022/23	4	58	46	59	CB	0.11953	79		Ethan Pinnock	3	0	0	0	2700
+109	Brentford	2022/23	4	58	46	59	DM	0.08931	76		Vitaly Janelt	3	1	3	0	2208
+109	Brentford	2022/23	4	58	46	59	FB	0.01489	77		Aaron Hickey	0	1	7	0	1916
+109	Brentford	2022/23	4	58	46	59	DM	0.06881	80		Christian Nørgaard	1	3	6	0	1763
+109	Brentford	2022/23	4	58	46	59	ST	0.29186	79		Yoane Wissa	7	3	3	0	1606
+115	Bournemouth	2022/23	4	37	71	39	DM	0.08732	76		Jefferson Lerma	5	0	7	0	3252
+115	Bournemouth	2022/23	4	37	71	39	FB	0.02988	74		Adam Smith	0	1	11	0	2943
+115	Bournemouth	2022/23	4	37	71	39	ST	0.29322	79		Dominic Solanke	6	7	2	0	2860
+115	Bournemouth	2022/23	4	37	71	39	CM	0.15936	78		Philip Billing	7	1	5	0	2764
+115	Bournemouth	2022/23	4	37	71	39	CB	0.07475	77		Marcos Senesi	2	0	7	0	2491
+115	Bournemouth	2022/23	4	37	71	39	GK	0.0	77	71.9	Neto	0	0	4	0	2385
+115	Bournemouth	2022/23	4	37	71	39	CB	0.0205	73		Chris Mepham	0	0	7	0	2199
+115	Bournemouth	2022/23	4	37	71	39	CB	0.00543	74		Lloyd Kelly	0	2	3	0	2040
+115	Bournemouth	2022/23	4	37	71	39	CM	0.13392	76		Ryan Christie	1	1	2	0	1834
+115	Bournemouth	2022/23	4	37	71	39	CAM	0.20282	80		Marcus Tavernier	5	4	1	0	1743
+115	Bournemouth	2022/23	4	37	71	39	CM	0.00963	77		Lewis Cook	0	2	4	0	1720
+181	Barcelona	2022/23	5	70	20	88	GK	0.0	89	82.2	Marc-André ter Stegen	0	0	0	0	3347
+181	Barcelona	2022/23	5	70	20	88	ST	0.7965	90		Robert Lewandowski	23	7	4	1	2847
+181	Barcelona	2022/23	5	70	20	88	CM	0.09568	86		Frenkie de Jong	2	4	3	0	2534
+181	Barcelona	2022/23	5	70	20	88	CM	0.10515	82		Gavi	2	4	10	0	2531
+181	Barcelona	2022/23	5	70	20	88	FB	0.06297	81		Alejandro Balde	1	6	4	0	2471
+181	Barcelona	2022/23	5	70	20	88	FB	0.06284	85		Jules Koundé	1	3	2	0	2426
+181	Barcelona	2022/23	5	70	20	88	DM	0.01366	82		Sergio Busquets	0	4	8	1	2339
+181	Barcelona	2022/23	5	70	20	88	Winger	0.43606	83		Raphinha	7	7	9	0	2072
+181	Barcelona	2022/23	5	70	20	88	CM	0.22669	82		Pedri	6	1	2	0	1976
+181	Barcelona	2022/23	5	70	20	88	CB	0.1004	84		Ronald Araújo	0	2	5	1	1800
+181	Barcelona	2022/23	5	70	20	88	CB	0.06116	82		Andreas Christensen	1	1	2	0	1760
+81	Real Madrid	2023/24	5	87	26	95	CM	0.13023	88		Federico Valverde	2	7	2	0	2904
+81	Real Madrid	2023/24	5	87	26	95	CB	0.06073	87		Antonio Rüdiger	1	0	7	0	2709
+81	Real Madrid	2023/24	5	87	26	95	Winger	0.44195	85		Rodrygo	10	5	2	0	2380
+81	Real Madrid	2023/24	5	87	26	95	CAM	0.4755	90		Jude Bellingham	19	6	5	1	2315
+81	Real Madrid	2023/24	5	87	26	95	FB	0.10712	84		Dani Carvajal	4	3	5	1	2171
+81	Real Madrid	2023/24	5	87	26	95	CM	0.07322	86		Toni Kroos	1	8	3	0	2124
+81	Real Madrid	2023/24	5	87	26	95	DM	0.05109	83		Aurélien Tchouaméni	3	1	7	0	1987
+81	Real Madrid	2023/24	5	87	26	95	GK	0.0	82	73.8	Andriy Lunin	0	0	2	0	1890
+81	Real Madrid	2023/24	5	87	26	95	Winger	0.73661	90		Vinicius Júnior	15	5	7	0	1864
+81	Real Madrid	2023/24	5	87	26	95	CM	0.04339	82		Eduardo Camavinga	0	2	9	0	1817
+81	Real Madrid	2023/24	5	87	26	95	CB	0.01794	81		Nacho	0	1	4	2	1746
+243	Atlético Madrid	2019/20	5	51	27	70	GK	0.0	91	75.7	Jan Oblak	0	0	0	0	3395
+243	Atlético Madrid	2019/20	5	51	27	70	CM	0.10409	83		Saúl Ñíguez	6	0	10	0	3072
+243	Atlético Madrid	2019/20	5	51	27	70	CM	0.0	85		Koke	4	5	5	0	2698
+243	Atlético Madrid	2019/20	5	51	27	70	DM	0.06927	82		Thomas Partey	3	0	13	0	2549
+243	Atlético Madrid	2019/20	5	51	27	70	FB	0.05912	82		Renan Lodi	1	2	6	1	2396
+243	Atlético Madrid	2019/20	5	51	27	70	CB	0.07724	84		Felipe	1	0	7	0	2102
+243	Atlético Madrid	2019/20	5	51	27	70	ST	0.54678	83		Álvaro Morata	12	2	6	1	2098
+243	Atlético Madrid	2019/20	5	51	27	70	ST	0.31611	82		Ángel Correa	5	6	5	0	2061
+243	Atlético Madrid	2019/20	5	51	27	70	CB	0.00505	80		Stefan Savić	0	0	6	0	1980
+243	Atlético Madrid	2019/20	5	51	27	70	FB	0.0075	83		Kieran Trippier	0	4	2	0	1979
+243	Atlético Madrid	2019/20	5	51	27	70	CB	0.02826	82		José María Giménez	0	0	2	0	1755
+175	Brighton	2019/20	4	39	54	41	GK	0.0	79	68.4	Mathew Ryan	0	0	0	0	3420
+175	Brighton	2019/20	4	39	54	41	CB	0.10363	79		Lewis Dunk	3	3	9	0	3230
+175	Brighton	2019/20	4	39	54	41	CB	0.05953	77		Dan Burn	0	0	5	0	2880
+175	Brighton	2019/20	4	39	54	41	CM	0.05936	73		Davy Pröpper	1	2	4	0	2829
+175	Brighton	2019/20	4	39	54	41	ST	0.39163	78		Neal Maupay	10	3	3	0	2766
+175	Brighton	2019/20	4	39	54	41	CB	0.05323	76		Adam Webster	3	1	4	0	2668
+175	Brighton	2019/20	4	39	54	41	CM	0.01579	77		Dale Stephens	0	1	8	0	2530
+175	Brighton	2019/20	4	39	54	41	CM	0.10869	78		Aaron Mooy	2	2	3	1	2085
+175	Brighton	2019/20	4	39	54	41	Winger	0.23961	78		Leandro Trossard	5	3	0	0	2011
+175	Brighton	2019/20	4	39	54	41	FB	0.06807	78		Martín Montoya	0	1	5	0	1896
+175	Brighton	2019/20	4	39	54	41	CM	0.07296	78		Pascal Groß	2	4	4	0	1796
+95	Mallorca	2023/24	5	33	44	40	GK	0.0	78	69.5	Predrag Rajković	0	0	2	0	3240
+95	Mallorca	2023/24	5	33	44	40	CAM	0.05331	76		Dani Rodríguez	2	4	9	0	2615
+95	Mallorca	2023/24	5	33	44	40	FB	0.01991	74		Giovanni González	1	1	6	0	2464
+95	Mallorca	2023/24	5	33	44	40	CB	0.01073	78		Martin Valjent	0	1	5	0	2349
+95	Mallorca	2023/24	5	33	44	40	ST	0.34774	78		Vedat Muriqi	7	2	5	0	2327
+95	Mallorca	2023/24	5	33	44	40	DM	0.06053	77		Samu Costa	1	1	8	0	2303
+95	Mallorca	2023/24	5	33	44	40	CB	0.05357	76		Matija Nastasić	2	0	8	0	2258
+95	Mallorca	2023/24	5	33	44	40	CB	0.04469	78		Antonio Raillo	3	2	6	1	2195
+95	Mallorca	2023/24	5	33	44	40	CM	0.07456	82		Sergi Darder	2	5	4	0	2157
+95	Mallorca	2023/24	5	33	44	40	ST	0.42729	75		Cyle Larin	3	2	8	0	1823
+95	Mallorca	2023/24	5	33	44	40	FB	0.02012	77		Jaume Costa	0	1	7	0	1682
+64	Aston Villa	2023/24	4	76	61	68	ST	0.53896	85		Ollie Watkins	19	13	4	0	3217
+64	Aston Villa	2023/24	4	76	61	68	CB	0.06827	81		Ezri Konsa	1	0	5	0	3069
+64	Aston Villa	2023/24	4	76	61	68	GK	0.0	85	66.4	Emiliano Martínez	0	0	4	0	3015
+64	Aston Villa	2023/24	4	76	61	68	CM	0.14021	81		John McGinn	6	4	9	1	2999
+64	Aston Villa	2023/24	4	76	61	68	CM	0.13613	82		Douglas Luiz	9	5	12	0	2993
+64	Aston Villa	2023/24	4	76	61	68	CB	0.05592	80		Pau Torres	2	0	1	0	2464
+64	Aston Villa	2023/24	4	76	61	68	FB	0.04847	79		Lucas Digne	1	3	7	0	2410
+64	Aston Villa	2023/24	4	76	61	68	Winger	0.26735	82		Moussa Diaby	6	8	1	0	2174
+64	Aston Villa	2023/24	4	76	61	68	FB	0.18849	79		Matty Cash	2	2	8	0	2142
+64	Aston Villa	2023/24	4	76	61	68	Winger	0.2814	82		Leon Bailey	10	9	5	0	2068
+64	Aston Villa	2023/24	4	76	61	68	CB	0.0897	78		Diego Carlos	0	0	4	0	1816
+75	Everton	2023/24	4	40	51	40	GK	0.0	83	70.3	Jordan Pickford	0	0	5	0	3420
+75	Everton	2023/24	4	40	51	40	CB	0.08803	81		James Tarkowski	1	1	11	0	3419
+75	Everton	2023/24	4	40	51	40	CB	0.0552	80		Jarrad Branthwaite	3	0	8	0	3116
+75	Everton	2023/24	4	40	51	40	DM	0.06666	77		James Garner	1	2	7	0	3004
+75	Everton	2023/24	4	40	51	40	Winger	0.11331	78		Dwight McNeil	3	6	2	0	2892
+75	Everton	2023/24	4	40	51	40	CAM	0.34932	75		Abdoulaye Doucouré	7	1	7	0	2629
+75	Everton	2023/24	4	40	51	40	FB	0.06959	79		Vitaliy Mykolenko	2	0	1	0	2469
+75	Everton	2023/24	4	40	51	40	FB	0.02238	76		Ashley Young	0	0	7	1	2280
+75	Everton	2023/24	4	40	51	40	Winger	0.1687	77		Jack Harrison	3	3	1	0	2214
+75	Everton	2023/24	4	40	51	40	ST	0.50182	77		Dominic Calvert-Lewin	7	2	2	0	2171
+75	Everton	2023/24	4	40	51	40	DM	0.10989	76		Amadou Onana	2	0	5	0	2091
+78	Luton Town	2023/24	4	52	85	26	GK	0.0	72	62.9	Thomas Kaminski	0	0	3	0	3405
+78	Luton Town	2023/24	4	52	85	26	Winger	0.05637	80		Alfie Doughty	2	8	5	0	2925
+78	Luton Town	2023/24	4	52	85	26	ST	0.26733	79		Carlton Morris	11	4	4	0	2862
+78	Luton Town	2023/24	4	52	85	26	CM	0.15411	78		Ross Barkley	5	4	6	0	2618
+78	Luton Town	2023/24	4	52	85	26	CB	0.02475	76		Teden Mengi	1	0	3	0	2469
+78	Luton Town	2023/24	4	52	85	26	Winger	0.21686	70		Chiedozie Ogbene	4	1	1	0	1995
+78	Luton Town	2023/24	4	52	85	26	CAM	0.15979	69		Tahith Chong	4	0	4	0	1982
+78	Luton Town	2023/24	4	52	85	26	CB	0.06075	74		Gabriel Osho	2	0	3	0	1846
+78	Luton Town	2023/24	4	52	85	26	FB	0.01582	76		Issa Kaboré	0	2	7	0	1729
+78	Luton Town	2023/24	4	52	85	26	CB	0.02611	74		Amari'i Bell	0	0	0	0	1720
+78	Luton Town	2023/24	4	52	85	26	CB	0.11733	72		Reece Burke	0	4	5	0	1660
+88	Villarreal	2023/24	5	65	65	53	GK	0.0	66	69.4	Filip Jørgensen	0	0	4	0	3240
+88	Villarreal	2023/24	5	65	65	53	CM	0.01831	83		Daniel Parejo	3	5	4	0	2580
+88	Villarreal	2023/24	5	65	65	53	Winger	0.21633	80		Álex Baena	2	14	11	1	2579
+88	Villarreal	2023/24	5	65	65	53	ST	0.5579	83		Alexander Sørloth	23	6	3	0	2489
+88	Villarreal	2023/24	5	65	65	53	ST	0.31563	83		Gerard Moreno	10	6	0	0	2215
+88	Villarreal	2023/24	5	65	65	53	CB	0.00829	76		Raúl Albiol	0	1	6	0	2031
+88	Villarreal	2023/24	5	65	65	53	CB	0.07207	74		Jorge Cuenca	3	1	7	0	1963
+88	Villarreal	2023/24	5	65	65	53	CM	0.11788	75		Santi Comesaña	2	0	8	2	1653
+88	Villarreal	2023/24	5	65	65	53	FB	0.00102	74		Kiko Femenía	0	0	8	1	1583
+88	Villarreal	2023/24	5	65	65	53	Winger	0.16987	76		Ilias Akhomach	2	2	4	0	1511
+88	Villarreal	2023/24	5	65	65	53	FB	0.07296	76		Alberto Moreno	2	2	5	2	1484
+74	Wolves	2023/24	4	50	65	46	CB	0.06837	77		Max Kilman	2	0	7	0	3420
+74	Wolves	2023/24	4	50	65	46	FB	0.03595	76		Nélson Semedo	0	1	10	1	3084
+74	Wolves	2023/24	4	50	65	46	GK	0.0	78	69.8	José Sá	0	1	1	0	3037
+74	Wolves	2023/24	4	50	65	46	DM	0.13982	78		Mario Lemina	4	1	12	1	2968
+74	Wolves	2023/24	4	50	65	46	CB	0.05451	75		Toti Gomes	1	3	7	0	2772
+74	Wolves	2023/24	4	50	65	46	CM	0.06302	77		João Gomes	2	1	11	0	2649
+74	Wolves	2023/24	4	50	65	46	ST	0.34923	81		Matheus Cunha	12	7	9	0	2440
+74	Wolves	2023/24	4	50	65	46	FB	0.12536	77		Rayan Aït-Nouri	2	1	7	0	2329
+74	Wolves	2023/24	4	50	65	46	CB	0.05533	75		Craig Dawson	1	1	7	0	2209
+74	Wolves	2023/24	4	50	65	46	ST	0.33643	81		Hwang Hee-chan	12	3	6	0	2119
+74	Wolves	2023/24	4	50	65	46	CAM	0.22998	80		Pablo Sarabia	4	7	5	0	1745
+170	Burnley	2019/20	4	43	50	54	CB	0.069	80		James Tarkowski	2	2	10	0	3420
+170	Burnley	2019/20	4	43	50	54	GK	0.0	82	70.4	Nick Pope	0	0	1	0	3420
+170	Burnley	2019/20	4	43	50	54	Winger	0.05228	79		Dwight McNeil	2	6	5	0	3338
+170	Burnley	2019/20	4	43	50	54	DM	0.03357	80		Ashley Westwood	2	6	9	0	3150
+170	Burnley	2019/20	4	43	50	54	CB	0.04078	79		Ben Mee	1	1	7	0	2880
+170	Burnley	2019/20	4	43	50	54	DM	0.04633	72		Jack Cork	0	0	1	0	2613
+170	Burnley	2019/20	4	43	50	54	ST	0.60806	80		Chris Wood	14	1	1	0	2437
+170	Burnley	2019/20	4	43	50	54	ST	0.36589	78		Jay Rodriguez	8	1	1	0	2016
+170	Burnley	2019/20	4	43	50	54	FB	0.00065	77		Charlie Taylor	0	1	3	0	1945
+170	Burnley	2019/20	4	43	50	54	CM	0.09797	75		Jeff Hendrick	2	2	8	0	1931
+170	Burnley	2019/20	4	43	50	54	FB	0.01386	76		Phil Bardsley	0	1	6	0	1890
+147	Tottenham	2020/21	4	68	45	62	GK	0.0	86	71.7	Hugo Lloris	0	0	0	0	3420
+147	Tottenham	2020/21	4	68	45	62	DM	0.02995	83		Pierre Højbjerg	2	4	9	0	3420
+147	Tottenham	2020/21	4	68	45	62	Winger	0.29659	89		Son Heung-min	17	10	0	0	3114
+147	Tottenham	2020/21	4	68	45	62	ST	0.55863	90		Harry Kane	23	14	1	0	3082
+147	Tottenham	2020/21	4	68	45	62	CB	0.04475	78		Eric Dier	0	0	3	0	2520
+147	Tottenham	2020/21	4	68	45	62	FB	0.04652	81		Sergio Reguilón	0	3	5	0	2244
+147	Tottenham	2020/21	4	68	45	62	CB	0.02467	80		Toby Alderweireld	1	0	2	0	2240
+147	Tottenham	2020/21	4	68	45	62	CM	0.06585	80		Tanguy Ndombele	3	2	3	0	2091
+147	Tottenham	2020/21	4	68	45	62	FB	0.08271	81		Serge Aurier	2	3	0	0	1605
+147	Tottenham	2020/21	4	68	45	62	CM	0.01408	73		Moussa Sissoko	0	0	3	0	1585
+147	Tottenham	2020/21	4	68	45	62	CB	0.04851	78		Davinson Sánchez	0	0	1	0	1486
+84	Atlético Madrid	2023/24	5	70	43	76	GK	0.0	88	70.1	Jan Oblak	0	0	1	0	3420
+84	Atlético Madrid	2023/24	5	70	43	76	DM	0.03835	79		Axel Witsel	2	0	5	0	2783
+84	Atlético Madrid	2023/24	5	70	43	76	ST	0.34924	88		Antoine Griezmann	16	6	5	0	2644
+84	Atlético Madrid	2023/24	5	70	43	76	FB	0.17112	81		Marcos Llorente	6	4	5	0	2565
+84	Atlético Madrid	2023/24	5	70	43	76	CB	0.05026	82		Mario Hermoso	0	1	9	0	2557
+84	Atlético Madrid	2023/24	5	70	43	76	CM	0.03137	82		Koke	0	4	5	0	2493
+84	Atlético Madrid	2023/24	5	70	43	76	Winger	0.26178	81		Samuel Lino	4	5	1	0	2080
+84	Atlético Madrid	2023/24	5	70	43	76	CM	0.1047	83		Rodrigo De Paul	3	5	7	0	2075
+84	Atlético Madrid	2023/24	5	70	43	76	ST	0.80064	84		Álvaro Morata	15	3	4	1	1904
+84	Atlético Madrid	2023/24	5	70	43	76	FB	0.06337	81		Nahuel Molina	2	3	4	1	1852
+84	Atlético Madrid	2023/24	5	70	43	76	CB	0.01281	81		Stefan Savić	0	0	7	1	1630
+96	Las Palmas	2023/24	5	33	47	40	GK	0.0	80	70.1	Álvaro Vallés	0	0	2	1	3263
+96	Las Palmas	2023/24	5	33	47	40	CAM	0.05152	77		Kirian Rodríguez	6	2	8	0	3211
+96	Las Palmas	2023/24	5	33	47	40	CB	0.00413	78		Mika Mármol	0	1	6	1	3178
+96	Las Palmas	2023/24	5	33	47	40	FB	0.07615	78		Sergi Cardona	1	2	11	0	2814
+96	Las Palmas	2023/24	5	33	47	40	CM	0.10756	76		Javier Muñoz	2	3	6	0	2640
+96	Las Palmas	2023/24	5	33	47	40	CB	0.07879	77		Álex Suárez	2	0	7	0	2562
+96	Las Palmas	2023/24	5	33	47	40	Winger	0.18794	76		Munir El Haddadi	3	2	3	0	2449
+96	Las Palmas	2023/24	5	33	47	40	CB	0.03337	75		Saúl Coco	1	0	6	1	2295
+96	Las Palmas	2023/24	5	33	47	40	FB	0.06011	75		Marvin	0	2	5	0	1855
+96	Las Palmas	2023/24	5	33	47	40	ST	0.17144	73		Sandro Ramírez	1	3	3	0	1808
+96	Las Palmas	2023/24	5	33	47	40	Winger	0.09419	77		Alberto Moleiro	3	3	1	0	1803
+242	Barcelona	2019/20	5	86	38	82	GK	0.0	89	69.0	Marc-André ter Stegen	0	2	1	0	3240
+242	Barcelona	2019/20	5	86	38	82	CB	0.07449	85		Gerard Piqué	1	0	15	0	3092
+242	Barcelona	2019/20	5	86	38	82	Winger	0.53541	93		Lionel Messi	25	21	4	0	2880
+242	Barcelona	2019/20	5	86	38	82	ST	0.29171	85		Antoine Griezmann	9	4	2	0	2549
+242	Barcelona	2019/20	5	86	38	82	DM	0.05212	86		Sergio Busquets	2	2	9	0	2483
+242	Barcelona	2019/20	5	86	38	82	CB	0.02848	85		Clément Lenglet	2	1	11	2	2424
+242	Barcelona	2019/20	5	86	38	82	CM	0.02516	82		Sergi Roberto	1	2	8	0	2339
+242	Barcelona	2019/20	5	86	38	82	FB	0.06091	85		Jordi Alba	2	5	7	0	2187
+242	Barcelona	2019/20	5	86	38	82	CM	0.05455	82		Frenkie de Jong	2	2	3	1	2115
+242	Barcelona	2019/20	5	86	38	82	FB	0.02897	83		Nélson Semedo	1	2	2	0	2097
+242	Barcelona	2019/20	5	86	38	82	ST	0.59329	87		Luis Suárez	16	8	4	0	1998
+150	Everton	2020/21	4	47	48	59	CB	0.04529	79		Michael Keane	3	1	4	0	2991
+150	Everton	2020/21	4	47	48	59	ST	0.57088	82		Dominic Calvert-Lewin	16	0	3	0	2871
+150	Everton	2020/21	4	47	48	59	ST	0.31171	79		Richarlison	7	3	4	1	2861
+150	Everton	2020/21	4	47	48	59	GK	0.0	81	69.5	Jordan Pickford	0	0	1	0	2742
+150	Everton	2020/21	4	47	48	59	CB	0.02658	78		Ben Godfrey	0	2	4	0	2685
+150	Everton	2020/21	4	47	48	59	FB	0.01558	84		Lucas Digne	0	7	2	1	2681
+150	Everton	2020/21	4	47	48	59	CAM	0.08731	80		Abdoulaye Doucouré	2	3	6	0	2443
+150	Everton	2020/21	4	47	48	59	CB	0.05108	78		Mason Holgate	1	0	9	0	2287
+150	Everton	2020/21	4	47	48	59	CM	0.13422	81		Gylfi Sigurðsson	6	5	2	0	2253
+150	Everton	2020/21	4	47	48	59	DM	0.01062	78		Allan	0	0	6	0	2051
+150	Everton	2020/21	4	47	48	59	CB	0.08126	77		Yerry Mina	2	0	2	0	1937
+183	Atlético Madrid	2022/23	5	70	33	77	FB	0.10111	82		Nahuel Molina	4	2	7	1	2867
+183	Atlético Madrid	2022/23	5	70	33	77	ST	0.36992	88		Antoine Griezmann	15	16	2	0	2859
+183	Atlético Madrid	2022/23	5	70	33	77	CM	0.03512	82		Koke	0	3	4	0	2545
+183	Atlético Madrid	2022/23	5	70	33	77	GK	0.0	88	75.0	Jan Oblak	0	0	1	0	2492
+183	Atlético Madrid	2022/23	5	70	33	77	CB	0.09784	82		José María Giménez	2	1	9	0	2423
+183	Atlético Madrid	2022/23	5	70	33	77	Winger	0.3184	83		Yannick Carrasco	7	3	2	0	2317
+183	Atlético Madrid	2022/23	5	70	33	77	DM	0.02583	79		Axel Witsel	0	0	2	1	2258
+183	Atlético Madrid	2022/23	5	70	33	77	CB	0.12502	81		Mario Hermoso	3	2	7	2	2110
+183	Atlético Madrid	2022/23	5	70	33	77	CB	0.01978	82		Stefan Savić	0	0	4	2	1943
+183	Atlético Madrid	2022/23	5	70	33	77	CM	0.06566	84		Rodrigo De Paul	2	7	5	0	1923
+183	Atlético Madrid	2022/23	5	70	33	77	ST	0.69395	84		Álvaro Morata	13	2	4	0	1900
+141	Manchester City	2020/21	4	83	32	86	GK	0.0	89	69.9	Ederson Moraes	0	1	3	0	3240
+141	Manchester City	2020/21	4	83	32	86	CB	0.06183	86		Rúben Dias	1	0	4	0	2843
+141	Manchester City	2020/21	4	83	32	86	DM	0.06219	83		Rodri	2	2	6	0	2748
+141	Manchester City	2020/21	4	83	32	86	Winger	0.40067	87		Raheem Sterling	10	7	4	0	2536
+141	Manchester City	2020/21	4	83	32	86	FB	0.07305	86		João Cancelo	2	3	5	1	2299
+141	Manchester City	2020/21	4	83	32	86	CAM	0.15686	85		Bernardo Silva	2	6	5	0	2065
+141	Manchester City	2020/21	4	83	32	86	ST	0.42112	83		Gabriel Jesus	9	4	2	0	2063
+141	Manchester City	2020/21	4	83	32	86	CM	0.35685	83		İlkay Gündoğan	13	2	1	0	2029
+141	Manchester City	2020/21	4	83	32	86	CAM	0.34702	91		Kevin De Bruyne	6	12	1	0	1997
+141	Manchester City	2020/21	4	83	32	86	Winger	0.28778	86		Riyad Mahrez	9	6	0	0	1949
+141	Manchester City	2020/21	4	83	32	86	FB	0.00943	84		Kyle Walker	1	1	1	0	1946
+249	Valencia	2019/20	5	46	53	53	CM	0.04979	84		Daniel Parejo	8	3	6	1	3024
+249	Valencia	2019/20	5	46	53	53	CB	0.02844	80		Gabriel Paulista	1	1	5	0	2801
+249	Valencia	2019/20	5	46	53	53	CM	0.05496	79		Daniel Wass	1	6	7	0	2733
+249	Valencia	2019/20	5	46	53	53	ST	0.16081	81		Ferran Torres	4	5	5	0	2251
+249	Valencia	2019/20	5	46	53	53	ST	0.25774	80		Maxi Gómez	9	2	5	0	2143
+249	Valencia	2019/20	5	46	53	53	GK	0.0	79	72.2	Jasper Cillessen	0	1	1	0	2096
+249	Valencia	2019/20	5	46	53	53	CM	0.07968	74		Carlos Soler	2	0	4	0	2066
+249	Valencia	2019/20	5	46	53	53	FB	0.01358	80		José Luis Gayà	0	1	5	0	1988
+249	Valencia	2019/20	5	46	53	53	DM	0.01739	77		Francis Coquelin	0	0	8	1	1905
+249	Valencia	2019/20	5	46	53	53	ST	0.34616	80		Rodrigo	4	7	2	1	1880
+249	Valencia	2019/20	5	46	53	53	DM	0.05235	79		Geoffrey Kondogbia	1	1	5	0	1807
+77	Nottingham	2023/24	4	49	67	32	CAM	0.15137	80		Morgan Gibbs-White	5	10	9	0	3156
+77	Nottingham	2023/24	4	49	67	32	CB	0.05373	78		Murillo	0	2	5	0	2789
+77	Nottingham	2023/24	4	49	67	32	Winger	0.25054	80		Anthony Elanga	5	9	1	0	2433
+77	Nottingham	2023/24	4	49	67	32	CM	0.11846	76		Ryan Yates	1	1	6	0	1992
+77	Nottingham	2023/24	4	49	67	32	Winger	0.1466	74		Callum Hudson-Odoi	8	1	0	0	1854
+77	Nottingham	2023/24	4	49	67	32	ST	0.66377	81		Chris Wood	14	1	0	0	1812
+77	Nottingham	2023/24	4	49	67	32	CM	0.08362	79		Danilo Santos	2	2	4	0	1792
+77	Nottingham	2023/24	4	49	67	32	FB	0.0158	76		Ola Aina	1	1	3	0	1692
+77	Nottingham	2023/24	4	49	67	32	FB	0.05135	77		Neco Williams	0	1	4	0	1637
+77	Nottingham	2023/24	4	49	67	32	DM	0.05136	74		Orel Mangala	1	0	6	0	1563
+77	Nottingham	2023/24	4	49	67	32	GK	0.0	74	66.3	Matt Turner	0	0	2	0	1530
+100	Granada	2023/24	5	38	79	21	FB	0.00369	73		Carlos Neva	0	2	4	0	3146
+100	Granada	2023/24	5	38	79	21	CB	0.04368	73		Ignasi Miquel	1	1	5	0	2992
+100	Granada	2023/24	5	38	79	21	DM	0.06361	76		Gerard Gumbau	0	3	12	0	2674
+100	Granada	2023/24	5	38	79	21	ST	0.25307	77		Lucas Boyé	6	3	8	1	2541
+100	Granada	2023/24	5	38	79	21	CM	0.03298	76		Sergio Ruiz	0	4	9	0	2494
+100	Granada	2023/24	5	38	79	21	Winger	0.32732	79		Myrto Uzuni	11	1	3	0	2448
+100	Granada	2023/24	5	38	79	21	FB	0.02694	72		Ricard Sánchez	3	0	8	0	2295
+100	Granada	2023/24	5	38	79	21	CM	0.07313	76		Gonzalo Villar	1	3	7	0	1803
+100	Granada	2023/24	5	38	79	21	Winger	0.15132	76		Bryan Zaragoza	6	2	5	0	1638
+100	Granada	2023/24	5	38	79	21	CB	0.0536	70		Miguel Ángel Rubio	1	0	5	0	1560
+100	Granada	2023/24	5	38	79	21	GK	0.00159	74	67.8	Augusto Batalla	0	0	3	0	1530
+255	Real Betis	2019/20	5	48	60	41	CAM	0.10534	81		Sergio Canales	6	6	5	0	3163
+255	Real Betis	2019/20	5	48	60	41	GK	0.0	72	64.2	Joel Robles	0	0	3	1	2887
+255	Real Betis	2019/20	5	48	60	41	FB	0.05779	79		Emerson	3	6	11	0	2839
+255	Real Betis	2019/20	5	48	60	41	CAM	0.20712	82		Nabil Fekir	7	4	10	2	2638
+255	Real Betis	2019/20	5	48	60	41	CB	0.07417	76		Aïssa Mandi	0	0	9	0	2576
+255	Real Betis	2019/20	5	48	60	41	CB	0.06729	78		Marc Bartra	3	1	8	0	2524
+255	Real Betis	2019/20	5	48	60	41	FB	0.10391	75		Álex Moreno	0	4	5	0	2265
+255	Real Betis	2019/20	5	48	60	41	Winger	0.17318	79		Joaquín	8	3	4	0	2060
+255	Real Betis	2019/20	5	48	60	41	CM	0.03906	77		Andrés Guardado	0	3	9	0	2046
+255	Real Betis	2019/20	5	48	60	41	ST	0.33931	82		Loren Morón	10	3	2	1	2031
+255	Real Betis	2019/20	5	48	60	41	ST	0.16534	74		Borja Iglesias	3	2	3	1	1922
+68	Manchester Utd	2023/24	4	57	58	60	GK	0.0	83	71.0	André Onana	0	0	5	0	3420
+68	Manchester Utd	2023/24	4	57	58	60	FB	0.03768	82		Diogo Dalot	2	3	6	1	3174
+68	Manchester Utd	2023/24	4	57	58	60	CAM	0.20032	87		Bruno Fernandes	10	8	9	0	3118
+68	Manchester Utd	2023/24	4	57	58	60	Winger	0.34614	78		Alejandro Garnacho	7	4	4	0	2565
+68	Manchester Utd	2023/24	4	57	58	60	Winger	0.24329	76		Marcus Rashford	7	2	2	0	2271
+68	Manchester Utd	2023/24	4	57	58	60	ST	0.38949	79		Rasmus Højlund	10	2	2	0	2158
+68	Manchester Utd	2023/24	4	57	58	60	DM	0.14186	83		Casemiro	1	2	7	0	1982
+68	Manchester Utd	2023/24	4	57	58	60	CM	0.03621	77		Kobbie Mainoo	3	1	3	0	1924
+68	Manchester Utd	2023/24	4	57	58	60	CM	0.32085	77		Scott McTominay	7	1	2	0	1901
+68	Manchester Utd	2023/24	4	57	58	60	FB	0.00738	80		Aaron Wan-Bissaka	0	2	4	0	1780
+68	Manchester Utd	2023/24	4	57	58	60	CB	0.11641	80		Harry Maguire	2	2	4	0	1653
+98	Cádiz	2023/24	5	26	55	33	CM	0.04974	76		Rubén Alcaraz	3	1	14	0	3134
+98	Cádiz	2023/24	5	26	55	33	GK	0.0	79	69.1	Jeremías Ledesma	0	0	0	0	3048
+98	Cádiz	2023/24	5	26	55	33	ST	0.37047	75		Chris Ramos	5	1	5	0	2612
+98	Cádiz	2023/24	5	26	55	33	FB	0.01441	72		Isaac Carcelen	0	0	2	0	2611
+98	Cádiz	2023/24	5	26	55	33	CB	0.03304	74		Fali	0	0	12	0	2547
+98	Cádiz	2023/24	5	26	55	33	FB	0.07138	73		Javi Hernández	1	2	10	0	2514
+98	Cádiz	2023/24	5	26	55	33	Winger	0.14301	74		Roberto Navarro	1	1	0	1	1888
+98	Cádiz	2023/24	5	26	55	33	CB	0.01651	71		Víctor Chust	0	1	3	2	1864
+98	Cádiz	2023/24	5	26	55	33	CM	0.08093	77		Gonzalo Escalante	1	2	2	1	1697
+98	Cádiz	2023/24	5	26	55	33	FB	0.03138	73		Iván Alejo	0	2	17	0	1692
+98	Cádiz	2023/24	5	26	55	33	ST	0.09399	75		Rubén Sobrino	0	1	8	1	1646
+92	Getafe	2023/24	5	42	54	43	GK	0.0	80	70.1	David Soria	0	0	3	0	3413
+92	Getafe	2023/24	5	42	54	43	CM	0.14011	77		Nemanja Maksimović	4	0	4	0	3265
+92	Getafe	2023/24	5	42	54	43	Winger	0.24938	79		Mason Greenwood	8	6	6	1	2662
+92	Getafe	2023/24	5	42	54	43	CB	0.05087	77		Gastón Álvarez	2	0	7	0	2537
+92	Getafe	2023/24	5	42	54	43	FB	0.0131	79		Diego Rico	0	7	10	0	2535
+92	Getafe	2023/24	5	42	54	43	CB	0.00453	76		Djené	0	0	14	1	2484
+92	Getafe	2023/24	5	42	54	43	CB	0.08319	75		Omar Alderete	0	1	8	1	2195
+92	Getafe	2023/24	5	42	54	43	ST	0.36819	81		Borja Mayoral	15	1	2	0	2153
+92	Getafe	2023/24	5	42	54	43	CM	0.03255	77		Luis Milla	0	1	6	0	2115
+92	Getafe	2023/24	5	42	54	43	ST	0.28753	77		Jaime Mata	5	1	10	1	1787
+92	Getafe	2023/24	5	42	54	43	ST	0.30913	72		Juanmi Latasa	2	0	7	1	1555
+70	Crystal Palace	2023/24	4	57	58	49	CB	0.06441	81		Joachim Andersen	2	3	7	0	3415
+70	Crystal Palace	2023/24	4	57	58	49	FB	0.06213	79		Tyrick Mitchell	2	3	6	0	3204
+70	Crystal Palace	2023/24	4	57	58	49	ST	0.15084	80		Jordan Ayew	4	7	9	1	2543
+70	Crystal Palace	2023/24	4	57	58	49	DM	0.08944	76		Jefferson Lerma	1	1	8	0	2400
+70	Crystal Palace	2023/24	4	57	58	49	ST	0.42468	82		Jean-Philippe Mateta	16	5	3	0	2282
+70	Crystal Palace	2023/24	4	57	58	49	CB	0.02751	78		Chris Richards	1	1	3	0	2094
+70	Crystal Palace	2023/24	4	57	58	49	CAM	0.37717	81		Eberechi Eze	11	4	3	0	2055
+70	Crystal Palace	2023/24	4	57	58	49	CB	0.02178	80		Marc Guéhi	0	1	2	0	2021
+70	Crystal Palace	2023/24	4	57	58	49	FB	0.03568	76		Joel Ward	0	1	4	0	1980
+70	Crystal Palace	2023/24	4	57	58	49	CM	0.01433	76		Will Hughes	0	1	6	0	1891
+70	Crystal Palace	2023/24	4	57	58	49	GK	0.0	79	60.3	Sam Johnstone	0	0	1	0	1796
+185	Villarreal	2022/23	5	59	40	64	CM	0.05482	84		Daniel Parejo	3	4	6	0	3285
+185	Villarreal	2022/23	5	59	40	64	CB	0.06245	81		Pau Torres	1	0	10	0	3054
+185	Villarreal	2022/23	5	59	40	64	Winger	0.29696	81		Yéremy Pino	4	6	8	0	2447
+185	Villarreal	2022/23	5	59	40	64	Winger	0.27897	79		Samuel Chukwueze	6	5	1	0	2339
+185	Villarreal	2022/23	5	59	40	64	CB	0.00353	79		Raúl Albiol	0	0	6	0	2119
+185	Villarreal	2022/23	5	59	40	64	GK	0.0	79	69.3	Pepe Reina	0	0	2	0	1980
+185	Villarreal	2022/23	5	59	40	64	CB	0.06513	81		Juan Foyth	1	0	6	0	1958
+185	Villarreal	2022/23	5	59	40	64	DM	0.11909	76		Étienne Capoue	3	0	4	0	1955
+185	Villarreal	2022/23	5	59	40	64	Winger	0.19789	77		Álex Baena	6	2	13	1	1947
+185	Villarreal	2022/23	5	59	40	64	FB	0.06432	79		Alfonso Pedraza	0	3	5	0	1633
+185	Villarreal	2022/23	5	59	40	64	ST	0.48227	82		Nicolas Jackson	12	4	6	1	1598
+63	Liverpool	2023/24	4	86	41	82	CB	0.09348	88		Virgil van Dijk	2	2	3	1	3177
+63	Liverpool	2023/24	4	86	41	82	Winger	0.44041	81		Luis Díaz	8	5	3	0	2629
+63	Liverpool	2023/24	4	86	41	82	CM	0.11213	86		Alexis Mac Allister	5	5	7	1	2599
+63	Liverpool	2023/24	4	86	41	82	Winger	0.59004	89		Mohamed Salah	18	10	2	0	2534
+63	Liverpool	2023/24	4	86	41	82	GK	0.0	89	73.2	Alisson	0	0	1	0	2520
+63	Liverpool	2023/24	4	86	41	82	FB	0.11464	86		Trent Alexander-Arnold	3	4	6	0	2155
+63	Liverpool	2023/24	4	86	41	82	CAM	0.15053	78		Dominik Szoboszlai	3	2	1	0	2104
+63	Liverpool	2023/24	4	86	41	82	ST	0.81018	83		Darwin Núñez	11	8	9	0	2047
+63	Liverpool	2023/24	4	86	41	82	CB	0.04112	81		Joe Gomez	0	1	5	0	1786
+63	Liverpool	2023/24	4	86	41	82	DM	0.02289	77		Wataru Endo	1	0	10	0	1722
+63	Liverpool	2023/24	4	86	41	82	FB	0.12934	85		Andy Robertson	3	2	2	0	1693
+91	Osasuna	2023/24	5	45	56	45	GK	0.0	76	64.4	Sergio Herrera	0	0	2	0	2869
+91	Osasuna	2023/24	5	45	56	45	FB	0.00589	74		Jesús Areso	1	6	3	0	2660
+91	Osasuna	2023/24	5	45	56	45	CB	0.07874	76		Catena	1	3	8	1	2534
+91	Osasuna	2023/24	5	45	56	45	ST	0.45222	81		Ante Budimir	17	2	4	0	2435
+91	Osasuna	2023/24	5	45	56	45	CAM	0.08381	73		Aimar Oroz	2	1	3	0	2339
+91	Osasuna	2023/24	5	45	56	45	CB	0.04473	79		David García	0	1	5	0	2334
+91	Osasuna	2023/24	5	45	56	45	FB	0.04539	76		Rubén Peña	0	2	3	0	2088
+91	Osasuna	2023/24	5	45	56	45	FB	0.04749	77		Johan Mojica	0	3	1	0	2041
+91	Osasuna	2023/24	5	45	56	45	CAM	0.12535	74		Moi Gómez	3	0	3	0	2006
+91	Osasuna	2023/24	5	45	56	45	DM	0.06995	65		Iker Muñoz	4	0	5	0	1854
+91	Osasuna	2023/24	5	45	56	45	CM	0.04665	79		Jon Moncayola	1	3	2	1	1800
+130	Wolves	2021/22	4	38	43	51	CB	0.06229	79		Conor Coady	4	0	4	0	3361
+130	Wolves	2021/22	4	38	43	51	GK	0.0	82	75.2	José Sá	0	1	3	0	3285
+130	Wolves	2021/22	4	38	43	51	CM	0.03409	76		João Moutinho	2	1	4	0	2970
+130	Wolves	2021/22	4	38	43	51	CB	0.10644	79		Romain Saïss	2	0	6	0	2705
+130	Wolves	2021/22	4	38	43	51	CB	0.04616	78		Max Kilman	1	0	3	0	2687
+130	Wolves	2021/22	4	38	43	51	DM	0.03791	82		Rúben Neves	4	2	9	0	2661
+130	Wolves	2021/22	4	38	43	51	ST	0.21585	79		Raúl Jiménez	6	4	9	2	2631
+130	Wolves	2021/22	4	38	43	51	FB	0.0587	77		Nélson Semedo	0	1	1	0	2131
+130	Wolves	2021/22	4	38	43	51	DM	0.11331	75		Leander Dendoncker	2	2	4	0	1950
+130	Wolves	2021/22	4	38	43	51	FB	0.02688	78		Rayan Aït-Nouri	1	2	4	0	1828
+130	Wolves	2021/22	4	38	43	51	ST	0.20795	76		Hwang Hee-chan	5	1	2	0	1816
+155	Southampton	2020/21	4	47	68	43	CM	0.06308	83		James Ward-Prowse	8	7	5	0	3420
+155	Southampton	2020/21	4	47	68	43	CB	0.01359	78		Jan Bednarek	1	1	5	1	3100
+155	Southampton	2020/21	4	47	68	43	CM	0.08596	80		Stuart Armstrong	4	5	3	0	2764
+155	Southampton	2020/21	4	47	68	43	GK	0.0	72	60.4	Alex McCarthy	0	0	2	0	2700
+155	Southampton	2020/21	4	47	68	43	ST	0.40897	79		Ché Adams	9	5	1	0	2667
+155	Southampton	2020/21	4	47	68	43	FB	0.03862	78		Kyle Walker-Peters	0	2	4	0	2645
+155	Southampton	2020/21	4	47	68	43	FB	0.01299	76		Ryan Bertrand	0	1	5	0	2598
+155	Southampton	2020/21	4	47	68	43	CB	0.0736	77		Jannik Vestergaard	3	0	3	1	2574
+155	Southampton	2020/21	4	47	68	43	ST	0.27973	83		Danny Ings	12	4	1	0	2173
+155	Southampton	2020/21	4	47	68	43	DM	0.02277	78		Oriol Romeu	1	1	6	0	1763
+155	Southampton	2020/21	4	47	68	43	Winger	0.19854	78		Nathan Redmond	2	3	1	0	1738
+214	Espanyol	2021/22	5	40	53	42	CB	0.02622	75		Leandro Cabrera	2	0	7	0	3330
+214	Espanyol	2021/22	5	40	53	42	GK	0.0	78	69.4	Diego López	0	0	4	0	3177
+214	Espanyol	2021/22	5	40	53	42	CM	0.07068	82		Sergi Darder	3	9	4	0	3125
+214	Espanyol	2021/22	5	40	53	42	ST	0.37053	83		Raúl de Tomás	17	3	7	2	2914
+214	Espanyol	2021/22	5	40	53	42	FB	0.03481	76		Adrià Pedrosa	1	1	8	0	2720
+214	Espanyol	2021/22	5	40	53	42	CB	0.01535	74		Sergi Gómez	1	2	1	1	2720
+214	Espanyol	2021/22	5	40	53	42	Winger	0.22638	73		Javi Puado	4	1	5	0	2245
+214	Espanyol	2021/22	5	40	53	42	Winger	0.14964	77		Adri Embarba	0	2	4	0	1986
+214	Espanyol	2021/22	5	40	53	42	Winger	0.0419	74		Aleix Vidal	2	0	10	0	1901
+214	Espanyol	2021/22	5	40	53	42	FB	0.01162	77		Óscar Gil	0	2	7	0	1688
+214	Espanyol	2021/22	5	40	53	42	CM	0.0674	77		Yangel Herrera	1	1	7	1	1645
+178	Bournemouth	2019/20	4	40	65	34	GK	0.0	74	67.0	Aaron Ramsdale	0	1	0	0	3330
+178	Bournemouth	2019/20	4	40	65	34	ST	0.30463	75		Callum Wilson	8	1	10	0	2908
+178	Bournemouth	2019/20	4	40	65	34	DM	0.02714	77		Jefferson Lerma	1	2	13	1	2703
+178	Bournemouth	2019/20	4	40	65	34	CM	0.08093	77		Philip Billing	1	1	8	0	2530
+178	Bournemouth	2019/20	4	40	65	34	CB	0.1097	76		Nathan Aké	2	2	2	0	2503
+178	Bournemouth	2019/20	4	40	65	34	CB	0.02294	74		Steve Cook	1	0	6	1	2428
+178	Bournemouth	2019/20	4	40	65	34	FB	0.01301	78		Diego Rico	0	4	6	0	2332
+178	Bournemouth	2019/20	4	40	65	34	Winger	0.15083	77		Ryan Fraser	1	4	2	0	2067
+178	Bournemouth	2019/20	4	40	65	34	FB	0.03035	76		Adam Smith	0	1	7	0	2055
+178	Bournemouth	2019/20	4	40	65	34	ST	0.19025	78		Joshua King	6	4	0	0	2011
+178	Bournemouth	2019/20	4	40	65	34	ST	0.24198	69		Dominic Solanke	3	1	1	0	1651
+154	Crystal Palace	2020/21	4	41	66	44	GK	0.0	76	62.4	Vicente Guaita	0	0	2	0	3330
+154	Crystal Palace	2020/21	4	41	66	44	DM	0.02376	76		Cheikhou Kouyaté	1	0	4	0	3121
+154	Crystal Palace	2020/21	4	41	66	44	Winger	0.25091	81		Wilfried Zaha	11	2	6	0	2612
+154	Crystal Palace	2020/21	4	41	66	44	CAM	0.08775	79		Eberechi Eze	4	6	3	0	2559
+154	Crystal Palace	2020/21	4	41	66	44	DM	0.02636	76		Luka Milivojević	1	1	8	1	2359
+154	Crystal Palace	2020/21	4	41	66	44	Winger	0.09853	81		Andros Townsend	1	5	0	0	2258
+154	Crystal Palace	2020/21	4	41	66	44	FB	0.00207	75		Joel Ward	0	1	5	0	2256
+154	Crystal Palace	2020/21	4	41	66	44	ST	0.11087	74		Jordan Ayew	1	3	4	0	2096
+154	Crystal Palace	2020/21	4	41	66	44	DM	0.02784	72		Jaïro Riedewald	2	0	4	0	1820
+154	Crystal Palace	2020/21	4	41	66	44	ST	0.36956	79		Christian Benteke	10	1	3	1	1816
+154	Crystal Palace	2020/21	4	41	66	44	CB	0.03685	72		Gary Cahill	1	1	3	0	1800
+151	Aston Villa	2020/21	4	55	46	55	GK	0.0	85	74.7	Emiliano Martínez	0	0	1	0	3420
+151	Aston Villa	2020/21	4	55	46	55	FB	0.0074	79		Matt Targett	0	2	7	0	3404
+151	Aston Villa	2020/21	4	55	46	55	CM	0.05857	79		John McGinn	3	5	12	0	3330
+151	Aston Villa	2020/21	4	55	46	55	ST	0.3991	81		Ollie Watkins	14	5	4	1	3328
+151	Aston Villa	2020/21	4	55	46	55	CB	0.0927	78		Ezri Konsa	2	0	3	0	3196
+151	Aston Villa	2020/21	4	55	46	55	CB	0.0581	78		Tyrone Mings	2	2	6	1	3194
+151	Aston Villa	2020/21	4	55	46	55	CM	0.04269	75		Douglas Luiz	0	2	10	1	2781
+151	Aston Villa	2020/21	4	55	46	55	FB	0.00941	80		Matty Cash	0	2	8	1	2372
+151	Aston Villa	2020/21	4	55	46	55	Winger	0.24487	80		Bertrand Traoré	7	6	1	0	2317
+151	Aston Villa	2020/21	4	55	46	55	Winger	0.2139	84		Jack Grealish	6	10	6	0	2185
+151	Aston Villa	2020/21	4	55	46	55	Winger	0.33439	73		Anwar El Ghazi	10	0	2	0	1613
+237	Elche	2020/21	5	34	55	36	CB	0.03461	74		Gonzalo Verdú	0	2	11	0	2944
+237	Elche	2020/21	5	34	55	36	CM	0.05038	76		Raúl Guti	3	1	4	1	2862
+237	Elche	2020/21	5	34	55	36	GK	0.0	78	66.9	Édgar Badía	0	0	0	0	2700
+237	Elche	2020/21	5	34	55	36	ST	0.20512	78		Lucas Boyé	7	2	9	1	2694
+237	Elche	2020/21	5	34	55	36	DM	0.00384	76		Iván Marcone	0	0	10	1	2645
+237	Elche	2020/21	5	34	55	36	Winger	0.0722	78		Fidel	6	3	8	0	2396
+237	Elche	2020/21	5	34	55	36	FB	0.04844	73		Antonio Barragán	0	3	8	0	2235
+237	Elche	2020/21	5	34	55	36	Winger	0.081	77		Tete Morente	2	5	5	0	2019
+237	Elche	2020/21	5	34	55	36	Winger	0.24915	78		Pere Milla	4	3	6	0	1981
+237	Elche	2020/21	5	34	55	36	CB	0.00558	72		Josema	0	1	3	0	1966
+237	Elche	2020/21	5	34	55	36	Winger	0.05935	78		Josan	4	2	3	0	1926
+149	Leeds United	2020/21	4	62	54	59	Winger	0.11767	78		Stuart Dallas	8	2	7	0	3409
+149	Leeds United	2020/21	4	62	54	59	FB	0.03813	78		Luke Ayling	0	0	7	0	3399
+149	Leeds United	2020/21	4	62	54	59	GK	0.0	77	72.8	Illan Meslier	0	0	0	0	3150
+149	Leeds United	2020/21	4	62	54	59	ST	0.4981	83		Patrick Bamford	17	7	3	0	3050
+149	Leeds United	2020/21	4	62	54	59	Winger	0.1977	81		Jack Harrison	8	8	2	0	2847
+149	Leeds United	2020/21	4	62	54	59	FB	0.06389	75		Ezgjan Alioski	2	3	7	0	2461
+149	Leeds United	2020/21	4	62	54	59	DM	0.01442	81		Kalvin Phillips	1	2	10	0	2428
+149	Leeds United	2020/21	4	62	54	59	DM	0.05559	79		Mateusz Klich	4	5	6	0	2393
+149	Leeds United	2020/21	4	62	54	59	Winger	0.23717	83		Raphinha	6	9	3	0	2360
+149	Leeds United	2020/21	4	62	54	59	CB	0.08629	78		Liam Cooper	1	0	4	1	2185
+149	Leeds United	2020/21	4	62	54	59	CB	0.088	77		Pascal Struijk	1	0	3	0	2075
+142	Manchester Utd	2020/21	4	73	44	74	CAM	0.24418	88		Bruno Fernandes	18	12	6	0	3099
+142	Manchester Utd	2020/21	4	73	44	74	FB	0.02741	83		Aaron Wan-Bissaka	2	4	3	0	3060
+142	Manchester Utd	2020/21	4	73	44	74	CB	0.04383	84		Harry Maguire	2	1	11	0	3047
+142	Manchester Utd	2020/21	4	73	44	74	Winger	0.29527	85		Marcus Rashford	11	9	4	0	2920
+142	Manchester Utd	2020/21	4	73	44	74	FB	0.0235	84		Luke Shaw	1	5	8	0	2654
+142	Manchester Utd	2020/21	4	73	44	74	CB	0.02782	79		Victor Lindelöf	1	1	0	0	2585
+142	Manchester Utd	2020/21	4	73	44	74	CM	0.06526	79		Fred	1	0	5	0	2390
+142	Manchester Utd	2020/21	4	73	44	74	GK	0.0	82	64.8	David de Gea	0	0	0	0	2295
+142	Manchester Utd	2020/21	4	73	44	74	CM	0.07812	79		Scott McTominay	4	1	3	0	2129
+142	Manchester Utd	2020/21	4	73	44	74	CM	0.14176	86		Paul Pogba	3	3	3	0	1897
+142	Manchester Utd	2020/21	4	73	44	74	Winger	0.34459	77		Mason Greenwood	7	2	2	0	1822
+160	Sheffield United	2020/21	4	20	63	23	GK	0.0	73	69.7	Aaron Ramsdale	0	0	1	0	3420
+160	Sheffield United	2020/21	4	20	63	23	FB	0.04298	74		George Baldock	0	2	7	0	2787
+160	Sheffield United	2020/21	4	20	63	23	FB	0.04823	71		Enda Stevens	0	1	6	0	2700
+160	Sheffield United	2020/21	4	20	63	23	CB	0.01681	75		John Egan	0	1	7	1	2629
+160	Sheffield United	2020/21	4	20	63	23	CB	0.02166	76		Chris Basham	0	1	5	0	2576
+160	Sheffield United	2020/21	4	20	63	23	CM	0.01758	75		John Fleck	0	2	4	0	2575
+160	Sheffield United	2020/21	4	20	63	23	ST	0.28558	78		David McGoldrick	8	1	7	0	2397
+160	Sheffield United	2020/21	4	20	63	23	CM	0.01743	73		Oliver Norwood	0	0	6	0	2220
+160	Sheffield United	2020/21	4	20	63	23	DM	0.00836	71		Ethan Ampadu	0	0	3	0	2089
+160	Sheffield United	2020/21	4	20	63	23	DM	0.04938	71		John Lundstram	0	2	8	1	2032
+160	Sheffield United	2020/21	4	20	63	23	CM	0.06122	71		Ben Osborn	1	0	1	0	1604
+159	West Brom	2020/21	4	35	76	26	GK	0.0	73	68.9	Sam Johnstone	0	1	1	0	3330
+159	West Brom	2020/21	4	35	76	26	FB	0.05933	75		Darnell Furlong	1	3	5	0	2932
+159	West Brom	2020/21	4	35	76	26	CB	0.05614	73		Semi Ajayi	2	0	3	1	2780
+159	West Brom	2020/21	4	35	76	26	CB	0.09059	72		Kyle Bartley	3	1	4	0	2584
+159	West Brom	2020/21	4	35	76	26	CAM	0.13634	80		Matheus Pereira	11	6	2	1	2577
+159	West Brom	2020/21	4	35	76	26	CM	0.05483	78		Conor Gallagher	2	2	11	0	2531
+159	West Brom	2020/21	4	35	76	26	FB	0.03316	74		Conor Townsend	0	2	0	0	2234
+159	West Brom	2020/21	4	35	76	26	CB	0.00274	73		Dara O'Shea	0	0	3	0	2102
+159	West Brom	2020/21	4	35	76	26	Winger	0.14396	71		Matt Phillips	2	1	1	0	1828
+159	West Brom	2020/21	4	35	76	26	ST	0.18479	76		Callum Robinson	5	0	0	0	1560
+159	West Brom	2020/21	4	35	76	26	CM	0.00908	71		Romaine Sawyers	0	0	2	0	1487
+146	West Ham	2020/21	4	62	47	65	DM	0.23646	81		Tomáš Souček	10	1	7	1	3419
+146	West Ham	2020/21	4	62	47	65	FB	0.02507	79		Aaron Cresswell	0	8	3	0	3170
+146	West Ham	2020/21	4	62	47	65	GK	0.0	80	68.6	Łukasz Fabiański	0	0	2	0	3150
+146	West Ham	2020/21	4	62	47	65	FB	0.04123	81		Vladimír Coufal	0	7	3	0	3054
+146	West Ham	2020/21	4	62	47	65	CM	0.05217	80		Declan Rice	2	1	2	0	2879
+146	West Ham	2020/21	4	62	47	65	CM	0.23616	81		Pablo Fornals	5	4	3	0	2572
+146	West Ham	2020/21	4	62	47	65	Winger	0.28064	80		Jarrod Bowen	8	5	0	0	2562
+146	West Ham	2020/21	4	62	47	65	CB	0.06125	78		Angelo Ogbonna	3	0	5	0	2492
+146	West Ham	2020/21	4	62	47	65	ST	0.64464	82		Michail Antonio	10	5	3	0	1974
+146	West Ham	2020/21	4	62	47	65	CB	0.12792	76		Craig Dawson	3	0	5	1	1925
+146	West Ham	2020/21	4	62	47	65	CAM	0.23605	79		Jesse Lingard	9	4	3	0	1421
+124	Tottenham	2021/22	4	69	40	71	GK	0.0	87	70.8	Hugo Lloris	0	0	2	0	3420
+124	Tottenham	2021/22	4	69	40	71	ST	0.49121	89		Harry Kane	17	9	5	0	3232
+124	Tottenham	2021/22	4	69	40	71	DM	0.07448	80		Pierre Højbjerg	2	2	3	0	3196
+124	Tottenham	2021/22	4	69	40	71	CB	0.04584	79		Eric Dier	0	0	1	0	3071
+124	Tottenham	2021/22	4	69	40	71	Winger	0.50874	88		Son Heung-min	23	7	2	0	3006
+124	Tottenham	2021/22	4	69	40	71	CB	0.0878	76		Ben Davies	1	1	6	0	2538
+124	Tottenham	2021/22	4	69	40	71	FB	0.07953	69		Emerson	1	1	5	0	2286
+124	Tottenham	2021/22	4	69	40	71	FB	0.1396	81		Sergio Reguilón	2	3	4	0	1916
+124	Tottenham	2021/22	4	69	40	71	CB	0.02006	83		Cristian Romero	1	0	8	0	1844
+124	Tottenham	2021/22	4	69	40	71	Winger	0.17057	81		Lucas Moura	2	6	4	0	1775
+124	Tottenham	2021/22	4	69	40	71	CB	0.11058	79		Davinson Sánchez	2	0	4	0	1631
+198	Valladolid	2022/23	5	33	63	40	GK	0.0	77	71.0	Jordi Masip	0	0	4	0	2507
+198	Valladolid	2022/23	5	33	63	40	CB	0.02735	76		Javi Sánchez	1	0	11	0	2392
+198	Valladolid	2022/23	5	33	63	40	CM	0.06207	76		Kike Pérez	1	2	9	0	2307
+198	Valladolid	2022/23	5	33	63	40	Winger	0.1852	74		Gonzalo Plata	1	5	1	0	2302
+198	Valladolid	2022/23	5	33	63	40	CB	0.03807	75		Joaquín Fernández	1	0	4	0	2156
+198	Valladolid	2022/23	5	33	63	40	CAM	0.12131	74		Óscar Plano	1	1	3	0	2038
+198	Valladolid	2022/23	5	33	63	40	CM	0.10533	77		Monchu	3	2	10	0	2031
+198	Valladolid	2022/23	5	33	63	40	CM	0.03976	74		Álvaro Aguado	1	2	4	0	1888
+198	Valladolid	2022/23	5	33	63	40	FB	0.03134	73		Iván Fresneda	0	0	3	0	1743
+198	Valladolid	2022/23	5	33	63	40	CM	0.06718	74		Roque Mesa	2	1	11	1	1617
+198	Valladolid	2022/23	5	33	63	40	CB	0.08804	75		Jawad El Yamiq	1	0	1	1	1608
+254	Eibar	2019/20	5	39	56	42	GK	0.00774	77	58.9	Marko Dmitrović	0	0	3	0	3150
+254	Eibar	2019/20	5	39	56	42	Winger	0.15646	81		Fabián Orellana	8	7	9	1	2390
+254	Eibar	2019/20	5	39	56	42	CB	0.02952	78		José Ángel	1	1	4	0	2360
+254	Eibar	2019/20	5	39	56	42	CM	0.06105	78		Edu Expósito	4	1	3	0	2316
+254	Eibar	2019/20	5	39	56	42	DM	0.03679	76		Papakouli Diop	1	0	7	0	2253
+254	Eibar	2019/20	5	39	56	42	CB	0.05861	77		Paulo Oliveira	1	0	7	1	2090
+254	Eibar	2019/20	5	39	56	42	CB	0.02834	75		Anaitz Arbilla	1	0	5	0	2007
+254	Eibar	2019/20	5	39	56	42	Winger	0.16136	77		Takashi Inui	2	3	2	0	1960
+254	Eibar	2019/20	5	39	56	42	Winger	0.14497	77		Pedro León	1	2	4	0	1896
+254	Eibar	2019/20	5	39	56	42	ST	0.14656	76		Sergi Enrich	1	4	6	0	1865
+254	Eibar	2019/20	5	39	56	42	CB	0.0473	73		Pedro Bigas	3	0	2	0	1777
+128	Leicester City	2021/22	4	62	59	52	GK	0.0	81	69.0	Kasper Schmeichel	0	0	2	0	3330
+128	Leicester City	2021/22	4	62	59	52	CM	0.09387	84		Youri Tielemans	6	4	3	0	2631
+128	Leicester City	2021/22	4	62	59	52	CB	0.03633	78		Çağlar Söyüncü	1	0	5	0	2497
+128	Leicester City	2021/22	4	62	59	52	CAM	0.23779	83		James Maddison	12	8	3	0	2459
+128	Leicester City	2021/22	4	62	59	52	FB	0.03977	78		Timothy Castagne	1	0	1	0	2127
+128	Leicester City	2021/22	4	62	59	52	CB	0.00098	74		Daniel Amartey	0	0	4	0	2123
+128	Leicester City	2021/22	4	62	59	52	CM	0.05537	76		Kiernan Dewsbury-Hall	1	2	4	0	2105
+128	Leicester City	2021/22	4	62	59	52	Winger	0.26627	81		Harvey Barnes	6	10	2	0	2101
+128	Leicester City	2021/22	4	62	59	52	FB	0.00861	77		Luke Thomas	0	1	2	0	1912
+128	Leicester City	2021/22	4	62	59	52	ST	0.49794	85		Jamie Vardy	15	2	2	0	1806
+128	Leicester City	2021/22	4	62	59	52	DM	0.03248	80		Wilfred Ndidi	0	0	4	0	1618
+144	Chelsea	2020/21	4	58	36	67	CAM	0.19071	83		Mason Mount	6	5	2	0	2890
+144	Chelsea	2020/21	4	58	36	67	GK	0.0	84	69.1	Édouard Mendy	0	0	2	0	2745
+144	Chelsea	2020/21	4	58	36	67	ST	0.46463	82		Timo Werner	6	8	2	0	2602
+144	Chelsea	2020/21	4	58	36	67	FB	0.05822	81		Reece James	1	2	3	0	2373
+144	Chelsea	2020/21	4	58	36	67	FB	0.11752	82		Ben Chilwell	3	5	3	0	2286
+144	Chelsea	2020/21	4	58	36	67	FB	0.02069	83		César Azpilicueta	1	2	5	1	2188
+144	Chelsea	2020/21	4	58	36	67	DM	0.02936	88		N'Golo Kanté	0	2	7	0	2146
+144	Chelsea	2020/21	4	58	36	67	CB	0.13915	80		Kurt Zouma	5	0	3	0	2029
+144	Chelsea	2020/21	4	58	36	67	DM	0.00546	84		Jorginho	7	1	2	0	2010
+144	Chelsea	2020/21	4	58	36	67	CB	0.06144	84		Thiago Silva	2	0	5	1	1935
+144	Chelsea	2020/21	4	58	36	67	CM	0.04617	78		Mateo Kovačić	0	1	4	0	1815
+133	Brentford	2021/22	4	48	56	46	CB	0.12447	77		Pontus Jansson	3	1	7	0	3321
+133	Brentford	2021/22	4	48	56	46	DM	0.14643	80		Christian Nørgaard	3	4	8	0	3054
+133	Brentford	2021/22	4	48	56	46	ST	0.25503	81		Ivan Toney	12	5	8	0	2909
+133	Brentford	2021/22	4	48	56	46	Winger	0.28019	78		Bryan Mbeumo	4	7	4	0	2905
+133	Brentford	2021/22	4	48	56	46	FB	0.0616	71		Rico Henry	3	0	2	0	2776
+133	Brentford	2021/22	4	48	56	46	CB	0.05836	77		Ethan Pinnock	1	1	1	0	2694
+133	Brentford	2021/22	4	48	56	46	DM	0.1171	76		Vitaly Janelt	4	0	3	0	2298
+133	Brentford	2021/22	4	48	56	46	GK	0.0	78	74.3	David Raya	0	0	1	0	2160
+133	Brentford	2021/22	4	48	56	46	Winger	0.15079	77		Sergi Canós	3	2	8	1	2083
+133	Brentford	2021/22	4	48	56	46	CB	0.04809	75		Kristoffer Ajer	1	3	5	0	1995
+133	Brentford	2021/22	4	48	56	46	CM	0.15189	75		Mathias Jensen	0	1	0	0	1601
+136	Everton	2021/22	4	43	66	39	GK	0.0	79	66.9	Jordan Pickford	0	0	2	0	3150
+136	Everton	2021/22	4	43	66	39	CB	0.03878	79		Michael Keane	3	2	4	1	2792
+136	Everton	2021/22	4	43	66	39	FB	0.03982	76		Séamus Coleman	1	0	4	0	2656
+136	Everton	2021/22	4	43	66	39	CAM	0.09415	81		Abdoulaye Doucouré	2	4	6	0	2537
+136	Everton	2021/22	4	43	66	39	ST	0.27574	82		Richarlison	10	5	9	0	2523
+136	Everton	2021/22	4	43	66	39	Winger	0.16691	79		Demarai Gray	5	4	3	0	2338
+136	Everton	2021/22	4	43	66	39	Winger	0.13628	77		Anthony Gordon	4	2	4	0	2285
+136	Everton	2021/22	4	43	66	39	DM	0.00994	79		Allan	0	2	7	1	2183
+136	Everton	2021/22	4	43	66	39	CB	0.07001	74		Mason Holgate	2	1	7	1	2134
+136	Everton	2021/22	4	43	66	39	Winger	0.10628	76		Alex Iwobi	2	2	1	0	2035
+136	Everton	2021/22	4	43	66	39	CB	0.05771	76		Ben Godfrey	0	0	6	0	2029
+122	Liverpool	2021/22	4	94	26	92	GK	0.0	89	75.8	Alisson	0	1	0	0	3240
+122	Liverpool	2021/22	4	94	26	92	CB	0.06382	89		Virgil van Dijk	3	1	3	0	3060
+122	Liverpool	2021/22	4	94	26	92	FB	0.06915	87		Trent Alexander-Arnold	2	12	2	0	2853
+122	Liverpool	2021/22	4	94	26	92	Winger	0.53732	88		Sadio Mané	16	2	5	0	2819
+122	Liverpool	2021/22	4	94	26	92	CB	0.08777	84		Joël Matip	3	3	2	0	2790
+122	Liverpool	2021/22	4	94	26	92	Winger	0.64509	90		Mohamed Salah	23	13	1	0	2762
+122	Liverpool	2021/22	4	94	26	92	CM	0.04758	82		Jordan Henderson	2	5	3	0	2597
+122	Liverpool	2021/22	4	94	26	92	FB	0.08056	87		Andy Robertson	3	10	5	1	2537
+122	Liverpool	2021/22	4	94	26	92	Winger	0.66046	85		Diogo Jota	15	4	3	0	2364
+122	Liverpool	2021/22	4	94	26	92	DM	0.13656	84		Fabinho	5	1	7	0	2314
+122	Liverpool	2021/22	4	94	26	92	CM	0.09557	86		Thiago Alcántara	1	4	2	0	1534
+131	Newcastle	2021/22	4	44	62	49	Winger	0.1818	79		Allan Saint-Maximin	5	5	6	0	2804
+131	Newcastle	2021/22	4	44	62	49	CM	0.13426	77		Joelinton	4	1	8	0	2558
+131	Newcastle	2021/22	4	44	62	49	GK	0.0	79	67.6	Martin Dúbravka	0	0	1	0	2340
+131	Newcastle	2021/22	4	44	62	49	CB	0.03503	76		Fabian Schär	2	2	4	0	2158
+131	Newcastle	2021/22	4	44	62	49	CB	0.05847	73		Jamaal Lascelles	1	0	5	0	2058
+131	Newcastle	2021/22	4	44	62	49	CM	0.16238	75		Joe Willock	2	0	0	0	2038
+131	Newcastle	2021/22	4	44	62	49	CM	0.03989	75		Jonjo Shelvey	2	1	7	1	1983
+131	Newcastle	2021/22	4	44	62	49	Winger	0.08979	75		Miguel Almirón	1	0	2	0	1716
+131	Newcastle	2021/22	4	44	62	49	FB	0.01267	74		Emil Krafth	0	1	5	0	1634
+131	Newcastle	2021/22	4	44	62	49	Winger	0.15813	73		Jacob Murphy	1	2	4	0	1473
+131	Newcastle	2021/22	4	44	62	49	Winger	0.17613	75		Ryan Fraser	2	3	3	0	1465
+140	Norwich City	2021/22	4	23	84	22	ST	0.25359	80		Teemu Pukki	11	3	4	0	3253
+140	Norwich City	2021/22	4	23	84	22	CB	0.05269	76		Grant Hanley	1	0	2	0	2897
+140	Norwich City	2021/22	4	23	84	22	FB	0.02621	75		Max Aarons	0	2	8	0	2881
+140	Norwich City	2021/22	4	23	84	22	CM	0.06376	70		Kenny McLean	1	0	3	0	2706
+140	Norwich City	2021/22	4	23	84	22	GK	0.0	73	61.0	Tim Krul	0	0	1	0	2610
+140	Norwich City	2021/22	4	23	84	22	CB	0.04908	70		Ben Gibson	0	0	5	1	2494
+140	Norwich City	2021/22	4	23	84	22	DM	0.05388	72		Pierre Lees-Melou	1	0	5	0	2265
+140	Norwich City	2021/22	4	23	84	22	Winger	0.10377	72		Milot Rashica	1	2	0	0	2229
+140	Norwich City	2021/22	4	23	84	22	FB	0.00658	75		Brandon Williams	0	1	8	0	2120
+140	Norwich City	2021/22	4	23	84	22	DM	0.04075	71		Billy Gilmour	0	1	2	0	1855
+140	Norwich City	2021/22	4	23	84	22	DM	0.04574	78		Mathias Normann	1	2	6	0	1645
+135	Southampton	2021/22	4	43	67	40	CM	0.05725	81		James Ward-Prowse	10	5	3	1	3215
+135	Southampton	2021/22	4	43	67	40	CB	0.0543	79		Mohammed Salisu	0	0	10	1	2972
+135	Southampton	2021/22	4	43	67	40	DM	0.04682	79		Oriol Romeu	2	2	9	0	2889
+135	Southampton	2021/22	4	43	67	40	FB	0.04539	78		Kyle Walker-Peters	1	2	5	0	2633
+135	Southampton	2021/22	4	43	67	40	CB	0.09558	78		Jan Bednarek	4	0	10	0	2629
+135	Southampton	2021/22	4	43	67	40	FB	0.04684	77		Tino Livramento	1	1	2	0	2202
+135	Southampton	2021/22	4	43	67	40	ST	0.29001	76		Mohamed Elyounoussi	4	2	4	0	2042
+135	Southampton	2021/22	4	43	67	40	ST	0.36587	79		Ché Adams	7	3	0	0	2039
+135	Southampton	2021/22	4	43	67	40	ST	0.26859	77		Armando Broja	6	0	2	0	1975
+135	Southampton	2021/22	4	43	67	40	Winger	0.08013	78		Nathan Redmond	1	5	0	0	1833
+135	Southampton	2021/22	4	43	67	40	GK	0.0	74	66.0	Fraser Forster	0	0	1	0	1710
+126	Manchester Utd	2021/22	4	57	57	58	GK	0.0	84	67.4	David de Gea	0	0	0	0	3420
+126	Manchester Utd	2021/22	4	57	57	58	CAM	0.22458	85		Bruno Fernandes	10	6	10	0	3111
+126	Manchester Utd	2021/22	4	57	57	58	CB	0.08009	79		Harry Maguire	1	0	9	1	2515
+126	Manchester Utd	2021/22	4	57	57	58	ST	0.54707	90		Cristiano Ronaldo	18	3	8	0	2456
+126	Manchester Utd	2021/22	4	57	57	58	CM	0.05569	77		Scott McTominay	1	1	9	0	2387
+126	Manchester Utd	2021/22	4	57	57	58	CB	0.00726	77		Victor Lindelöf	0	2	4	0	2355
+126	Manchester Utd	2021/22	4	57	57	58	CM	0.0482	82		Fred	4	4	5	0	2028
+126	Manchester Utd	2021/22	4	57	57	58	Winger	0.20051	81		Jadon Sancho	3	3	0	0	1900
+126	Manchester Utd	2021/22	4	57	57	58	CB	0.03682	81		Raphaël Varane	1	1	0	0	1831
+126	Manchester Utd	2021/22	4	57	57	58	FB	0.03298	79		Diogo Dalot	0	0	4	0	1801
+126	Manchester Utd	2021/22	4	57	57	58	FB	0.01446	80		Aaron Wan-Bissaka	0	0	2	0	1793
+132	Crystal Palace	2021/22	4	50	46	48	CB	0.06961	78		Marc Guéhi	2	1	4	0	3222
+132	Crystal Palace	2021/22	4	50	46	48	FB	0.00641	78		Tyrick Mitchell	0	2	1	0	3101
+132	Crystal Palace	2021/22	4	50	46	48	CB	0.01494	78		Joachim Andersen	0	3	4	0	2916
+132	Crystal Palace	2021/22	4	50	46	48	CM	0.24273	80		Conor Gallagher	8	3	10	0	2845
+132	Crystal Palace	2021/22	4	50	46	48	Winger	0.15835	82		Wilfried Zaha	14	1	6	1	2760
+132	Crystal Palace	2021/22	4	50	46	48	GK	0.0	81	71.6	Vicente Guaita	0	0	2	0	2655
+132	Crystal Palace	2021/22	4	50	46	48	FB	0.01234	76		Joel Ward	0	0	8	0	2487
+132	Crystal Palace	2021/22	4	50	46	48	ST	0.19123	76		Jordan Ayew	3	3	2	0	2019
+132	Crystal Palace	2021/22	4	50	46	48	DM	0.01003	77		Cheikhou Kouyaté	0	1	3	0	1974
+132	Crystal Palace	2021/22	4	50	46	48	Winger	0.1765	77		Jeffrey Schlupp	4	1	1	0	1851
+132	Crystal Palace	2021/22	4	50	46	48	ST	0.33215	79		Odsonne Édouard	6	3	4	0	1564
+139	Watford	2021/22	4	34	77	23	CM	0.11694	72		Moussa Sissoko	2	1	5	0	3220
+139	Watford	2021/22	4	34	77	23	ST	0.24434	81		Emmanuel Dennis	10	6	9	1	2581
+139	Watford	2021/22	4	34	77	23	CB	0.00605	72		Craig Cathcart	0	1	3	0	2396
+139	Watford	2021/22	4	34	77	23	GK	0.0	74	58.5	Ben Foster	0	1	0	0	2340
+139	Watford	2021/22	4	34	77	23	ST	0.30119	78		Joshua King	5	3	5	0	2248
+139	Watford	2021/22	4	34	77	23	FB	0.00261	76		Kiko Femenía	0	5	2	0	2142
+139	Watford	2021/22	4	34	77	23	CM	0.11784	77		Juraj Kucka	1	1	5	1	1920
+139	Watford	2021/22	4	34	77	23	Winger	0.16883	76		Ismaila Sarr	5	2	2	0	1861
+139	Watford	2021/22	4	34	77	23	CB	0.02077	74		Samir Santos	0	0	4	0	1673
+139	Watford	2021/22	4	34	77	23	ST	0.24356	74		João Pedro	3	1	1	0	1644
+139	Watford	2021/22	4	34	77	23	FB	0.00909	76		Hassane Kamara	1	0	5	1	1623
+123	Chelsea	2021/22	4	76	33	74	GK	0.0	86	70.2	Édouard Mendy	0	0	3	0	3060
+123	Chelsea	2021/22	4	76	33	74	CB	0.07932	86		Antonio Rüdiger	3	0	9	0	3035
+123	Chelsea	2021/22	4	76	33	74	CB	0.03648	86		Thiago Silva	3	0	2	0	2650
+123	Chelsea	2021/22	4	76	33	74	CAM	0.29559	84		Mason Mount	11	10	4	0	2363
+123	Chelsea	2021/22	4	76	33	74	DM	0.02316	84		Jorginho	6	2	5	0	2273
+123	Chelsea	2021/22	4	76	33	74	CB	0.14511	81		Marcos Alonso	4	4	8	0	2167
+123	Chelsea	2021/22	4	76	33	74	FB	0.05487	82		César Azpilicueta	1	2	3	0	2070
+123	Chelsea	2021/22	4	76	33	74	FB	0.12278	84		Reece James	5	9	4	1	1864
+123	Chelsea	2021/22	4	76	33	74	ST	0.5309	84		Kai Havertz	8	3	3	0	1809
+123	Chelsea	2021/22	4	76	33	74	DM	0.08959	89		N'Golo Kanté	2	4	2	0	1773
+123	Chelsea	2021/22	4	76	33	74	ST	0.35451	84		Romelu Lukaku	8	0	1	0	1589
+156	Brighton	2020/21	4	40	46	41	FB	0.01351	78		Ben White	0	0	5	1	3191
+156	Brighton	2020/21	4	40	46	41	DM	0.03116	78		Yves Bissouma	1	0	8	1	3111
+156	Brighton	2020/21	4	40	46	41	CB	0.08318	78		Lewis Dunk	5	0	5	2	2931
+156	Brighton	2020/21	4	40	46	41	Winger	0.18687	79		Leandro Trossard	5	5	2	0	2607
+156	Brighton	2020/21	4	40	46	41	CB	0.04417	78		Adam Webster	1	0	4	0	2594
+156	Brighton	2020/21	4	40	46	41	ST	0.3844	78		Neal Maupay	8	2	1	1	2512
+156	Brighton	2020/21	4	40	46	41	CM	0.07123	80		Pascal Groß	3	8	3	0	2484
+156	Brighton	2020/21	4	40	46	41	GK	0.0	80	71.0	Robert Sánchez	0	0	2	0	2430
+156	Brighton	2020/21	4	40	46	41	FB	0.05035	79		Joël Veltman	1	1	3	0	2281
+156	Brighton	2020/21	4	40	46	41	CB	0.04707	77		Dan Burn	1	0	5	0	2061
+156	Brighton	2020/21	4	40	46	41	Winger	0.09603	77		Solly March	2	1	0	0	1672
+129	Brighton	2021/22	4	42	44	51	GK	0.0	79	70.6	Robert Sánchez	0	0	3	1	3329
+129	Brighton	2021/22	4	42	44	51	FB	0.02124	81		Marc Cucurella	1	1	6	0	3089
+129	Brighton	2021/22	4	42	44	51	FB	0.02239	79		Joël Veltman	1	1	6	0	2874
+129	Brighton	2021/22	4	42	44	51	Winger	0.23102	78		Leandro Trossard	8	3	2	0	2805
+129	Brighton	2021/22	4	42	44	51	CB	0.05219	78		Lewis Dunk	1	0	3	1	2573
+129	Brighton	2021/22	4	42	44	51	ST	0.26573	78		Neal Maupay	8	2	7	0	2276
+129	Brighton	2021/22	4	42	44	51	CM	0.19285	78		Alexis Mac Allister	5	2	4	0	2123
+129	Brighton	2021/22	4	42	44	51	DM	0.04477	81		Yves Bissouma	1	2	10	0	2111
+129	Brighton	2021/22	4	42	44	51	CM	0.09291	78		Pascal Groß	2	4	1	0	2038
+129	Brighton	2021/22	4	42	44	51	Winger	0.0749	76		Solly March	0	2	1	0	1746
+129	Brighton	2021/22	4	42	44	51	CM	0.16423	78		Jakub Moder	0	3	1	0	1701
+121	Manchester City	2021/22	4	99	26	93	GK	0.0	89	69.4	Ederson Moraes	0	0	3	0	3330
+121	Manchester City	2021/22	4	99	26	93	FB	0.12673	88		João Cancelo	1	7	7	0	3227
+121	Manchester City	2021/22	4	99	26	93	DM	0.08482	85		Rodri	7	2	5	0	2884
+121	Manchester City	2021/22	4	99	26	93	CAM	0.24483	86		Bernardo Silva	8	4	6	0	2857
+121	Manchester City	2021/22	4	99	26	93	CB	0.14178	85		Aymeric Laporte	4	0	5	1	2828
+121	Manchester City	2021/22	4	99	26	93	CB	0.09498	87		Rúben Dias	2	4	5	0	2402
+121	Manchester City	2021/22	4	99	26	93	CAM	0.2433	91		Kevin De Bruyne	15	8	2	0	2201
+121	Manchester City	2021/22	4	99	26	93	CAM	0.39176	85		Phil Foden	9	5	1	0	2128
+121	Manchester City	2021/22	4	99	26	93	Winger	0.57075	86		Raheem Sterling	13	5	1	0	2128
+121	Manchester City	2021/22	4	99	26	93	Winger	0.26013	78		Jack Grealish	3	3	3	0	1914
+121	Manchester City	2021/22	4	99	26	93	ST	0.45034	84		Gabriel Jesus	8	8	1	0	1877
+195	Getafe	2022/23	5	34	45	42	GK	0.0	80	72.7	David Soria	0	0	2	0	3420
+195	Getafe	2022/23	5	34	45	42	ST	0.21664	83		Enes Ünal	14	3	6	0	2970
+195	Getafe	2022/23	5	34	45	42	CB	0.0148	78		Djené	0	1	10	1	2840
+195	Getafe	2022/23	5	34	45	42	ST	0.26061	77		Borja Mayoral	8	2	4	0	2759
+195	Getafe	2022/23	5	34	45	42	CB	0.05091	77		Domingos Duarte	0	2	11	1	2657
+195	Getafe	2022/23	5	34	45	42	FB	0.04123	75		Iglesias	1	0	7	0	2146
+195	Getafe	2022/23	5	34	45	42	CM	0.09191	70		Carles Aleñá	2	2	12	1	2119
+195	Getafe	2022/23	5	34	45	42	CM	0.09627	77		Nemanja Maksimović	0	0	3	0	2053
+195	Getafe	2022/23	5	34	45	42	CB	0.02713	76		Omar Alderete	1	1	9	0	2047
+195	Getafe	2022/23	5	34	45	42	FB	0.02863	77		Damián Suárez	1	1	7	0	1946
+195	Getafe	2022/23	5	34	45	42	CM	0.01047	80		Luis Milla	0	3	6	1	1856
+174	Crystal Palace	2019/20	4	31	50	43	Winger	0.13536	78		Wilfried Zaha	4	3	5	0	3280
+174	Crystal Palace	2019/20	4	31	50	43	GK	0.0	81	72.5	Vicente Guaita	0	0	1	0	3150
+174	Crystal Palace	2019/20	4	31	50	43	ST	0.21945	77		Jordan Ayew	9	2	6	0	3148
+174	Crystal Palace	2019/20	4	31	50	43	CM	0.0526	79		James McArthur	0	3	6	0	3090
+174	Crystal Palace	2019/20	4	31	50	43	DM	0.0754	75		Cheikhou Kouyaté	1	1	4	0	2528
+174	Crystal Palace	2019/20	4	31	50	43	DM	0.03485	77		Luka Milivojević	3	1	12	0	2513
+174	Crystal Palace	2019/20	4	31	50	43	FB	0.04592	78		Patrick van Aanholt	3	2	0	0	2507
+174	Crystal Palace	2019/20	4	31	50	43	FB	0.00752	78		Joel Ward	0	0	4	0	2382
+174	Crystal Palace	2019/20	4	31	50	43	CB	0.06687	75		Gary Cahill	0	1	1	0	2167
+174	Crystal Palace	2019/20	4	31	50	43	CM	0.02223	76		James McCarthy	0	0	9	0	1680
+174	Crystal Palace	2019/20	4	31	50	43	CB	0.05996	77		James Tomkins	1	1	5	0	1582
+226	Real Betis	2020/21	5	50	50	61	FB	0.04207	80		Emerson	1	4	9	1	2991
+226	Real Betis	2020/21	5	50	50	61	DM	0.0581	79		Guido Rodríguez	1	0	10	0	2864
+226	Real Betis	2020/21	5	50	50	61	CAM	0.16847	84		Nabil Fekir	5	6	5	1	2622
+226	Real Betis	2020/21	5	50	50	61	CAM	0.12534	83		Sergio Canales	8	6	4	0	2498
+226	Real Betis	2020/21	5	50	50	61	CB	0.09388	79		Aïssa Mandi	3	1	6	2	2392
+226	Real Betis	2020/21	5	50	50	61	CB	0.0638	78		Víctor Ruiz	2	0	9	0	2157
+226	Real Betis	2020/21	5	50	50	61	GK	0.0	80	67.1	Claudio Bravo	0	0	3	0	1800
+226	Real Betis	2020/21	5	50	50	61	FB	0.05296	79		Álex Moreno	0	2	4	0	1786
+226	Real Betis	2020/21	5	50	50	61	CB	0.01955	80		Marc Bartra	0	1	3	0	1694
+226	Real Betis	2020/21	5	50	50	61	FB	0.0456	76		Juan Miranda	1	2	4	0	1652
+226	Real Betis	2020/21	5	50	50	61	GK	0.0	77	59.7	Joel Robles	0	0	2	0	1620
+127	West Ham	2021/22	4	60	51	56	GK	0.0	81	68.9	Łukasz Fabiański	0	0	2	0	3330
+127	West Ham	2021/22	4	60	51	56	CM	0.02956	83		Declan Rice	1	4	8	0	3179
+127	West Ham	2021/22	4	60	51	56	DM	0.16178	79		Tomáš Souček	5	1	3	0	3062
+127	West Ham	2021/22	4	60	51	56	Winger	0.39008	82		Jarrod Bowen	12	10	6	0	2983
+127	West Ham	2021/22	4	60	51	56	ST	0.36433	81		Michail Antonio	10	8	8	1	2971
+127	West Ham	2021/22	4	60	51	56	CM	0.16541	79		Pablo Fornals	6	3	4	0	2795
+127	West Ham	2021/22	4	60	51	56	CB	0.09614	78		Craig Dawson	2	2	5	1	2754
+127	West Ham	2021/22	4	60	51	56	FB	0.03011	78		Aaron Cresswell	2	3	3	0	2726
+127	West Ham	2021/22	4	60	51	56	FB	0.02269	80		Vladimír Coufal	0	4	5	1	2209
+127	West Ham	2021/22	4	60	51	56	Winger	0.25551	80		Saïd Benrahma	8	6	0	0	2168
+127	West Ham	2021/22	4	60	51	56	CB	0.03521	78		Kurt Zouma	1	0	1	0	2078
+164	Chelsea	2019/20	4	69	54	66	FB	0.0723	84		César Azpilicueta	2	6	1	0	3229
+164	Chelsea	2019/20	4	69	54	66	GK	0.0	79	53.9	Kepa Arrizabalaga	0	0	0	0	2970
+164	Chelsea	2019/20	4	69	54	66	CAM	0.23537	80		Mason Mount	7	5	3	0	2867
+164	Chelsea	2019/20	4	69	54	66	Winger	0.17623	82		Willian	9	7	4	0	2600
+164	Chelsea	2019/20	4	69	54	66	DM	0.03076	83		Jorginho	4	2	10	0	2379
+164	Chelsea	2019/20	4	69	54	66	CB	0.05644	80		Kurt Zouma	0	0	6	0	2344
+164	Chelsea	2019/20	4	69	54	66	ST	0.73475	81		Tammy Abraham	15	3	2	0	2215
+164	Chelsea	2019/20	4	69	54	66	CM	0.04224	82		Mateo Kovačić	1	3	8	0	2073
+164	Chelsea	2019/20	4	69	54	66	CB	0.03156	79		Andreas Christensen	0	0	5	0	1751
+164	Chelsea	2019/20	4	69	54	66	DM	0.08023	85		N'Golo Kanté	3	0	4	0	1732
+164	Chelsea	2019/20	4	69	54	66	Winger	0.46646	81		Christian Pulisic	9	4	0	0	1722
+182	Real Madrid	2022/23	5	75	36	78	Winger	0.34651	88		Vinicius Júnior	10	9	10	1	2823
+182	Real Madrid	2022/23	5	75	36	78	GK	0.0	89	75.4	Thibaut Courtois	0	0	0	0	2790
+182	Real Madrid	2022/23	5	75	36	78	CB	0.11564	86		Éder Militão	5	0	4	0	2703
+182	Real Madrid	2022/23	5	75	36	78	CM	0.14475	86		Federico Valverde	7	4	2	0	2502
+182	Real Madrid	2022/23	5	75	36	78	CB	0.06276	83		Antonio Rüdiger	1	0	1	0	2415
+182	Real Madrid	2022/23	5	75	36	78	Winger	0.53081	84		Rodrygo	9	8	4	0	2379
+182	Real Madrid	2022/23	5	75	36	78	CM	0.05016	86		Toni Kroos	2	4	2	1	2155
+182	Real Madrid	2022/23	5	75	36	78	DM	0.07705	84		Aurélien Tchouaméni	0	4	2	0	2119
+182	Real Madrid	2022/23	5	75	36	78	ST	0.79521	90		Karim Benzema	19	3	1	0	2038
+182	Real Madrid	2022/23	5	75	36	78	CM	0.03058	80		Eduardo Camavinga	0	1	6	0	2010
+182	Real Madrid	2022/23	5	75	36	78	CB	0.05225	83		David Alaba	1	3	3	0	1838
+67	Newcastle	2023/24	4	85	62	60	CM	0.1373	85		Bruno Guimarães	7	8	9	0	3263
+67	Newcastle	2023/24	4	85	62	60	CB	0.07898	81		Fabian Schär	4	1	5	0	3054
+67	Newcastle	2023/24	4	85	62	60	Winger	0.32802	82		Anthony Gordon	11	10	12	1	2890
+67	Newcastle	2023/24	4	85	62	60	CM	0.23186	76		Sean Longstaff	6	2	7	0	2747
+67	Newcastle	2023/24	4	85	62	60	CB	0.13573	79		Dan Burn	2	2	4	0	2726
+67	Newcastle	2023/24	4	85	62	60	ST	0.69873	85		Alexander Isak	21	2	1	0	2255
+67	Newcastle	2023/24	4	85	62	60	FB	0.02604	82		Kieran Trippier	1	10	5	0	2236
+67	Newcastle	2023/24	4	85	62	60	GK	0.0	78	67.4	Martin Dúbravka	0	0	1	0	1985
+67	Newcastle	2023/24	4	85	62	60	Winger	0.2385	74		Miguel Almirón	3	1	2	0	1937
+67	Newcastle	2023/24	4	85	62	60	CB	0.06425	80		Sven Botman	2	2	2	0	1377
+67	Newcastle	2023/24	4	85	62	60	GK	0.00107	83	72.9	Nick Pope	0	0	1	0	1345
+138	Burnley	2021/22	4	34	53	35	GK	0.0	81	71.9	Nick Pope	0	0	1	0	3240
+138	Burnley	2021/22	4	34	53	35	Winger	0.07077	74		Dwight McNeil	0	1	1	0	3107
+138	Burnley	2021/22	4	34	53	35	CB	0.08655	80		James Tarkowski	1	2	11	0	3106
+138	Burnley	2021/22	4	34	53	35	CM	0.03658	79		Josh Brownhill	2	3	10	0	2955
+138	Burnley	2021/22	4	34	53	35	FB	0.00639	78		Charlie Taylor	0	3	3	0	2731
+138	Burnley	2021/22	4	34	53	35	DM	0.01928	76		Ashley Westwood	0	3	7	0	2287
+138	Burnley	2021/22	4	34	53	35	CB	0.12533	76		Ben Mee	3	0	3	0	1839
+138	Burnley	2021/22	4	34	53	35	FB	0.03957	76		Matthew Lowton	1	2	3	1	1772
+138	Burnley	2021/22	4	34	53	35	Winger	0.30338	80		Maxwel Cornet	9	1	2	0	1766
+138	Burnley	2021/22	4	34	53	35	FB	0.01186	75		Connor Roberts	1	1	2	0	1692
+138	Burnley	2021/22	4	34	53	35	DM	0.03956	71		Jack Cork	1	0	4	0	1670
+193	Celta Vigo	2022/23	5	43	53	43	FB	0.01697	82		Javi Galán	0	3	6	0	3160
+193	Celta Vigo	2022/23	5	43	53	43	CB	0.02162	78		Unai Núñez	0	0	8	0	3151
+193	Celta Vigo	2022/23	5	43	53	43	CB	0.04089	78		Joseph Aidoo	3	0	6	1	3119
+193	Celta Vigo	2022/23	5	43	53	43	ST	0.26536	84		Iago Aspas	12	3	6	0	2868
+193	Celta Vigo	2022/23	5	43	53	43	CM	0.01954	78		Fran Beltrán	0	2	4	0	2855
+193	Celta Vigo	2022/23	5	43	53	43	CAM	0.23854	80		Gabriel Veiga	11	4	6	1	2294
+193	Celta Vigo	2022/23	5	43	53	43	FB	0.07689	77		Hugo Mallo	0	1	6	1	2163
+193	Celta Vigo	2022/23	5	43	53	43	Winger	0.09269	78		Carles Pérez	3	5	5	0	2144
+193	Celta Vigo	2022/23	5	43	53	43	Winger	0.08786	80		Franco Cervi	0	4	2	1	1894
+193	Celta Vigo	2022/23	5	43	53	43	CAM	0.1656	75		Óscar Rodríguez Arnaiz	2	0	6	0	1775
+193	Celta Vigo	2022/23	5	43	53	43	GK	0.0	76	59.2	Agustín Marchesín	0	0	2	0	1710
+197	Almería	2022/23	5	49	65	41	GK	0.0	76	68.4	Fernando	0	0	3	0	3285
+197	Almería	2022/23	5	49	65	41	CB	0.02299	74		Rodrigo Ely	0	1	10	1	3155
+197	Almería	2022/23	5	49	65	41	CB	0.04365	73		Srđan Babić	3	0	5	0	2998
+197	Almería	2022/23	5	49	65	41	CM	0.07509	81		Lucas Robertone	2	7	7	0	2843
+197	Almería	2022/23	5	49	65	41	FB	0.06916	72		Sergio Akieme	1	0	5	0	2297
+197	Almería	2022/23	5	49	65	41	DM	0.09005	78		Samu Costa	1	2	5	0	1989
+197	Almería	2022/23	5	49	65	41	Winger	0.01896	73		Alejandro Pozo Pozo	0	3	2	0	1880
+197	Almería	2022/23	5	49	65	41	CM	0.10873	77		Gonzalo Melero	4	3	5	0	1855
+197	Almería	2022/23	5	49	65	41	Winger	0.25931	74		Léo Baptistão	4	1	7	0	1726
+197	Almería	2022/23	5	49	65	41	DM	0.01829	69		César de la Hoz	1	0	6	0	1673
+197	Almería	2022/23	5	49	65	41	ST	0.25732	78		Luis Suárez	4	4	4	1	1490
+172	Everton	2019/20	4	44	56	49	GK	0.0	78	62.7	Jordan Pickford	0	0	2	0	3420
+172	Everton	2019/20	4	44	56	49	ST	0.28856	81		Richarlison	13	3	8	0	3070
+172	Everton	2019/20	4	44	56	49	FB	0.03734	84		Lucas Digne	0	7	6	0	3030
+172	Everton	2019/20	4	44	56	49	ST	0.55213	79		Dominic Calvert-Lewin	13	1	9	0	2626
+172	Everton	2019/20	4	44	56	49	CM	0.11454	79		Gylfi Sigurðsson	2	3	3	0	2560
+172	Everton	2019/20	4	44	56	49	CB	0.07111	78		Michael Keane	2	0	3	0	2559
+172	Everton	2019/20	4	44	56	49	CB	0.12144	76		Yerry Mina	2	1	3	0	2284
+172	Everton	2019/20	4	44	56	49	CB	0.06156	78		Mason Holgate	0	3	5	0	2054
+172	Everton	2019/20	4	44	56	49	CM	0.07282	71		Tom Davies	1	0	8	0	2027
+172	Everton	2019/20	4	44	56	49	FB	0.04155	78		Séamus Coleman	0	1	5	1	1839
+172	Everton	2019/20	4	44	56	49	FB	0.0149	79		Djibril Sidibé	0	4	3	0	1824
+82	Barcelona	2023/24	5	79	44	85	CM	0.1736	86		İlkay Gündoğan	5	9	5	0	2994
+82	Barcelona	2023/24	5	79	44	85	FB	0.0547	84		Jules Koundé	1	2	4	0	2899
+82	Barcelona	2023/24	5	79	44	85	ST	0.48901	88		Robert Lewandowski	19	8	5	0	2750
+82	Barcelona	2023/24	5	79	44	85	GK	0.0	89	73.5	Marc-André ter Stegen	0	0	3	0	2520
+82	Barcelona	2023/24	5	79	44	85	FB	0.07831	86		João Cancelo	2	4	7	0	2503
+82	Barcelona	2023/24	5	79	44	85	Winger	0.23688	79		Lamine Yamal	5	5	3	0	2201
+82	Barcelona	2023/24	5	79	44	85	CB	0.1101	83		Ronald Araújo	1	2	6	0	1997
+82	Barcelona	2023/24	5	79	44	85	CB	0.03334	82		Andreas Christensen	2	2	4	0	1979
+82	Barcelona	2023/24	5	79	44	85	CM	0.05838	83		Frenkie de Jong	2	0	7	0	1634
+82	Barcelona	2023/24	5	79	44	85	CB	0.00491	73		Pau Cubarsí	0	0	4	0	1558
+82	Barcelona	2023/24	5	79	44	85	ST	0.5144	80		João Félix	7	3	3	0	1540
+194	Cádiz	2022/23	5	30	53	42	CB	0.00963	75		Luis Hernández	0	0	8	1	3149
+194	Cádiz	2022/23	5	30	53	42	FB	0.03828	79		Alfonso Espino	0	4	7	0	3122
+194	Cádiz	2022/23	5	30	53	42	GK	0.00085	81	72.3	Jeremías Ledesma	0	0	2	0	3060
+194	Cádiz	2022/23	5	30	53	42	ST	0.20143	77		Rubén Sobrino	3	2	11	0	2465
+194	Cádiz	2022/23	5	30	53	42	FB	0.00929	77		Isaac Carcelen	0	1	4	3	2199
+194	Cádiz	2022/23	5	30	53	42	CM	0.06115	76		Rubén Alcaraz	3	0	11	1	2043
+194	Cádiz	2022/23	5	30	53	42	Winger	0.16523	77		Theo Bongonda	4	3	2	0	1938
+194	Cádiz	2022/23	5	30	53	42	CM	0.01274	72		Fede San Emeterio	0	1	14	0	1844
+194	Cádiz	2022/23	5	30	53	42	CB	0.03607	74		Fali	0	0	6	0	1714
+194	Cádiz	2022/23	5	30	53	42	CM	0.10251	70		Álex Fernández	3	0	0	0	1576
+194	Cádiz	2022/23	5	30	53	42	ST	0.18324	69		Anthony Lozano	1	1	6	0	1443
+162	Manchester City	2019/20	4	102	35	81	GK	0.0	88	70.8	Ederson Moraes	0	0	3	1	3071
+162	Manchester City	2019/20	4	102	35	81	CAM	0.21231	91		Kevin De Bruyne	13	20	3	0	2791
+162	Manchester City	2019/20	4	102	35	81	Winger	0.62053	87		Raheem Sterling	20	1	5	0	2651
+162	Manchester City	2019/20	4	102	35	81	DM	0.02693	82		Rodri	3	2	8	0	2486
+162	Manchester City	2019/20	4	102	35	81	DM	0.02861	83		Fernandinho	0	1	9	2	2397
+162	Manchester City	2019/20	4	102	35	81	FB	0.04936	84		Kyle Walker	1	4	5	0	2392
+162	Manchester City	2019/20	4	102	35	81	ST	0.89796	85		Gabriel Jesus	14	7	3	0	2030
+162	Manchester City	2019/20	4	102	35	81	CAM	0.32897	84		Bernardo Silva	6	7	5	0	2030
+162	Manchester City	2019/20	4	102	35	81	CM	0.12582	78		İlkay Gündoğan	2	1	7	0	2020
+162	Manchester City	2019/20	4	102	35	81	Winger	0.36519	86		Riyad Mahrez	11	9	0	0	1944
+162	Manchester City	2019/20	4	102	35	81	CAM	0.34166	86		David Silva	6	10	0	0	1826
+227	Villarreal	2020/21	5	60	44	58	GK	0.0	82	66.1	Sergio Asenjo	0	0	2	0	3240
+227	Villarreal	2020/21	5	60	44	58	CB	0.02257	80		Raúl Albiol	0	0	7	0	3115
+227	Villarreal	2020/21	5	60	44	58	CM	0.04191	86		Daniel Parejo	3	5	4	0	3112
+227	Villarreal	2020/21	5	60	44	58	CB	0.03279	80		Pau Torres	2	2	2	0	2970
+227	Villarreal	2020/21	5	60	44	58	ST	0.40724	86		Gerard Moreno	23	7	3	0	2673
+227	Villarreal	2020/21	5	60	44	58	CAM	0.11985	73		Moi Gómez	4	0	1	0	2563
+227	Villarreal	2020/21	5	60	44	58	CM	0.07924	80		Manu Trigueros	1	6	6	1	2527
+227	Villarreal	2020/21	5	60	44	58	FB	0.06502	78		Alfonso Pedraza	1	2	8	0	2093
+227	Villarreal	2020/21	5	60	44	58	CB	0.05465	80		Mario Gaspar	0	2	3	1	1851
+227	Villarreal	2020/21	5	60	44	58	ST	0.4331	81		Paco Alcácer	6	4	0	0	1544
+227	Villarreal	2020/21	5	60	44	58	Winger	0.21112	77		Samuel Chukwueze	4	2	0	0	1365
+153	Wolves	2020/21	4	36	52	45	GK	0.0	78	66.0	Rui Patrício	0	0	1	0	3329
+153	Wolves	2020/21	4	36	52	45	CB	0.03937	77		Conor Coady	1	0	5	0	3303
+153	Wolves	2020/21	4	36	52	45	FB	0.03952	77		Nélson Semedo	1	1	5	0	2983
+153	Wolves	2020/21	4	36	52	45	DM	0.0828	81		Rúben Neves	5	1	8	0	2675
+153	Wolves	2020/21	4	36	52	45	Winger	0.07053	73		Adama Traoré	2	2	4	0	2649
+153	Wolves	2020/21	4	36	52	45	Winger	0.19394	80		Pedro Neto	5	6	4	0	2550
+153	Wolves	2020/21	4	36	52	45	CM	0.01791	78		João Moutinho	1	1	5	1	2528
+153	Wolves	2020/21	4	36	52	45	DM	0.12161	72		Leander Dendoncker	1	0	4	0	2503
+153	Wolves	2020/21	4	36	52	45	CB	0.11849	79		Romain Saïss	3	0	2	0	2407
+153	Wolves	2020/21	4	36	52	45	CB	0.05412	79		Willy Boly	1	1	2	0	1879
+153	Wolves	2020/21	4	36	52	45	Winger	0.14868	77		Daniel Podence	3	2	3	0	1661
+200	Elche	2022/23	5	30	67	25	GK	0.0	76	68.3	Édgar Badía	0	0	2	0	3240
+200	Elche	2022/23	5	30	67	25	DM	0.07382	78		Gerard Gumbau	1	6	11	0	2737
+200	Elche	2022/23	5	30	67	25	FB	0.01958	75		Carlos Clerc	0	1	5	0	2639
+200	Elche	2022/23	5	30	67	25	ST	0.32812	77		Lucas Boyé	7	2	7	1	2462
+200	Elche	2022/23	5	30	67	25	DM	0.01041	75		Omar Mascarell	0	1	6	0	2447
+200	Elche	2022/23	5	30	67	25	Winger	0.14871	75		Tete Morente	4	0	5	0	2068
+200	Elche	2022/23	5	30	67	25	CB	0.08216	74		Pedro Bigas	0	0	4	2	2020
+200	Elche	2022/23	5	30	67	25	FB	0.01297	73		Helibelton Palacios	0	0	6	0	1915
+200	Elche	2022/23	5	30	67	25	Winger	0.14381	76		Pere Milla	6	1	7	0	1843
+200	Elche	2022/23	5	30	67	25	Winger	0.07782	74		Fidel	3	2	5	0	1714
+200	Elche	2022/23	5	30	67	25	CB	0.03645	71		Enzo Roco	0	0	7	1	1652
+184	Real Sociedad	2022/23	5	51	35	71	GK	0.0	84	73.9	Álex Remiro	0	0	1	0	3420
+184	Real Sociedad	2022/23	5	51	35	71	DM	0.06249	78		Martín Zubimendi	1	3	12	0	3101
+184	Real Sociedad	2022/23	5	51	35	71	CB	0.01391	82		Robin Le Normand	0	0	6	0	2796
+184	Real Sociedad	2022/23	5	51	35	71	CB	0.03116	79		Igor Zubeldia	1	1	11	0	2542
+184	Real Sociedad	2022/23	5	51	35	71	CM	0.14648	84		Mikel Merino	2	9	5	1	2494
+184	Real Sociedad	2022/23	5	51	35	71	Winger	0.26376	81		Takefusa Kubo	9	4	3	0	2439
+184	Real Sociedad	2022/23	5	51	35	71	CAM	0.21679	82		Brais Méndez	8	4	6	0	2407
+184	Real Sociedad	2022/23	5	51	35	71	ST	0.58372	82		Alexander Sørloth	12	3	4	0	2386
+184	Real Sociedad	2022/23	5	51	35	71	CAM	0.26038	79		David Silva	2	5	3	0	1937
+184	Real Sociedad	2022/23	5	51	35	71	FB	0.00743	75		Aihen Muñoz	0	1	2	0	1756
+184	Real Sociedad	2022/23	5	51	35	71	FB	0.02635	77		Andoni Gorosabel	0	0	3	0	1708
+157	Burnley	2020/21	4	33	55	39	DM	0.02655	76		Ashley Westwood	3	3	7	0	3410
+157	Burnley	2020/21	4	33	55	39	CB	0.08503	81		James Tarkowski	1	0	6	0	3240
+157	Burnley	2020/21	4	33	55	39	Winger	0.0317	78		Dwight McNeil	2	5	1	0	3069
+157	Burnley	2020/21	4	33	55	39	FB	0.02232	78		Matthew Lowton	1	1	5	0	3060
+157	Burnley	2020/21	4	33	55	39	GK	0.0	82	75.5	Nick Pope	0	0	1	0	2880
+157	Burnley	2020/21	4	33	55	39	CM	0.04857	77		Josh Brownhill	0	1	2	0	2813
+157	Burnley	2020/21	4	33	55	39	ST	0.37537	80		Chris Wood	12	3	0	0	2741
+157	Burnley	2020/21	4	33	55	39	CB	0.05411	77		Ben Mee	2	0	3	0	2693
+157	Burnley	2020/21	4	33	55	39	FB	0.00427	75		Charlie Taylor	0	1	1	0	2426
+157	Burnley	2020/21	4	33	55	39	ST	0.35271	76		Matěj Vydra	3	2	0	0	1371
+157	Burnley	2020/21	4	33	55	39	CM	0.10129	72		Jóhann Berg Guðmundsson	2	0	2	0	1363
+145	Leicester City	2020/21	4	68	50	66	GK	0.0	81	63.8	Kasper Schmeichel	0	0	0	0	3420
+145	Leicester City	2020/21	4	68	50	66	CM	0.07094	84		Youri Tielemans	6	4	6	0	3357
+145	Leicester City	2020/21	4	68	50	66	ST	0.41489	87		Jamie Vardy	15	9	1	0	2840
+145	Leicester City	2020/21	4	68	50	66	CB	0.06755	79		Jonny Evans	2	2	7	0	2473
+145	Leicester City	2020/21	4	68	50	66	FB	0.06141	79		Timothy Castagne	2	3	1	0	2345
+145	Leicester City	2020/21	4	68	50	66	CB	0.05475	79		Wesley Fofana	0	0	7	0	2262
+145	Leicester City	2020/21	4	68	50	66	DM	0.02465	85		Wilfred Ndidi	1	4	6	0	2176
+145	Leicester City	2020/21	4	68	50	66	CAM	0.16414	82		James Maddison	8	5	4	0	2099
+145	Leicester City	2020/21	4	68	50	66	FB	0.06596	78		James Justin	2	1	4	0	2070
+145	Leicester City	2020/21	4	68	50	66	Winger	0.30989	81		Harvey Barnes	9	4	0	0	1945
+145	Leicester City	2020/21	4	68	50	66	CB	0.02667	77		Çağlar Söyüncü	1	0	2	0	1819
+236	Alavés	2020/21	5	36	57	38	GK	0.0	76	60.1	Fernando Pacheco	0	0	1	0	3349
+236	Alavés	2020/21	5	36	57	38	ST	0.27303	79		Joselu	11	3	1	0	3026
+236	Alavés	2020/21	5	36	57	38	CB	0.07164	78		Florian Lejeune	1	1	10	0	3015
+236	Alavés	2020/21	5	36	57	38	CB	0.0391	75		Víctor Laguardia	0	1	5	1	2631
+236	Alavés	2020/21	5	36	57	38	CM	0.02565	75		Tomás Pina Isla	1	1	12	0	2575
+236	Alavés	2020/21	5	36	57	38	CB	0.04714	78		Rubén Duarte	1	1	5	1	2545
+236	Alavés	2020/21	5	36	57	38	DM	0.04359	70		Rodrigo Battaglia	1	0	10	1	2492
+236	Alavés	2020/21	5	36	57	38	FB	0.01398	76		Ximo Navarro	1	1	6	0	2375
+236	Alavés	2020/21	5	36	57	38	ST	0.20282	77		Édgar Méndez	5	1	12	1	2090
+236	Alavés	2020/21	5	36	57	38	Winger	0.15868	76		Luis Rioja	4	2	4	0	2090
+236	Alavés	2020/21	5	36	57	38	ST	0.16153	79		Lucas Pérez	4	4	1	0	1759
+71	Brighton	2023/24	4	55	62	48	CM	0.15367	82		Pascal Groß	4	10	6	0	3114
+71	Brighton	2023/24	4	55	62	48	CB	0.09301	78		Lewis Dunk	3	1	7	1	2869
+71	Brighton	2023/24	4	55	62	48	CB	0.06018	77		Jan Paul van Hecke	0	0	4	0	2369
+71	Brighton	2023/24	4	55	62	48	Winger	0.20645	76		Simon Adingra	6	1	3	0	2222
+71	Brighton	2023/24	4	55	62	48	DM	0.03095	70		Billy Gilmour	0	1	8	1	2120
+71	Brighton	2023/24	4	55	62	48	ST	0.35705	77		João Pedro	9	3	2	0	2045
+71	Brighton	2023/24	4	55	62	48	GK	0.0	78	69.9	Bart Verbruggen	0	0	3	0	1890
+71	Brighton	2023/24	4	55	62	48	ST	0.33183	76		Danny Welbeck	5	1	4	0	1693
+71	Brighton	2023/24	4	55	62	48	CB	0.01199	76		Igor	0	0	4	0	1637
+71	Brighton	2023/24	4	55	62	48	FB	0.04217	78		Joël Veltman	1	1	4	0	1588
+71	Brighton	2023/24	4	55	62	48	GK	0.0	74	55.8	Jason Steele	0	0	0	0	1530
+79	Burnley	2023/24	4	41	78	24	DM	0.06355	76		Sander Berge	1	2	10	1	3005
+79	Burnley	2023/24	4	41	78	24	CB	0.02823	74		Dara O'Shea	3	4	5	1	2892
+79	Burnley	2023/24	4	41	78	24	GK	0.0	72	63.1	James Trafford	0	0	2	0	2520
+79	Burnley	2023/24	4	41	78	24	FB	0.00927	72		Charlie Taylor	1	1	8	0	2331
+79	Burnley	2023/24	4	41	78	24	FB	0.06861	65		Vitinho	0	2	1	0	2314
+79	Burnley	2023/24	4	41	78	24	CM	0.07317	78		Josh Brownhill	4	2	4	1	2252
+79	Burnley	2023/24	4	41	78	24	Winger	0.10913	70		Wilson Odobert	3	2	3	0	2098
+79	Burnley	2023/24	4	41	78	24	CM	0.02332	78		Josh Cullen	2	3	9	0	2057
+79	Burnley	2023/24	4	41	78	24	ST	0.24604	75		Zeki Amdouni	5	1	2	0	1953
+79	Burnley	2023/24	4	41	78	24	ST	0.26578	76		Lyle Foster	5	3	0	1	1899
+79	Burnley	2023/24	4	41	78	24	CB	0.01657	74		Maxime Estève	0	0	6	0	1309
+72	Bournemouth	2023/24	4	54	67	48	CB	0.04695	77		Illia Zabarnyi	1	0	5	0	3330
+72	Bournemouth	2023/24	4	54	67	48	ST	0.51762	82		Dominic Solanke	19	3	3	0	3325
+72	Bournemouth	2023/24	4	54	67	48	CM	0.06294	80		Ryan Christie	0	5	6	0	2907
+72	Bournemouth	2023/24	4	54	67	48	GK	0.0	78	67.1	Neto	0	0	5	0	2880
+72	Bournemouth	2023/24	4	54	67	48	CM	0.01334	79		Lewis Cook	0	3	5	1	2786
+72	Bournemouth	2023/24	4	54	67	48	CB	0.09498	79		Marcos Senesi	4	5	13	0	2242
+72	Bournemouth	2023/24	4	54	67	48	FB	0.00167	74		Adam Smith	0	2	6	0	2150
+72	Bournemouth	2023/24	4	54	67	48	CAM	0.18633	78		Marcus Tavernier	3	4	3	0	2118
+72	Bournemouth	2023/24	4	54	67	48	Winger	0.27466	76		Antoine Semenyo	8	2	6	0	2105
+72	Bournemouth	2023/24	4	54	67	48	FB	0.07753	76		Milos Kerkez	0	1	4	1	1970
+72	Bournemouth	2023/24	4	54	67	48	CAM	0.34276	74		Justin Kluivert	7	1	5	0	1916
+221	Atlético Madrid	2020/21	5	67	25	86	GK	0.0	91	79.7	Jan Oblak	0	0	0	0	3420
+221	Atlético Madrid	2020/21	5	67	25	86	CM	0.0	83		Koke	1	2	9	0	3021
+221	Atlético Madrid	2020/21	5	67	25	86	FB	0.1452	86		Marcos Llorente	12	11	6	0	2956
+221	Atlético Madrid	2020/21	5	67	25	86	CB	0.01984	84		Stefan Savić	1	0	14	0	2953
+221	Atlético Madrid	2020/21	5	67	25	86	CB	0.03931	82		Mario Hermoso	1	1	6	0	2578
+221	Atlético Madrid	2020/21	5	67	25	86	ST	0.56207	88		Luis Suárez	21	3	6	0	2508
+221	Atlético Madrid	2020/21	5	67	25	86	FB	0.00473	84		Kieran Trippier	0	6	0	0	2475
+221	Atlético Madrid	2020/21	5	67	25	86	ST	0.3333	83		Ángel Correa	9	8	3	0	2393
+221	Atlético Madrid	2020/21	5	67	25	86	Winger	0.21313	84		Yannick Carrasco	6	10	6	0	2179
+221	Atlético Madrid	2020/21	5	67	25	86	CB	0.05653	84		Felipe	0	0	8	0	2057
+221	Atlético Madrid	2020/21	5	67	25	86	CM	0.11289	81		Saúl Ñíguez	2	1	10	0	2033
+76	Brentford	2023/24	4	56	65	39	GK	0.0	77	64.6	Mark Flekken	0	1	3	0	3285
+76	Brentford	2023/24	4	56	65	39	DM	0.05941	77		Vitaly Janelt	1	3	8	0	3054
+76	Brentford	2023/24	4	56	65	39	CB	0.06662	77		Nathan Collins	1	1	3	0	2652
+76	Brentford	2023/24	4	56	65	39	CB	0.12074	79		Ethan Pinnock	2	0	1	0	2521
+76	Brentford	2023/24	4	56	65	39	DM	0.11396	78		Christian Nørgaard	2	1	8	0	2505
+76	Brentford	2023/24	4	56	65	39	ST	0.40325	80		Yoane Wissa	12	3	7	0	2493
+76	Brentford	2023/24	4	56	65	39	CM	0.02814	79		Mathias Jensen	3	3	5	0	2204
+76	Brentford	2023/24	4	56	65	39	FB	0.05114	77		Mads Roerslev	1	2	1	0	1985
+76	Brentford	2023/24	4	56	65	39	Winger	0.31569	81		Bryan Mbeumo	9	6	2	0	1960
+76	Brentford	2023/24	4	56	65	39	CB	0.07212	77		Kristoffer Ajer	2	1	5	0	1832
+76	Brentford	2023/24	4	56	65	39	ST	0.44274	77		Ivan Toney	4	2	5	0	1450
+252	Levante	2019/20	5	47	53	49	GK	0.0	80	74.6	Aitor Fernández	0	0	2	0	3240
+252	Levante	2019/20	5	47	53	49	CM	0.06836	81		José Campaña	2	7	4	1	3156
+252	Levante	2019/20	5	47	53	49	CB	0.05138	77		Rúben Vezo	0	0	4	0	2610
+252	Levante	2019/20	5	47	53	49	ST	0.18407	74		José Luis Morales	4	2	3	0	2519
+252	Levante	2019/20	5	47	53	49	Winger	0.02535	78		Jorge Miramón	0	3	4	1	2432
+252	Levante	2019/20	5	47	53	49	CB	0.0431	74		Sergio Postigo	1	1	6	0	2374
+252	Levante	2019/20	5	47	53	49	ST	0.28175	81		Roger Martí	11	1	6	1	2267
+252	Levante	2019/20	5	47	53	49	ST	0.43398	81		Borja Mayoral	8	2	2	0	2140
+252	Levante	2019/20	5	47	53	49	CAM	0.22334	78		Enis Bardhi	7	2	5	0	2114
+252	Levante	2019/20	5	47	53	49	DM	0.00289	74		Nemanja Radoja	1	0	3	0	1993
+252	Levante	2019/20	5	47	53	49	Winger	0.16186	80		Rubén Rochina	5	3	5	0	1875
+247	Granada	2019/20	5	52	45	56	GK	0.0	81	70.2	Rui Silva	0	0	3	0	3150
+247	Granada	2019/20	5	52	45	56	CB	0.04837	78		Domingos Duarte	3	1	7	0	3087
+247	Granada	2019/20	5	52	45	56	FB	0.02487	80		Víctor Díaz	1	5	4	0	2884
+247	Granada	2019/20	5	52	45	56	Winger	0.25185	78		Antonio Puertas	7	3	7	0	2563
+247	Granada	2019/20	5	52	45	56	CM	0.06043	79		Yangel Herrera	2	3	14	0	2368
+247	Granada	2019/20	5	52	45	56	ST	0.18441	81		Roberto Soldado	7	4	14	0	2347
+247	Granada	2019/20	5	52	45	56	CB	0.05091	76		Germán Sánchez	2	0	12	1	2293
+247	Granada	2019/20	5	52	45	56	FB	0.04412	76		Carlos Neva	0	1	2	0	2205
+247	Granada	2019/20	5	52	45	56	ST	0.37088	78		Carlos Fernández	10	3	8	0	2201
+247	Granada	2019/20	5	52	45	56	Winger	0.25969	80		Darwin Machís	7	5	5	0	2129
+247	Granada	2019/20	5	52	45	56	DM	0.01016	77		Maxime Gonalons	0	0	7	0	1506
+165	Leicester City	2019/20	4	67	41	62	GK	0.0005	83	67.5	Kasper Schmeichel	0	0	2	0	3420
+165	Leicester City	2019/20	4	67	41	62	CB	0.066	80		Jonny Evans	1	1	8	1	3383
+165	Leicester City	2019/20	4	67	41	62	CB	0.04245	80		Çağlar Söyüncü	1	1	4	1	3036
+165	Leicester City	2019/20	4	67	41	62	ST	0.44801	87		Jamie Vardy	23	5	2	0	3033
+165	Leicester City	2019/20	4	67	41	62	CM	0.08885	81		Youri Tielemans	3	6	2	0	2828
+165	Leicester City	2019/20	4	67	41	62	DM	0.05813	82		Wilfred Ndidi	2	1	6	0	2674
+165	Leicester City	2019/20	4	67	41	62	CAM	0.17225	80		James Maddison	6	3	4	0	2624
+165	Leicester City	2019/20	4	67	41	62	FB	0.04518	85		Ricardo Pereira	3	2	1	0	2520
+165	Leicester City	2019/20	4	67	41	62	FB	0.04164	81		Ben Chilwell	3	3	3	0	2373
+165	Leicester City	2019/20	4	67	41	62	Winger	0.36644	81		Harvey Barnes	6	8	0	0	2083
+165	Leicester City	2019/20	4	67	41	62	ST	0.26034	81		Ayoze Pérez	8	4	0	0	2004
+199	Espanyol	2022/23	5	52	69	37	CM	0.09388	81		Sergi Darder	6	3	4	0	3320
+199	Espanyol	2022/23	5	52	69	37	ST	0.36587	83		Joselu	16	2	2	0	2990
+199	Espanyol	2022/23	5	52	69	37	CB	0.09388	75		Leandro Cabrera	0	1	10	2	2669
+199	Espanyol	2022/23	5	52	69	37	FB	0.0197	75		Óscar Gil	0	1	14	0	2559
+199	Espanyol	2022/23	5	52	69	37	ST	0.4164	79		Martin Braithwaite	10	2	5	1	2456
+199	Espanyol	2022/23	5	52	69	37	DM	0.03418	77		Vinicius Souza	1	1	10	1	2428
+199	Espanyol	2022/23	5	52	69	37	FB	0.02539	76		Brian Oliván	1	7	7	0	2403
+199	Espanyol	2022/23	5	52	69	37	Winger	0.28046	75		Javi Puado	7	2	4	0	2340
+199	Espanyol	2022/23	5	52	69	37	CB	0.0456	73		Sergi Gómez	0	0	1	2	2339
+199	Espanyol	2022/23	5	52	69	37	CB	0.02648	74		Fernando Calero	0	1	6	0	1611
+199	Espanyol	2022/23	5	52	69	37	CB	0.05157	74		César Montes	3	0	6	0	1590
+94	Sevilla	2023/24	5	48	54	41	Winger	0.19348	80		Lucas Ocampos	4	3	8	0	2871
+94	Sevilla	2023/24	5	48	54	41	ST	0.44282	83		Youssef En-Nesyri	16	2	4	0	2570
+94	Sevilla	2023/24	5	48	54	41	CB	0.08449	83		Sergio Ramos	3	0	7	1	2517
+94	Sevilla	2023/24	5	48	54	41	DM	0.00091	74		Boubakary Soumaré	0	1	10	0	2286
+94	Sevilla	2023/24	5	48	54	41	CB	0.0236	78		Loïc Bade	0	1	5	1	2277
+94	Sevilla	2023/24	5	48	54	41	GK	0.0	77	74.5	Ørjan Nyland	0	0	1	0	2160
+94	Sevilla	2023/24	5	48	54	41	Winger	0.00755	79		Jesús Navas	0	2	6	1	2003
+94	Sevilla	2023/24	5	48	54	41	FB	0.03476	77		Adrià Pedrosa	1	4	1	0	1753
+94	Sevilla	2023/24	5	48	54	41	DM	0.03906	79		Nemanja Gudelj	1	1	7	0	1742
+94	Sevilla	2023/24	5	48	54	41	CM	0.03581	75		Óliver Torres	0	1	3	0	1616
+94	Sevilla	2023/24	5	48	54	41	CB	0.05865	75		Kike Salas	3	0	10	0	1605
+93	Celta Vigo	2023/24	5	46	57	41	FB	0.06944	75		Óscar Mingueza	2	2	4	0	2998
+93	Celta Vigo	2023/24	5	46	57	41	ST	0.52409	80		Jørgen Strand Larsen	13	3	5	0	2863
+93	Celta Vigo	2023/24	5	46	57	41	CB	0.08226	78		Unai Núñez	1	0	4	0	2801
+93	Celta Vigo	2023/24	5	46	57	41	ST	0.22236	83		Iago Aspas	9	10	6	1	2707
+93	Celta Vigo	2023/24	5	46	57	41	CM	0.02561	74		Fran Beltrán	0	0	2	0	2428
+93	Celta Vigo	2023/24	5	46	57	41	GK	0.0	75	68.0	Vicente Guaita	0	0	2	0	2403
+93	Celta Vigo	2023/24	5	46	57	41	CB	0.08557	76		Carl Starfelt	1	0	4	0	2216
+93	Celta Vigo	2023/24	5	46	57	41	Winger	0.1705	75		Jonathan Bamba	3	2	0	0	1981
+93	Celta Vigo	2023/24	5	46	57	41	CM	0.11972	77		Luca de la Torre	1	4	4	1	1956
+93	Celta Vigo	2023/24	5	46	57	41	FB	0.02753	76		Manu Sánchez	0	5	3	0	1775
+93	Celta Vigo	2023/24	5	46	57	41	CB	0.01528	72		Carlos Dominguez	0	0	2	0	1584
+87	Real Betis	2023/24	5	48	45	57	CB	0.06512	78		Germán Pezzella	1	0	7	0	2767
+87	Real Betis	2023/24	5	48	45	57	GK	0.0	81	70.5	Rui Silva	0	0	4	0	2475
+87	Real Betis	2023/24	5	48	45	57	CAM	0.31651	82		Isco	8	5	10	0	2326
+87	Real Betis	2023/24	5	48	45	57	ST	0.3527	79		Ayoze Pérez	9	1	4	0	2294
+87	Real Betis	2023/24	5	48	45	57	CB	0.02641	75		Chadi Riad	0	0	1	0	2164
+87	Real Betis	2023/24	5	48	45	57	DM	0.04845	79		Marc Roca	2	2	5	0	1980
+87	Real Betis	2023/24	5	48	45	57	ST	0.30155	81		Willian José	10	5	0	1	1971
+87	Real Betis	2023/24	5	48	45	57	FB	0.12371	78		Juan Miranda	1	1	8	0	1858
+87	Real Betis	2023/24	5	48	45	57	DM	0.0371	80		Guido Rodríguez	2	0	6	0	1846
+87	Real Betis	2023/24	5	48	45	57	FB	0.01757	77		Héctor Bellerín	0	1	0	1	1711
+87	Real Betis	2023/24	5	48	45	57	FB	0.01144	75		Abner	0	1	3	0	1400
+86	Real Sociedad	2023/24	5	51	39	60	GK	0.0	84	71.4	Álex Remiro	0	0	3	1	3275
+86	Real Sociedad	2023/24	5	51	39	60	DM	0.08817	79		Martín Zubimendi	4	1	5	0	2654
+86	Real Sociedad	2023/24	5	51	39	60	CB	0.02581	80		Igor Zubeldia	0	2	11	1	2518
+86	Real Sociedad	2023/24	5	51	39	60	CM	0.13841	85		Mikel Merino	5	3	10	0	2482
+86	Real Sociedad	2023/24	5	51	39	60	CB	0.0308	83		Robin Le Normand	2	0	13	0	2469
+86	Real Sociedad	2023/24	5	51	39	60	CAM	0.15863	82		Brais Méndez	5	6	7	0	2413
+86	Real Sociedad	2023/24	5	51	39	60	FB	0.01885	80		Hamari Traoré	0	2	7	0	2292
+86	Real Sociedad	2023/24	5	51	39	60	ST	0.36134	81		Mikel Oyarzabal	9	3	3	0	2156
+86	Real Sociedad	2023/24	5	51	39	60	Winger	0.2096	80		Takefusa Kubo	7	4	1	0	2150
+86	Real Sociedad	2023/24	5	51	39	60	CM	0.04188	67		Beñat Turrientes	0	1	4	0	1687
+86	Real Sociedad	2023/24	5	51	39	60	CB	0.0621	73		Jon Pacheco	1	1	8	0	1526
+168	Arsenal	2019/20	4	56	48	56	ST	0.42561	87		Pierre-Emerick Aubameyang	22	3	3	1	3136
+168	Arsenal	2019/20	4	56	48	56	CB	0.04998	78		David Luiz	2	1	5	2	2809
+168	Arsenal	2019/20	4	56	48	56	GK	0.0	85	74.2	Bernd Leno	0	0	2	0	2649
+168	Arsenal	2019/20	4	56	48	56	DM	0.01987	75		Granit Xhaka	1	2	10	0	2586
+168	Arsenal	2019/20	4	56	48	56	Winger	0.1929	82		Nicolas Pépé	5	6	4	0	2010
+168	Arsenal	2019/20	4	56	48	56	ST	0.41614	83		Alexandre Lacazette	10	4	8	0	1874
+168	Arsenal	2019/20	4	56	48	56	Winger	0.05863	80		Bukayo Saka	1	5	6	0	1753
+168	Arsenal	2019/20	4	56	48	56	CM	0.02729	73		Mattéo Guendouzi	0	1	6	0	1748
+168	Arsenal	2019/20	4	56	48	56	CB	0.01349	78		Sead Kolašinac	0	2	4	0	1701
+168	Arsenal	2019/20	4	56	48	56	CB	0.077	77		Sokratis Papastathopoulos	2	0	6	0	1696
+168	Arsenal	2019/20	4	56	48	56	CM	0.025	80		Dani Ceballos	0	2	1	0	1692
+173	Newcastle	2019/20	4	38	58	44	GK	0.0	82	70.6	Martin Dúbravka	0	0	0	0	3420
+173	Newcastle	2019/20	4	38	58	44	Winger	0.23103	76		Miguel Almirón	4	2	5	0	3021
+173	Newcastle	2019/20	4	38	58	44	CM	0.20231	68		Joelinton	2	2	7	0	2683
+173	Newcastle	2019/20	4	38	58	44	CB	0.06118	75		Federico Fernández	2	2	8	0	2620
+173	Newcastle	2019/20	4	38	58	44	DM	0.05632	78		Isaac Hayden	1	2	4	1	2223
+173	Newcastle	2019/20	4	38	58	44	CM	0.09522	78		Jonjo Shelvey	6	2	3	0	2119
+173	Newcastle	2019/20	4	38	58	44	CB	0.01912	74		Jamaal Lascelles	1	0	5	0	2076
+173	Newcastle	2019/20	4	38	58	44	Winger	0.14217	79		Allan Saint-Maximin	3	4	0	0	1863
+173	Newcastle	2019/20	4	38	58	44	CB	0.05706	78		Fabian Schär	2	0	5	0	1672
+173	Newcastle	2019/20	4	38	58	44	FB	0.00203	76		Javier Manquillo	0	1	5	0	1599
+173	Newcastle	2019/20	4	38	58	44	CB	0.02924	76		Jetro Willems	2	2	0	0	1493
+161	Liverpool	2019/20	4	85	33	99	CB	0.07784	89		Virgil van Dijk	5	1	1	0	3420
+161	Liverpool	2019/20	4	85	33	99	FB	0.08742	87		Trent Alexander-Arnold	4	13	5	0	3175
+161	Liverpool	2019/20	4	85	33	99	FB	0.05251	87		Andy Robertson	2	12	2	0	3111
+161	Liverpool	2019/20	4	85	33	99	ST	0.50259	85		Roberto Firmino	9	8	0	0	2988
+161	Liverpool	2019/20	4	85	33	99	CM	0.08129	80		Georginio Wijnaldum	4	0	0	0	2935
+161	Liverpool	2019/20	4	85	33	99	Winger	0.57517	90		Mohamed Salah	19	10	1	0	2876
+161	Liverpool	2019/20	4	85	33	99	Winger	0.47759	90		Sadio Mané	18	7	3	0	2747
+161	Liverpool	2019/20	4	85	33	99	GK	0.0	90	71.6	Alisson	0	1	0	1	2543
+161	Liverpool	2019/20	4	85	33	99	CM	0.04765	86		Jordan Henderson	4	5	2	0	2238
+161	Liverpool	2019/20	4	85	33	99	DM	0.01333	87		Fabinho	2	3	6	0	2079
+161	Liverpool	2019/20	4	85	33	99	CB	0.00081	83		Joe Gomez	0	0	7	0	2004
+259	Mallorca	2019/20	5	40	65	33	GK	0.0	71	66.9	Manolo Reina	0	0	4	0	3240
+259	Mallorca	2019/20	5	40	65	33	CB	0.01245	73		Martin Valjent	0	0	6	0	3182
+259	Mallorca	2019/20	5	40	65	33	CAM	0.12471	77		Dani Rodríguez	5	2	7	0	3039
+259	Mallorca	2019/20	5	40	65	33	CM	0.02614	75		Iddrisu Baba	0	0	6	0	2903
+259	Mallorca	2019/20	5	40	65	33	CB	0.07077	71		Antonio Raillo	1	0	9	1	2775
+259	Mallorca	2019/20	5	40	65	33	ST	0.306	82		Ante Budimir	13	2	12	0	2765
+259	Mallorca	2019/20	5	40	65	33	CM	0.05699	79		Salva Sevilla	5	3	10	1	2568
+259	Mallorca	2019/20	5	40	65	33	Winger	0.11986	79		Takefusa Kubo	4	4	4	0	2312
+259	Mallorca	2019/20	5	40	65	33	Winger	0.154	74		Lago Junior	4	0	3	0	2188
+259	Mallorca	2019/20	5	40	65	33	FB	0.01321	72		Lumor Agbenyenu	1	0	5	1	1805
+259	Mallorca	2019/20	5	40	65	33	FB	0.03263	74		Fran Gámez	0	1	5	0	1768
+152	Newcastle	2020/21	4	46	62	45	CM	0.08436	77		Jonjo Shelvey	1	3	7	0	2617
+152	Newcastle	2020/21	4	46	62	45	Winger	0.13002	75		Miguel Almirón	4	1	3	0	2429
+152	Newcastle	2020/21	4	46	62	45	GK	0.0	74	66.9	Karl Darlow	0	0	3	0	2250
+152	Newcastle	2020/21	4	46	62	45	ST	0.4554	82		Callum Wilson	12	5	2	0	2084
+152	Newcastle	2020/21	4	46	62	45	CB	0.0084	74		Federico Fernández	0	0	4	0	2079
+152	Newcastle	2020/21	4	46	62	45	CM	0.22103	76		Joelinton	4	2	3	0	1983
+152	Newcastle	2020/21	4	46	62	45	DM	0.0285	76		Isaac Hayden	0	0	8	0	1942
+152	Newcastle	2020/21	4	46	62	45	CB	0.03151	74		Ciaran Clark	1	0	3	0	1891
+152	Newcastle	2020/21	4	46	62	45	FB	0.00588	73		Jamal Lewis	0	1	4	0	1837
+152	Newcastle	2020/21	4	46	62	45	Winger	0.08253	73		Jacob Murphy	2	3	3	0	1626
+152	Newcastle	2020/21	4	46	62	45	CB	0.04237	74		Jamaal Lascelles	2	0	4	0	1625
+180	Norwich City	2019/20	4	26	75	21	FB	0.01808	73		Max Aarons	0	1	7	0	3240
+180	Norwich City	2019/20	4	26	75	21	GK	0.0	73	64.6	Tim Krul	0	0	4	0	3240
+180	Norwich City	2019/20	4	26	75	21	CM	0.03681	71		Kenny McLean	1	1	5	0	2968
+180	Norwich City	2019/20	4	26	75	21	ST	0.31191	79		Teemu Pukki	11	3	3	0	2886
+180	Norwich City	2019/20	4	26	75	21	CB	0.02921	71		Ben Godfrey	0	0	3	1	2644
+180	Norwich City	2019/20	4	26	75	21	CAM	0.2052	78		Todd Cantwell	6	2	6	0	2489
+180	Norwich City	2019/20	4	26	75	21	Winger	0.07926	80		Emi Buendía	1	7	6	1	2464
+180	Norwich City	2019/20	4	26	75	21	DM	0.02606	74		Alexander Tettey	1	1	5	0	2338
+180	Norwich City	2019/20	4	26	75	21	FB	0.01363	74		Jamal Lewis	1	0	4	0	2304
+180	Norwich City	2019/20	4	26	75	21	CB	0.01624	71		Christoph Zimmermann	0	1	3	0	1430
+180	Norwich City	2019/20	4	26	75	21	Winger	0.12434	78		Onel Hernández	1	2	0	0	1384
+163	Manchester Utd	2019/20	4	66	36	66	CB	0.07295	82		Harry Maguire	1	1	6	0	3420
+163	Manchester Utd	2019/20	4	66	36	66	GK	0.0	86	72.5	David de Gea	0	0	2	0	3420
+163	Manchester Utd	2019/20	4	66	36	66	CB	0.00536	79		Victor Lindelöf	1	0	6	0	3092
+163	Manchester Utd	2019/20	4	66	36	66	FB	0.02389	83		Aaron Wan-Bissaka	0	4	8	0	3070
+163	Manchester Utd	2019/20	4	66	36	66	Winger	0.45678	85		Marcus Rashford	17	7	3	0	2643
+163	Manchester Utd	2019/20	4	66	36	66	ST	0.42801	85		Anthony Martial	17	6	1	0	2624
+163	Manchester Utd	2019/20	4	66	36	66	Winger	0.14179	79		Daniel James	3	6	4	0	2287
+163	Manchester Utd	2019/20	4	66	36	66	CM	0.06624	76		Fred	0	0	8	0	2163
+163	Manchester Utd	2019/20	4	66	36	66	CM	0.1027	79		Scott McTominay	4	1	2	0	1772
+163	Manchester Utd	2019/20	4	66	36	66	FB	0.03734	80		Luke Shaw	0	0	7	0	1733
+163	Manchester Utd	2019/20	4	66	36	66	DM	0.01332	80		Nemanja Matić	0	2	3	0	1581
+166	Tottenham	2019/20	4	61	47	59	CB	0.01388	83		Toby Alderweireld	2	2	7	0	2957
+166	Tottenham	2019/20	4	61	47	59	FB	0.01617	81		Serge Aurier	1	5	4	1	2700
+166	Tottenham	2019/20	4	61	47	59	ST	0.40964	87		Harry Kane	18	2	4	0	2587
+166	Tottenham	2019/20	4	61	47	59	Winger	0.325	87		Son Heung-min	11	10	0	2	2476
+166	Tottenham	2019/20	4	61	47	59	CM	0.09319	74		Moussa Sissoko	2	1	8	0	2452
+166	Tottenham	2019/20	4	61	47	59	CB	0.02795	80		Davinson Sánchez	0	0	6	0	2431
+166	Tottenham	2019/20	4	61	47	59	Winger	0.22408	83		Lucas Moura	4	4	3	0	2242
+166	Tottenham	2019/20	4	61	47	59	DM	0.0158	74		Harry Winks	0	0	9	0	2221
+166	Tottenham	2019/20	4	61	47	59	CAM	0.3486	83		Dele Alli	8	4	2	0	1847
+166	Tottenham	2019/20	4	61	47	59	GK	0.0	87	79.0	Hugo Lloris	0	0	0	0	1807
+166	Tottenham	2019/20	4	61	47	59	CB	0.03491	83		Jan Vertonghen	1	1	2	0	1645
+169	Sheffield United	2019/20	4	39	39	54	FB	0.02008	77		George Baldock	2	3	7	0	3420
+169	Sheffield United	2019/20	4	39	39	54	FB	0.04092	79		Enda Stevens	2	4	7	0	3345
+169	Sheffield United	2019/20	4	39	39	54	CB	0.00916	79		Chris Basham	0	1	4	0	3242
+169	Sheffield United	2019/20	4	39	39	54	GK	0.00092	82	74.0	Dean Henderson	0	0	2	0	3240
+169	Sheffield United	2019/20	4	39	39	54	CB	0.07588	79		John Egan	2	0	5	1	3187
+169	Sheffield United	2019/20	4	39	39	54	CM	0.01681	75		Oliver Norwood	1	1	8	0	3090
+169	Sheffield United	2019/20	4	39	39	54	CB	0.02559	78		Jack O'Connell	0	1	4	0	2916
+169	Sheffield United	2019/20	4	39	39	54	CM	0.11618	77		John Fleck	5	2	8	0	2516
+169	Sheffield United	2019/20	4	39	39	54	DM	0.2168	80		John Lundstram	5	3	5	0	2458
+169	Sheffield United	2019/20	4	39	39	54	ST	0.34364	74		Oliver McBurnie	6	0	4	0	2113
+169	Sheffield United	2019/20	4	39	39	54	ST	0.4322	68		David McGoldrick	2	2	2	0	1815
+167	Wolves	2019/20	4	51	40	59	GK	0.0	84	68.8	Rui Patrício	0	0	0	0	3420
+167	Wolves	2019/20	4	51	40	59	CB	0.0	79		Conor Coady	0	0	5	0	3420
+167	Wolves	2019/20	4	51	40	59	ST	0.37452	84		Raúl Jiménez	17	6	3	0	3236
+167	Wolves	2019/20	4	51	40	59	CM	0.01992	83		João Moutinho	1	6	7	0	3108
+167	Wolves	2019/20	4	51	40	59	DM	0.04824	79		Rúben Neves	2	2	9	0	3056
+167	Wolves	2019/20	4	51	40	59	CM	0.05032	80		Jonny Castro	2	2	4	0	2887
+167	Wolves	2019/20	4	51	40	59	FB	0.20555	80		Matt Doherty	4	3	1	0	2839
+167	Wolves	2019/20	4	51	40	59	DM	0.08494	75		Leander Dendoncker	4	0	5	0	2795
+167	Wolves	2019/20	4	51	40	59	CB	0.12211	79		Romain Saïss	2	1	12	1	2705
+167	Wolves	2019/20	4	51	40	59	Winger	0.12807	78		Adama Traoré	4	9	1	0	2605
+167	Wolves	2019/20	4	51	40	59	Winger	0.47356	77		Diogo Jota	7	1	4	0	2284
+171	Southampton	2019/20	4	51	60	52	CM	0.12574	80		James Ward-Prowse	5	3	9	0	3420
+171	Southampton	2019/20	4	51	60	52	CB	0.03124	78		Jan Bednarek	1	1	4	0	3057
+171	Southampton	2019/20	4	51	60	52	ST	0.45376	82		Danny Ings	22	2	3	0	2804
+171	Southampton	2019/20	4	51	60	52	Winger	0.17228	79		Nathan Redmond	4	4	2	0	2762
+171	Southampton	2019/20	4	51	60	52	DM	0.10396	77		Pierre Højbjerg	0	1	5	0	2752
+171	Southampton	2019/20	4	51	60	52	FB	0.06768	77		Ryan Bertrand	1	1	3	1	2742
+171	Southampton	2019/20	4	51	60	52	GK	0.0	78	69.0	Alex McCarthy	0	0	0	0	2520
+171	Southampton	2019/20	4	51	60	52	CB	0.03426	76		Jack Stephens	1	3	4	1	2451
+171	Southampton	2019/20	4	51	60	52	DM	0.00953	76		Oriol Romeu	0	0	5	0	1860
+171	Southampton	2019/20	4	51	60	52	CM	0.16342	80		Stuart Armstrong	5	3	4	0	1715
+171	Southampton	2019/20	4	51	60	52	CB	0.0407	75		Jannik Vestergaard	1	0	3	0	1497
+176	West Ham	2019/20	4	49	62	39	CM	0.03332	80		Declan Rice	1	3	6	0	3420
+176	West Ham	2019/20	4	49	62	39	CB	0.04209	75		Angelo Ogbonna	2	0	4	0	2786
+176	West Ham	2019/20	4	49	62	39	CB	0.05841	76		Issa Diop	3	1	8	0	2766
+176	West Ham	2019/20	4	49	62	39	FB	0.03409	76		Aaron Cresswell	3	0	7	0	2727
+176	West Ham	2019/20	4	49	62	39	CM	0.01649	78		Mark Noble	4	3	5	0	2674
+176	West Ham	2019/20	4	49	62	39	ST	0.337	77		Sébastien Haller	7	1	1	0	2266
+176	West Ham	2019/20	4	49	62	39	FB	0.00511	78		Ryan Fredericks	0	3	7	0	2237
+176	West Ham	2019/20	4	49	62	39	CM	0.10952	81		Pablo Fornals	2	5	3	0	2172
+176	West Ham	2019/20	4	49	62	39	GK	0.0	79	67.6	Łukasz Fabiański	0	0	1	0	2117
+176	West Ham	2019/20	4	49	62	39	ST	0.6357	80		Michail Antonio	10	3	3	0	1768
+176	West Ham	2019/20	4	49	62	39	Winger	0.14237	80		Robert Snodgrass	5	5	4	0	1509
+179	Watford	2019/20	4	36	64	34	GK	0.00911	77	64.4	Ben Foster	0	0	1	0	3420
+179	Watford	2019/20	4	36	64	34	CAM	0.1506	75		Abdoulaye Doucouré	4	2	9	0	3156
+179	Watford	2019/20	4	36	64	34	DM	0.02199	80		Étienne Capoue	0	3	8	0	2627
+179	Watford	2019/20	4	36	64	34	CB	0.00669	74		Craig Cathcart	0	0	7	0	2488
+179	Watford	2019/20	4	36	64	34	CB	0.08543	74		Craig Dawson	2	0	6	0	2361
+179	Watford	2019/20	4	36	64	34	CM	0.09544	77		Will Hughes	1	1	9	0	2252
+179	Watford	2019/20	4	36	64	34	CB	0.033	76		Christian Kabasele	0	2	3	2	2250
+179	Watford	2019/20	4	36	64	34	FB	0.00491	77		Kiko Femenía	0	0	5	0	2237
+179	Watford	2019/20	4	36	64	34	ST	0.28404	79		Troy Deeney	10	2	3	0	2225
+179	Watford	2019/20	4	36	64	34	ST	0.23388	81		Gerard Deulofeu	4	5	3	0	2098
+179	Watford	2019/20	4	36	64	34	Winger	0.26485	79		Ismaila Sarr	5	4	1	0	2028
+238	Huesca	2020/21	5	34	53	34	CB	0.07775	77		Dimitris Siovas	2	0	5	0	3071
+238	Huesca	2020/21	5	34	53	34	FB	0.00537	78		Javi Galán	1	2	5	0	3065
+238	Huesca	2020/21	5	34	53	34	CB	0.09193	77		Jorge Pulido	1	0	6	1	2885
+238	Huesca	2020/21	5	34	53	34	ST	0.40292	80		Rafa Mir	13	1	2	0	2877
+238	Huesca	2020/21	5	34	53	34	Winger	0.06215	76		David Ferreiro	2	4	5	0	2527
+238	Huesca	2020/21	5	34	53	34	CM	0.11268	76		Mikel Rico	1	4	2	0	2183
+238	Huesca	2020/21	5	34	53	34	CM	0.04387	75		Jaime Seoane	1	1	5	0	2064
+238	Huesca	2020/21	5	34	53	34	CM	0.00966	75		Pedro Mosquera	0	0	1	0	2050
+238	Huesca	2020/21	5	34	53	34	GK	0.00123	75	67.0	Álvaro Fernández	0	0	0	0	1980
+238	Huesca	2020/21	5	34	53	34	FB	0.03391	79		Pablo Maffeo	1	4	4	0	1964
+238	Huesca	2020/21	5	34	53	34	CB	0.00947	73		Pablo Insua	0	0	9	0	1587
+177	Aston Villa	2019/20	4	41	67	35	Winger	0.16937	78		Jack Grealish	8	6	8	0	3233
+177	Aston Villa	2019/20	4	41	67	35	CB	0.02844	73		Tyrone Mings	2	2	7	0	2902
+177	Aston Villa	2019/20	4	41	67	35	CM	0.07849	77		Douglas Luiz	3	2	8	0	2612
+177	Aston Villa	2019/20	4	41	67	35	CM	0.15505	80		John McGinn	3	3	3	0	2312
+177	Aston Villa	2019/20	4	41	67	35	FB	0.01548	78		Matt Targett	1	2	4	0	2291
+177	Aston Villa	2019/20	4	41	67	35	Winger	0.24661	75		Anwar El Ghazi	4	4	3	0	2051
+177	Aston Villa	2019/20	4	41	67	35	FB	0.01843	78		Frederic Guilbert	0	2	7	0	2041
+177	Aston Villa	2019/20	4	41	67	35	CB	0.07371	71		Ezri Konsa	1	2	3	0	2039
+177	Aston Villa	2019/20	4	41	67	35	Winger	0.24669	76		Trézéguet	6	1	4	1	1950
+177	Aston Villa	2019/20	4	41	67	35	DM	0.00647	76		Marvelous Nakamba	0	0	5	0	1836
+177	Aston Villa	2019/20	4	41	67	35	GK	0.0	76	65.7	Tom Heaton	0	0	0	0	1794
+196	Valencia	2022/23	5	42	45	42	GK	0.0	78	70.0	Giorgi Mamardashvili	0	0	3	0	3420
+196	Valencia	2022/23	5	42	45	42	Winger	0.27184	74		Samuel Lino	6	1	4	0	2887
+196	Valencia	2022/23	5	42	45	42	FB	0.05365	82		José Luis Gayà	1	3	4	0	2709
+196	Valencia	2022/23	5	42	45	42	CAM	0.05565	80		André Almeida	2	4	3	0	2539
+196	Valencia	2022/23	5	42	45	42	CB	0.11487	75		Mouctar Diakhaby	3	0	7	1	2446
+196	Valencia	2022/23	5	42	45	42	CM	0.09286	76		Yunus Musah	0	2	10	1	2110
+196	Valencia	2022/23	5	42	45	42	FB	0.01281	78		Thierry Correia	0	0	5	0	2009
+196	Valencia	2022/23	5	42	45	42	FB	0.00513	75		Dimitri Foulquier	0	2	4	0	1738
+196	Valencia	2022/23	5	42	45	42	CB	0.02019	77		Eray Cömert	1	0	5	1	1672
+196	Valencia	2022/23	5	42	45	42	DM	0.01175	78		Hugo Guillamón	1	4	5	0	1632
+196	Valencia	2022/23	5	42	45	42	CB	0.07199	78		Gabriel Paulista	1	0	4	2	1504
+229	Granada	2020/21	5	47	65	46	GK	0.0	77	59.0	Rui Silva	0	0	1	0	2880
+229	Granada	2020/21	5	47	65	46	FB	0.02521	75		Dimitri Foulquier	0	4	7	0	2663
+229	Granada	2020/21	5	47	65	46	CB	0.08771	76		Germán Sánchez	3	1	11	1	2638
+229	Granada	2020/21	5	47	65	46	CB	0.03725	75		Domingos Duarte	1	0	5	1	2363
+229	Granada	2020/21	5	47	65	46	CM	0.13866	78		Yangel Herrera	3	1	7	0	2310
+229	Granada	2020/21	5	47	65	46	Winger	0.14408	79		Antonio Puertas	3	5	6	0	2170
+229	Granada	2020/21	5	47	65	46	Winger	0.21185	82		Darwin Machís	4	5	1	0	2026
+229	Granada	2020/21	5	47	65	46	FB	0.03581	75		Carlos Neva	0	0	1	0	1797
+229	Granada	2020/21	5	47	65	46	ST	0.29182	78		Luis Suárez	5	1	6	0	1666
+229	Granada	2020/21	5	47	65	46	ST	0.29056	80		Jorge Molina	8	2	3	0	1615
+229	Granada	2020/21	5	47	65	46	DM	0.00602	78		Maxime Gonalons	0	1	7	1	1480
+216	Mallorca	2021/22	5	36	63	39	CB	0.00888	74		Martin Valjent	0	0	4	0	3181
+216	Mallorca	2021/22	5	36	63	39	FB	0.05544	78		Pablo Maffeo	1	4	10	0	2945
+216	Mallorca	2021/22	5	36	63	39	CAM	0.10703	77		Dani Rodríguez	3	3	7	0	2832
+216	Mallorca	2021/22	5	36	63	39	FB	0.04255	74		Brian Oliván	1	0	7	0	2189
+216	Mallorca	2021/22	5	36	63	39	CM	0.0859	76		Iddrisu Baba	2	0	9	0	1934
+216	Mallorca	2021/22	5	36	63	39	GK	0.0	72	66.2	Manolo Reina	0	0	5	1	1890
+216	Mallorca	2021/22	5	36	63	39	FB	0.04062	76		Jaume Costa	0	4	5	1	1828
+216	Mallorca	2021/22	5	36	63	39	CM	0.08961	76		Antonio Sánchez	1	0	3	1	1616
+216	Mallorca	2021/22	5	36	63	39	Winger	0.16637	70		Takefusa Kubo	1	0	4	0	1605
+216	Mallorca	2021/22	5	36	63	39	ST	0.24721	76		Ángel Rodríguez	3	2	4	0	1544
+216	Mallorca	2021/22	5	36	63	39	CB	0.07059	72		Antonio Raillo	2	0	8	0	1530
+250	Osasuna	2019/20	5	46	54	52	FB	0.03961	80		Pervis Estupiñán	1	5	8	0	2979
+250	Osasuna	2019/20	5	46	54	52	CB	0.02861	76		David García	0	0	7	0	2793
+250	Osasuna	2019/20	5	46	54	52	CAM	0.15711	80		Roberto Torres	7	8	1	0	2717
+250	Osasuna	2019/20	5	46	54	52	CB	0.087	76		Aridane Hernández	3	0	8	0	2610
+250	Osasuna	2019/20	5	46	54	52	FB	0.03508	77		Nacho Vidal	0	0	5	0	2332
+250	Osasuna	2019/20	5	46	54	52	DM	0.08802	77		Oier Sanjurjo	2	1	15	1	2320
+250	Osasuna	2019/20	5	46	54	52	CM	0.06262	74		Darko Brašanac	0	1	8	0	2245
+250	Osasuna	2019/20	5	46	54	52	Winger	0.27234	79		Rubén García	8	2	6	0	2188
+250	Osasuna	2019/20	5	46	54	52	GK	0.0	76	66.3	Sergio Herrera	0	0	2	1	1655
+250	Osasuna	2019/20	5	46	54	52	ST	0.46838	81		Ezequiel Ávila	9	2	6	0	1591
+250	Osasuna	2019/20	5	46	54	52	GK	0.0	73	54.7	Rubén	0	0	0	0	1583
+231	Osasuna	2020/21	5	37	48	44	CB	0.045	79		David García	1	0	8	0	3150
+231	Osasuna	2020/21	5	37	48	44	GK	0.0	80	66.9	Sergio Herrera	0	0	2	0	2958
+231	Osasuna	2020/21	5	37	48	44	Winger	0.05987	80		Rubén García	3	5	2	0	2718
+231	Osasuna	2020/21	5	37	48	44	CM	0.03962	74		Jon Moncayola	2	0	7	1	2660
+231	Osasuna	2020/21	5	37	48	44	FB	0.02714	77		Nacho Vidal	0	0	10	0	2348
+231	Osasuna	2020/21	5	37	48	44	DM	0.04712	76		Oier Sanjurjo	0	2	10	0	2084
+231	Osasuna	2020/21	5	37	48	44	CB	0.00338	77		Aridane Hernández	0	0	3	1	2026
+231	Osasuna	2020/21	5	37	48	44	FB	0.00188	73		Juan Cruz Armada	0	0	4	0	1962
+231	Osasuna	2020/21	5	37	48	44	CAM	0.11523	76		Roberto Torres	7	1	0	0	1894
+231	Osasuna	2020/21	5	37	48	44	ST	0.54991	80		Ante Budimir	11	0	3	0	1625
+231	Osasuna	2020/21	5	37	48	44	DM	0.09465	75		Lucas Torró	0	1	4	0	1548
+211	Celta Vigo	2021/22	5	43	43	46	GK	0.00116	78	68.1	Matías Dituro	0	0	1	0	3420
+211	Celta Vigo	2021/22	5	43	43	46	FB	0.01203	81		Javi Galán	0	3	8	0	3298
+211	Celta Vigo	2021/22	5	43	43	46	ST	0.31711	85		Iago Aspas	18	5	9	0	3087
+211	Celta Vigo	2021/22	5	43	43	46	CAM	0.12912	80		Brais Méndez	4	5	8	0	3021
+211	Celta Vigo	2021/22	5	43	43	46	CAM	0.07567	80		Denis Suárez	4	6	4	0	2819
+211	Celta Vigo	2021/22	5	43	43	46	CB	0.00758	78		Joseph Aidoo	0	0	1	0	2637
+211	Celta Vigo	2021/22	5	43	43	46	CB	0.00801	75		Néstor Araujo	0	0	4	0	2617
+211	Celta Vigo	2021/22	5	43	43	46	CM	0.01421	77		Fran Beltrán	1	0	4	0	2597
+211	Celta Vigo	2021/22	5	43	43	46	ST	0.32357	79		Santi Mina	7	3	4	0	2367
+211	Celta Vigo	2021/22	5	43	43	46	FB	0.07866	77		Hugo Mallo	1	1	5	2	1826
+211	Celta Vigo	2021/22	5	43	43	46	Winger	0.14742	80		Franco Cervi	4	3	5	0	1801
+207	Villarreal	2021/22	5	63	37	59	GK	0.0	82	72.3	Gerónimo Rulli	0	0	2	0	2880
+207	Villarreal	2021/22	5	63	37	59	CB	0.1516	82		Pau Torres	5	1	5	0	2855
+207	Villarreal	2021/22	5	63	37	59	CM	0.02473	86		Daniel Parejo	2	10	3	0	2704
+207	Villarreal	2021/22	5	63	37	59	CB	0.01398	80		Raúl Albiol	0	0	8	0	2465
+207	Villarreal	2021/22	5	63	37	59	DM	0.02562	78		Étienne Capoue	1	1	9	0	2290
+207	Villarreal	2021/22	5	63	37	59	CM	0.25988	80		Manu Trigueros	6	4	3	0	2178
+207	Villarreal	2021/22	5	63	37	59	CB	0.04771	80		Juan Foyth	1	1	6	1	1924
+207	Villarreal	2021/22	5	63	37	59	FB	0.08529	79		Alfonso Pedraza	4	4	2	0	1701
+207	Villarreal	2021/22	5	63	37	59	Winger	0.38676	79		Yéremy Pino	6	4	2	0	1678
+207	Villarreal	2021/22	5	63	37	59	FB	0.0476	79		Pervis Estupiñán	0	1	3	0	1575
+207	Villarreal	2021/22	5	63	37	59	Winger	0.64767	83		Arnaut Danjuma	10	3	1	0	1472
+205	Real Betis	2021/22	5	62	40	65	CAM	0.17072	85		Nabil Fekir	6	8	7	1	2794
+205	Real Betis	2021/22	5	62	40	65	CAM	0.12779	83		Sergio Canales	5	8	6	0	2791
+205	Real Betis	2021/22	5	62	40	65	DM	0.04712	80		Guido Rodríguez	1	2	9	1	2529
+205	Real Betis	2021/22	5	62	40	65	FB	0.1347	81		Álex Moreno	5	3	3	1	2404
+205	Real Betis	2021/22	5	62	40	65	Winger	0.43028	80		Juanmi	16	4	5	0	2131
+205	Real Betis	2021/22	5	62	40	65	CB	0.0662	81		Marc Bartra	1	0	5	0	1993
+205	Real Betis	2021/22	5	62	40	65	CB	0.07366	78		Germán Pezzella	1	0	5	1	1988
+205	Real Betis	2021/22	5	62	40	65	FB	0.02169	79		Héctor Bellerín	0	2	2	1	1979
+205	Real Betis	2021/22	5	62	40	65	GK	0.0	81	72.4	Rui Silva	0	0	2	0	1964
+205	Real Betis	2021/22	5	62	40	65	DM	0.15238	81		William Carvalho	2	3	6	0	1805
+205	Real Betis	2021/22	5	62	40	65	ST	0.24627	82		Willian José	9	4	2	0	1604
+202	Barcelona	2021/22	5	68	38	73	DM	0.01593	82		Sergio Busquets	2	0	12	0	3198
+202	Barcelona	2021/22	5	68	38	73	GK	0.0	86	67.9	Marc-André ter Stegen	0	0	3	0	3150
+202	Barcelona	2021/22	5	68	38	73	FB	0.04047	85		Jordi Alba	2	10	11	0	2644
+202	Barcelona	2021/22	5	68	38	73	CM	0.16906	85		Frenkie de Jong	3	3	7	1	2476
+202	Barcelona	2021/22	5	68	38	73	CM	0.17293	80		Gavi	2	5	11	1	2316
+202	Barcelona	2021/22	5	68	38	73	CB	0.07087	82		Ronald Araújo	4	0	6	0	2272
+202	Barcelona	2021/22	5	68	38	73	CB	0.07632	82		Gerard Piqué	1	0	10	1	2092
+202	Barcelona	2021/22	5	68	38	73	CB	0.01907	78		Eric García	0	0	5	1	2039
+202	Barcelona	2021/22	5	68	38	73	ST	0.39588	85		Memphis	12	2	3	0	1851
+202	Barcelona	2021/22	5	68	38	73	FB	0.09232	76		Sergiño Dest	0	3	2	0	1512
+202	Barcelona	2021/22	5	68	38	73	ST	0.43763	80		Ferran Torres	4	4	1	0	1412
+218	Granada	2021/22	5	44	61	38	GK	0.0	76	68.2	Luís Maximiano	0	0	2	0	3136
+218	Granada	2021/22	5	44	61	38	ST	0.27595	79		Luis Suárez	8	4	6	0	2844
+218	Granada	2021/22	5	44	61	38	CM	0.03661	79		Luis Milla	3	3	4	0	2773
+218	Granada	2021/22	5	44	61	38	FB	0.02551	74		Quini	0	1	11	0	2304
+218	Granada	2021/22	5	44	61	38	CB	0.05993	74		Germán Sánchez	2	1	11	1	2299
+218	Granada	2021/22	5	44	61	38	Winger	0.19214	75		Antonio Puertas	6	1	4	0	2261
+218	Granada	2021/22	5	44	61	38	FB	0.04363	75		Carlos Neva	0	0	1	0	2108
+218	Granada	2021/22	5	44	61	38	ST	0.30923	83		Jorge Molina	10	5	2	0	1966
+218	Granada	2021/22	5	44	61	38	CB	0.0398	74		Domingos Duarte	1	0	7	1	1687
+218	Granada	2021/22	5	44	61	38	DM	0.01603	78		Maxime Gonalons	0	2	6	0	1550
+218	Granada	2021/22	5	44	61	38	FB	0.0477	74		Víctor Díaz	1	0	5	0	1500
+225	Real Sociedad	2020/21	5	59	38	62	GK	0.0	81	62.7	Álex Remiro	0	0	0	0	3420
+225	Real Sociedad	2020/21	5	59	38	62	CB	0.05183	78		Robin Le Normand	0	1	5	1	2747
+225	Real Sociedad	2020/21	5	59	38	62	ST	0.21076	85		Mikel Oyarzabal	11	8	1	0	2408
+225	Real Sociedad	2020/21	5	59	38	62	FB	0.02539	78		Andoni Gorosabel	0	1	3	0	2382
+225	Real Sociedad	2020/21	5	59	38	62	ST	0.60477	83		Alexander Isak	17	2	4	0	2340
+225	Real Sociedad	2020/21	5	59	38	62	Winger	0.25995	81		Portu	8	3	3	0	2184
+225	Real Sociedad	2020/21	5	59	38	62	CM	0.18071	84		Mikel Merino	2	4	5	0	2154
+225	Real Sociedad	2020/21	5	59	38	62	FB	0.067	80		Nacho Monreal	1	1	1	0	2082
+225	Real Sociedad	2020/21	5	59	38	62	CM	0.0154	76		Ander Guevara	1	1	5	0	2081
+225	Real Sociedad	2020/21	5	59	38	62	CB	0.06887	77		Igor Zubeldia	1	1	5	0	1959
+225	Real Sociedad	2020/21	5	59	38	62	CB	0.02761	77		Aritz Elustondo	1	0	5	0	1884
+213	Elche	2021/22	5	40	52	42	FB	0.01898	76		Johan Mojica	2	5	4	1	2855
+213	Elche	2021/22	5	40	52	42	CB	0.04077	74		Enzo Roco	1	0	10	0	2552
+213	Elche	2021/22	5	40	52	42	DM	0.01704	76		Omar Mascarell	0	0	6	0	2493
+213	Elche	2021/22	5	40	52	42	Winger	0.10222	79		Fidel	5	6	9	0	2261
+213	Elche	2021/22	5	40	52	42	GK	0.0	77	69.0	Édgar Badía	0	0	2	0	2160
+213	Elche	2021/22	5	40	52	42	FB	0.00131	75		Helibelton Palacios	0	0	6	0	1931
+213	Elche	2021/22	5	40	52	42	DM	0.0449	78		Gerard Gumbau	0	4	8	1	1890
+213	Elche	2021/22	5	40	52	42	CB	0.01245	71		Diego González	0	0	3	1	1793
+213	Elche	2021/22	5	40	52	42	ST	0.24725	81		Lucas Boyé	7	3	3	0	1713
+213	Elche	2021/22	5	40	52	42	Winger	0.25089	81		Pere Milla	8	3	4	0	1644
+213	Elche	2021/22	5	40	52	42	Winger	0.15518	77		Tete Morente	3	3	4	0	1632
+241	Real Madrid	2019/20	5	70	25	87	ST	0.50244	89		Karim Benzema	21	8	0	0	3141
+241	Real Madrid	2019/20	5	70	25	87	DM	0.12308	89		Casemiro	4	3	12	0	3088
+241	Real Madrid	2019/20	5	70	25	87	GK	0.00209	89	79.2	Thibaut Courtois	0	0	1	0	3060
+241	Real Madrid	2019/20	5	70	25	87	CB	0.18499	89		Sergio Ramos	11	0	10	0	3013
+241	Real Madrid	2019/20	5	70	25	87	CB	0.03766	85		Raphaël Varane	3	1	2	0	2822
+241	Real Madrid	2019/20	5	70	25	87	FB	0.09191	80		Dani Carvajal	1	5	11	0	2738
+241	Real Madrid	2019/20	5	70	25	87	CM	0.11342	87		Toni Kroos	4	5	2	0	2652
+241	Real Madrid	2019/20	5	70	25	87	CM	0.07151	87		Luka Modrić	3	7	7	1	1996
+241	Real Madrid	2019/20	5	70	25	87	CM	0.09387	83		Federico Valverde	2	5	1	0	1907
+241	Real Madrid	2019/20	5	70	25	87	FB	0.03189	83		Ferland Mendy	1	3	8	1	1809
+241	Real Madrid	2019/20	5	70	25	87	Winger	0.29732	77		Vinicius Júnior	3	1	4	0	1364
+203	Atlético Madrid	2021/22	5	65	43	71	GK	0.00124	85	60.2	Jan Oblak	0	0	2	0	3420
+203	Atlético Madrid	2021/22	5	65	43	71	Winger	0.13645	85		Yannick Carrasco	6	6	5	0	2583
+203	Atlético Madrid	2021/22	5	65	43	71	CM	0.02537	80		Koke	1	2	6	0	2508
+203	Atlético Madrid	2021/22	5	65	43	71	FB	0.0242	80		Marcos Llorente	0	2	5	0	2447
+203	Atlético Madrid	2021/22	5	65	43	71	CB	0.08572	83		Stefan Savić	0	0	12	0	2440
+203	Atlético Madrid	2021/22	5	65	43	71	CM	0.06418	82		Rodrigo De Paul	3	1	7	0	2151
+203	Atlético Madrid	2021/22	5	65	43	71	CB	0.05897	80		José María Giménez	1	1	7	0	2042
+203	Atlético Madrid	2021/22	5	65	43	71	DM	0.01812	82		Geoffrey Kondogbia	1	2	13	2	1882
+203	Atlético Madrid	2021/22	5	65	43	71	CB	0.09999	79		Mario Hermoso	2	1	6	1	1865
+203	Atlético Madrid	2021/22	5	65	43	71	ST	0.36504	84		Ángel Correa	12	5	3	1	1856
+203	Atlético Madrid	2021/22	5	65	43	71	ST	0.40478	84		Luis Suárez	11	2	7	0	1835
+215	Getafe	2021/22	5	33	41	39	GK	0.0	82	68.9	David Soria	0	0	4	0	3414
+215	Getafe	2021/22	5	33	41	39	CB	0.00546	79		Djené	0	1	11	1	3115
+215	Getafe	2021/22	5	33	41	39	CM	0.08801	79		Nemanja Maksimović	1	2	5	0	2936
+215	Getafe	2021/22	5	33	41	39	FB	0.10053	79		Mathías Olivera	1	3	10	0	2803
+215	Getafe	2021/22	5	33	41	39	ST	0.27048	82		Enes Ünal	16	1	8	0	2798
+215	Getafe	2021/22	5	33	41	39	FB	0.01537	78		Damián Suárez	0	3	13	0	2711
+215	Getafe	2021/22	5	33	41	39	CB	0.02831	76		Jorge Cuenca	1	0	6	2	2683
+215	Getafe	2021/22	5	33	41	39	CB	0.008	75		Stefan Mitrović	1	0	8	1	2667
+215	Getafe	2021/22	5	33	41	39	CM	0.03552	81		Mauro Arambarri	0	5	13	0	2663
+215	Getafe	2021/22	5	33	41	39	CM	0.07654	74		Carles Aleñá	1	2	6	1	2320
+215	Getafe	2021/22	5	33	41	39	ST	0.16159	74		Sandro Ramírez	3	0	7	0	1462
+201	Real Madrid	2021/22	5	80	31	86	GK	0.0	90	75.8	Thibaut Courtois	0	0	1	0	3240
+201	Real Madrid	2021/22	5	80	31	86	CB	0.07411	84		Éder Militão	1	2	5	0	3031
+201	Real Madrid	2021/22	5	80	31	86	Winger	0.48834	86		Vinicius Júnior	17	10	6	0	2690
+201	Real Madrid	2021/22	5	80	31	86	CB	0.07372	85		David Alaba	2	3	2	0	2642
+201	Real Madrid	2021/22	5	80	31	86	ST	0.57256	91		Karim Benzema	27	12	0	0	2593
+201	Real Madrid	2021/22	5	80	31	86	DM	0.08968	88		Casemiro	1	3	11	0	2569
+201	Real Madrid	2021/22	5	80	31	86	CM	0.09347	86		Toni Kroos	1	3	4	0	2103
+201	Real Madrid	2021/22	5	80	31	86	CM	0.05891	88		Luka Modrić	2	8	4	0	2032
+201	Real Madrid	2021/22	5	80	31	86	CM	0.05573	79		Federico Valverde	0	1	2	0	1833
+201	Real Madrid	2021/22	5	80	31	86	FB	0.10286	81		Lucas Vázquez	3	0	3	0	1833
+201	Real Madrid	2021/22	5	80	31	86	FB	0.07106	82		Ferland Mendy	2	1	4	0	1734
+210	Osasuna	2021/22	5	37	51	47	GK	0.0	77	67.3	Sergio Herrera	0	0	3	0	3240
+210	Osasuna	2021/22	5	37	51	47	CB	0.0487	78		David García	4	0	8	0	3105
+210	Osasuna	2021/22	5	37	51	47	CM	0.0753	75		Jon Moncayola	2	3	2	0	2915
+210	Osasuna	2021/22	5	37	51	47	FB	0.03421	77		Nacho Vidal	0	1	9	0	2902
+210	Osasuna	2021/22	5	37	51	47	DM	0.06939	77		Lucas Torró	1	0	10	0	2725
+210	Osasuna	2021/22	5	37	51	47	CM	0.06077	76		Darko Brašanac	1	2	8	0	2405
+210	Osasuna	2021/22	5	37	51	47	Winger	0.08416	80		Rubén García	1	6	1	0	2375
+210	Osasuna	2021/22	5	37	51	47	FB	0.02153	76		Manu Sánchez	1	3	6	0	2257
+210	Osasuna	2021/22	5	37	51	47	FB	0.00759	73		Juan Cruz Armada	0	0	4	0	1934
+210	Osasuna	2021/22	5	37	51	47	ST	0.20464	78		Ezequiel Ávila	6	1	9	1	1870
+210	Osasuna	2021/22	5	37	51	47	Winger	0.29542	77		Kiké	5	1	2	0	1862
+206	Real Sociedad	2021/22	5	40	37	62	CB	0.05419	81		Robin Le Normand	1	1	6	0	3330
+206	Real Sociedad	2021/22	5	40	37	62	GK	0.0	82	71.2	Álex Remiro	0	0	1	0	3150
+206	Real Sociedad	2021/22	5	40	37	62	CM	0.15677	81		Mikel Merino	3	2	8	0	2890
+206	Real Sociedad	2021/22	5	40	37	62	DM	0.09101	78		Martín Zubimendi	2	1	4	0	2591
+206	Real Sociedad	2021/22	5	40	37	62	FB	0.01938	78		Andoni Gorosabel	0	4	4	0	2289
+206	Real Sociedad	2021/22	5	40	37	62	ST	0.39167	78		Alexander Isak	6	2	6	0	2140
+206	Real Sociedad	2021/22	5	40	37	62	CB	0.09355	82		Aritz Elustondo	4	1	3	1	2105
+206	Real Sociedad	2021/22	5	40	37	62	ST	0.34892	76		Alexander Sørloth	4	0	2	0	1763
+206	Real Sociedad	2021/22	5	40	37	62	CAM	0.13333	82		David Silva	2	4	4	1	1720
+206	Real Sociedad	2021/22	5	40	37	62	ST	0.30517	83		Mikel Oyarzabal	9	3	0	1	1671
+206	Real Sociedad	2021/22	5	40	37	62	CB	0.05008	78		Igor Zubeldia	0	1	7	0	1648
+244	Sevilla	2019/20	5	54	34	70	Winger	0.00681	83		Jesús Navas	0	7	4	0	3369
+244	Sevilla	2019/20	5	54	34	70	CB	0.05807	82		Diego Carlos	2	0	7	0	3134
+244	Sevilla	2019/20	5	54	34	70	GK	0.0	82	67.0	Tomáš Vaclík	0	0	0	0	2925
+244	Sevilla	2019/20	5	54	34	70	Winger	0.28456	83		Lucas Ocampos	14	3	10	1	2745
+244	Sevilla	2019/20	5	54	34	70	DM	0.09572	83		Fernando	2	3	13	0	2659
+244	Sevilla	2019/20	5	54	34	70	FB	0.08824	82		Sergio Reguilón	2	4	8	0	2509
+244	Sevilla	2019/20	5	54	34	70	CM	0.05825	83		Éver Banega	3	7	10	0	2475
+244	Sevilla	2019/20	5	54	34	70	FB	0.07577	78		Jules Koundé	1	1	6	0	2309
+244	Sevilla	2019/20	5	54	34	70	CM	0.08984	79		Joan Jordán	2	2	7	0	2254
+244	Sevilla	2019/20	5	54	34	70	ST	0.44475	78		Luuk de Jong	6	1	2	0	2059
+244	Sevilla	2019/20	5	54	34	70	CM	0.09034	79		Óliver Torres	3	3	5	0	1596
+232	Cádiz	2020/21	5	36	58	44	GK	0.0	75	62.2	Jeremías Ledesma	0	0	0	0	2880
+232	Cádiz	2020/21	5	36	58	44	CB	0.02041	74		Fali	0	0	11	0	2637
+232	Cádiz	2020/21	5	36	58	44	DM	0.03166	76		Jens Jønsson	0	0	6	0	2615
+232	Cádiz	2020/21	5	36	58	44	FB	0.0074	76		Alfonso Espino	0	3	6	0	2601
+232	Cádiz	2020/21	5	36	58	44	FB	0.01803	75		Isaac Carcelen	0	1	3	0	2581
+232	Cádiz	2020/21	5	36	58	44	CB	0.07273	73		Cala	3	0	8	0	2272
+232	Cádiz	2020/21	5	36	58	44	ST	0.2718	80		Álvaro Negredo	8	4	5	1	2198
+232	Cádiz	2020/21	5	36	58	44	CM	0.07372	75		Álex Fernández	4	1	1	0	1946
+232	Cádiz	2020/21	5	36	58	44	Winger	0.09033	72		Salvi	2	0	5	0	1933
+232	Cádiz	2020/21	5	36	58	44	CB	0.0682	71		Marcos Mauro	2	0	2	1	1825
+232	Cádiz	2020/21	5	36	58	44	Winger	0.10569	78		Alberto Perea	2	3	0	0	1549
+223	Barcelona	2020/21	5	85	38	79	CM	0.16054	86		Frenkie de Jong	3	4	5	0	3154
+223	Barcelona	2020/21	5	85	38	79	FB	0.07739	86		Jordi Alba	3	5	9	0	3025
+223	Barcelona	2020/21	5	85	38	79	Winger	0.68356	93		Lionel Messi	30	9	4	0	3023
+223	Barcelona	2020/21	5	85	38	79	GK	0.00181	90	70.9	Marc-André ter Stegen	0	0	1	0	2790
+223	Barcelona	2020/21	5	85	38	79	ST	0.37818	85		Antoine Griezmann	13	7	4	0	2604
+223	Barcelona	2020/21	5	85	38	79	DM	0.01781	86		Sergio Busquets	0	5	9	0	2517
+223	Barcelona	2020/21	5	85	38	79	CB	0.08742	81		Clément Lenglet	1	0	11	2	2475
+223	Barcelona	2020/21	5	85	38	79	CM	0.18757	81		Pedri	3	3	2	0	2415
+223	Barcelona	2020/21	5	85	38	79	FB	0.09151	73		Sergiño Dest	2	1	1	0	1909
+223	Barcelona	2020/21	5	85	38	79	FB	0.04597	77		Óscar Mingueza	2	2	4	0	1901
+223	Barcelona	2020/21	5	85	38	79	ST	0.30572	81		Ousmane Dembélé	6	3	2	0	1774
+239	Valladolid	2020/21	5	34	57	31	CAM	0.15161	79		Óscar Plano	5	5	1	1	2517
+239	Valladolid	2020/21	5	34	57	31	CB	0.00923	72		Bruno González	1	0	8	0	2263
+239	Valladolid	2020/21	5	34	57	31	GK	0.0	75	64.3	Jordi Masip	0	0	3	0	2250
+239	Valladolid	2020/21	5	34	57	31	CM	0.06597	76		Rubén Alcaraz	1	0	10	0	2165
+239	Valladolid	2020/21	5	34	57	31	Winger	0.11227	78		Fabián Orellana	6	2	5	0	2138
+239	Valladolid	2020/21	5	34	57	31	ST	0.24709	76		Shon Weissman	6	1	3	0	2133
+239	Valladolid	2020/21	5	34	57	31	CB	0.04268	75		Joaquín Fernández	1	0	8	0	2073
+239	Valladolid	2020/21	5	34	57	31	FB	0.03063	74		Nacho	0	1	3	1	1813
+239	Valladolid	2020/21	5	34	57	31	ST	0.16315	73		Sergi Guardiola	1	2	5	0	1795
+239	Valladolid	2020/21	5	34	57	31	CM	0.03976	76		Roque Mesa	1	0	4	1	1761
+239	Valladolid	2020/21	5	34	57	31	CM	0.00592	75		Fede San Emeterio	0	0	7	0	1460
+228	Celta Vigo	2020/21	5	55	57	53	ST	0.26833	84		Iago Aspas	14	13	9	0	2864
+228	Celta Vigo	2020/21	5	55	57	53	CAM	0.0296	80		Denis Suárez	0	9	10	0	2852
+228	Celta Vigo	2020/21	5	55	57	53	DM	0.03922	79		Renato Tapia	0	1	11	0	2701
+228	Celta Vigo	2020/21	5	55	57	53	CB	0.02324	76		Jeison Murillo	2	0	11	1	2699
+228	Celta Vigo	2020/21	5	55	57	53	CAM	0.24379	78		Brais Méndez	9	0	8	0	2671
+228	Celta Vigo	2020/21	5	55	57	53	FB	0.08723	78		Hugo Mallo	3	1	8	0	2602
+228	Celta Vigo	2020/21	5	55	57	53	Winger	0.24203	79		Nolito	7	5	7	0	2597
+228	Celta Vigo	2020/21	5	55	57	53	CB	0.01072	76		Néstor Araujo	0	0	5	0	2426
+228	Celta Vigo	2020/21	5	55	57	53	ST	0.32138	81		Santi Mina	12	3	4	0	2412
+228	Celta Vigo	2020/21	5	55	57	53	GK	0.0	72	61.0	Iván Villar	0	0	1	0	1781
+228	Celta Vigo	2020/21	5	55	57	53	GK	0.0	73	55.7	Rubén Blanco	0	0	0	1	1637
+222	Real Madrid	2020/21	5	67	28	84	GK	0.0	89	75.9	Thibaut Courtois	0	0	0	0	3420
+222	Real Madrid	2020/21	5	67	28	84	DM	0.20755	89		Casemiro	6	4	11	1	2901
+222	Real Madrid	2020/21	5	67	28	84	ST	0.58189	89		Karim Benzema	23	9	2	0	2894
+222	Real Madrid	2020/21	5	67	28	84	CM	0.08506	86		Luka Modrić	5	3	4	0	2733
+222	Real Madrid	2020/21	5	67	28	84	CB	0.09043	85		Raphaël Varane	2	0	2	0	2715
+222	Real Madrid	2020/21	5	67	28	84	FB	0.03428	82		Ferland Mendy	1	0	3	0	2208
+222	Real Madrid	2020/21	5	67	28	84	CM	0.09825	88		Toni Kroos	3	10	6	0	2117
+222	Real Madrid	2020/21	5	67	28	84	CB	0.05854	81		Nacho	1	0	8	0	2000
+222	Real Madrid	2020/21	5	67	28	84	Winger	0.31182	76		Vinicius Júnior	3	3	3	0	1969
+222	Real Madrid	2020/21	5	67	28	84	CAM	0.19912	80		Marco Asensio	5	2	1	0	1869
+222	Real Madrid	2020/21	5	67	28	84	FB	0.09716	82		Lucas Vázquez	2	5	3	0	1848
+233	Valencia	2020/21	5	50	53	43	CM	0.07118	79		Daniel Wass	4	1	8	0	2979
+233	Valencia	2020/21	5	50	53	43	FB	0.06144	83		José Luis Gayà	1	7	6	0	2846
+233	Valencia	2020/21	5	50	53	43	CM	0.08951	82		Carlos Soler	11	8	7	0	2735
+233	Valencia	2020/21	5	50	53	43	CB	0.03102	81		Gabriel Paulista	4	1	6	0	2716
+233	Valencia	2020/21	5	50	53	43	ST	0.22264	76		Maxi Gómez	7	1	7	1	2689
+233	Valencia	2020/21	5	50	53	43	GK	0.0	77	67.7	Jaume Doménech	0	0	1	0	2520
+233	Valencia	2020/21	5	50	53	43	Winger	0.12007	81		Gonçalo Guedes	5	5	3	1	2287
+233	Valencia	2020/21	5	50	53	43	DM	0.06527	75		Uroš Račić	1	1	6	0	2187
+233	Valencia	2020/21	5	50	53	43	FB	0.01516	76		Thierry Correia	1	1	6	1	2137
+233	Valencia	2020/21	5	50	53	43	CB	0.07143	72		Mouctar Diakhaby	1	0	4	1	2079
+233	Valencia	2020/21	5	50	53	43	DM	0.02268	73		Hugo Guillamón	1	0	8	0	1988
+234	Levante	2020/21	5	46	57	41	FB	0.00861	77		Carlos Clerc	0	3	5	0	2781
+234	Levante	2020/21	5	46	57	41	GK	0.0	77	63.9	Aitor Fernández	0	0	0	0	2610
+234	Levante	2020/21	5	46	57	41	ST	0.26055	80		José Luis Morales	13	3	3	0	2439
+234	Levante	2020/21	5	46	57	41	DM	0.04492	77		Mickael Malsa	1	0	5	0	2338
+234	Levante	2020/21	5	46	57	41	CB	0.01022	77		Rúben Vezo	1	0	7	0	2316
+234	Levante	2020/21	5	46	57	41	ST	0.26906	82		Roger Martí	12	4	4	0	2198
+234	Levante	2020/21	5	46	57	41	Winger	0.15649	80		Jorge de Frutos	4	9	3	0	2186
+234	Levante	2020/21	5	46	57	41	CB	0.03543	73		Óscar Duarte	1	0	2	0	2060
+234	Levante	2020/21	5	46	57	41	CM	0.18782	78		Gonzalo Melero	7	1	4	0	1853
+234	Levante	2020/21	5	46	57	41	Winger	0.0238	75		Jorge Miramón	0	3	1	0	1732
+234	Levante	2020/21	5	46	57	41	CAM	0.15068	77		Enis Bardhi	1	2	4	0	1682
+253	Valladolid	2019/20	5	32	43	42	GK	0.0	81	69.0	Jordi Masip	0	0	2	0	3150
+253	Valladolid	2019/20	5	32	43	42	CB	0.0433	77		Kiko Olivas	2	0	2	0	2943
+253	Valladolid	2019/20	5	32	43	42	CB	0.0395	77		Mohammed Salisu	1	1	4	0	2725
+253	Valladolid	2019/20	5	32	43	42	ST	0.20664	79		Sergi Guardiola	8	2	6	0	2655
+253	Valladolid	2019/20	5	32	43	42	CAM	0.1481	78		Óscar Plano	4	2	6	0	2505
+253	Valladolid	2019/20	5	32	43	42	ST	0.27407	79		Enes Ünal	6	2	4	0	2344
+253	Valladolid	2019/20	5	32	43	42	FB	0.01156	73		Javi Moyano	0	0	4	0	2227
+253	Valladolid	2019/20	5	32	43	42	CM	0.01959	78		Míchel	1	2	6	0	2178
+253	Valladolid	2019/20	5	32	43	42	CM	0.09635	78		Rubén Alcaraz	2	2	10	0	1927
+253	Valladolid	2019/20	5	32	43	42	FB	0.01055	78		Nacho	0	2	2	0	1893
+253	Valladolid	2019/20	5	32	43	42	CM	0.0019	74		Fede San Emeterio	0	0	4	0	1751
