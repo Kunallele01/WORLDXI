@@ -106,6 +106,12 @@ internal fun AuthScreen(
             color = OnSurfaceFaint,
         )
 
+        // Until the stored session has been looked for, the screen is the title
+        // and nothing else — which is what the intro just ended on, so a
+        // returning player sees one continuous hand-over instead of a sign-in
+        // form appearing and vanishing.
+        if (!state.checked) return@Column
+
         Spacer(Modifier.height(44.dp))
         ModeSwitch(state.mode, onSetMode, enabled = !state.inFlight)
         Spacer(Modifier.height(24.dp))
@@ -220,13 +226,13 @@ private fun Divider() {
 @Preview(name = "Sign in", showBackground = true, backgroundColor = 0xFF0C0D0F, heightDp = 800)
 @Composable
 private fun AuthSignInPreview() = DreamXITheme {
-    AuthScreen(AuthUiState(email = "kunal@example.com", password = "secret123"), {}, {}, {}, {}, {})
+    AuthScreen(AuthUiState(email = "kunal@example.com", password = "secret123", checked = true), {}, {}, {}, {}, {})
 }
 
 @Preview(name = "Create account", showBackground = true, backgroundColor = 0xFF0C0D0F, heightDp = 800)
 @Composable
 private fun AuthCreatePreview() = DreamXITheme {
-    AuthScreen(AuthUiState(mode = AuthMode.CreateAccount), {}, {}, {}, {}, {})
+    AuthScreen(AuthUiState(mode = AuthMode.CreateAccount, checked = true), {}, {}, {}, {}, {})
 }
 
 @Preview(name = "Rejected", showBackground = true, backgroundColor = 0xFF0C0D0F, heightDp = 800)
@@ -237,6 +243,7 @@ private fun AuthErrorPreview() = DreamXITheme {
             email = "kunal@example.com",
             password = "wrong",
             formError = "Invalid login credentials",
+            checked = true,
         ),
         {}, {}, {}, {}, {},
     )

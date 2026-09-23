@@ -24,6 +24,15 @@ data class AuthUiState(
     val formError: String? = null,
     /** Set once there is a session; the screen's caller moves on. */
     val done: Boolean = false,
+    /**
+     * False until we know whether this device already has an account.
+     *
+     * The form must not be drawn before that is settled. Drawing it first and
+     * navigating a moment later flashed a sign-in screen at every returning
+     * player, which reads as the app glitching — and, worse, looks exactly like
+     * it signed them in without asking.
+     */
+    val checked: Boolean = false,
 ) {
     val canSubmit: Boolean get() = !inFlight && email.isNotBlank() && password.isNotBlank()
 }
@@ -42,7 +51,8 @@ class AuthViewModel @Inject constructor(
         // ensureSession, because ensureSession would TAKE a guest session and
         // wave everyone straight past the front door on their first launch.
         viewModelScope.launch {
-            if (session.hasSession()) _state.update { it.copy(done = true) }
+            val existing = runCatching { session.hasSession() }.getOrDefault(false)
+            _state.update { it.copy(checked = true, done = existing) }
         }
     }
 
