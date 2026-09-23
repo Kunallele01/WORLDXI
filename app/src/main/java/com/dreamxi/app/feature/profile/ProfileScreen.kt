@@ -142,9 +142,13 @@ internal fun ProfileScreen(
                     }
                 } else if (state.awaitingConfirmation) {
                     item { AwaitingConfirmation(state.account?.pendingEmail.orEmpty(), onOpenAttach) }
-                } else if (state.warnRunsAreLocal) {
-                    item { LocalOnlyWarning(state.runs.size, onOpenAttach) }
-                } else if (state.account?.isGuest == false) {
+                } else if (state.account?.isGuest != false) {
+                    // EVERY guest gets this, not only one with runs to lose. A
+                    // guest with nothing saved used to see no account block at
+                    // all, which left him with no way to sign in, no way to
+                    // leave, and nothing on screen admitting he was a guest.
+                    item { GuestBlock(state.runs.size, onOpenAttach, onSignIn) }
+                } else {
                     item { SignedIn(state.account.email.orEmpty(), state.justAttached, onSignOut) }
                 }
 
@@ -262,39 +266,69 @@ private fun Stat(label: String, value: String, modifier: Modifier = Modifier) {
 }
 
 @Composable
-private fun LocalOnlyWarning(count: Int, onOpenAttach: () -> Unit) {
+private fun GuestBlock(runs: Int, onOpenAttach: () -> Unit, onSignIn: () -> Unit) {
+    val hasRuns = runs > 0
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(14.dp))
             .background(SurfaceRaised1)
-            .border(1.dp, ResultLoss.copy(alpha = 0.5f), RoundedCornerShape(14.dp))
+            .border(
+                width = 1.dp,
+                // Red only when there is something to lose. A guest who has not
+                // finished a run yet is being told how it works, not warned.
+                color = if (hasRuns) ResultLoss.copy(alpha = 0.5f) else OutlineSubtle,
+                shape = RoundedCornerShape(14.dp),
+            )
             .padding(16.dp),
     ) {
         Text(
-            text = "THESE RUNS ARE ONLY ON THIS PHONE",
+            text = if (hasRuns) "THESE RUNS ARE ONLY ON THIS PHONE" else "PLAYING AS A GUEST",
             style = MaterialTheme.typography.labelSmall,
             letterSpacing = 1.sp,
-            color = ResultLoss,
+            color = if (hasRuns) ResultLoss else AccentGold,
         )
         Spacer(Modifier.height(8.dp))
         Text(
-            text = if (count == 1) {
-                "Your run is saved to this device's account. Uninstall the app or lose " +
-                    "the phone and it goes with it. Add an email and it follows you."
-            } else {
-                "All $count runs are saved to this device's account. Uninstall the app " +
-                    "or lose the phone and they go with it. Add an email and they follow you."
+            text = when {
+                runs == 1 ->
+                    "Your run is saved to this device's account. Uninstall the app or " +
+                        "lose the phone and it goes with it. Add an email and it follows you."
+                hasRuns ->
+                    "All $runs runs are saved to this device's account. Uninstall the app " +
+                        "or lose the phone and they go with it. Add an email and they follow you."
+                else ->
+                    "Everything you play is saved, but only to this phone. Add an email " +
+                        "and it follows you to any device you sign in on."
             },
             style = MaterialTheme.typography.bodyMedium,
             color = OnSurfaceMuted,
         )
         Spacer(Modifier.height(14.dp))
         DreamXiPrimaryButton(
-            text = "Keep my runs",
+            text = if (hasRuns) "Keep my runs" else "Add an email",
             onClick = onOpenAttach,
             modifier = Modifier.fillMaxWidth(),
         )
+        Spacer(Modifier.height(10.dp))
+        // The way OUT of a guest account, which nothing on this screen used to
+        // offer: sign-out is only shown to a real account, so a guest could
+        // neither leave nor sign into an account he already had.
+        DreamXiSecondaryButton(
+            text = "Sign in to another account",
+            onClick = onSignIn,
+            modifier = Modifier.fillMaxWidth(),
+        )
+        if (hasRuns) {
+            Spacer(Modifier.height(6.dp))
+            Text(
+                text = "Signing in leaves these runs with the guest account.",
+                style = MaterialTheme.typography.labelSmall,
+                color = OnSurfaceFaint,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.fillMaxWidth(),
+            )
+        }
     }
 }
 
