@@ -128,6 +128,8 @@ internal fun ProfileScreen(
                             onCancel = onCancelAttach,
                         )
                     }
+                } else if (state.awaitingConfirmation) {
+                    item { AwaitingConfirmation(state.account?.pendingEmail.orEmpty()) }
                 } else if (state.warnRunsAreLocal) {
                     item { LocalOnlyWarning(state.runs.size, onOpenAttach) }
                 } else if (state.account?.isGuest == false) {
@@ -171,12 +173,18 @@ private fun Header(account: PlayerAccount?, onBack: () -> Unit) {
         Spacer(Modifier.size(12.dp))
         Column(Modifier.weight(1f)) {
             Text(
-                text = account?.email?.substringBefore("@") ?: "Guest",
+                text = account?.email?.substringBefore("@")
+                ?: account?.pendingEmail?.substringBefore("@")
+                ?: "Guest",
                 style = MaterialTheme.typography.titleLarge,
                 color = OnSurfacePrimary,
             )
             Text(
-                text = account?.email ?: "This phone only",
+                text = when {
+                account?.email != null -> account.email
+                !account?.pendingEmail.isNullOrBlank() -> "Confirmation pending"
+                else -> "This phone only"
+            },
                 style = MaterialTheme.typography.labelSmall,
                 color = OnSurfaceFaint,
             )
@@ -274,6 +282,46 @@ private fun LocalOnlyWarning(count: Int, onOpenAttach: () -> Unit) {
             text = "Keep my runs",
             onClick = onOpenAttach,
             modifier = Modifier.fillMaxWidth(),
+        )
+    }
+}
+
+/**
+ * Given an address, waiting on the click.
+ *
+ * This project requires email confirmation, so an attached address does nothing
+ * until the link is used — the account keeps no email at all in the meantime.
+ * Saying "your runs are safe" at that point would be a lie, and saying "these
+ * runs are only on this phone" with no explanation looks like the attach
+ * failed. It is its own state because it IS its own state.
+ */
+@Composable
+private fun AwaitingConfirmation(email: String) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(14.dp))
+            .background(SurfaceRaised1)
+            .border(1.dp, AccentGold.copy(alpha = 0.55f), RoundedCornerShape(14.dp))
+            .padding(16.dp),
+    ) {
+        Text(
+            text = "CONFIRM YOUR EMAIL",
+            style = MaterialTheme.typography.labelSmall,
+            letterSpacing = 1.sp,
+            color = AccentGold,
+        )
+        Spacer(Modifier.height(8.dp))
+        Text(
+            text = if (email.isBlank()) {
+                "We sent you a confirmation link. Until you open it, these runs are " +
+                    "still only on this phone."
+            } else {
+                "We sent a link to $email. Until you open it, these runs are still " +
+                    "only on this phone — the address is not attached to the account yet."
+            },
+            style = MaterialTheme.typography.bodyMedium,
+            color = OnSurfaceMuted,
         )
     }
 }

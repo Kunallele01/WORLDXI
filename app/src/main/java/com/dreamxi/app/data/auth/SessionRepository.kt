@@ -5,6 +5,7 @@ import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.auth.auth
 import io.github.jan.supabase.auth.providers.builtin.Email
 import io.github.jan.supabase.auth.status.SessionStatus
+import io.github.jan.supabase.auth.user.UserInfo
 import io.github.jan.supabase.postgrest.from
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -26,7 +27,21 @@ data class PlayerAccount(
      */
     val isGuest: Boolean,
     val email: String? = null,
-)
+    /**
+     * An address given but not yet confirmed.
+     *
+     * This project requires a confirmation click, so attaching an email does
+     * NOT take effect immediately: Supabase holds it aside and the account
+     * keeps no email at all until the link is used. Without this field the app
+     * had no way to tell "never gave an address" from "gave one, waiting on
+     * the email" — and told both of them they were still guests, straight
+     * after reporting success.
+     */
+    val pendingEmail: String? = null,
+) {
+    /** Something was given; it just is not live yet. */
+    val awaitingConfirmation: Boolean get() = isGuest && !pendingEmail.isNullOrBlank()
+}
 
 @Serializable
 private data class ProfileRow(
@@ -62,18 +77,30 @@ class SessionRepository @Inject constructor(
     /** The current account, or null before the first session is established. */
     val account: Flow<PlayerAccount?> =
         client.auth.sessionStatus.map { status ->
-            (status as? SessionStatus.Authenticated)?.session?.user?.let { user ->
-                PlayerAccount(
-                    userId = user.id,
-                    // An anonymous user has no way back in. Supabase marks it on
-                    // the JWT, but the honest test for "could this person ever
-                    // recover these runs" is whether there is anything to
-                    // recover them WITH.
-                    isGuest = user.email.isNullOrBlank(),
-                    email = user.email?.takeIf { it.isNotBlank() },
-                )
-            }
+            (status as? SessionStatus.Authenticated)?.session?.user?.let { it.toAccount() }
         }
+
+    private fun UserInfo.toAccount() = PlayerAccount(
+        userId = id,
+        // An anonymous user has no way back in. Supabase marks it on the JWT,
+        // but the honest test for "could this person ever recover these runs"
+        // is whether there is anything to recover them WITH — and an address
+        // still waiting on a confirmation click is not yet that.
+        isGuest = email.isNullOrBlank(),
+        email = email?.takeIf { it.isNotBlank() },
+        pendingEmail = newEmail?.takeIf { it.isNotBlank() },
+    )
+
+    /**
+     * Re-reads the user from the server and updates the stored session.
+     *
+     * Needed after attaching an email: the local session still holds the user
+     * as it was before, so without this the screen keeps showing what it showed
+     * a second ago and looks like nothing happened.
+     */
+    suspend fun refreshUser(): PlayerAccount? = runCatching {
+        client.auth.retrieveUserForCurrentSession(updateSession = true).toAccount()
+    }.getOrNull()
 
     /**
      * Whether this device already has an account, without creating one.
@@ -117,11 +144,7 @@ class SessionRepository @Inject constructor(
             client.from("profiles").upsert(ProfileRow(id = user.id))
         }.onFailure { Log.w(TAG, "could not write profile row", it) }
 
-        return PlayerAccount(
-            userId = user.id,
-            isGuest = user.email.isNullOrBlank(),
-            email = user.email?.takeIf { it.isNotBlank() },
-        )
+        return user.toAccount()
     }
 
     /**

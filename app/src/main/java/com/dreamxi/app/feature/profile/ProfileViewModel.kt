@@ -38,7 +38,11 @@ data class ProfileUiState(
      * dismissible: a warning you can wave away is one nobody reads twice, and
      * this one stays true until it is acted on.
      */
-    val warnRunsAreLocal: Boolean get() = account?.isGuest == true && runs.isNotEmpty()
+    val warnRunsAreLocal: Boolean
+        get() = account?.isGuest == true && account.pendingEmail.isNullOrBlank() && runs.isNotEmpty()
+
+    /** An address was given and the confirmation link has not been clicked yet. */
+    val awaitingConfirmation: Boolean get() = account?.awaitingConfirmation == true
 
     val canAttach: Boolean get() = !attachInFlight && email.isNotBlank() && password.isNotBlank()
 }
@@ -112,14 +116,22 @@ class ProfileViewModel @Inject constructor(
         }
         _state.update { it.copy(attachInFlight = true, attachError = null) }
         viewModelScope.launch {
-            runCatching { session.attachEmail(email, s.password) }
-                .onSuccess {
+            runCatching {
+                session.attachEmail(email, s.password)
+                // Re-read the user: the stored session still describes him as he
+                // was a moment ago, and without this the screen goes on saying
+                // "guest" straight after reporting success — which is exactly
+                // how this was reported.
+                session.refreshUser()
+            }
+                .onSuccess { refreshed ->
                     _state.update {
                         it.copy(
                             attachInFlight = false,
                             isAttaching = false,
                             justAttached = true,
                             password = "",
+                            account = refreshed ?: it.account,
                         )
                     }
                 }

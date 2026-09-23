@@ -57,6 +57,34 @@ class ProfileStateTest {
      * way back in, not by how the session was created. An account with an email
      * is recoverable; one without is not, whatever else is true of it.
      */
+    /**
+     * The state that broke this in the wild: an address given, the confirmation
+     * link not yet clicked. Supabase holds the address aside and the account
+     * keeps NO email until it is used, so both "signed in" and "guest with
+     * nothing" are wrong — one is a lie, the other looks like the attach failed.
+     */
+    @Test
+    fun `an address awaiting confirmation is neither signed in nor a plain guest`() {
+        val pending = PlayerAccount("u1", isGuest = true, pendingEmail = "a@b.com")
+        val state = ProfileUiState(isLoading = false, runs = listOf(run(1)), account = pending)
+        assertTrue("should say the email is pending", state.awaitingConfirmation)
+        assertFalse("the plain red warning would read as a failed attach", state.warnRunsAreLocal)
+    }
+
+    @Test
+    fun `a guest with no pending address still gets the plain warning`() {
+        val state = ProfileUiState(isLoading = false, runs = listOf(run(1)), account = guest)
+        assertTrue(state.warnRunsAreLocal)
+        assertFalse(state.awaitingConfirmation)
+    }
+
+    @Test
+    fun `a confirmed account is never waiting on anything`() {
+        val state = ProfileUiState(isLoading = false, runs = listOf(run(1)), account = attached)
+        assertFalse(state.awaitingConfirmation)
+        assertFalse(state.warnRunsAreLocal)
+    }
+
     @Test
     fun `an account is a guest exactly when it has no email`() {
         assertTrue(PlayerAccount("u", isGuest = true).isGuest)
