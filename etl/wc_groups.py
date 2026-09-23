@@ -50,7 +50,7 @@ class Standing:
         return self.goals_for - self.goals_against
 
 
-def _groups_of(matches: list[wc_fixtures.Match], edition: int) -> list[list[str]]:
+def groups_of(matches: list[wc_fixtures.Match], edition: int) -> list[list[str]]:
     rows = [
         m for m in matches
         if m.edition == edition and m.round == GROUP_ROUND and m.played
@@ -142,7 +142,7 @@ def _by_head_to_head(run: list[Standing]) -> list[Standing]:
 
 def bottom_teams(matches: list[wc_fixtures.Match], edition: int) -> list[str]:
     """The nation that finished last in each group — the takeover pool."""
-    return [table(matches, edition, g)[-1].team for g in _groups_of(matches, edition)]
+    return [table(matches, edition, g)[-1].team for g in groups_of(matches, edition)]
 
 
 def main() -> None:
@@ -151,7 +151,7 @@ def main() -> None:
 
     pool: dict[int, list[str]] = {}
     for edition in wc_fixtures.EDITIONS:
-        groups = _groups_of(matches, edition)
+        groups = groups_of(matches, edition)
         bottoms = bottom_teams(matches, edition)
         pool[edition] = bottoms
         print(f"\n=== World Cup {edition}: {len(groups)} groups ===")

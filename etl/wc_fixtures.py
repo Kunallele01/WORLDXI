@@ -35,6 +35,16 @@ EDITIONS = (2006, 2010, 2014, 2018, 2022, 2026)
 #: WC year -> the FIFA edition that rates it, under the same N+1 rule the club
 #: seasons use (the game released in the autumn of the tournament's year).
 RATING_EDITION = {2006: "07", 2010: "11", 2014: "15", 2018: "19", 2022: "23", 2026: "26"}
+#: Host nations, as the fixtures spell them. Hosts score x1.42 what the model
+#: expects (etl/wc_calibration.py), so the engine has to know.
+HOSTS = {
+    2006: frozenset({"Germany"}),
+    2010: frozenset({"South Africa"}),
+    2014: frozenset({"Brazil"}),
+    2018: frozenset({"Russia"}),
+    2022: frozenset({"Qatar"}),
+    2026: frozenset({"USA", "Canada", "Mexico"}),
+}
 #: Editions the mirror cannot supply scorelines for.
 FROM_TSV = frozenset({2022, 2026})
 
@@ -151,6 +161,34 @@ def load_all() -> list[Match]:
         )
     matches = load_mirror() + load_recent()
     return sorted(matches, key=lambda m: (m.edition, m.date, m.home))
+
+
+def with_shootout_scores(matches: list[Match]) -> list[Match]:
+    """
+    The same matches with every shootout's score filled in from the Wikipedia
+    parse (wikipedia/wc_events.json, written by wc_wikipedia.py).
+
+    The mirror records who won a 2006-2018 shootout but not the score, so 14
+    of the 23 shootouts would otherwise carry a winner and no score. The parse
+    only writes a score after checking it agrees with the winner recorded here.
+    """
+    import dataclasses
+    import json
+
+    path = HERE / "wikipedia" / "wc_events.json"
+    if not path.exists():
+        raise SystemExit(f"{path} is missing — run wc_wikipedia.py first")
+    scores = {
+        (s["edition"], s["date"], s["home"], s["away"]): (s["home_pens"], s["away_pens"])
+        for s in json.loads(path.read_text(encoding="utf-8")).get("shootouts", [])
+    }
+    out = []
+    for m in matches:
+        got = scores.get((m.edition, m.date, m.home, m.away))
+        if m.shootout_winner and m.pens_home is None and got:
+            m = dataclasses.replace(m, pens_home=got[0], pens_away=got[1])
+        out.append(m)
+    return out
 
 
 def participants(matches: list[Match], edition: int) -> set[str]:

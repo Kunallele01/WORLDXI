@@ -1,5 +1,5 @@
 """
-Puts FIFA ratings from editions 10-16 onto the FIFA 17+ scale.
+Puts FIFA ratings from editions 07 and 10-16 onto the FIFA 17+ scale.
 
 WHY THIS EXISTS. EA inflated its ratings between FIFA 15 and FIFA 17 and left
 them flat either side. Following the SAME players at prime age (26-29, when
@@ -120,6 +120,56 @@ def _excess(changes) -> dict[int, list[tuple[float, float, int]]]:
     return out
 
 
+#: Editions corrected by RANK rather than by following players, and why.
+#:
+#: FIFA 07 cannot be followed player to player: this table has no FIFA 08 or 09,
+#: and a prime-age player in 07 is 30-33 by FIFA 11, so any change would be
+#: ageing rather than scale. Running it through the same-player correction
+#: anyway (which it originally was, because that path covers "edition <= 15")
+#: added the FIFA 15-17 inflation to an edition that predates the FIFA 10-15
+#: deflation, and left FIFA 07's top bands 1.8-2.4 points ABOVE the modern
+#: scale — every 2006 World Cup squad came out the strongest of its era.
+#:
+#: So its correction is measured by comparing the player at each RANK with the
+#: modern editions' player at the same rank, on the grounds that the world's
+#: 200th-best footballer is about as good in any year. That method is checked
+#: where both exist: after the same-player correction, FIFA 15 and 16 sit within
+#: +/-0.4 of modern at every band by rank, so the two methods agree.
+RANK_MATCHED_EDITIONS = frozenset({7})
+MODERN_REFERENCE = range(17, 27)
+#: Only the top of FIFA 07 is compared. It rates 8,730 players against a modern
+#: ~18,000 because it covers fewer leagues, so deep in the list its rank-k man is
+#: a weaker player than the modern rank-k man and the gap measures coverage, not
+#: EA's scale (it reads +1.4 below rank ~1,000 against -0.6..+0.2 above). Ratings
+#: below the deepest band compared are held at that band's value, the same
+#: convention _interpolate uses beyond its outermost band everywhere else.
+RANK_DEPTH = 1000
+
+
+@lru_cache(maxsize=1)
+def _overalls_by_edition() -> dict[int, list[int]]:
+    out: dict[int, list[int]] = defaultdict(list)
+    with open(FIFA_CSV, encoding="utf-8") as fh:
+        for r in csv.DictReader(fh):
+            if r["overall"].isdigit():
+                out[int(r["edition"])].append(int(r["overall"]))
+    return {ed: sorted(v, reverse=True) for ed, v in out.items()}
+
+
+@lru_cache(maxsize=None)
+def rank_corrections(edition: int) -> list[tuple[float, float, int]]:
+    """Per band: (mean rating, modern rating at the same rank minus this one, n)."""
+    table = _overalls_by_edition()
+    modern = [table[e] for e in MODERN_REFERENCE if e in table]
+    target = table[edition]
+    depth = min(RANK_DEPTH, len(target), *(len(m) for m in modern))
+    points = []
+    for k in range(depth):
+        reference = sum(m[k] for m in modern) / len(modern)
+        points.append((float(target[k]), reference - target[k]))
+    return _band_means(points)
+
+
 @lru_cache(maxsize=1)
 def corrections() -> dict[int, list[tuple[float, float, int]]]:
     return _excess(_changes(_editions()))
@@ -143,6 +193,8 @@ def to_modern_scale(edition: int | str, rating: float) -> float:
     """A rating from `edition`, expressed on the FIFA 17+ scale. Unchanged for 17 and later."""
     ed = int(edition)
     value = float(rating)
+    if ed in RANK_MATCHED_EDITIONS:
+        return min(value + _interpolate(rank_corrections(ed), value), 99.0)
     table = corrections()
     for step in INFLATION_STEPS:
         if ed <= step:

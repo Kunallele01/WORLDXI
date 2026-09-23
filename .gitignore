@@ -65,3 +65,9 @@ etl/wc_results_2022_2026.tsv
 etl/staged/
 etl/staged_prev/
 etl/staged_before_fix/
+
+# Raw Wikipedia page dumps for the World Cup scrape — 4.5MB of wikitext that
+# wc_wikipedia.py re-fetches on demand. The PARSED output beside it (events
+# JSON, the 2026 third-place table) is versioned, like every other derived file
+# the loader actually reads.
+etl/wikipedia/raw/

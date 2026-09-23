@@ -6,7 +6,8 @@
 --
 -- WHY NEW TABLES RATHER THAN REUSING THE CLUB ONES. Everything loaded so far is
 -- club-season shaped: a player belongs to a club_season, and a fixture joins two
--- club_seasons. International football keys on (nation, FIFA edition) instead,
+-- club_seasons. International football keys on (nation, FIFA
+ edition) instead,
 -- has no league table, and its matches carry rounds, extra time and shootouts.
 -- Forcing it through club_seasons would mean a fake league per tournament.
 --

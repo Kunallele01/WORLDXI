@@ -35,16 +35,19 @@ ALIASES = {
 #: the edition being searched. Each group is tried in turn against whatever
 #: that edition actually holds. Listed from the spellings seen across all 19
 #: editions in the table, not discovered one failure at a time.
+#: The FIRST spelling in each group is the canonical one stored in Supabase
+#: (`canonical_name`), so 2006's "Czech Republic" and 2026's "Czechia" are one
+#: nation rather than two. It is the current official name wherever there is one.
 EQUIVALENTS = [
-    {"Czech Republic", "Czechia"},
-    {"Korea Republic", "South Korea"},
-    {"Korea DPR", "North Korea"},
-    {"Ivory Coast", "Côte d'Ivoire"},
-    {"Cape Verde", "Cabo Verde"},
-    {"China PR", "China"},
-    {"Turkey", "Türkiye"},
-    {"Congo DR", "DR Congo"},
-    {"United States", "USA"},
+    ("Czechia", "Czech Republic"),
+    ("Korea Republic", "South Korea"),
+    ("Korea DPR", "North Korea"),
+    ("Côte d'Ivoire", "Ivory Coast"),
+    ("Cabo Verde", "Cape Verde"),
+    ("China PR", "China"),
+    ("Türkiye", "Turkey"),
+    ("Congo DR", "DR Congo"),
+    ("United States", "USA"),
 ]
 
 
@@ -73,6 +76,17 @@ def fold(name: str) -> str:
     decomposed = unicodedata.normalize("NFD", name)
     plain = "".join(c for c in decomposed if unicodedata.category(c) != "Mn")
     return plain.lower().replace("-", " ").replace("–", " ").strip()
+
+
+def canonical_name(team: str) -> str:
+    """One stable name per country across every edition, for the nations table."""
+    name = strip_country_code(team)
+    name = ALIASES.get(name, name)
+    key = fold(name)
+    for group in EQUIVALENTS:
+        if any(fold(member) == key for member in group):
+            return group[0]
+    return name
 
 
 def to_rating_nation(team: str, known: set[str]) -> str | None:
