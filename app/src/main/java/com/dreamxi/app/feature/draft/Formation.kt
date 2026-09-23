@@ -28,6 +28,14 @@ data class FormationSlot(
     val isGoalkeeper: Boolean get() = role == "GK"
 
     /**
+     * A full-back pushed up into a back five.
+     *
+     * Worth distinguishing because EA rates it separately and the stored grid
+     * does not keep that column — see [WingBackCost].
+     */
+    val isWingBack: Boolean get() = label == "LWB" || label == "RWB"
+
+    /**
      * Which flank this position is on: "L", "R", or null for central ones.
      *
      * Derived from the label, and only for the two roles where we actually

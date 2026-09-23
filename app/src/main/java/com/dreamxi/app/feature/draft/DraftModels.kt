@@ -1,5 +1,6 @@
 package com.dreamxi.app.feature.draft
 
+import com.dreamxi.app.sim.WingBackCost
 import com.dreamxi.app.core.ui.components.DreamXiError
 import com.dreamxi.app.ui.theme.PlayerPosition
 
@@ -124,7 +125,20 @@ data class SquadPlayer(
      * "where did he go?", showing him greyed explains itself.
      */
     val alreadyDrafted: Boolean = false,
+    /**
+     * World Cup squads only: the club he played for that year, and EA's own
+     * position list. A national squad has no season of stats to describe him,
+     * so these are what the squad list shows instead.
+     */
+    val club: String? = null,
+    val eaPositions: List<String> = emptyList(),
 )
+
+/**
+ * Which game a draft belongs to. The screens are shared; only what a squad and
+ * a player can say about themselves differs.
+ */
+enum class DraftMode { League, WorldCup }
 
 /**
  * Rating points lost playing [slot] instead of this player's natural position.
@@ -145,7 +159,12 @@ fun SquadPlayer.deltaAt(slot: FormationSlot): Int {
     // and taking 32 as his baseline made him read as an 87-rated centre-back.
     if ((role == "GK") != slot.isGoalkeeper) return -GOALKEEPER_BOUNDARY_PENALTY
 
-    val target = slot.gridKey?.let { positionRatings[it] } ?: return -sidePenaltyAt(slot)
+    val stored = slot.gridKey?.let { positionRatings[it] } ?: return -sidePenaltyAt(slot)
+    // A wing-back is not a full-back, and the stored grid cannot tell them
+    // apart: it keeps max(lb, rb) and drops EA's lwb/rwb entirely. The measured
+    // per-role gap puts that back — a centre-back loses two points pushed up
+    // the wing, a forward gains two. See WingBackCost.
+    val target = if (slot.isWingBack) stored - (WingBackCost[role] ?: 0) else stored
     val reference = gridKeyForRole(role)?.let { positionRatings[it] }
         ?: positionRatings.values.maxOrNull()
         ?: return -sidePenaltyAt(slot)
@@ -202,6 +221,12 @@ data class SpinResult(
     val strengthQuartile: Int?,
     val players: List<SquadPlayer>,
     val defence: DefensiveRecord? = null,
+    /**
+     * World Cup squads only: one line of context in place of a league finish —
+     * where the nation finished in its group, and which FIFA edition rated the
+     * squad when it had to be borrowed from another year.
+     */
+    val detail: String? = null,
 )
 
 /** A completed pick. */
@@ -223,6 +248,7 @@ data class DraftedPlayer(
  * is how a draft ends up somewhere impossible like "spinning while placing".
  */
 data class DraftUiState(
+    val mode: DraftMode = DraftMode.League,
     val leagueName: String = "",
     val formation: Formation = DefaultFormation,
     val round: Int = 1,
@@ -306,4 +332,56 @@ data class DraftUiState(
         get() = picks.values.map { it.player.overallRating }
             .takeIf { it.isNotEmpty() }
             ?.let { Math.round(it.average()).toInt() }
+
+    /**
+     * The held player moved to [targetSlotId], swapping with whoever is there.
+     *
+     * Shared by the league draft and the World Cup draft so the rules cannot
+     * drift between them. Ratings are NOT recomputed and must not be: a
+     * DraftedPlayer derives its effective rating from the position it holds,
+     * so moving Benzema from ST to LW makes him an 89 and moving him back makes
+     * him a 91 again, with no stored number to go stale.
+     */
+    fun withHeldMovedTo(targetSlotId: String): DraftUiState {
+        val fromId = heldSlotId ?: return this
+        if (fromId == targetSlotId) return copy(heldSlotId = null)
+        val moving = picks[fromId] ?: return copy(heldSlotId = null)
+        val target = formation.slots.firstOrNull { it.id == targetSlotId } ?: return this
+        val displaced = picks[targetSlotId]
+
+        // Goalkeeper stays locked in both directions, exactly as at draft
+        // time. A swap is two moves, so BOTH have to be legal.
+        if ((moving.player.role == "GK") != target.isGoalkeeper) return this
+        val fromSlot = formation.slots.first { it.id == fromId }
+        if (displaced != null && (displaced.player.role == "GK") != fromSlot.isGoalkeeper) return this
+
+        val next = picks.toMutableMap()
+        next[targetSlotId] = moving.copy(slot = target)
+        if (displaced != null) next[fromId] = displaced.copy(slot = fromSlot) else next.remove(fromId)
+        return copy(picks = next, heldSlotId = null)
+    }
+
+    /**
+     * [player] placed in [slot], or unchanged if the pick breaks an invariant.
+     *
+     * The invariants, and ONLY those: the position must still be open, the
+     * player must not already be in the XI (identity is unique across the whole
+     * draft, not per squad), and the goalkeeper boundary must not be crossed.
+     * A check that also required the slot's role to equal the player's once
+     * silently swallowed every out-of-position pick.
+     */
+    fun withPick(player: SquadPlayer, slot: FormationSlot): DraftUiState {
+        if (slot.id in picks) return this
+        if (player.playerId in picks.values.map { it.player.playerId }) return this
+        if ((player.role == "GK") != slot.isGoalkeeper) return this
+        val spin = spin ?: return this
+        return copy(
+            picks = picks + (slot.id to DraftedPlayer(slot, player, spin.clubName, spin.seasonLabel)),
+            selectedPlayer = null,
+            isPlacing = false,
+            heldSlotId = null,
+            spin = null,
+            round = (round + 1).coerceAtMost(totalRounds),
+        )
+    }
 }

@@ -42,6 +42,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlin.math.abs
 import com.dreamxi.app.core.ui.components.ClubBadge
 import com.dreamxi.app.feature.draft.DraftedPlayer
 import com.dreamxi.app.feature.draft.Formation
@@ -123,9 +124,23 @@ fun PitchView(
     ) {
         val w = maxWidth
         val h = maxHeight
-        // Token width scales with the pitch so five-across shapes (3-5-2,
-        // 4-5-1) still fit without colliding on a narrow phone.
-        val token: Dp = minOf(w / 5.3f, 66.dp)
+        // Token size is bounded by BOTH dimensions of the pitch.
+        //
+        // Width, so five-across shapes (3-5-2, 4-5-1) still fit without
+        // colliding on a narrow phone. Height, because a token is not just the
+        // shirt: the name sits underneath it, making the whole thing about
+        // 0.93 tokens plus 3dp tall, and the vertical gap between two rows
+        // comes from the pitch's HEIGHT while the size came only from its
+        // width. In a back three the middle centre-back is drawn deeper than
+        // the other two, which leaves 0.117 of the pitch between him and the
+        // keeper — 61dp on a 520dp pitch, against a 64dp token column. His name
+        // landed on the keeper's shirt, and on a shorter pitch it landed harder.
+        //
+        // 8.6 is the tightest row spacing any formation asks for, with the
+        // caption allowed for: shirts give up a few dp where the pitch is short
+        // rather than overlapping, and a formation added later cannot
+        // reintroduce the collision.
+        val token: Dp = pitchTokenSize(formation, w, h)
 
         PitchMarkings(Modifier.fillMaxSize())
 
@@ -146,7 +161,7 @@ fun PitchView(
             // subtracted, then clamped so nothing can hang over a touchline
             // however wide a future formation puts a position.
             val x = (w * slot.x - token / 2).coerceIn(EdgeMargin, w - token - EdgeMargin)
-            val y = h * (0.05f + slot.y * 0.9f) - token / 2
+            val y = pitchSlotTop(slot, h, token)
             PitchToken(
                 slot = slot,
                 pick = pick,
@@ -178,6 +193,63 @@ fun PitchView(
 }
 
 private val EdgeMargin = 4.dp
+
+/** A hair of daylight between two shirts, so a tight fit never reads as a touch. */
+private val MinClearance = 1.dp
+
+/**
+ * The closest two rows of THIS formation come, as a fraction of pitch height,
+ * counting only positions whose shirts actually share horizontal space at a
+ * shirt [sameColumn] wide (as a fraction of pitch width).
+ *
+ * The threshold has to be the real shirt width, not a guess. A fifth of the
+ * pitch — a fair guess — called the 3-5-2's left and centre midfielders one
+ * column when they are 71dp apart and 66dp wide, and shrank every shirt in
+ * that formation to 17dp to keep two positions apart that never touched.
+ */
+private fun Formation.tightestRowGap(sameColumn: Float): Float =
+    slots.flatMapIndexed { i, a ->
+        slots.drop(i + 1)
+            .filter { b -> abs(a.x - b.x) < sameColumn }
+            .map { b -> abs(a.y - b.y) * 0.9f }
+    }.minOrNull() ?: 1f
+
+/**
+ * The shirt size for this formation on a pitch of this size.
+ *
+ * Bounded by WIDTH, so five-across shapes still fit on a narrow phone, and by
+ * the formation's own tightest pair of rows, so a shirt — name included — can
+ * never be taller than the space between two of them. That second bound is
+ * derived rather than guessed: a fixed divisor either shrank every formation to
+ * suit the worst one, or left the worst one still overlapping on a small
+ * screen. A back four keeps the full 66dp; only the shapes that need the room
+ * give any up.
+ *
+ * It settles rather than solves, because the two bounds chase each other: a
+ * narrower shirt shares a column with fewer positions, which frees the height
+ * bound, which allows a wider shirt. Each pass only shrinks, and the moment a
+ * size fits the columns it was measured against, that size is the answer.
+ *
+ * Shared with the test that proves no two positions can overlap, so the rule
+ * and its proof cannot drift apart.
+ */
+internal fun pitchTokenSize(formation: Formation, width: Dp, height: Dp): Dp {
+    var token = minOf(width / 5.3f, 66.dp)
+    repeat(4) {
+        val gap = formation.tightestRowGap(token / width)
+        // pitchTokenHeight inverted: the tallest shirt that fits that gap.
+        val fits = (height * gap - 3.dp - MinClearance) / 0.93f
+        if (fits >= token) return token
+        token = fits
+    }
+    return token
+}
+
+internal fun pitchTokenHeight(token: Dp): Dp = token * 0.74f + 3.dp + token * 0.19f
+
+/** Where a position's shirt starts, top edge, inside a pitch [height] tall. */
+internal fun pitchSlotTop(slot: FormationSlot, height: Dp, token: Dp): Dp =
+    height * (0.05f + slot.y * 0.9f) - token / 2
 
 private val PitchDark = Color(0xFF10231A)
 private val PitchStripe = Color(0xFF13291E)
