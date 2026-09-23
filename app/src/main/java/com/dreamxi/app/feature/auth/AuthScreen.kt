@@ -45,9 +45,10 @@ import com.dreamxi.app.ui.theme.SurfaceRaised1
 import com.dreamxi.app.ui.theme.SurfaceRaised2
 
 @Composable
-fun AuthRoute(onSignedIn: () -> Unit, modifier: Modifier = Modifier) {
+fun AuthRoute(onSignedIn: () -> Unit, force: Boolean = false, modifier: Modifier = Modifier) {
     val viewModel: AuthViewModel = hiltViewModel()
     val state by viewModel.state.collectAsStateWithLifecycle()
+    LaunchedEffect(force) { viewModel.start(force) }
     LaunchedEffect(state.done) { if (state.done) onSignedIn() }
     AuthScreen(
         state = state,

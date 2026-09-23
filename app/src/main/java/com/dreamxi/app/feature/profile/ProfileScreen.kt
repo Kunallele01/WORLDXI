@@ -22,6 +22,7 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -55,9 +56,17 @@ import com.dreamxi.app.ui.theme.SurfaceRaised1
 import com.dreamxi.app.ui.theme.SurfaceRaised2
 
 @Composable
-fun ProfileRoute(onBack: () -> Unit, modifier: Modifier = Modifier) {
+fun ProfileRoute(
+    onBack: () -> Unit,
+    onSignIn: () -> Unit,
+    onSignedOut: () -> Unit = onSignIn,
+    modifier: Modifier = Modifier,
+) {
     val viewModel: ProfileViewModel = hiltViewModel()
     val state by viewModel.state.collectAsStateWithLifecycle()
+    // Signed out means no session at all now, so there is nothing for this
+    // screen to show — the player belongs back at the way in.
+    LaunchedEffect(state.signedOut) { if (state.signedOut) onSignedOut() }
     ProfileScreen(
         state = state,
         onBack = onBack,
@@ -68,6 +77,7 @@ fun ProfileRoute(onBack: () -> Unit, modifier: Modifier = Modifier) {
         onPassword = viewModel::setPassword,
         onAttach = viewModel::attach,
         onSignOut = viewModel::signOut,
+        onSignIn = onSignIn,
         modifier = modifier,
     )
 }
@@ -91,6 +101,7 @@ internal fun ProfileScreen(
     onPassword: (String) -> Unit,
     onAttach: () -> Unit,
     onSignOut: () -> Unit,
+    onSignIn: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Box(modifier = modifier.fillMaxSize().background(SurfaceBase)) {
@@ -126,10 +137,11 @@ internal fun ProfileScreen(
                             onPassword = onPassword,
                             onAttach = onAttach,
                             onCancel = onCancelAttach,
+                            onSignIn = onSignIn,
                         )
                     }
                 } else if (state.awaitingConfirmation) {
-                    item { AwaitingConfirmation(state.account?.pendingEmail.orEmpty()) }
+                    item { AwaitingConfirmation(state.account?.pendingEmail.orEmpty(), onOpenAttach) }
                 } else if (state.warnRunsAreLocal) {
                     item { LocalOnlyWarning(state.runs.size, onOpenAttach) }
                 } else if (state.account?.isGuest == false) {
@@ -296,7 +308,7 @@ private fun LocalOnlyWarning(count: Int, onOpenAttach: () -> Unit) {
  * failed. It is its own state because it IS its own state.
  */
 @Composable
-private fun AwaitingConfirmation(email: String) {
+private fun AwaitingConfirmation(email: String, onRetry: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -323,6 +335,15 @@ private fun AwaitingConfirmation(email: String) {
             style = MaterialTheme.typography.bodyMedium,
             color = OnSurfaceMuted,
         )
+        Spacer(Modifier.height(14.dp))
+        // The way out, which this state used to lack entirely. If email
+        // confirmation has since been switched off, the queued address is never
+        // applied on its own — giving it again is what clears this.
+        DreamXiPrimaryButton(
+            text = "Try again",
+            onClick = onRetry,
+            modifier = Modifier.fillMaxWidth(),
+        )
     }
 }
 
@@ -338,6 +359,7 @@ private fun AttachForm(
     onPassword: (String) -> Unit,
     onAttach: () -> Unit,
     onCancel: () -> Unit,
+    onSignIn: () -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -391,6 +413,29 @@ private fun AttachForm(
         )
         Spacer(Modifier.height(8.dp))
         DreamXiSecondaryButton(text = "Not now", onClick = onCancel, modifier = Modifier.fillMaxWidth())
+        Spacer(Modifier.height(12.dp))
+        // The other case: an account already exists, on another phone. Signing
+        // into it is NOT the same as keeping these runs — they belong to the
+        // account being left behind — so it says so rather than being an
+        // equally weighted button.
+        Text(
+            text = "Already have an account? Sign in",
+            style = MaterialTheme.typography.bodySmall,
+            color = AccentGold,
+            textAlign = TextAlign.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(8.dp))
+                .clickable(enabled = !inFlight, onClick = onSignIn)
+                .padding(vertical = 8.dp),
+        )
+        Text(
+            text = "Runs saved on this phone stay with the guest account you are leaving.",
+            style = MaterialTheme.typography.labelSmall,
+            color = OnSurfaceFaint,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.fillMaxWidth(),
+        )
     }
 }
 
@@ -527,7 +572,7 @@ private fun ProfileGuestPreview() = DreamXITheme {
             record = PlayerRecord.from(PreviewRuns),
         ),
         onBack = {}, onRetry = {}, onOpenAttach = {}, onCancelAttach = {},
-        onEmail = {}, onPassword = {}, onAttach = {}, onSignOut = {},
+        onEmail = {}, onPassword = {}, onAttach = {}, onSignOut = {}, onSignIn = {},
     )
 }
 
@@ -542,7 +587,7 @@ private fun ProfileSignedInPreview() = DreamXITheme {
             record = PlayerRecord.from(PreviewRuns),
         ),
         onBack = {}, onRetry = {}, onOpenAttach = {}, onCancelAttach = {},
-        onEmail = {}, onPassword = {}, onAttach = {}, onSignOut = {},
+        onEmail = {}, onPassword = {}, onAttach = {}, onSignOut = {}, onSignIn = {},
     )
 }
 
@@ -552,6 +597,6 @@ private fun ProfileEmptyPreview() = DreamXITheme {
     ProfileScreen(
         state = ProfileUiState(isLoading = false, account = PlayerAccount("u", isGuest = true)),
         onBack = {}, onRetry = {}, onOpenAttach = {}, onCancelAttach = {},
-        onEmail = {}, onPassword = {}, onAttach = {}, onSignOut = {},
+        onEmail = {}, onPassword = {}, onAttach = {}, onSignOut = {}, onSignIn = {},
     )
 }

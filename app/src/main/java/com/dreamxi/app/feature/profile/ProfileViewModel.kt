@@ -30,6 +30,8 @@ data class ProfileUiState(
     val attachInFlight: Boolean = false,
     val attachError: String? = null,
     val justAttached: Boolean = false,
+    /** Set once the session is gone; the screen's caller returns to the way in. */
+    val signedOut: Boolean = false,
 ) {
     /**
      * Whether to warn that these runs live only on this phone.
@@ -67,10 +69,10 @@ class ProfileViewModel @Inject constructor(
         _state.update { it.copy(isLoading = true, error = null) }
         viewModelScope.launch {
             runCatching {
-                // A player who has never been online has no session yet, and an
-                // empty history would be a lie rather than an answer.
-                session.ensureSession()
-                runHistory.history()
+                // Reads only. This used to call ensureSession, which meant that
+                // opening the profile with no session SILENTLY CREATED a guest
+                // — the second way the app minted accounts nobody asked for.
+                if (session.hasSession()) runHistory.history() else emptyList()
             }.onSuccess { runs ->
                 _state.update {
                     it.copy(
@@ -88,7 +90,22 @@ class ProfileViewModel @Inject constructor(
         }
     }
 
-    fun openAttach() = _state.update { it.copy(isAttaching = true, attachError = null) }
+    /**
+     * Opens the form, carrying over an address that is already waiting.
+     *
+     * A player who attached an email while confirmations were ON is left with a
+     * pending change that never applied. Turning the setting off does not go
+     * back and apply it — the queued address just sits there — so the way out
+     * is to give it again, which now takes effect at once. Prefilled, because
+     * retyping the same address to fix something you already did is insulting.
+     */
+    fun openAttach() = _state.update {
+        it.copy(
+            isAttaching = true,
+            attachError = null,
+            email = it.email.ifBlank { it.account?.pendingEmail.orEmpty() },
+        )
+    }
     fun cancelAttach() = _state.update { it.copy(isAttaching = false, attachError = null) }
     fun setEmail(value: String) = _state.update { it.copy(email = value, attachError = null) }
     fun setPassword(value: String) = _state.update { it.copy(password = value, attachError = null) }
@@ -154,7 +171,11 @@ class ProfileViewModel @Inject constructor(
     fun signOut() {
         viewModelScope.launch {
             runCatching { session.signOut() }
-            refresh()
+            // No refresh: there is nothing left to read, and asking would only
+            // be a third chance to create a session by accident.
+            _state.update {
+                it.copy(account = null, runs = emptyList(), signedOut = true, isLoading = false)
+            }
         }
     }
 }

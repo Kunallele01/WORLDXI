@@ -171,14 +171,16 @@ class SessionRepository @Inject constructor(
     }
 
     /**
-     * Signs out and immediately takes a fresh anonymous session, so the app is
-     * never left in a state where nothing can be saved.
+     * Signs out and leaves the device with NO session.
      *
-     * A guest signing out would be throwing their runs away with no way back,
-     * so the caller is expected to refuse that — see the warning the UI shows.
+     * An earlier version took a fresh anonymous session immediately afterwards,
+     * reasoning that the app should never be unable to save. That was wrong in
+     * the way that matters: signing out minted a new guest on the spot, so the
+     * next launch found a session, skipped the sign-in screen, and dropped the
+     * player into the game as a guest he never asked to become. Signing out
+     * means signing out; the way back in is the front door.
      */
     suspend fun signOut() {
         client.auth.signOut()
-        ensureSession()
     }
 }

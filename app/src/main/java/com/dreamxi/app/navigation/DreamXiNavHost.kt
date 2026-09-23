@@ -54,7 +54,7 @@ fun DreamXiNavHost(
                     // player who already has a session never sees it — AuthRoute
                     // moves straight on — so this costs a returning player
                     // nothing and gives a new one a front door.
-                    navController.navigate(DreamXiDestination.Auth.route) {
+                    navController.navigate(DreamXiDestination.Auth.build()) {
                         popUpTo(DreamXiDestination.Splash.route) { inclusive = true }
                     }
                 },
@@ -173,8 +173,12 @@ fun DreamXiNavHost(
                 },
             )
         }
-        composable(DreamXiDestination.Auth.route) {
+        composable(
+            route = DreamXiDestination.Auth.route,
+            arguments = listOf(navArgument(DreamXiDestination.Auth.ARG_FORCE) { defaultValue = false }),
+        ) { entry ->
             AuthRoute(
+                force = entry.arguments?.getBoolean(DreamXiDestination.Auth.ARG_FORCE) == true,
                 onSignedIn = {
                     navController.navigate(DreamXiDestination.Setup.route) {
                         popUpTo(DreamXiDestination.Auth.route) { inclusive = true }
@@ -187,7 +191,12 @@ fun DreamXiNavHost(
         // History lives INSIDE the profile now: a list of runs with no record
         // above it and no account beside it was a screen nobody would open.
         composable(DreamXiDestination.Profile.route) {
-            ProfileRoute(onBack = { navController.popBackStack() })
+            ProfileRoute(
+                onBack = { navController.popBackStack() },
+                // force = true: this player HAS a session and is asking for the
+                // sign-in screen anyway, so it must not wave him through.
+                onSignIn = { navController.navigate(DreamXiDestination.Auth.build(force = true)) },
+            )
         }
     }
 }

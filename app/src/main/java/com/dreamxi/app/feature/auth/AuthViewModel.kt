@@ -45,16 +45,29 @@ class AuthViewModel @Inject constructor(
     private val _state = MutableStateFlow(AuthUiState())
     val state: StateFlow<AuthUiState> = _state.asStateFlow()
 
-    init {
-        // A player who already has a session — signed in, or a guest from an
-        // earlier launch — never sees this screen. It checks rather than calls
-        // ensureSession, because ensureSession would TAKE a guest session and
-        // wave everyone straight past the front door on their first launch.
+    /**
+     * Looks for an existing session, unless the player asked for this screen.
+     *
+     * A player who already has a session — signed in, or a guest from an
+     * earlier launch — never sees this screen after the intro. It checks rather
+     * than calling ensureSession, because ensureSession would TAKE a guest
+     * session and wave everyone past the front door on their first launch.
+     *
+     * [force] is the exception: he came here FROM his profile to sign into an
+     * account he made on another phone, and skipping him past it because he
+     * already has a session would be the screen refusing the one thing he
+     * asked it for.
+     */
+    fun start(force: Boolean) {
+        if (started) return
+        started = true
         viewModelScope.launch {
-            val existing = runCatching { session.hasSession() }.getOrDefault(false)
+            val existing = !force && runCatching { session.hasSession() }.getOrDefault(false)
             _state.update { it.copy(checked = true, done = existing) }
         }
     }
+
+    private var started = false
 
     fun setMode(mode: AuthMode) = _state.update {
         it.copy(mode = mode, formError = null, emailError = null, passwordError = null)

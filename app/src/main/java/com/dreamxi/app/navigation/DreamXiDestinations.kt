@@ -13,8 +13,18 @@ sealed class DreamXiDestination(val route: String) {
     /** The opening: a ball struck into the net, then the name. */
     data object Splash : DreamXiDestination("splash")
 
-    /** The way in: sign in, create an account, or play as a guest. */
-    data object Auth : DreamXiDestination("auth")
+    /**
+     * The way in: sign in, create an account, or play as a guest.
+     *
+     * [ARG_FORCE] is for the player who already has a session and wants this
+     * screen anyway — from his profile, to sign into an account he made
+     * elsewhere. Without it the screen recognises his session and moves on,
+     * which is right after the intro and useless when he asked for it.
+     */
+    data object Auth : DreamXiDestination("auth?force={force}") {
+        const val ARG_FORCE = "force"
+        fun build(force: Boolean = false): String = "auth?force=$force"
+    }
 
     data object Onboarding : DreamXiDestination("onboarding")
     data object Home : DreamXiDestination("home")
