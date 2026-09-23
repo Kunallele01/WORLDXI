@@ -70,6 +70,8 @@ fun SquadPlayerRow(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     defence: DefensiveRecord? = null,
+    /** A national squad player: positions and club instead of a season's stats. */
+    worldCup: Boolean = false,
 ) {
     val positionColor = colorForPosition(player.group)
     val shape = RoundedCornerShape(12.dp)
@@ -114,7 +116,7 @@ fun SquadPlayerRow(
                 // he is actually on.
                 RoleTag(role = player.displayRole(), color = positionColor)
                 Text(
-                    text = statLine(player),
+                    text = if (worldCup) player.eaPositions.joinToString(" · ") else statLine(player),
                     style = MaterialTheme.typography.bodySmall,
                     fontSize = 11.sp,
                     color = OnSurfaceMuted,
@@ -124,6 +126,10 @@ fun SquadPlayerRow(
             }
             val description = if (player.alreadyDrafted) {
                 "Already in your XI — picked in an earlier round."
+            } else if (worldCup) {
+                // A national squad has no season of stats behind it, so the
+                // honest description is where he was playing that year.
+                player.club?.takeIf { it.isNotBlank() }
             } else {
                 // Nationality leads the line: it is the fastest way to
                 // recognise a player you half-remember, and it costs one clause.

@@ -6,7 +6,11 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.ui.layout.ContentScale
+import com.dreamxi.app.core.ui.NationFlags
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -114,6 +118,26 @@ fun ClubBadge(
             contentDescription = clubName,
             modifier = modifier.size(size),
         )
+        return
+    }
+
+    // A nation, in World Cup mode. Flags are not square, so each is cropped to a
+    // uniform 3:2 and centred in the same square a crest would fill — every
+    // badge in a list still lines up, and Qatar's long flag is no thinner than
+    // Switzerland's square one.
+    NationFlags[clubName]?.let { flag ->
+        Box(modifier.size(size), contentAlignment = Alignment.Center) {
+            Image(
+                painter = painterResource(flag),
+                contentDescription = clubName,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .width(size)
+                    .height(size * 2 / 3)
+                    .clip(RoundedCornerShape(percent = 12))
+                    .border(1.dp, OutlineSubtle, RoundedCornerShape(percent = 12)),
+            )
+        }
         return
     }
 

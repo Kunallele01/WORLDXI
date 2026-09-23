@@ -25,7 +25,11 @@ import javax.inject.Inject
  * later, after the XI is complete. Adding a season picker here would quietly
  * break the core mechanic.
  */
+/** The two games a run can be: a league season, or a World Cup. */
+enum class RunMode { League, WorldCup }
+
 data class SetupUiState(
+    val mode: RunMode = RunMode.League,
     val leagues: List<League> = emptyList(),
     val selectedLeagueId: Long? = null,
     val formation: Formation = DefaultFormation,
@@ -76,6 +80,9 @@ class SetupViewModel @Inject constructor(
     }
 
     fun selectLeague(id: Long) = _state.update { it.copy(selectedLeagueId = id) }
+
+    /** Formation and change spins carry across, so switching modes loses nothing. */
+    fun selectMode(mode: RunMode) = _state.update { it.copy(mode = mode) }
 
     /** Difficulty dial: 1-3 change spins, matching the DB check constraint. */
     fun setRerolls(count: Int) = _state.update { it.copy(rerollsAllowed = count.coerceIn(1, 3)) }

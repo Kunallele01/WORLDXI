@@ -112,6 +112,14 @@ fun SquadRevealCard(
                 modifier = Modifier.align(Alignment.CenterVertically),
             )
         }
+        spin.detail?.let {
+            Spacer(Modifier.height(8.dp))
+            Text(
+                text = it,
+                style = MaterialTheme.typography.bodySmall,
+                color = OnSurfaceMuted,
+            )
+        }
     }
 }
 
@@ -192,6 +200,7 @@ private fun ordinal(n: Int): String {
 fun SpinningReelCard(
     names: List<String>,
     modifier: Modifier = Modifier,
+    caption: String = "choosing a club and a season…",
 ) {
     val transition = rememberInfiniteTransition(label = "reel")
     // Drives a name index; ~11 swaps a second reads as a blur that the eye can
@@ -248,7 +257,7 @@ fun SpinningReelCard(
                 .alpha(0.35f),
         ) {
             Text(
-                text = "choosing a club and a season…",
+                text = caption,
                 style = MaterialTheme.typography.bodySmall,
                 color = OnSurfaceMuted,
             )

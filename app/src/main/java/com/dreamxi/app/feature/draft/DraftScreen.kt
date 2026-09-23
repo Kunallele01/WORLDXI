@@ -164,6 +164,11 @@ fun DraftScreen(
                     state.isSpinning -> SpinningReelCard(
                         names = state.reelClubNames,
                         modifier = Modifier.padding(horizontal = 16.dp),
+                        caption = if (state.mode == DraftMode.WorldCup) {
+                            "choosing a nation and a World Cup…"
+                        } else {
+                            "choosing a club and a season…"
+                        },
                     )
 
                     state.isComplete -> CompletedXi(state = state)
@@ -256,8 +261,13 @@ private fun AwaitingSpin(state: DraftUiState) {
         )
         Spacer(Modifier.height(10.dp))
         Text(
-            text = "Spin for a club and a season. Any player from that squad can go " +
-                "anywhere on the pitch, but playing him out of position costs him.",
+            text = if (state.mode == DraftMode.WorldCup) {
+                "Spin for a nation and a World Cup. Any player from that squad can go " +
+                    "anywhere on the pitch, but playing him out of position costs him."
+            } else {
+                "Spin for a club and a season. Any player from that squad can go " +
+                    "anywhere on the pitch, but playing him out of position costs him."
+            },
             style = MaterialTheme.typography.bodyMedium,
             color = OnSurfaceMuted,
             textAlign = TextAlign.Center,
@@ -298,7 +308,11 @@ private fun CompletedXi(state: DraftUiState, modifier: Modifier = Modifier) {
                     color = OnSurfacePrimary,
                 )
                 Text(
-                    text = "${state.formation.name} · $clubs club-seasons",
+                    text = if (state.mode == DraftMode.WorldCup) {
+                        "${state.formation.name} · $clubs national squads"
+                    } else {
+                        "${state.formation.name} · $clubs club-seasons"
+                    },
                     style = MaterialTheme.typography.bodySmall,
                     color = OnSurfaceMuted,
                 )
@@ -429,6 +443,7 @@ private fun SquadList(state: DraftUiState, onSelectPlayer: (SquadPlayer?) -> Uni
                 selectable = true,
                 onClick = { onSelectPlayer(player) },
                 defence = spin.defence,
+                worldCup = state.mode == DraftMode.WorldCup,
             )
         }
         if (ineligible.isNotEmpty()) {
@@ -440,6 +455,7 @@ private fun SquadList(state: DraftUiState, onSelectPlayer: (SquadPlayer?) -> Uni
                 SquadPlayerRow(
                     player = player, selected = false, selectable = false,
                     onClick = {}, defence = spin.defence,
+                    worldCup = state.mode == DraftMode.WorldCup,
                 )
             }
         }
@@ -693,8 +709,8 @@ private fun QuitRunDialog(picksMade: Int, onDismiss: () -> Unit, onConfirm: () -
         text = {
             Text(
                 text = if (picksMade == 0) {
-                    "Nobody is drafted yet, but leaving goes back to the league and " +
-                        "formation choice and starts over."
+                    "Nobody is drafted yet, but leaving goes back to setup " +
+                        "and starts over."
                 } else {
                     "You have drafted $picksMade of 11. Leaving now discards them — " +
                         "runs are not saved yet, so there is nothing to come back to."
@@ -769,7 +785,7 @@ private fun ActionBar(
             // strip is the most valuable on the screen, so it carries the only
             // action left worth taking rather than a disabled Spin button.
             state.isComplete -> DreamXiPrimaryButton(
-                text = "Play the season",
+                text = if (state.mode == DraftMode.WorldCup) "Play the World Cup" else "Play the season",
                 onClick = onStartSeason,
                 modifier = Modifier.fillMaxWidth(),
             )

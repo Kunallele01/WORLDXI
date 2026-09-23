@@ -532,6 +532,11 @@ data class SeasonOption(
     val label: String,
     val finalPosition: Int?,
     val squadStrength: Double?,
+    /**
+     * World Cup Free Mode only: what that nation did at that World Cup
+     * ("4th in Group H"), shown in place of a league finish it never had.
+     */
+    val note: String? = null,
 )
 
 /** Everything the Free Mode screen renders. */
@@ -562,7 +567,7 @@ enum class MagicPhase {
 }
 
 /** How long the banner holds before the first shirt lands. */
-private const val CONJURE_MS = 900L
+internal const val CONJURE_MS = 900L
 
 /**
  * Between shirts.
@@ -572,7 +577,7 @@ private const val CONJURE_MS = 900L
  * lost. The reveal is the reward for pressing the button; it is watched
  * deliberately, not endured, so it can afford to take its time.
  */
-private const val REVEAL_STEP_MS = 300L
+internal const val REVEAL_STEP_MS = 300L
 
 /**
  * An extra beat when the reveal moves from one line to the next.
@@ -582,10 +587,10 @@ private const val REVEAL_STEP_MS = 300L
  * at the seams is what makes it read as a team being built rather than a list
  * being filled.
  */
-private const val REVEAL_LINE_PAUSE_MS = 250L
+internal const val REVEAL_LINE_PAUSE_MS = 250L
 
 /** Which line of the team a shirt belongs to, for the pause above. */
-private fun lineOf(role: String): Int = when (role) {
+internal fun lineOf(role: String): Int = when (role) {
     "GK" -> 0
     "CB", "FB" -> 1
     "DM", "CM", "CAM" -> 2
@@ -593,6 +598,8 @@ private fun lineOf(role: String): Int = when (role) {
 }
 
 data class FreeModeUiState(
+    /** World Cup Free Mode: nations and World Cups where the league version has clubs and seasons. */
+    val worldCup: Boolean = false,
     val leagueName: String = "",
     val formation: Formation = com.dreamxi.app.feature.draft.DefaultFormation,
     val picks: Map<String, DraftedPlayer> = emptyMap(),

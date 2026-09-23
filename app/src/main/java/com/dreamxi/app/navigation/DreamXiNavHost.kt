@@ -21,6 +21,9 @@ import com.dreamxi.app.feature.season.SeasonRoute
 import com.dreamxi.app.feature.splash.SplashRoute
 import com.dreamxi.app.feature.setup.SetupRoute
 import com.dreamxi.app.feature.simulating.SimulatingScreen
+import com.dreamxi.app.feature.worldcup.WcDraftRoute
+import com.dreamxi.app.feature.worldcup.WcFreeModeRoute
+import com.dreamxi.app.feature.worldcup.WcTournamentRoute
 
 /**
  * Wires up the full screen inventory from PROJECT_SPEC_v2.md §10.6.
@@ -70,6 +73,48 @@ fun DreamXiNavHost(
                         DreamXiDestination.FreeMode.build(league.id, league.name, formation.id),
                     )
                 },
+                onStartWorldCup = { formation, rerolls ->
+                    navController.navigate(DreamXiDestination.WorldCupDraft.build(formation.id, rerolls))
+                },
+                onStartWorldCupFreeMode = { formation ->
+                    navController.navigate(DreamXiDestination.WorldCupFreeMode.build(formation.id))
+                },
+            )
+        }
+
+        composable(
+            route = DreamXiDestination.WorldCupDraft.route,
+            arguments = listOf(
+                navArgument(DreamXiDestination.WorldCupDraft.ARG_FORMATION) { type = NavType.StringType },
+                navArgument(DreamXiDestination.WorldCupDraft.ARG_REROLLS) { type = NavType.IntType },
+            ),
+        ) { entry ->
+            val args = entry.arguments
+            WcDraftRoute(
+                formationId = args?.getString(DreamXiDestination.WorldCupDraft.ARG_FORMATION),
+                rerollsAllowed = args?.getInt(DreamXiDestination.WorldCupDraft.ARG_REROLLS) ?: 2,
+                onQuitRun = { navController.popBackStack() },
+                onStartTournament = { navController.navigate(DreamXiDestination.WorldCupTournament.route) },
+            )
+        }
+
+        composable(
+            route = DreamXiDestination.WorldCupFreeMode.route,
+            arguments = listOf(
+                navArgument(DreamXiDestination.WorldCupFreeMode.ARG_FORMATION) { type = NavType.StringType },
+            ),
+        ) { entry ->
+            WcFreeModeRoute(
+                formationId = entry.arguments?.getString(DreamXiDestination.WorldCupFreeMode.ARG_FORMATION),
+                onQuit = { navController.popBackStack() },
+                onStartTournament = { navController.navigate(DreamXiDestination.WorldCupTournament.route) },
+            )
+        }
+
+        composable(DreamXiDestination.WorldCupTournament.route) {
+            WcTournamentRoute(
+                // Back to Setup, not into the finished draft, for the season's reason.
+                onDone = { navController.popBackStack(DreamXiDestination.Setup.route, inclusive = false) },
             )
         }
 

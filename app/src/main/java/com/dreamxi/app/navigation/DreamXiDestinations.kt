@@ -42,6 +42,29 @@ sealed class DreamXiDestination(val route: String) {
             "free/$leagueId/${Uri.encode(leagueName)}/${Uri.encode(formationId)}"
     }
 
+    /**
+     * The World Cup draft carries the formation and change spins chosen at
+     * Setup; there is no league, because the pool is every nation at every
+     * World Cup.
+     */
+    data object WorldCupDraft : DreamXiDestination("wc_draft/{formation}/{rerolls}") {
+        const val ARG_FORMATION = "formation"
+        const val ARG_REROLLS = "rerolls"
+
+        fun build(formationId: String, rerolls: Int): String =
+            "wc_draft/${Uri.encode(formationId)}/$rerolls"
+    }
+
+    /** World Cup Free Mode carries only the formation: no spins, so no change spins. */
+    data object WorldCupFreeMode : DreamXiDestination("wc_free/{formation}") {
+        const val ARG_FORMATION = "formation"
+
+        fun build(formationId: String): String = "wc_free/${Uri.encode(formationId)}"
+    }
+
+    /** The tournament. No arguments: the run lives in WorldCupRun, as a season's lives in ActiveRun. */
+    data object WorldCupTournament : DreamXiDestination("wc_tournament")
+
     data object Finalize : DreamXiDestination("finalize")
 
     /**

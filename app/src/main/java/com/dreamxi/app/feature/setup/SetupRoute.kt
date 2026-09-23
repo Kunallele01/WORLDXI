@@ -12,6 +12,8 @@ import com.dreamxi.app.feature.draft.Formation
 fun SetupRoute(
     onStartRun: (League, Formation, Int) -> Unit,
     onStartFreeMode: (League, Formation) -> Unit = { _, _ -> },
+    onStartWorldCup: (Formation, Int) -> Unit = { _, _ -> },
+    onStartWorldCupFreeMode: (Formation) -> Unit = {},
     modifier: Modifier = Modifier,
     viewModel: SetupViewModel = hiltViewModel(),
 ) {
@@ -23,6 +25,9 @@ fun SetupRoute(
         onSelectFormation = viewModel::selectFormation,
         onStart = { league -> onStartRun(league, state.formation, state.rerollsAllowed) },
         onStartFreeMode = { league -> onStartFreeMode(league, state.formation) },
+        onSelectMode = viewModel::selectMode,
+        onStartWorldCup = { onStartWorldCup(state.formation, state.rerollsAllowed) },
+        onStartWorldCupFreeMode = { onStartWorldCupFreeMode(state.formation) },
         onRetry = viewModel::load,
         modifier = modifier,
     )

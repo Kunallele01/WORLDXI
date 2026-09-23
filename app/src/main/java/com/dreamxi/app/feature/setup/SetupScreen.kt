@@ -77,7 +77,11 @@ fun SetupScreen(
     onStartFreeMode: (League) -> Unit = {},
     onRetry: () -> Unit,
     modifier: Modifier = Modifier,
+    onSelectMode: (RunMode) -> Unit = {},
+    onStartWorldCup: () -> Unit = {},
+    onStartWorldCupFreeMode: () -> Unit = {},
 ) {
+    val worldCup = state.mode == RunMode.WorldCup
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -91,8 +95,11 @@ fun SetupScreen(
                 letterSpacing = 1.6.sp,
                 color = AccentGold,
             )
+            Spacer(Modifier.height(8.dp))
+            ModeSwitch(selected = state.mode, onSelect = onSelectMode)
+            Spacer(Modifier.height(12.dp))
             Text(
-                text = "PICK YOUR LEAGUE",
+                text = if (worldCup) "WORLD CUP" else "PICK YOUR LEAGUE",
                 fontFamily = DisplayFontFamily,
                 fontSize = 34.sp,
                 lineHeight = 38.sp,
@@ -100,8 +107,13 @@ fun SetupScreen(
             )
             Spacer(Modifier.height(4.dp))
             Text(
-                text = "Every round spins a random club and season from this league's history. " +
-                    "You'll draft one player from each.",
+                text = if (worldCup) {
+                    "Every round spins a nation at a World Cup, any nation, any year. " +
+                        "Once your XI is done, a World Cup is drawn and you take a bottom-of-group place."
+                } else {
+                    "Every round spins a random club and season from this league's history. " +
+                        "You'll draft one player from each."
+                },
                 style = MaterialTheme.typography.bodyMedium,
                 color = OnSurfaceMuted,
             )
@@ -127,12 +139,16 @@ fun SetupScreen(
                         .padding(horizontal = 20.dp),
                     verticalArrangement = Arrangement.spacedBy(12.dp),
                 ) {
-                    state.leagues.forEach { league ->
-                        LeagueCard(
-                            league = league,
-                            selected = league.id == state.selectedLeagueId,
-                            onClick = { onSelectLeague(league.id) },
-                        )
+                    if (worldCup) {
+                        WorldCupCard()
+                    } else {
+                        state.leagues.forEach { league ->
+                            LeagueCard(
+                                league = league,
+                                selected = league.id == state.selectedLeagueId,
+                                onClick = { onSelectLeague(league.id) },
+                            )
+                        }
                     }
                     Spacer(Modifier.height(10.dp))
                     FormationPicker(selected = state.formation, onSelect = onSelectFormation)
@@ -151,23 +167,102 @@ fun SetupScreen(
                     .padding(horizontal = 20.dp, vertical = 14.dp)
                     .navigationBarsPadding(),
             ) {
-                DreamXiPrimaryButton(
-                    text = state.selectedLeague?.let { "Start ${it.name} run" } ?: "Choose a league",
-                    onClick = { state.selectedLeague?.let(onStart) },
-                    enabled = state.canStart,
-                    modifier = Modifier.fillMaxWidth(),
-                )
-                Spacer(Modifier.height(10.dp))
-                // The way out of the draft's constraints. Secondary because the
-                // spin draft is the game; Free Mode is the sandbox beside it.
-                DreamXiSecondaryButton(
-                    text = "Free mode — build any XI",
-                    onClick = { state.selectedLeague?.let(onStartFreeMode) },
-                    enabled = state.canStart,
-                    modifier = Modifier.fillMaxWidth(),
+                if (worldCup) {
+                    DreamXiPrimaryButton(
+                        text = "Start World Cup run",
+                        onClick = onStartWorldCup,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                    Spacer(Modifier.height(10.dp))
+                    DreamXiSecondaryButton(
+                        text = "Free mode — build any XI",
+                        onClick = onStartWorldCupFreeMode,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                } else {
+                    DreamXiPrimaryButton(
+                        text = state.selectedLeague?.let { "Start ${it.name} run" } ?: "Choose a league",
+                        onClick = { state.selectedLeague?.let(onStart) },
+                        enabled = state.canStart,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                    Spacer(Modifier.height(10.dp))
+                    // The way out of the draft's constraints. Secondary because the
+                    // spin draft is the game; Free Mode is the sandbox beside it.
+                    DreamXiSecondaryButton(
+                        text = "Free mode — build any XI",
+                        onClick = { state.selectedLeague?.let(onStartFreeMode) },
+                        enabled = state.canStart,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                }
+            }
+        }
+    }
+}
+
+/**
+ * League or World Cup. Two segments at the top of the one start screen, so the
+ * formation and change-spin choices below them are shared rather than repeated.
+ */
+@Composable
+private fun ModeSwitch(selected: RunMode, onSelect: (RunMode) -> Unit) {
+    val shape = RoundedCornerShape(12.dp)
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(shape)
+            .background(SurfaceRaised1)
+            .border(1.dp, OutlineSubtle, shape)
+            .padding(4.dp),
+    ) {
+        listOf(RunMode.League to "LEAGUE", RunMode.WorldCup to "WORLD CUP").forEach { (mode, label) ->
+            val isSel = mode == selected
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier = Modifier
+                    .weight(1f)
+                    .clip(RoundedCornerShape(9.dp))
+                    .background(if (isSel) AccentGold else SurfaceRaised1)
+                    .clickable { onSelect(mode) }
+                    .padding(vertical = 10.dp),
+            ) {
+                Text(
+                    text = label,
+                    style = MaterialTheme.typography.labelLarge,
+                    letterSpacing = 1.sp,
+                    color = if (isSel) OnAccentGold else OnSurfaceMuted,
                 )
             }
         }
+    }
+}
+
+/** What World Cup mode draws from. Fixed facts about the loaded data, not a picker. */
+@Composable
+private fun WorldCupCard() {
+    val shape = RoundedCornerShape(16.dp)
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(shape)
+            .background(AccentGold.copy(alpha = 0.10f))
+            .border(1.5.dp, AccentGold, shape)
+            .padding(horizontal = 18.dp, vertical = 16.dp),
+    ) {
+        Text(
+            text = "2006 – 2026",
+            fontFamily = DisplayFontFamily,
+            fontSize = 26.sp,
+            lineHeight = 30.sp,
+            color = OnSurfacePrimary,
+        )
+        Spacer(Modifier.height(2.dp))
+        Text(
+            text = "Six World Cups · every nation's real squad · real results and scorers",
+            style = MaterialTheme.typography.bodySmall,
+            color = OnSurfaceMuted,
+        )
     }
 }
 

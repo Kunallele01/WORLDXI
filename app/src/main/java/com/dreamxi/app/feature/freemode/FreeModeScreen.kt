@@ -175,7 +175,7 @@ fun FreeModeScreen(
                             MagicPhase.CONJURING -> "Working the magic…"
                             MagicPhase.REVEALING -> "Working the magic…"
                             MagicPhase.DONE ->
-                                "The best eleven this league can field. " +
+                                (if (state.worldCup) "The best eleven any World Cup has seen. " else "The best eleven this league can field. ") +
                                     "Tap a shirt for the next best — hold to choose."
                             MagicPhase.TWEAKED ->
                                 "Tweaked from the magic XI. " +
@@ -209,7 +209,7 @@ fun FreeModeScreen(
 
                 if (state.isComplete) {
                     DreamXiPrimaryButton(
-                        text = "Play the season",
+                        text = if (state.worldCup) "Play the World Cup" else "Play the season",
                         onClick = onStartSeason,
                         modifier = Modifier.fillMaxWidth(),
                     )
@@ -269,8 +269,7 @@ private fun QuitFreeModeDialog(
         text = {
             Text(
                 text = if (picksMade == 0) {
-                    "Nothing is picked yet, but leaving goes back to the league and " +
-                        "formation choice."
+                    "Nothing is picked yet, but leaving goes back to setup."
                 } else {
                     "You have picked $picksMade of $total. Leaving now discards them — " +
                         "runs are not saved yet, so there is nothing to come back to."
@@ -366,15 +365,15 @@ private fun PlayerPicker(
 
             Box(Modifier.weight(1f).fillMaxWidth()) {
                 when {
-                    club == null -> ClubList(clubOptions(), onChooseClub)
+                    club == null -> ClubList(clubOptions(), onChooseClub, state.worldCup)
 
-                    season == null -> SeasonList(seasonOptions(club), onSelectSeason)
+                    season == null -> SeasonList(seasonOptions(club), onSelectSeason, state.worldCup)
 
                     state.isLoadingSquad -> Box(Modifier.fillMaxSize(), Alignment.Center) {
                         CircularProgressIndicator(color = AccentGold, strokeWidth = 3.dp)
                     }
 
-                    state.squad.isEmpty() -> Hint("No players loaded for that season.")
+                    state.squad.isEmpty() -> Hint("No players loaded for that squad.")
 
                     else -> LazyColumn(contentPadding = PaddingValues(bottom = 12.dp)) {
                         items(state.squad, key = { it.playerSeasonStatId }) { player ->
@@ -478,7 +477,7 @@ private fun PickerHeader(
  */
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-private fun ClubList(options: List<ClubOption>, onChoose: (String) -> Unit) {
+private fun ClubList(options: List<ClubOption>, onChoose: (String) -> Unit, worldCup: Boolean = false) {
     var query by remember { mutableStateOf("") }
     val listState = rememberLazyListState()
     val scope = rememberCoroutineScope()
@@ -514,7 +513,7 @@ private fun ClubList(options: List<ClubOption>, onChoose: (String) -> Unit) {
         ) {
             if (query.isEmpty()) {
                 Text(
-                    text = "Search clubs",
+                    text = if (worldCup) "Search nations" else "Search clubs",
                     style = MaterialTheme.typography.bodyMedium,
                     color = OnSurfaceFaint,
                 )
@@ -531,7 +530,7 @@ private fun ClubList(options: List<ClubOption>, onChoose: (String) -> Unit) {
         Spacer(Modifier.height(8.dp))
 
         if (groups.isEmpty()) {
-            Hint("No club matches that.")
+            Hint(if (worldCup) "No nation matches that." else "No club matches that.")
             return@Column
         }
 
@@ -554,7 +553,7 @@ private fun ClubList(options: List<ClubOption>, onChoose: (String) -> Unit) {
                         )
                     }
                     items(rows, key = { it.name }) { option ->
-                        ClubRow(option, onChoose)
+                        ClubRow(option, onChoose, worldCup)
                     }
                 }
             }
@@ -584,7 +583,7 @@ private fun ClubList(options: List<ClubOption>, onChoose: (String) -> Unit) {
 }
 
 @Composable
-private fun ClubRow(option: ClubOption, onChoose: (String) -> Unit) {
+private fun ClubRow(option: ClubOption, onChoose: (String) -> Unit, worldCup: Boolean = false) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
@@ -608,7 +607,11 @@ private fun ClubRow(option: ClubOption, onChoose: (String) -> Unit) {
                 overflow = TextOverflow.Ellipsis,
             )
             Text(
-                text = if (option.seasons == 1) "1 season" else "${option.seasons} seasons",
+                text = when {
+                    worldCup -> if (option.seasons == 1) "1 World Cup" else "${option.seasons} World Cups"
+                    option.seasons == 1 -> "1 season"
+                    else -> "${option.seasons} seasons"
+                },
                 style = MaterialTheme.typography.labelSmall,
                 color = OnSurfaceFaint,
             )
@@ -624,9 +627,9 @@ private fun ClubRow(option: ClubOption, onChoose: (String) -> Unit) {
  * best side". The old picker offered bare labels, so the choice was blind.
  */
 @Composable
-private fun SeasonList(options: List<SeasonOption>, onSelect: (String) -> Unit) {
+private fun SeasonList(options: List<SeasonOption>, onSelect: (String) -> Unit, worldCup: Boolean = false) {
     if (options.isEmpty()) {
-        Hint("No seasons loaded for that club.")
+        Hint(if (worldCup) "No World Cups loaded for that nation." else "No seasons loaded for that club.")
         return
     }
     LazyColumn(contentPadding = PaddingValues(bottom = 12.dp)) {
@@ -647,7 +650,14 @@ private fun SeasonList(options: List<SeasonOption>, onSelect: (String) -> Unit) 
                     color = OnSurfacePrimary,
                     modifier = Modifier.weight(1f),
                 )
-                option.finalPosition?.let {
+                option.note?.let {
+                    Text(
+                        text = it,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = OnSurfaceMuted,
+                    )
+                }
+                option.finalPosition?.takeIf { option.note == null }?.let {
                     Text(
                         text = ordinal(it),
                         style = MaterialTheme.typography.bodyMedium,

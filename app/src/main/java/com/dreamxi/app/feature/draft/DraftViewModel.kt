@@ -271,37 +271,9 @@ class DraftViewModel @Inject constructor(
         if (it.heldSlotId == slotId) it.copy(heldSlotId = null) else it.copy(heldSlotId = slotId)
     }
 
-    /**
-     * Move the held player to [targetSlotId], swapping with whoever is there.
-     *
-     * Ratings are NOT recomputed here and must not be: a DraftedPlayer derives
-     * its effective rating from the position it holds, so moving Benzema from
-     * ST to LW makes him an 89 and moving him back makes him a 91 again, with
-     * no stored number to go stale. That is the whole reason the rating is
-     * derived rather than saved at pick time.
-     */
+    /** Move the held player, swapping with whoever is there. See DraftUiState.withHeldMovedTo. */
     fun moveHeldTo(targetSlotId: String) {
-        _state.update { s ->
-            val fromId = s.heldSlotId ?: return@update s
-            if (fromId == targetSlotId) return@update s.copy(heldSlotId = null)
-            val moving = s.picks[fromId] ?: return@update s.copy(heldSlotId = null)
-            val target = s.formation.slots.firstOrNull { it.id == targetSlotId }
-                ?: return@update s
-            val displaced = s.picks[targetSlotId]
-
-            // Goalkeeper stays locked in both directions, exactly as at draft
-            // time. A swap is two moves, so BOTH have to be legal.
-            if ((moving.player.role == "GK") != target.isGoalkeeper) return@update s
-            val fromSlot = s.formation.slots.first { it.id == fromId }
-            if (displaced != null && (displaced.player.role == "GK") != fromSlot.isGoalkeeper) {
-                return@update s
-            }
-
-            val next = s.picks.toMutableMap()
-            next[targetSlotId] = moving.copy(slot = target)
-            if (displaced != null) next[fromId] = displaced.copy(slot = fromSlot) else next.remove(fromId)
-            s.copy(picks = next, heldSlotId = null)
-        }
+        _state.update { it.withHeldMovedTo(targetSlotId) }
     }
 
     fun confirmPick(player: SquadPlayer, slot: FormationSlot) {
@@ -315,41 +287,18 @@ class DraftViewModel @Inject constructor(
         }
 
         _state.update { s ->
-            // Guard the invariants that still exist, and ONLY those.
-            //
-            // This used to also require the slot's role to equal the player's,
-            // left over from when positions were locked. Once any outfielder
-            // could fill any outfield position, that check silently rejected
-            // every out-of-position pick: the UI offered all ten positions, the
-            // button animated on press, and the pick went nowhere. Natural-
-            // position picks still worked, which is why a draft got five or six
-            // rounds in before appearing to freeze.
-            //
-            // The real invariants now: the position must still be open, the
-            // player must not already be in the XI (identity is unique across
-            // the whole draft, not per club-season), and the goalkeeper
-            // boundary must not be crossed.
-            if (slot.id in s.picks) return@update s
-            if (player.playerId in s.picks.values.map { it.player.playerId }) return@update s
-            if ((player.role == "GK") != slot.isGoalkeeper) return@update s
-            val spin = s.spin ?: return@update s
-            val picks = s.picks + (slot.id to DraftedPlayer(slot, player, spin.clubName, spin.seasonLabel))
-            s.copy(
-                picks = picks,
-                // Filled the moment the XI is complete, so the finished-squad
-                // screen can show it rather than it appearing from nowhere at
-                // the first scoreline.
-                bench = if (picks.size == s.formation.slots.size) {
-                    BenchSelection.pick(visited, picks.values.toList(), s.formation)
-                } else {
-                    s.bench
-                },
-                selectedPlayer = null,
-                isPlacing = false,
-                heldSlotId = null,
-                spin = null,
-                round = (s.round + 1).coerceAtMost(s.totalRounds),
-            )
+            // The invariants live on DraftUiState.withPick, shared with the
+            // World Cup draft; it hands back the same state when a pick breaks one.
+            val next = s.withPick(player, slot)
+            if (next === s) return@update s
+            // Filled the moment the XI is complete, so the finished-squad
+            // screen can show it rather than it appearing from nowhere at
+            // the first scoreline.
+            if (next.isComplete) {
+                next.copy(bench = BenchSelection.pick(visited, next.picks.values.toList(), next.formation))
+            } else {
+                next
+            }
         }
     }
 

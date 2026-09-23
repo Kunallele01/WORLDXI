@@ -2,7 +2,7 @@ package com.dreamxi.app
 
 import com.dreamxi.app.feature.draft.DefaultFormation
 import com.dreamxi.app.feature.draft.SquadPlayer
-import com.dreamxi.app.feature.freemode.Hungarian
+import com.dreamxi.app.sim.Hungarian
 import com.dreamxi.app.feature.freemode.MagicCandidate
 import com.dreamxi.app.feature.freemode.MagicXi
 import com.dreamxi.app.ui.theme.PlayerPosition
