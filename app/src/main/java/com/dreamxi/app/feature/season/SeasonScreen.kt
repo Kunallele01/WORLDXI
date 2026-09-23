@@ -11,6 +11,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -46,7 +47,9 @@ import com.dreamxi.app.core.ui.components.DreamXiError
 import com.dreamxi.app.core.ui.components.DreamXiPrimaryButton
 import com.dreamxi.app.core.ui.components.DreamXiSecondaryButton
 import com.dreamxi.app.core.ui.components.ErrorNotice
+import com.dreamxi.app.sim.CardEvent
 import com.dreamxi.app.sim.FixtureOutlook
+import com.dreamxi.app.sim.GoalEvent
 import com.dreamxi.app.sim.FormResult
 import com.dreamxi.app.sim.SeasonProjection
 import com.dreamxi.app.sim.SeasonStats
@@ -561,65 +564,97 @@ private fun UserFixtureCard(fixture: SimFixture, modifier: Modifier = Modifier) 
 /**
  * The scoresheet: who scored, who set it up, who was booked.
  *
- * Two columns matching the scoreline above it, so a goal sits under the side
- * that scored it and the eye never has to re-read a team name to work out who
- * a line belongs to.
+ * ONE LINE PER EVENT, IN MINUTE ORDER. This was two independent columns, home
+ * and away, which sounds equivalent and is not: each side's first goal landed
+ * on the same line as the other side's first, so an opener in the 5th and the
+ * reply in the 27th read as if they had happened together, and a match was
+ * impossible to follow. Down the page is the only ordering a reader assumes.
+ *
+ * The line still sits on the side that did it, so a glance still says who
+ * without re-reading a team name — that part of the two-column layout was
+ * right, and it is kept as an empty half opposite each line.
  */
 @Composable
 private fun MatchReport(fixture: SimFixture, modifier: Modifier = Modifier) {
-    Row(modifier = modifier.fillMaxWidth()) {
-        SideReport(fixture, fixture.home.id, alignEnd = true, modifier = Modifier.weight(1f))
-        // A visible gutter down the middle. Two columns pressed against each
-        // other read as one ragged block of text rather than as two sides of a
-        // scoresheet, which is what made this feel cramped.
+    Column(
+        modifier = modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        for (event in fixture.events.inOrder()) {
+            ReportRow(isHome = event.teamId == fixture.home.id) { align ->
+                when (event) {
+                    is GoalEvent -> GoalLine(event, align)
+                    is CardEvent -> CardLine(event, align)
+                }
+            }
+        }
+    }
+}
+
+/**
+ * One event on its own line, on its own side of the sheet.
+ *
+ * The gutter is kept from the two-column version: halves pressed against each
+ * other read as one ragged block of text rather than as two sides of a match.
+ */
+@Composable
+private fun ReportRow(isHome: Boolean, content: @Composable ColumnScope.(TextAlign) -> Unit) {
+    Row(modifier = Modifier.fillMaxWidth()) {
+        val align = if (isHome) TextAlign.End else TextAlign.Start
+        Column(
+            modifier = Modifier.weight(1f),
+            horizontalAlignment = if (isHome) Alignment.End else Alignment.Start,
+        ) {
+            if (isHome) content(align)
+        }
         Spacer(Modifier.width(24.dp))
-        SideReport(fixture, fixture.away.id, alignEnd = false, modifier = Modifier.weight(1f))
+        Column(
+            modifier = Modifier.weight(1f),
+            horizontalAlignment = Alignment.Start,
+        ) {
+            if (!isHome) content(align)
+        }
     }
 }
 
 @Composable
-private fun SideReport(
-    fixture: SimFixture,
-    teamId: String,
-    alignEnd: Boolean,
-    modifier: Modifier = Modifier,
-) {
-    val align = if (alignEnd) TextAlign.End else TextAlign.Start
-    val side = if (alignEnd) Alignment.End else Alignment.Start
-    Column(
-        modifier = modifier,
-        horizontalAlignment = side,
-        verticalArrangement = Arrangement.spacedBy(8.dp),
-    ) {
-        for (goal in fixture.events.goalsFor(teamId)) {
-            Column(horizontalAlignment = side) {
-                Text(
-                    text = "⚽  ${surname(goal.scorer)}  ${goal.minute}'",
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = OnSurfacePrimary,
-                    textAlign = align,
-                )
-                goal.assist?.let {
-                    Text(
-                        text = surname(it),
-                        style = MaterialTheme.typography.labelSmall,
-                        color = OnSurfaceFaint,
-                        textAlign = align,
-                        modifier = Modifier.padding(top = 2.dp),
-                    )
-                }
-            }
-        }
-        for (card in fixture.events.cardsFor(teamId)) {
-            Text(
-                text = "${if (card.isRed) "🟥" else "🟨"}  ${surname(card.player)}  ${card.minute}'",
-                style = MaterialTheme.typography.bodySmall,
-                color = if (card.isRed) ResultLoss else OnSurfaceMuted,
-                textAlign = align,
-            )
-        }
+private fun ColumnScope.GoalLine(goal: GoalEvent, align: TextAlign) {
+    Text(
+        text = "⚽  ${surname(goal.scorer)}  ${goalMinute(goal)}",
+        style = MaterialTheme.typography.bodyMedium,
+        color = OnSurfacePrimary,
+        textAlign = align,
+    )
+    goal.assist?.let {
+        Text(
+            text = surname(it),
+            style = MaterialTheme.typography.labelSmall,
+            color = OnSurfaceFaint,
+            textAlign = align,
+            modifier = Modifier.padding(top = 2.dp),
+        )
     }
 }
+
+@Composable
+private fun ColumnScope.CardLine(card: CardEvent, align: TextAlign) {
+    Text(
+        text = "${if (card.isRed) "🟥" else "🟨"}  ${surname(card.player)}  ${card.minute}'",
+        style = MaterialTheme.typography.bodySmall,
+        color = if (card.isRed) ResultLoss else OnSurfaceMuted,
+        textAlign = align,
+    )
+}
+
+/**
+ * "68'", or "90+4'" for a goal in added time.
+ *
+ * Added time is not a detail here: nearly one goal in ten arrives in it, so
+ * printing them all as a flat 90' put two and three goals on the same minute
+ * of the same match and read as a bug rather than as a late winner.
+ */
+private fun goalMinute(goal: GoalEvent): String =
+    goal.stoppage?.let { "${goal.minute}+$it'" } ?: "${goal.minute}'"
 
 /**
  * Surname only, the way a scoresheet reads. Full names wrap on a phone and
@@ -874,6 +909,7 @@ private fun withSign(value: Int): String = if (value > 0) "+$value" else "$value
 private fun ProjectedFinish(projection: SeasonProjection, modifier: Modifier = Modifier) {
     val rows = projection.likelyBand(5)
     val peak = rows.maxOfOrNull { it.second } ?: return
+    val labels = sharePercents(rows.map { it.second })
     Column(
         modifier = modifier
             .fillMaxWidth()
@@ -887,7 +923,8 @@ private fun ProjectedFinish(projection: SeasonProjection, modifier: Modifier = M
             color = OnSurfaceFaint,
         )
         Spacer(Modifier.height(10.dp))
-        for ((position, chance) in rows) {
+        for ((index, row) in rows.withIndex()) {
+            val (position, chance) = row
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth().padding(vertical = 3.dp),
@@ -915,7 +952,7 @@ private fun ProjectedFinish(projection: SeasonProjection, modifier: Modifier = M
                 }
                 Spacer(Modifier.width(10.dp))
                 Text(
-                    text = percent(chance),
+                    text = labels[index],
                     style = MaterialTheme.typography.bodyMedium,
                     color = OnSurfaceMuted,
                     textAlign = TextAlign.End,
@@ -948,6 +985,40 @@ private fun ProjectedFinish(projection: SeasonProjection, modifier: Modifier = M
             color = OnSurfaceFaint,
             modifier = Modifier.padding(top = 2.dp),
         )
+    }
+}
+
+/**
+ * Whole percents for a set of shares shown together, rounded so they cannot add
+ * up to more than the share they came from.
+ *
+ * Rounding each row on its own is what produced "1st 84%, 2nd 17%" — 83.5 and
+ * 16.5 rounded up individually and the column read 101%. Largest remainder
+ * hands out the rounded total instead: every row is within a point of its true
+ * value, and the ones with most left over get the spare points.
+ *
+ * The rows are a BAND, not the whole table, so they are not expected to reach
+ * 100 — only never to exceed what they actually hold.
+ */
+internal fun sharePercents(shares: List<Double>): List<String> {
+    val budget = Math.round(shares.sum() * 100).toInt()
+    val floors = shares.map { Math.floor(it * 100).toInt() }
+    var spare = budget - floors.sum()
+    val order = shares.indices.sortedByDescending { shares[it] * 100 - floors[it] }
+    val out = floors.toMutableList()
+    for (i in order) {
+        if (spare <= 0) break
+        out[i]++
+        spare--
+    }
+    return shares.indices.map { i ->
+        // A place that really is unreachable must still read 0%, and one that is
+        // merely very unlikely must not: the caller draws a footnote off it.
+        when {
+            shares[i] <= 0.0 -> "0%"
+            out[i] == 0 -> "<1%"
+            else -> "${out[i]}%"
+        }
     }
 }
 

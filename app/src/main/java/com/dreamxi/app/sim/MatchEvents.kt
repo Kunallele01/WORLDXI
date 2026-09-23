@@ -2,21 +2,38 @@ package com.dreamxi.app.sim
 
 import kotlin.random.Random
 
+/** Anything a scoresheet records: when it happened, and to which side. */
+sealed interface MatchEvent {
+    val minute: Int
+    val teamId: String
+
+    /**
+     * Added time, where the event fell in it. Null is "not in added time", NOT
+     * "unknown": bookings never carry one, because nothing measured says how
+     * added time is distributed for cards.
+     */
+    val stoppage: Int? get() = null
+
+    /** Minutes actually played when it happened, so 90+4 sorts after 90+1. */
+    val played: Int get() = minute + (stoppage ?: 0)
+}
+
 /** A goal, as it would appear on a scoresheet. */
 data class GoalEvent(
-    val minute: Int,
-    val teamId: String,
+    override val minute: Int,
+    override val teamId: String,
     val scorer: String,
     val assist: String?,
-)
+    override val stoppage: Int? = null,
+) : MatchEvent
 
 /** A booking. */
 data class CardEvent(
-    val minute: Int,
-    val teamId: String,
+    override val minute: Int,
+    override val teamId: String,
     val player: String,
     val isRed: Boolean,
-)
+) : MatchEvent
 
 /** Everything that happened in a match beyond the scoreline. */
 data class MatchEvents(
@@ -26,6 +43,17 @@ data class MatchEvents(
     fun goalsFor(teamId: String) = goals.filter { it.teamId == teamId }
     fun cardsFor(teamId: String) = cards.filter { it.teamId == teamId }
     val hasAny: Boolean get() = goals.isNotEmpty() || cards.isNotEmpty()
+
+    /**
+     * Both sides' events in the order they happened — the scoresheet, rather
+     * than two team sheets side by side.
+     *
+     * A goal comes before a booking given in the same minute, which is the
+     * likelier order of the two and stops a card jumping ahead of the goal it
+     * followed.
+     */
+    fun inOrder(): List<MatchEvent> =
+        (goals + cards).sortedWith(compareBy({ it.played }, { if (it is GoalEvent) 0 else 1 }))
 }
 
 /**
@@ -40,10 +68,11 @@ data class MatchEvents(
  * as well on a real 2021/22 result as on a simulated one, which is what lets a
  * counterfactual season still carry a full league-wide top-scorer list.
  *
- * THE ONE UNMEASURED CHOICE is the minute. Goals are placed uniformly across
- * the 90, which is not quite how football works — real goals lean late — but
- * nothing in the loaded data records a minute, so a lean would be invention.
- * Uniform is the assumption that adds least.
+ * WHEN a goal happens comes from [GoalMinutes], measured off real World Cup
+ * goal minutes. This used to be a flat draw across the 90 — deliberately, since
+ * no club season in the database records a minute and a lean would have been
+ * invention. The World Cup scrape supplied the minutes, so it is measured now;
+ * bookings are still flat, because that scrape carries goals only.
  */
 object MatchReporter {
 
@@ -64,17 +93,21 @@ object MatchReporter {
         homeGoalsLedger: MutableMap<String, Int>? = null,
         awayGoalsLedger: MutableMap<String, Int>? = null,
     ): MatchEvents {
+        // Both sides draw against ONE list of moments. Goals do not land on top
+        // of each other in football, and a match has two teams scoring them —
+        // keeping a list per side would let the 63rd minute be used twice.
+        val taken = mutableListOf<Int>()
         val goals = mutableListOf<GoalEvent>()
-        goals += scorers(homeId, homeSquad, result.homeGoals, random, homeAssists, homeGoalsLedger)
-        goals += scorers(awayId, awaySquad, result.awayGoals, random, awayAssists, awayGoalsLedger)
+        goals += scorers(homeId, homeSquad, result.homeGoals, random, homeAssists, homeGoalsLedger, taken)
+        goals += scorers(awayId, awaySquad, result.awayGoals, random, awayAssists, awayGoalsLedger, taken)
 
         val cards = mutableListOf<CardEvent>()
         cards += bookings(homeId, homeSquad, random)
         cards += bookings(awayId, awaySquad, random)
 
         return MatchEvents(
-            goals = goals.sortedBy { it.minute },
-            cards = cards.sortedBy { it.minute },
+            goals = goals.sortedBy { it.played },
+            cards = cards.sortedBy { it.played },
         )
     }
 
@@ -86,6 +119,7 @@ object MatchReporter {
         random: Random,
         ledger: MutableMap<String, Int>? = null,
         goalLedger: MutableMap<String, Int>? = null,
+        taken: MutableList<Int> = mutableListOf(),
     ): List<GoalEvent> {
         // No squad, no match report. Degrades to "no scorers listed" rather
         // than taking the season down: a weighted draw cannot pick from nobody.
@@ -108,7 +142,9 @@ object MatchReporter {
                 }
                 ?: pick(scoringWeights, random)
             val scorer = squad.players[scorerIndex]
-            val minute = minuteFor(scorer, random)
+            val moment = momentFor(scorer, random, taken)
+            val minute = moment.minute
+            taken += moment.played
 
             // Drawn from the squad minus the scorer, and minus anyone who could
             // not have been on the pitch yet: a player cannot assist his own
@@ -143,7 +179,7 @@ object MatchReporter {
             } else {
                 null
             }
-            GoalEvent(minute, teamId, scorer.name, assist)
+            GoalEvent(minute, teamId, scorer.name, assist, moment.stoppage)
         }
     }
 
@@ -158,12 +194,31 @@ object MatchReporter {
      * Note this is NOT "substitutes score late". A squad player on a 44% share
      * still starts 64% of the matches he appears in, so most of his goals are
      * legitimately early; the engine simply has to decide which case it is.
+     *
+     * WITHIN that window, [GoalMinutes] decides where, keeping the goal clear
+     * of the ones already scored in this match.
      */
-    private fun minuteFor(player: ScorerWeight, random: Random): Int {
-        if (random.nextDouble() < player.startRate) return random.nextInt(1, 91)
-        val entry = random.nextInt(SimModel.SUB_ENTRY_EARLIEST, SimModel.SUB_ENTRY_LATEST + 1)
-        return random.nextInt(entry, 91)
-    }
+    private fun momentFor(
+        player: ScorerWeight,
+        random: Random,
+        taken: List<Int>,
+    ): GoalMinutes.Moment = GoalMinutes.draw(random, entryFor(player, random), taken)
+
+    /**
+     * A booking's minute, still drawn flat across the window: the World Cup
+     * scrape that supplied the goal curve records goals and nothing else, so a
+     * card curve would be back to inventing one.
+     */
+    private fun cardMinuteFor(player: ScorerWeight, random: Random): Int =
+        random.nextInt(entryFor(player, random), 91)
+
+    /** The first minute this player could have been involved in anything. */
+    private fun entryFor(player: ScorerWeight, random: Random): Int =
+        if (random.nextDouble() < player.startRate) {
+            1
+        } else {
+            random.nextInt(SimModel.SUB_ENTRY_EARLIEST, SimModel.SUB_ENTRY_LATEST + 1)
+        }
 
     /**
      * Rough chance a player is on the pitch at [minute], used to keep the rest
@@ -200,7 +255,7 @@ object MatchReporter {
         repeat(MatchEngine.poisson(squad.redsPerMatch, random)) {
             val p = squad.players[pick(redWeights, random)]
             if (sentOff.add(p.name)) {
-                events += CardEvent(minuteFor(p, random), teamId, p.name, isRed = true)
+                events += CardEvent(cardMinuteFor(p, random), teamId, p.name, isRed = true)
             }
         }
 
@@ -209,7 +264,7 @@ object MatchReporter {
         repeat(MatchEngine.poisson(squad.yellowsPerMatch, random)) {
             val p = squad.players[pick(yellowWeights, random)]
             if (p.name !in sentOff && booked.add(p.name)) {
-                events += CardEvent(minuteFor(p, random), teamId, p.name, isRed = false)
+                events += CardEvent(cardMinuteFor(p, random), teamId, p.name, isRed = false)
             }
         }
         return events

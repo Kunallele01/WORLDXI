@@ -423,8 +423,24 @@ extreme would break the game without breaking a build.
    concede a median of 46 (model: 47) but range 34–63. The columns that would explain
    defensive organisation are exactly the ones FBref stripped.
 5. Placeholder screens: Home, Onboarding, History, Profile.
-6. Match minutes are uniform across the 90 — real goals lean late, but nothing in the data
-   records a minute, so a lean would be invention.
+6. ~~Match minutes are uniform across the 90~~ **FIXED 2026-09-21.** Goal minutes now come
+   from `GoalMinutes.kt`, fitted by `etl/goal_minutes.py` on 1,084 real World Cup goal
+   minutes: a linear in-play tilt (closing quarter-hour ≈ 1.4× the opening one) plus the
+   two whistle minutes pinned to what was really scored in them (minute 90 alone holds
+   9.8% of all goals, against 1.1% under a flat draw). The shape is stable across the six
+   editions (permutation p = 0.18) and between group and knockout football (p = 0.76);
+   worst error across the six 15-minute bands is 1.0 points. The remaining assumption is
+   that club football shares the shape — no club season in the database records a minute,
+   so nothing can test it. **Bookings are still uniform**: the scrape carries goals only.
+   Added time is carried on the event rather than rounded away (`90+4'`), and goals in one
+   match must fall `GoalMinutes.MIN_SEPARATION` = 2 minutes apart — drawn independently
+   they shared a minute in 1.1% of pairs, which has never happened once in 1,481 real
+   pairs, and clustered within two minutes at 5.2% against a real 1.8%.
+7. Wing-backs are priced off a measured per-role offset (`etl/wing_back_cost.py` →
+   `sim/WingBackCost.kt`), because the stored grid keeps one full-back column, max(lb, rb),
+   and drops EA's `lwb`/`rwb` entirely. The exact fix is a stored `pos_rating_wb`, which
+   needs a migration and a reload of every season; the offset is worth about a point
+   (within-role sd 0.86–1.35).
 
 ---
 
