@@ -42,6 +42,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.dreamxi.app.R
+import com.dreamxi.app.core.ui.NationFlags
 import com.dreamxi.app.ui.theme.AccentGold
 import com.dreamxi.app.ui.theme.DisplayFontFamily
 import com.dreamxi.app.ui.theme.DreamXITheme
@@ -73,9 +74,17 @@ private const val DRAWN_MS = 2000
 private const val ARTWORK_MS = 3400
 
 /**
- * The four ways the app can open.
+ * The flags need a little longer than the drawn set, for a reason that is about
+ * the content rather than taste: twenty-five cells have to arrive one at a time
+ * before the name can land on a full field, and a draw that fills in two
+ * seconds reads as a flicker rather than as nations being dealt out.
+ */
+private const val FLAGS_MS = 2600
+
+/**
+ * The ways the app can open.
  *
- * FOUR DIFFERENT IDEAS, not four camera angles on one. An earlier version
+ * DIFFERENT IDEAS, not camera angles on one. An earlier version
  * offered three trajectories into the same goal, which is variety nobody
  * notices — by the third launch it is the same animation. These differ in what
  * they are ABOUT and in how they move:
@@ -86,9 +95,11 @@ private const val ARTWORK_MS = 3400
  *  - [Floodlights] is atmospheric: a stadium coming on around you.
  *  - [Stadium] is the same idea done with ARTWORK rather than geometry, to see
  *    whether an illustrated frame earns its download.
+ *  - [Nations] is the draw: flags dealt out into a field.
  *
- * Two of them are about the game's actual mechanic — assembling an eleven, and
- * mixing seasons — which is a better use of two seconds than decoration.
+ * Three of them are about the game's actual mechanic — assembling an eleven,
+ * mixing seasons, and the World Cup field — which is a better use of two
+ * seconds than decoration.
  */
 internal enum class Intro(val durationMs: Int) {
     Strike(DRAWN_MS),
@@ -96,6 +107,7 @@ internal enum class Intro(val durationMs: Int) {
     Eras(DRAWN_MS),
     Floodlights(DRAWN_MS),
     Stadium(ARTWORK_MS),
+    Nations(FLAGS_MS),
 }
 
 /**
@@ -144,12 +156,13 @@ internal fun IntroStage(
             Intro.Eras -> ErasIntro(t)
             Intro.Floodlights -> FloodlightIntro(t)
             Intro.Stadium -> StadiumIntro(t)
+            Intro.Nations -> NationsIntro(t)
         }
     }
 }
 
 /**
- * The name, shared by all four.
+ * The name, shared by all of them.
  *
  * [from] is when it starts arriving, which differs per intro: the title should
  * land ON the moment each animation builds to, not at a fixed clock time.
@@ -581,6 +594,101 @@ private fun BoxScope.StadiumIntro(t: Float) {
     IntroTitle(t, from = 0.44f, topPadding = 300)
 }
 
+// --------------------------------------------------------------- 6. the draw
+
+/**
+ * Nations that have actually played a World Cup in the database, one spelling
+ * each.
+ *
+ * ONE SPELLING EACH MATTERS. The flag map keys several names to one flag
+ * ("Czechia" and "Czech Republic", "USA" and "United States") because fixture
+ * sources disagree across editions, and dealing the same flag twice into a draw
+ * would look like a bug. These are the canonical names.
+ */
+internal val DRAW_NATIONS = listOf(
+    "Brazil", "Argentina", "France", "Germany", "Italy", "Spain", "England",
+    "Netherlands", "Portugal", "Uruguay", "Belgium", "Croatia", "Mexico",
+    "Japan", "Korea Republic", "USA", "Morocco", "Senegal", "Nigeria", "Ghana",
+    "Australia", "Canada", "Switzerland", "Denmark", "Poland", "Colombia",
+    "Ecuador", "Serbia", "Cameroon", "Sweden", "Türkiye", "Costa Rica",
+    "Saudi Arabia", "Tunisia", "IR Iran", "Qatar",
+)
+
+internal const val DRAW_COLUMNS = 5
+internal const val DRAW_ROWS = 5
+
+/**
+ * The draw: flags dealt out into a field, which then dims and the name arrives
+ * on top of it.
+ *
+ * WHY THIS ONE EXISTS. The other five say what the app has always been — an
+ * eleven, out of any era. None of them hints that a World Cup is in here now,
+ * and a mode nobody discovers may as well not be built. Twenty-five flags
+ * arriving one after another says it in a second and a half without a word of
+ * copy.
+ *
+ * It is the only intro made of assets other than the painted one, and it costs
+ * nothing extra: every flag is already shipped for the World Cup screens, so
+ * this adds bytes for no new file.
+ *
+ * The field is drawn from a different shuffle each launch, so relaunching shows
+ * a different twenty-five — the same reason the draft spins rather than lists.
+ */
+@Composable
+private fun BoxScope.NationsIntro(t: Float) {
+    val flags = remember {
+        DRAW_NATIONS.shuffled(Random).mapNotNull { NationFlags[it] }.take(DRAW_COLUMNS * DRAW_ROWS)
+    }
+
+    // The field settles back a little as the name arrives, but only a little:
+    // the flags are the message here, and the title is given its own space
+    // below them rather than being laid over the top, where a white flag behind
+    // white letters would win.
+    val settle = 1f - 0.25f * ((t - 0.66f) / 0.18f).coerceIn(0f, 1f)
+
+    Column(
+        verticalArrangement = Arrangement.spacedBy(7.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.align(Alignment.Center).padding(bottom = 200.dp).alpha(settle),
+    ) {
+        repeat(DRAW_ROWS) { row ->
+            Row(horizontalArrangement = Arrangement.spacedBy(7.dp)) {
+                repeat(DRAW_COLUMNS) { column ->
+                    val index = row * DRAW_COLUMNS + column
+                    // Dealt one at a time, left to right, top to bottom — the
+                    // order a draw is actually made in.
+                    val start = 0.04f + index * 0.021f
+                    val local = ((t - start) / 0.22f).coerceIn(0f, 1f)
+                    // Ease out, arriving from slightly above and slightly small,
+                    // so each one reads as being placed rather than switched on.
+                    val eased = 1f - (1f - local) * (1f - local)
+                    Box(
+                        Modifier
+                            .size(width = 56.dp, height = 38.dp)
+                            .graphicsLayer {
+                                alpha = eased
+                                scaleX = 0.78f + 0.22f * eased
+                                scaleY = 0.78f + 0.22f * eased
+                                translationY = -18.dp.toPx() * (1f - eased)
+                            }
+                            .clip(RoundedCornerShape(4.dp))
+                            .background(SurfaceRaised1),
+                    ) {
+                        Image(
+                            painter = painterResource(flags[index % flags.size]),
+                            contentDescription = null,
+                            contentScale = ContentScale.Crop,
+                            modifier = Modifier.fillMaxSize(),
+                        )
+                    }
+                }
+            }
+        }
+    }
+
+    IntroTitle(t, from = 0.70f, topPadding = 220)
+}
+
 // ------------------------------------------------------------------ shared
 
 /** A point along a quadratic bezier at [t]. */
@@ -613,3 +721,7 @@ private fun FloodlightsPreview() = DreamXITheme { IntroStage(Intro.Floodlights, 
 @Preview(name = "5 · Stadium art", showBackground = true, backgroundColor = 0xFF0C0D0F, heightDp = 780)
 @Composable
 private fun StadiumPreview() = DreamXITheme { IntroStage(Intro.Stadium, {}) }
+
+@Preview(name = "6 · Nations", showBackground = true, backgroundColor = 0xFF0C0D0F, heightDp = 780)
+@Composable
+private fun NationsPreview() = DreamXITheme { IntroStage(Intro.Nations, {}) }
