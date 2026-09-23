@@ -40,6 +40,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.dreamxi.app.core.ui.passwordStrength
 import com.dreamxi.app.core.ui.components.DreamXiError
 import com.dreamxi.app.core.ui.components.DreamXiPrimaryButton
 import com.dreamxi.app.core.ui.components.DreamXiSecondaryButton
@@ -500,6 +501,7 @@ private fun AttachForm(
             isPassword = true,
             keyboardType = KeyboardType.Password,
             error = error,
+            strength = passwordStrength(password),
             modifier = Modifier.fillMaxWidth(),
         )
         Spacer(Modifier.height(16.dp))

@@ -1,5 +1,9 @@
 package com.dreamxi.app.core.ui.components
 
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.tween
+import com.dreamxi.app.core.ui.passwordStrengthColour
+import com.dreamxi.app.core.ui.passwordStrengthLabel
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -71,6 +75,13 @@ fun DreamXiTextField(
     keyboardType: KeyboardType = KeyboardType.Text,
     imeAction: ImeAction = ImeAction.Next,
     error: String? = null,
+    /**
+     * 0 to 1, or null for a field where strength means nothing.
+     *
+     * Only set where a password is being CHOSEN. On a sign-in field it would
+     * be noise at best and a hint about somebody's existing password at worst.
+     */
+    strength: Float? = null,
 ) {
     var revealed by remember { mutableStateOf(false) }
     val masked = isPassword && !revealed
@@ -82,24 +93,51 @@ fun DreamXiTextField(
     // in. The one being typed into now takes the accent — gold label, gold
     // edge, a gold bar down its leading side — so the form has a live element
     // in it instead of being a static diagram of a form.
+    // Strength, where it applies, takes the field's colour over from the plain
+    // focus accent — red through gold to green as it is typed. Animated, and
+    // slowly enough not to strobe: the colour crosses the whole range within a
+    // few keystrokes, and a hard cut on every letter is exactly the disturbing
+    // thing a live meter must not be.
+    val live = strength?.takeIf { value.isNotEmpty() }
+    val strengthColour by animateColorAsState(
+        targetValue = live?.let { passwordStrengthColour(it) } ?: AccentGold,
+        animationSpec = tween(durationMillis = 260),
+        label = "passwordStrength",
+    )
+
     val edge = when {
         error != null -> ResultLoss
+        live != null -> strengthColour
         focused -> AccentGold
         else -> OutlineSubtle
     }
     val labelColour = when {
         error != null -> ResultLoss
+        live != null -> strengthColour
         focused -> AccentGold
         else -> OnSurfaceFaint
     }
 
     Column(modifier = modifier) {
-        Text(
-            text = label.uppercase(),
-            style = MaterialTheme.typography.labelSmall,
-            letterSpacing = 1.sp,
-            color = labelColour,
-        )
+        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
+            Text(
+                text = label.uppercase(),
+                style = MaterialTheme.typography.labelSmall,
+                letterSpacing = 1.sp,
+                color = labelColour,
+                modifier = Modifier.weight(1f),
+            )
+            // A word as well as a colour. Colour alone is invisible to a good
+            // share of people and ambiguous to everyone else.
+            if (live != null) {
+                Text(
+                    text = passwordStrengthLabel(live),
+                    style = MaterialTheme.typography.labelSmall,
+                    letterSpacing = 1.sp,
+                    color = strengthColour,
+                )
+            }
+        }
         Spacer(Modifier.height(7.dp))
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -110,8 +148,8 @@ fun DreamXiTextField(
                 // to type into, not another raised panel competing with it.
                 .background(SurfaceBase)
                 .border(
-                    width = if (focused || error != null) 2.dp else 1.dp,
-                    color = if (focused || error != null) edge else edge.copy(alpha = 0.8f),
+                    width = if (focused || error != null || live != null) 2.dp else 1.dp,
+                    color = if (focused || error != null || live != null) edge else edge.copy(alpha = 0.8f),
                     shape = RoundedCornerShape(12.dp),
                 )
                 .height(IntrinsicSize.Min),
@@ -122,7 +160,13 @@ fun DreamXiTextField(
                 Modifier
                     .width(3.dp)
                     .fillMaxHeight()
-                    .background(if (focused) AccentGold else Color.Transparent),
+                    .background(
+                        when {
+                            live != null -> strengthColour
+                            focused -> AccentGold
+                            else -> Color.Transparent
+                        },
+                    ),
             )
             Row(
                 verticalAlignment = Alignment.CenterVertically,

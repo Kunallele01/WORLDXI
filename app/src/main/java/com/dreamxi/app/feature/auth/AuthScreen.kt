@@ -42,6 +42,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.dreamxi.app.core.ui.passwordStrength
 import com.dreamxi.app.core.ui.components.DreamXiPrimaryButton
 import com.dreamxi.app.core.ui.components.DreamXiTextField
 import com.dreamxi.app.ui.theme.AccentGold
@@ -191,6 +192,14 @@ internal fun AuthScreen(
                     keyboardType = KeyboardType.Password,
                     imeAction = ImeAction.Done,
                     error = state.passwordError,
+                    // Only while CHOOSING one. On the sign-in side the password
+                    // already exists and rating it would be both noise and a
+                    // hint about an account that is not necessarily yours.
+                    strength = if (state.mode == AuthMode.CreateAccount) {
+                        passwordStrength(state.password)
+                    } else {
+                        null
+                    },
                     modifier = Modifier.fillMaxWidth(),
                 )
 
