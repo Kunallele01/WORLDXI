@@ -6,6 +6,8 @@ import com.dreamxi.app.core.ui.components.DreamXiError
 import com.dreamxi.app.data.toUserFacingError
 import com.dreamxi.app.data.worldcup.LoadedWorldCup
 import com.dreamxi.app.data.worldcup.WorldCupRepository
+import com.dreamxi.app.data.run.WorldCupRunRecord
+import com.dreamxi.app.data.run.RunHistoryRepository
 import com.dreamxi.app.data.worldcup.WorldCupRun
 import com.dreamxi.app.sim.TakeoverDraw
 import com.dreamxi.app.sim.mixSeed
@@ -13,6 +15,7 @@ import com.dreamxi.app.sim.worldcup.GROUP_ROUND
 import com.dreamxi.app.sim.worldcup.GroupResult
 import com.dreamxi.app.sim.worldcup.NationalSide
 import com.dreamxi.app.sim.worldcup.WcGroupTable
+import com.dreamxi.app.sim.worldcup.WcTournamentResult
 import com.dreamxi.app.sim.worldcup.WcTournamentSimulator
 import com.dreamxi.app.sim.worldcup.WcUserTeam
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -45,7 +48,11 @@ private const val TAIL_DRAWS = 12
 class WcTournamentViewModel @Inject constructor(
     private val repository: WorldCupRepository,
     private val run: WorldCupRun,
+    private val runHistory: RunHistoryRepository,
 ) : ViewModel() {
+
+    /** So a tournament that reaches its end twice is filed once. */
+    private var saved = false
 
     private val _state = MutableStateFlow(WcTournamentUiState())
     val state: StateFlow<WcTournamentUiState> = _state.asStateFlow()
@@ -233,6 +240,40 @@ class WcTournamentViewModel @Inject constructor(
                 visibleStage = stage,
                 userGroupRows = rows,
                 phase = if (next.isOver) WcPhase.Finished else it.phase,
+            )
+        }
+        if (next.isOver) saveRun(result)
+    }
+
+    /**
+     * Records the finished tournament, once.
+     *
+     * Silent and best-effort, for the club season's reason: a failed write must
+     * never come between the player and the final he just watched.
+     */
+    private fun saveRun(result: WcTournamentResult) {
+        if (saved) return
+        val draft = run.draft ?: return
+        val cup = loaded ?: return
+        val matches = result.userMatches
+        saved = true
+        viewModelScope.launch {
+            runHistory.saveWorldCupRun(
+                WorldCupRunRecord(
+                    tournamentId = cup.tournamentId,
+                    replacedEntryId = result.replacedId?.removePrefix("club-")?.toLongOrNull(),
+                    formation = draft.formation.id,
+                    seed = draft.seed,
+                    reachedRound = result.userFinish,
+                    champion = result.championId == WC_USER_ID,
+                    played = matches.size,
+                    won = matches.count { it.winnerId == WC_USER_ID },
+                    drawn = matches.count { it.score.homeWon == null },
+                    lost = matches.count { it.loserId == WC_USER_ID },
+                    goalsFor = matches.sumOf { m -> m.goals.count { g -> g.teamId == WC_USER_ID } },
+                    goalsAgainst = matches.sumOf { m -> m.goals.count { g -> g.teamId != WC_USER_ID } },
+                    picks = draft.picks.map { it.slot.id to it.player.playerSeasonStatId },
+                ),
             )
         }
     }

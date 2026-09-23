@@ -80,6 +80,7 @@ fun SetupScreen(
     onSelectMode: (RunMode) -> Unit = {},
     onStartWorldCup: () -> Unit = {},
     onStartWorldCupFreeMode: () -> Unit = {},
+    onOpenHistory: () -> Unit = {},
 ) {
     val worldCup = state.mode == RunMode.WorldCup
     Column(
@@ -197,6 +198,15 @@ fun SetupScreen(
                     )
                 }
             }
+
+            // Past runs. Below the fold on purpose: starting one is the point of
+            // this screen, and a player with no history has nothing to look at.
+            Spacer(Modifier.height(16.dp))
+            DreamXiSecondaryButton(
+                text = "Your past runs",
+                onClick = onOpenHistory,
+                modifier = Modifier.fillMaxWidth(),
+            )
         }
     }
 }

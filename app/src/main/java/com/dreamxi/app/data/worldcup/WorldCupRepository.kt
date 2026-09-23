@@ -211,7 +211,11 @@ class WorldCupRepository @Inject constructor(
                 )
             },
         )
-        LoadedWorldCup(data = data, names = built.associate { it.id to it.name })
+        LoadedWorldCup(
+            data = data,
+            names = built.associate { it.id to it.name },
+            tournamentId = tournament.id,
+        )
     }
 
     private suspend fun pagedEntries(tournamentId: Long?): List<WcEntryDto> = paged { from, to ->
@@ -264,6 +268,8 @@ class WorldCupRepository @Inject constructor(
 data class LoadedWorldCup(
     val data: WcTournamentData,
     val names: Map<String, String>,
+    /** The row this edition came from, so a finished run can be filed against it. */
+    val tournamentId: Long,
 )
 
 /** A finished World Cup draft, waiting to be played. */

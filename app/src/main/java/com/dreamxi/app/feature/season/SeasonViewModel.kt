@@ -4,6 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dreamxi.app.core.ui.components.DreamXiError
 import com.dreamxi.app.data.run.ActiveRun
+import com.dreamxi.app.data.run.LeagueRunRecord
+import com.dreamxi.app.data.run.RunHistoryRepository
 import com.dreamxi.app.data.season.LoadedSeason
 import com.dreamxi.app.data.season.SeasonRepository
 import com.dreamxi.app.data.toUserFacingError
@@ -48,6 +50,7 @@ private const val AUTO_MATCHDAY_MS = 2200L
 class SeasonViewModel @Inject constructor(
     private val repository: SeasonRepository,
     private val activeRun: ActiveRun,
+    private val runHistory: RunHistoryRepository,
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(SeasonUiState())
@@ -55,6 +58,9 @@ class SeasonViewModel @Inject constructor(
 
     private var started = false
     private var loaded: LoadedSeason? = null
+
+    /** So a season that finishes twice — the last matchday, then "skip" — is saved once. */
+    private var saved = false
 
     /**
      * The auto-play loop, held so it can be stopped.
@@ -291,6 +297,49 @@ class SeasonViewModel @Inject constructor(
         if (_state.value.isSeasonOver) {
             _state.update { it.copy(phase = SeasonPhase.Finished) }
             buildStats()
+            saveRun()
+        }
+    }
+
+    /**
+     * Records the finished season, once.
+     *
+     * Deliberately fire-and-forget and deliberately silent. The player has just
+     * watched his XI finish a season; a failed write is worth a log line, not
+     * an error dialog over the final table, and certainly not a lost run. The
+     * repository already treats every write as best-effort — this only decides
+     * WHEN, and makes sure it happens no more than once per run.
+     */
+    private fun saveRun() {
+        if (saved) return
+        val draft = activeRun.draft ?: return
+        val season = loaded ?: return
+        val s = _state.value
+        val row = s.userRow
+        saved = true
+        viewModelScope.launch {
+            runHistory.saveLeagueRun(
+                LeagueRunRecord(
+                    // Free Mode picks from every club of every season, so it
+                    // belongs to no one league — which the column now allows.
+                    leagueId = draft.leagueId.takeIf { !draft.isFreeMode },
+                    seasonScope = season.label,
+                    formation = draft.formation.id,
+                    replacedClubSeasonId = s.replacedClub?.id?.removePrefix("club-")?.toLongOrNull(),
+                    seed = draft.seed,
+                    isFreeMode = draft.isFreeMode,
+                    simulatedSeasonId = season.seasonId,
+                    finalPosition = row?.position,
+                    points = row?.points,
+                    wins = row?.won,
+                    draws = row?.drawn,
+                    losses = row?.lost,
+                    goalsFor = row?.goalsFor,
+                    goalsAgainst = row?.goalsAgainst,
+                    picks = draft.picks.map { it.slot.id to it.player.playerSeasonStatId },
+                    bench = draft.bench.map { it.player.playerSeasonStatId },
+                ),
+            )
         }
     }
 

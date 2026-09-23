@@ -73,6 +73,7 @@ fun DreamXiNavHost(
                         DreamXiDestination.FreeMode.build(league.id, league.name, formation.id),
                     )
                 },
+                onOpenHistory = { navController.navigate(DreamXiDestination.History.route) },
                 onStartWorldCup = { formation, rerolls ->
                     navController.navigate(DreamXiDestination.WorldCupDraft.build(formation.id, rerolls))
                 },
