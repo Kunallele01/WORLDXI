@@ -60,7 +60,10 @@ internal fun PressableBlock(
 
     Box(
         modifier = modifier
-            .alpha(if (enabled) 1f else 0.4f)
+            // Barely faded now: the primary button hands over its own disabled
+            // colours (see DreamXiPrimaryButton), so this no longer has to dim
+            // an accent into mud to say "not yet".
+            .alpha(if (enabled) 1f else 0.85f)
             .height(height + BlockShadowOffset),
     ) {
         // Static base block — stays put; the face sinks down to meet it.

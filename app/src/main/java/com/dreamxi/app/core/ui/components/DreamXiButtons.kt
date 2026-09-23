@@ -16,6 +16,8 @@ import com.dreamxi.app.ui.theme.AccentGold
 import com.dreamxi.app.ui.theme.AccentGoldDim
 import com.dreamxi.app.ui.theme.DreamXITheme
 import com.dreamxi.app.ui.theme.OnAccentGold
+import com.dreamxi.app.ui.theme.SurfaceRaised1
+import com.dreamxi.app.ui.theme.SurfaceRaised2
 
 /**
  * Standard buttons. The press physics they share with every other pressable
@@ -65,12 +67,18 @@ fun DreamXiPrimaryButton(
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
 ) {
+    // A DISABLED PRIMARY IS NOT A DIM GOLD ONE. Fading the accent over a dark
+    // surface does not read as "unavailable", it reads as olive — a heavy,
+    // muddy slab that is somehow the loudest thing on a screen where it cannot
+    // even be pressed. Unavailable is the SHAPE of the button with none of its
+    // colour: a dark face, a gold outline, gold lettering.
     LabelledBlockButton(
         text = text,
         onClick = onClick,
-        faceColor = AccentGold,
-        shadowColor = AccentGoldDim,
-        textColor = OnAccentGold,
+        faceColor = if (enabled) AccentGold else SurfaceRaised2,
+        shadowColor = if (enabled) AccentGoldDim else SurfaceRaised1,
+        textColor = if (enabled) OnAccentGold else AccentGold.copy(alpha = 0.55f),
+        faceBorderColor = if (enabled) null else AccentGold.copy(alpha = 0.35f),
         modifier = modifier,
         enabled = enabled,
     )

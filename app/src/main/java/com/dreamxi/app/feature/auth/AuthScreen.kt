@@ -1,5 +1,14 @@
 package com.dreamxi.app.feature.auth
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import com.dreamxi.app.R
+import com.dreamxi.app.ui.theme.OutlineSubtle
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -10,6 +19,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -83,108 +93,156 @@ internal fun AuthScreen(
     onGuest: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = modifier
-            .fillMaxSize()
-            .background(SurfaceBase)
-            .verticalScroll(rememberScrollState())
-            .padding(horizontal = 24.dp, vertical = 40.dp),
-    ) {
-        Spacer(Modifier.height(20.dp))
-        Text(
-            text = "ERA XI",
-            fontFamily = DisplayFontFamily,
-            fontSize = 44.sp,
-            letterSpacing = 3.sp,
-            color = OnSurfacePrimary,
+    Box(modifier = modifier.fillMaxSize().background(SurfaceBase)) {
+        // The lit stadium from the intro, already shipped for it. A front door
+        // built from four grey boxes on black is a settings page; the same form
+        // over the same artwork the player just watched is an arrival. It costs
+        // nothing new — the asset is in the apk either way.
+        Image(
+            painter = painterResource(R.drawable.intro_stadium_lit),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.fillMaxSize(),
         )
-        Spacer(Modifier.height(6.dp))
-        Text(
-            text = "ELEVEN PLAYERS · EVERY ERA",
-            style = MaterialTheme.typography.labelSmall,
-            letterSpacing = 2.sp,
-            color = OnSurfaceFaint,
-        )
-
-        // Until the stored session has been looked for, the screen is the title
-        // and nothing else — which is what the intro just ended on, so a
-        // returning player sees one continuous hand-over instead of a sign-in
-        // form appearing and vanishing.
-        if (!state.checked) return@Column
-
-        Spacer(Modifier.height(44.dp))
-        ModeSwitch(state.mode, onSetMode, enabled = !state.inFlight)
-        Spacer(Modifier.height(24.dp))
-
-        DreamXiTextField(
-            value = state.email,
-            onValueChange = onEmail,
-            label = "Email",
-            placeholder = "you@example.com",
-            enabled = !state.inFlight,
-            keyboardType = KeyboardType.Email,
-            error = state.emailError,
-            modifier = Modifier.fillMaxWidth(),
-        )
-        Spacer(Modifier.height(16.dp))
-        DreamXiTextField(
-            value = state.password,
-            onValueChange = onPassword,
-            label = "Password",
-            placeholder = if (state.mode == AuthMode.CreateAccount) "At least 8 characters" else "",
-            enabled = !state.inFlight,
-            isPassword = true,
-            keyboardType = KeyboardType.Password,
-            imeAction = ImeAction.Done,
-            error = state.passwordError,
-            modifier = Modifier.fillMaxWidth(),
+        // The scrim only has to protect the TEXT, and the first version
+        // protected the whole screen: 0.55 at the top and near-solid by the
+        // middle turned a painted stadium into a black rectangle with a smudge
+        // on it. The artwork is the reason this screen exists now, so the top
+        // is left almost clear and the floor comes in under the card.
+        Box(
+            Modifier
+                .fillMaxSize()
+                .background(
+                    Brush.verticalGradient(
+                        0f to SurfaceBase.copy(alpha = 0.20f),
+                        0.30f to SurfaceBase.copy(alpha = 0.30f),
+                        0.52f to SurfaceBase.copy(alpha = 0.72f),
+                        0.72f to SurfaceBase.copy(alpha = 0.95f),
+                        1f to SurfaceBase,
+                    ),
+                ),
         )
 
-        if (state.formError != null) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState())
+                .padding(horizontal = 24.dp)
+                .statusBarsPadding()
+                .navigationBarsPadding(),
+        ) {
+            // Sits in the lit part of the stadium rather than above it.
+            Spacer(Modifier.height(72.dp))
+            Text(
+                text = "ERA XI",
+                fontFamily = DisplayFontFamily,
+                fontSize = 58.sp,
+                letterSpacing = 5.sp,
+                color = OnSurfacePrimary,
+            )
+            Spacer(Modifier.height(14.dp))
+            // A gold rule rather than more grey text: the accent reaches the top
+            // of the screen instead of living only on one button near the foot.
+            Box(Modifier.width(56.dp).height(3.dp).background(AccentGold))
             Spacer(Modifier.height(14.dp))
             Text(
-                text = state.formError,
-                style = MaterialTheme.typography.bodySmall,
-                color = ResultLoss,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth(),
+                text = "ELEVEN PLAYERS · EVERY ERA",
+                style = MaterialTheme.typography.labelSmall,
+                letterSpacing = 3.sp,
+                color = OnSurfacePrimary.copy(alpha = 0.75f),
             )
+
+            if (!state.checked) return@Column
+
+            Spacer(Modifier.height(36.dp))
+
+            // The form on its own raised card, so it reads as a panel standing
+            // on the scene rather than fields floating over a photograph.
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(22.dp))
+                    // Nearly solid, and DARKER than the scene behind it, so the
+                    // card reads as a panel standing on the stadium. A surface
+                    // three shades off the background simply merged with it,
+                    // which is what made the whole screen read as one grey.
+                    .background(SurfaceBase.copy(alpha = 0.92f))
+                    .border(1.dp, AccentGold.copy(alpha = 0.22f), RoundedCornerShape(22.dp))
+                    .padding(horizontal = 20.dp, vertical = 22.dp),
+            ) {
+                ModeSwitch(state.mode, onSetMode, enabled = !state.inFlight)
+                Spacer(Modifier.height(22.dp))
+
+                DreamXiTextField(
+                    value = state.email,
+                    onValueChange = onEmail,
+                    label = "Email",
+                    placeholder = "you@example.com",
+                    enabled = !state.inFlight,
+                    keyboardType = KeyboardType.Email,
+                    error = state.emailError,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                Spacer(Modifier.height(20.dp))
+                DreamXiTextField(
+                    value = state.password,
+                    onValueChange = onPassword,
+                    label = "Password",
+                    placeholder = if (state.mode == AuthMode.CreateAccount) "At least 8 characters" else "",
+                    enabled = !state.inFlight,
+                    isPassword = true,
+                    keyboardType = KeyboardType.Password,
+                    imeAction = ImeAction.Done,
+                    error = state.passwordError,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+
+                if (state.formError != null) {
+                    Spacer(Modifier.height(14.dp))
+                    Text(
+                        text = state.formError,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = ResultLoss,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                }
+
+                Spacer(Modifier.height(22.dp))
+                DreamXiPrimaryButton(
+                    text = when {
+                        state.inFlight -> "…"
+                        state.mode == AuthMode.SignIn -> "Sign in"
+                        else -> "Create account"
+                    },
+                    onClick = onSubmit,
+                    enabled = state.canSubmit,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
+
+            Spacer(Modifier.height(22.dp))
+            Text(
+                text = "Play as guest",
+                style = MaterialTheme.typography.titleMedium,
+                color = AccentGold,
+                modifier = Modifier
+                    .clip(RoundedCornerShape(10.dp))
+                    .clickable(enabled = !state.inFlight, onClick = onGuest)
+                    .padding(horizontal = 20.dp, vertical = 10.dp),
+            )
+            Spacer(Modifier.height(8.dp))
+            Text(
+                text = "Your runs still save — but only on this phone, and only until " +
+                    "you add an email.",
+                style = MaterialTheme.typography.bodySmall,
+                color = OnSurfaceMuted,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.padding(horizontal = 12.dp),
+            )
+            Spacer(Modifier.height(28.dp))
         }
-
-        Spacer(Modifier.height(24.dp))
-        DreamXiPrimaryButton(
-            text = when {
-                state.inFlight -> "…"
-                state.mode == AuthMode.SignIn -> "Sign in"
-                else -> "Create account"
-            },
-            onClick = onSubmit,
-            enabled = state.canSubmit,
-            modifier = Modifier.fillMaxWidth(),
-        )
-
-        Spacer(Modifier.height(28.dp))
-        Divider()
-        Spacer(Modifier.height(20.dp))
-
-        Text(
-            text = "Play as guest",
-            style = MaterialTheme.typography.titleMedium,
-            color = AccentGold,
-            modifier = Modifier
-                .clip(RoundedCornerShape(10.dp))
-                .clickable(enabled = !state.inFlight, onClick = onGuest)
-                .padding(horizontal = 18.dp, vertical = 10.dp),
-        )
-        Spacer(Modifier.height(6.dp))
-        Text(
-            text = "Your runs still save — but only on this phone, and only until " +
-                "you add an email.",
-            style = MaterialTheme.typography.bodySmall,
-            color = OnSurfaceMuted,
-            textAlign = TextAlign.Center,
-        )
     }
 }
 
