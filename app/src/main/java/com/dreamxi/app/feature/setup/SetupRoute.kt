@@ -14,7 +14,7 @@ fun SetupRoute(
     onStartFreeMode: (League, Formation) -> Unit = { _, _ -> },
     onStartWorldCup: (Formation, Int) -> Unit = { _, _ -> },
     onStartWorldCupFreeMode: (Formation) -> Unit = {},
-    onOpenHistory: () -> Unit = {},
+    onOpenProfile: () -> Unit = {},
     modifier: Modifier = Modifier,
     viewModel: SetupViewModel = hiltViewModel(),
 ) {
@@ -29,7 +29,7 @@ fun SetupRoute(
         onSelectMode = viewModel::selectMode,
         onStartWorldCup = { onStartWorldCup(state.formation, state.rerollsAllowed) },
         onStartWorldCupFreeMode = { onStartWorldCupFreeMode(state.formation) },
-        onOpenHistory = onOpenHistory,
+        onOpenProfile = onOpenProfile,
         onRetry = viewModel::load,
         modifier = modifier,
     )

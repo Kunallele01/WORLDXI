@@ -2,7 +2,7 @@ package com.dreamxi.app
 
 import com.dreamxi.app.data.auth.PlayerAccount
 import com.dreamxi.app.data.run.PastRun
-import com.dreamxi.app.feature.history.HistoryUiState
+import com.dreamxi.app.feature.profile.ProfileUiState
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -16,7 +16,7 @@ import org.junit.Test
  * disappear the moment one stops being true — a warning shown when it does not
  * apply is one nobody reads when it does.
  */
-class HistoryStateTest {
+class ProfileStateTest {
 
     private fun run(id: Long) =
         PastRun(id, PastRun.Kind.LEAGUE, "Premier League", "4th · 71 pts", false, "2026-09-23")
@@ -26,7 +26,7 @@ class HistoryStateTest {
 
     @Test
     fun `a guest with runs is warned`() {
-        val state = HistoryUiState(isLoading = false, runs = listOf(run(1)), account = guest)
+        val state = ProfileUiState(isLoading = false, runs = listOf(run(1)), account = guest)
         assertTrue(state.warnRunsAreLocal)
     }
 
@@ -34,13 +34,13 @@ class HistoryStateTest {
     fun `a guest with nothing saved is not warned`() {
         // Nothing to lose yet, so the warning would only be noise before the
         // first run — which is exactly when a player is least able to judge it.
-        val state = HistoryUiState(isLoading = false, runs = emptyList(), account = guest)
+        val state = ProfileUiState(isLoading = false, runs = emptyList(), account = guest)
         assertFalse(state.warnRunsAreLocal)
     }
 
     @Test
     fun `attaching an email silences the warning`() {
-        val state = HistoryUiState(isLoading = false, runs = listOf(run(1), run(2)), account = attached)
+        val state = ProfileUiState(isLoading = false, runs = listOf(run(1), run(2)), account = attached)
         assertFalse(state.warnRunsAreLocal)
     }
 
@@ -48,7 +48,7 @@ class HistoryStateTest {
     fun `no account yet means no claim either way`() {
         // Before the first session there is nothing to say: an offline launch
         // must not accuse the app of losing runs it has not taken yet.
-        val state = HistoryUiState(isLoading = false, runs = emptyList(), account = null)
+        val state = ProfileUiState(isLoading = false, runs = emptyList(), account = null)
         assertFalse(state.warnRunsAreLocal)
     }
 

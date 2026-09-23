@@ -20,12 +20,41 @@ data class PastRun(
     val id: Long,
     val kind: Kind,
     val title: String,
-    /** "3rd of 20 · 74 pts", or "Out in the quarter-finals". */
+    /** "3rd · 74 pts", or "Out in the quarter-finals". */
     val outcome: String,
     val isFreeMode: Boolean,
     val createdAt: String,
+    /** Structured, so a record can be counted rather than parsed back out of prose. */
+    val position: Int? = null,
+    val points: Int? = null,
+    val wonIt: Boolean = false,
 ) {
     enum class Kind { LEAGUE, WORLD_CUP }
+}
+
+/**
+ * What a player has to show for every run he has finished.
+ *
+ * Counted from the runs themselves rather than stored, so it can never drift
+ * from the list underneath it — and so a run deleted or added needs nothing
+ * kept in step.
+ */
+data class PlayerRecord(
+    val runs: Int,
+    val leagueTitles: Int,
+    val worldCups: Int,
+    val bestFinish: Int?,
+    val mostPoints: Int?,
+) {
+    companion object {
+        fun from(runs: List<PastRun>): PlayerRecord = PlayerRecord(
+            runs = runs.size,
+            leagueTitles = runs.count { it.kind == PastRun.Kind.LEAGUE && it.wonIt },
+            worldCups = runs.count { it.kind == PastRun.Kind.WORLD_CUP && it.wonIt },
+            bestFinish = runs.filter { it.kind == PastRun.Kind.LEAGUE }.mapNotNull { it.position }.minOrNull(),
+            mostPoints = runs.mapNotNull { it.points }.maxOrNull(),
+        )
+    }
 }
 
 /** What a finished league season is worth recording. */
@@ -327,6 +356,9 @@ class RunHistoryRepository @Inject constructor(
             },
             isFreeMode = isFreeMode,
             createdAt = createdAt,
+            position = result?.finalPosition,
+            points = result?.points,
+            wonIt = result?.finalPosition == 1,
         )
     }
 
@@ -341,6 +373,7 @@ class RunHistoryRepository @Inject constructor(
         // chosen per tournament and the screens label it from the run itself.
         isFreeMode = false,
         createdAt = createdAt,
+        wonIt = results.firstOrNull()?.champion == true,
     )
 }
 

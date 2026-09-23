@@ -13,6 +13,9 @@ sealed class DreamXiDestination(val route: String) {
     /** The opening: a ball struck into the net, then the name. */
     data object Splash : DreamXiDestination("splash")
 
+    /** The way in: sign in, create an account, or play as a guest. */
+    data object Auth : DreamXiDestination("auth")
+
     data object Onboarding : DreamXiDestination("onboarding")
     data object Home : DreamXiDestination("home")
     data object Setup : DreamXiDestination("setup")

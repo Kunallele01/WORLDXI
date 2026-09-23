@@ -76,6 +76,17 @@ class SessionRepository @Inject constructor(
         }
 
     /**
+     * Whether this device already has an account, without creating one.
+     *
+     * Waits for the stored session to load first — asking before that is how
+     * the app used to mint a new anonymous user on every launch.
+     */
+    suspend fun hasSession(): Boolean {
+        client.auth.awaitInitialization()
+        return client.auth.currentUserOrNull() != null
+    }
+
+    /**
      * Makes sure there is a session, signing in anonymously if there is not.
      *
      * Safe to call on every launch: an existing session is left alone, so this

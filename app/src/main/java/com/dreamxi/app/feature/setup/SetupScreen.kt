@@ -80,7 +80,7 @@ fun SetupScreen(
     onSelectMode: (RunMode) -> Unit = {},
     onStartWorldCup: () -> Unit = {},
     onStartWorldCupFreeMode: () -> Unit = {},
-    onOpenHistory: () -> Unit = {},
+    onOpenProfile: () -> Unit = {},
 ) {
     val worldCup = state.mode == RunMode.WorldCup
     Column(
@@ -90,12 +90,34 @@ fun SetupScreen(
             .statusBarsPadding(),
     ) {
         Column(Modifier.padding(horizontal = 20.dp, vertical = 16.dp)) {
-            Text(
-                text = "NEW RUN",
-                style = MaterialTheme.typography.labelSmall,
-                letterSpacing = 1.6.sp,
-                color = AccentGold,
-            )
+            // The way to the profile, where every app puts it. A player looking
+            // for what he has won should not have to read the start screen to
+            // the bottom to find it.
+            Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
+                Text(
+                    text = "NEW RUN",
+                    style = MaterialTheme.typography.labelSmall,
+                    letterSpacing = 1.6.sp,
+                    color = AccentGold,
+                    modifier = Modifier.weight(1f),
+                )
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier
+                        .size(34.dp)
+                        .clip(CircleShape)
+                        .background(SurfaceRaised2)
+                        .border(1.dp, OutlineSubtle, CircleShape)
+                        .clickable(onClick = onOpenProfile),
+                ) {
+                    Text(
+                        text = "★",
+                        fontFamily = DisplayFontFamily,
+                        fontSize = 15.sp,
+                        color = AccentGold,
+                    )
+                }
+            }
             Spacer(Modifier.height(8.dp))
             ModeSwitch(selected = state.mode, onSelect = onSelectMode)
             Spacer(Modifier.height(12.dp))
@@ -199,14 +221,6 @@ fun SetupScreen(
                 }
             }
 
-            // Past runs. Below the fold on purpose: starting one is the point of
-            // this screen, and a player with no history has nothing to look at.
-            Spacer(Modifier.height(16.dp))
-            DreamXiSecondaryButton(
-                text = "Your past runs",
-                onClick = onOpenHistory,
-                modifier = Modifier.fillMaxWidth(),
-            )
         }
     }
 }

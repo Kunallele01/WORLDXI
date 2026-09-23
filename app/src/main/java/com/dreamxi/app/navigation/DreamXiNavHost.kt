@@ -12,10 +12,10 @@ import com.dreamxi.app.feature.designsystem.DesignSystemScreen
 import com.dreamxi.app.feature.draft.DraftRoute
 import com.dreamxi.app.feature.finalize.FinalizeScreen
 import com.dreamxi.app.feature.freemode.FreeModeRoute
-import com.dreamxi.app.feature.history.HistoryScreen
 import com.dreamxi.app.feature.home.HomeScreen
 import com.dreamxi.app.feature.onboarding.OnboardingScreen
-import com.dreamxi.app.feature.profile.ProfileScreen
+import com.dreamxi.app.feature.auth.AuthRoute
+import com.dreamxi.app.feature.profile.ProfileRoute
 import com.dreamxi.app.feature.results.ResultsScreen
 import com.dreamxi.app.feature.season.SeasonRoute
 import com.dreamxi.app.feature.splash.SplashRoute
@@ -50,7 +50,11 @@ fun DreamXiNavHost(
                 // Popped as it leaves, so the system back gesture can never
                 // return to an intro the user has already sat through.
                 onFinished = {
-                    navController.navigate(DreamXiDestination.Setup.route) {
+                    // The intro hands over to the way in, not to the game. A
+                    // player who already has a session never sees it — AuthRoute
+                    // moves straight on — so this costs a returning player
+                    // nothing and gives a new one a front door.
+                    navController.navigate(DreamXiDestination.Auth.route) {
                         popUpTo(DreamXiDestination.Splash.route) { inclusive = true }
                     }
                 },
@@ -73,7 +77,7 @@ fun DreamXiNavHost(
                         DreamXiDestination.FreeMode.build(league.id, league.name, formation.id),
                     )
                 },
-                onOpenHistory = { navController.navigate(DreamXiDestination.History.route) },
+                onOpenProfile = { navController.navigate(DreamXiDestination.Profile.route) },
                 onStartWorldCup = { formation, rerolls ->
                     navController.navigate(DreamXiDestination.WorldCupDraft.build(formation.id, rerolls))
                 },
@@ -169,9 +173,21 @@ fun DreamXiNavHost(
                 },
             )
         }
+        composable(DreamXiDestination.Auth.route) {
+            AuthRoute(
+                onSignedIn = {
+                    navController.navigate(DreamXiDestination.Setup.route) {
+                        popUpTo(DreamXiDestination.Auth.route) { inclusive = true }
+                    }
+                },
+            )
+        }
         composable(DreamXiDestination.Simulating.route) { SimulatingScreen() }
         composable(DreamXiDestination.Results.route) { ResultsScreen() }
-        composable(DreamXiDestination.History.route) { HistoryScreen() }
-        composable(DreamXiDestination.Profile.route) { ProfileScreen() }
+        // History lives INSIDE the profile now: a list of runs with no record
+        // above it and no account beside it was a screen nobody would open.
+        composable(DreamXiDestination.Profile.route) {
+            ProfileRoute(onBack = { navController.popBackStack() })
+        }
     }
 }
