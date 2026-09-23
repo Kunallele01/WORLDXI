@@ -1,5 +1,11 @@
 package com.dreamxi.app.feature.profile
 
+import androidx.compose.foundation.Image
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.foundation.layout.width
+import com.dreamxi.app.R
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -119,15 +125,16 @@ internal fun ProfileScreen(
             )
 
             else -> LazyColumn(
-                contentPadding = PaddingValues(16.dp),
+                contentPadding = PaddingValues(bottom = 24.dp),
                 verticalArrangement = Arrangement.spacedBy(14.dp),
             ) {
-                item { Header(state.account, onBack) }
-                item { RecordBand(state.record) }
+                // Header and record ride on the artwork as one banner, so the
+                // page opens on a ground rather than on a list.
+                item { Banner(state.account, state.record, onBack) }
 
                 if (state.isAttaching) {
                     item {
-                        AttachForm(
+                        Inset { AttachForm(
                             email = state.email,
                             password = state.password,
                             inFlight = state.attachInFlight,
@@ -138,88 +145,138 @@ internal fun ProfileScreen(
                             onAttach = onAttach,
                             onCancel = onCancelAttach,
                             onSignIn = onSignIn,
-                        )
+                        ) }
                     }
                 } else if (state.awaitingConfirmation) {
-                    item { AwaitingConfirmation(state.account?.pendingEmail.orEmpty(), onOpenAttach) }
+                    item { Inset { AwaitingConfirmation(state.account?.pendingEmail.orEmpty(), onOpenAttach) } }
                 } else if (state.account?.isGuest != false) {
                     // EVERY guest gets this, not only one with runs to lose. A
                     // guest with nothing saved used to see no account block at
                     // all, which left him with no way to sign in, no way to
                     // leave, and nothing on screen admitting he was a guest.
-                    item { GuestBlock(state.runs.size, onOpenAttach, onSignIn) }
+                    item { Inset { GuestBlock(state.runs.size, onOpenAttach, onSignIn) } }
                 } else {
-                    item { SignedIn(state.account.email.orEmpty(), state.justAttached, onSignOut) }
+                    item { Inset { SignedIn(state.account.email.orEmpty(), state.justAttached, onSignOut) } }
                 }
 
                 item {
-                    Text(
-                        text = "EVERY RUN",
-                        style = MaterialTheme.typography.labelSmall,
-                        letterSpacing = 1.sp,
-                        color = OnSurfaceFaint,
-                        modifier = Modifier.padding(top = 6.dp),
-                    )
+                    Inset {
+                        Text(
+                            text = "EVERY RUN",
+                            style = MaterialTheme.typography.labelSmall,
+                            letterSpacing = 1.sp,
+                            color = OnSurfaceFaint,
+                            modifier = Modifier.padding(top = 6.dp),
+                        )
+                    }
                 }
                 if (state.runs.isEmpty()) {
-                    item { EmptyRuns() }
+                    item { Inset { EmptyRuns() } }
                 } else {
-                    items(state.runs) { run -> RunRow(run) }
+                    items(state.runs) { run -> Inset { RunRow(run) } }
                 }
             }
         }
     }
 }
 
+/** Side padding for everything below the banner, which is full-bleed. */
 @Composable
-private fun Header(account: PlayerAccount?, onBack: () -> Unit) {
-    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
-        Text(
-            text = "‹",
-            fontFamily = DisplayFontFamily,
-            fontSize = 30.sp,
-            color = OnSurfaceMuted,
-            modifier = Modifier
-                .clip(RoundedCornerShape(8.dp))
-                .clickable(onClick = onBack)
-                .padding(horizontal = 10.dp, vertical = 2.dp),
+private fun Inset(content: @Composable () -> Unit) {
+    Box(Modifier.padding(horizontal = 16.dp)) { content() }
+}
+
+/**
+ * The top of the page: the ground, who you are, and what you have won.
+ *
+ * The artwork is the UNLIT stadium, where the sign-in screen uses the lit one —
+ * the same place before kick-off rather than during it, so the two screens are
+ * obviously the same app without being the same picture.
+ */
+@Composable
+private fun Banner(account: PlayerAccount?, record: PlayerRecord, onBack: () -> Unit) {
+    Box(Modifier.fillMaxWidth()) {
+        Image(
+            painter = painterResource(R.drawable.intro_stadium_dark),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            alignment = Alignment.TopCenter,
+            modifier = Modifier.matchParentSize(),
         )
-        Spacer(Modifier.size(6.dp))
-        Avatar(account)
-        Spacer(Modifier.size(12.dp))
-        Column(Modifier.weight(1f)) {
-            Text(
-                text = account?.email?.substringBefore("@")
-                ?: account?.pendingEmail?.substringBefore("@")
-                ?: "Guest",
-                style = MaterialTheme.typography.titleLarge,
-                color = OnSurfacePrimary,
-            )
-            Text(
-                text = when {
-                account?.email != null -> account.email
-                !account?.pendingEmail.isNullOrBlank() -> "Confirmation pending"
-                else -> "This phone only"
-            },
-                style = MaterialTheme.typography.labelSmall,
-                color = OnSurfaceFaint,
-            )
+        Box(
+            Modifier
+                .matchParentSize()
+                .background(
+                    Brush.verticalGradient(
+                        0f to SurfaceBase.copy(alpha = 0.55f),
+                        0.55f to SurfaceBase.copy(alpha = 0.86f),
+                        1f to SurfaceBase,
+                    ),
+                ),
+        )
+        Column(Modifier.padding(horizontal = 16.dp).padding(top = 8.dp, bottom = 18.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
+                Text(
+                    text = "\u2039",
+                    fontFamily = DisplayFontFamily,
+                    fontSize = 34.sp,
+                    color = OnSurfacePrimary,
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(10.dp))
+                        .clickable(onClick = onBack)
+                        .padding(horizontal = 10.dp),
+                )
+            }
+            Spacer(Modifier.height(18.dp))
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Avatar(account)
+                Spacer(Modifier.width(14.dp))
+                Column(Modifier.weight(1f)) {
+                    Text(
+                        text = account?.email?.substringBefore("@")
+                            ?: account?.pendingEmail?.substringBefore("@")
+                            ?: "Guest",
+                        fontFamily = DisplayFontFamily,
+                        fontSize = 30.sp,
+                        color = OnSurfacePrimary,
+                    )
+                    Spacer(Modifier.height(2.dp))
+                    Text(
+                        text = when {
+                            account?.email != null -> account.email
+                            !account?.pendingEmail.isNullOrBlank() -> "Confirmation pending"
+                            else -> "This phone only"
+                        },
+                        style = MaterialTheme.typography.labelSmall,
+                        letterSpacing = 1.sp,
+                        color = if (account?.isGuest == false) AccentGold else OnSurfaceMuted,
+                    )
+                }
+            }
+            Spacer(Modifier.height(20.dp))
+            RecordBand(record)
         }
     }
 }
 
 /** Initials on gold, the same fallback the club badge uses when it has no crest. */
 @Composable
-private fun Avatar(account: PlayerAccount?, size: androidx.compose.ui.unit.Dp = 46.dp) {
-    val initial = account?.email?.firstOrNull()?.uppercase() ?: "G"
+private fun Avatar(account: PlayerAccount?, size: androidx.compose.ui.unit.Dp = 58.dp) {
+    val initial = account?.email?.firstOrNull()?.uppercase()
+        ?: account?.pendingEmail?.firstOrNull()?.uppercase()
+        ?: "G"
     Box(
         contentAlignment = Alignment.Center,
-        modifier = Modifier.size(size).clip(CircleShape).background(AccentGold),
+        modifier = Modifier
+            .size(size)
+            .clip(CircleShape)
+            .background(AccentGold)
+            .border(2.dp, SurfaceBase, CircleShape),
     ) {
         Text(
             text = initial,
             fontFamily = DisplayFontFamily,
-            fontSize = (size.value * 0.44f).sp,
+            fontSize = (size.value * 0.46f).sp,
             color = OnAccentGold,
         )
     }
@@ -229,31 +286,38 @@ private fun Avatar(account: PlayerAccount?, size: androidx.compose.ui.unit.Dp = 
 @Composable
 private fun RecordBand(record: PlayerRecord) {
     Row(
-        horizontalArrangement = Arrangement.spacedBy(10.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
         modifier = Modifier.fillMaxWidth(),
     ) {
         Stat("RUNS", record.runs.toString(), Modifier.weight(1f))
         Stat("TITLES", record.leagueTitles.toString(), Modifier.weight(1f))
         Stat("WORLD CUPS", record.worldCups.toString(), Modifier.weight(1f))
-        Stat("BEST", record.bestFinish?.let { ordinal(it) } ?: "—", Modifier.weight(1f))
+        Stat("BEST", record.bestFinish?.let { ordinal(it) } ?: "\u2014", Modifier.weight(1f))
     }
 }
 
 @Composable
 private fun Stat(label: String, value: String, modifier: Modifier = Modifier) {
+    // A number he has actually put on the board is worth marking. Zero and "no
+    // best finish yet" stay quiet rather than being dressed up as achievements.
+    val earned = value != "0" && value != "\u2014"
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
             .clip(RoundedCornerShape(14.dp))
-            .background(SurfaceRaised1)
-            .border(1.dp, OutlineSubtle, RoundedCornerShape(14.dp))
-            .padding(vertical = 14.dp),
+            .background(SurfaceBase.copy(alpha = 0.88f))
+            .border(
+                width = 1.dp,
+                color = if (earned) AccentGold.copy(alpha = 0.45f) else OutlineSubtle,
+                shape = RoundedCornerShape(14.dp),
+            )
+            .padding(vertical = 14.dp, horizontal = 4.dp),
     ) {
         Text(
             text = value,
             fontFamily = DisplayFontFamily,
-            fontSize = 26.sp,
-            color = if (value == "0" || value == "—") OnSurfaceMuted else AccentGold,
+            fontSize = 28.sp,
+            color = if (earned) AccentGold else OnSurfaceMuted,
         )
         Spacer(Modifier.height(4.dp))
         Text(
