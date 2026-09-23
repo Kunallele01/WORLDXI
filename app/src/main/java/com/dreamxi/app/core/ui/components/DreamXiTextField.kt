@@ -3,6 +3,13 @@ package com.dreamxi.app.core.ui.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsFocusedAsState
+import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.width
+import androidx.compose.ui.graphics.Color
+import com.dreamxi.app.ui.theme.SurfaceBase
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -67,28 +74,60 @@ fun DreamXiTextField(
 ) {
     var revealed by remember { mutableStateOf(false) }
     val masked = isPassword && !revealed
+    val interactions = remember { MutableInteractionSource() }
+    val focused by interactions.collectIsFocusedAsState()
+
+    // A FIELD SHOULD ANSWER WHEN IT IS TOUCHED. These were three anonymous grey
+    // boxes: same fill, same border, same label, whichever one the cursor was
+    // in. The one being typed into now takes the accent — gold label, gold
+    // edge, a gold bar down its leading side — so the form has a live element
+    // in it instead of being a static diagram of a form.
+    val edge = when {
+        error != null -> ResultLoss
+        focused -> AccentGold
+        else -> OutlineSubtle
+    }
+    val labelColour = when {
+        error != null -> ResultLoss
+        focused -> AccentGold
+        else -> OnSurfaceFaint
+    }
 
     Column(modifier = modifier) {
         Text(
             text = label.uppercase(),
             style = MaterialTheme.typography.labelSmall,
             letterSpacing = 1.sp,
-            color = if (error != null) ResultLoss else OnSurfaceFaint,
+            color = labelColour,
         )
-        Spacer(Modifier.height(6.dp))
+        Spacer(Modifier.height(7.dp))
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .fillMaxWidth()
-                .clip(RoundedCornerShape(10.dp))
-                .background(SurfaceRaised2)
+                .clip(RoundedCornerShape(12.dp))
+                // Darker than the card it sits on rather than lighter: a well
+                // to type into, not another raised panel competing with it.
+                .background(SurfaceBase)
                 .border(
-                    width = 1.dp,
-                    color = if (error != null) ResultLoss.copy(alpha = 0.6f) else OutlineSubtle,
-                    shape = RoundedCornerShape(10.dp),
+                    width = if (focused || error != null) 2.dp else 1.dp,
+                    color = if (focused || error != null) edge else edge.copy(alpha = 0.8f),
+                    shape = RoundedCornerShape(12.dp),
                 )
-                .padding(horizontal = 12.dp, vertical = 12.dp),
+                .height(IntrinsicSize.Min),
         ) {
+            // The leading bar: the clearest possible mark of which field is
+            // live, readable before any of the text is.
+            Box(
+                Modifier
+                    .width(3.dp)
+                    .fillMaxHeight()
+                    .background(if (focused) AccentGold else Color.Transparent),
+            )
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.weight(1f).padding(horizontal = 14.dp, vertical = 15.dp),
+            ) {
             Box(Modifier.weight(1f)) {
                 if (value.isEmpty() && placeholder.isNotEmpty()) {
                     Text(
@@ -106,6 +145,7 @@ fun DreamXiTextField(
                         color = if (enabled) OnSurfacePrimary else OnSurfaceMuted,
                     ),
                     cursorBrush = SolidColor(AccentGold),
+                    interactionSource = interactions,
                     visualTransformation =
                         if (masked) PasswordVisualTransformation() else VisualTransformation.None,
                     keyboardOptions = KeyboardOptions(
@@ -126,6 +166,7 @@ fun DreamXiTextField(
                         .padding(start = 10.dp)
                         .clickable(enabled = enabled) { revealed = !revealed },
                 )
+            }
             }
         }
         if (error != null) {

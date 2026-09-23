@@ -5,6 +5,8 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.TransformOrigin
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import com.dreamxi.app.R
@@ -102,7 +104,24 @@ internal fun AuthScreen(
             painter = painterResource(R.drawable.intro_stadium_lit),
             contentDescription = null,
             contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize(),
+            // Cropped in and pushed up. Fitted to the screen the picture reads
+            // as a wide shot of a small ground with a lot of empty sky; scaled
+            // past the frame and anchored high, the floodlights and the stands
+            // fill the part of the screen that is actually visible above the
+            // card, which is the only part the player ever sees.
+            // Anchored to the TOP of the picture, not its middle: the
+            // floodlights are the part worth seeing, and scaling about the
+            // centre climbed straight past them into the stands — which put a
+            // bright band of crowd through the tagline. 1.25 crops in enough to
+            // fill the frame while keeping the lights in it.
+            alignment = Alignment.TopCenter,
+            modifier = Modifier
+                .fillMaxSize()
+                .graphicsLayer {
+                    scaleX = 1.25f
+                    scaleY = 1.25f
+                    transformOrigin = TransformOrigin(0.5f, 0f)
+                },
         )
         // The scrim only has to protect the TEXT, and the first version
         // protected the whole screen: 0.55 at the top and near-solid by the
