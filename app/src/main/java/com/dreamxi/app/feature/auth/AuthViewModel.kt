@@ -1,14 +1,17 @@
 package com.dreamxi.app.feature.auth
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dreamxi.app.data.auth.SessionRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import io.github.jan.supabase.auth.exception.AuthRestException
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import java.io.IOException
 import javax.inject.Inject
 
 /** Sign in to an account that exists, or make one. */
@@ -133,14 +136,43 @@ class AuthViewModel @Inject constructor(
     }
 
     private fun fail(t: Throwable) {
-        _state.update {
-            it.copy(
-                inFlight = false,
-                // Supabase's own words: "Invalid login credentials" and "User
-                // already registered" are precisely what the player needs, and
-                // a generic network message would bury them.
-                formError = t.message?.takeIf { m -> m.isNotBlank() } ?: "That did not work. Try again.",
-            )
+        Log.w("DreamXI", "auth failed", t)
+        _state.update { it.copy(inFlight = false, formError = authMessage(t)) }
+    }
+
+    /**
+     * Words for the player, never the library's.
+     *
+     * supabase-kt's `message` is a debug dump — the request URL, the headers,
+     * the HTTP method — which is what used to be drawn on screen. The error
+     * CODE is what carries the meaning, so the wording is chosen from that.
+     *
+     * Sign-in deliberately does NOT say whether the email exists. Supabase
+     * returns the same `invalid_credentials` for an unknown address and a wrong
+     * password, because telling them apart lets anyone test which emails have
+     * accounts. The message points at both possibilities instead.
+     */
+    private fun authMessage(t: Throwable): String {
+        var cause: Throwable? = t
+        while (cause != null) {
+            if (cause is AuthRestException) {
+                return when (cause.error) {
+                    "invalid_credentials" ->
+                        "That email and password do not match. Check them, or create an account if you are new."
+                    "user_already_exists", "email_exists" ->
+                        "An account with that email already exists. Sign in instead."
+                    "weak_password" ->
+                        "That password is too easy to guess. Try a longer or less common one."
+                    "email_not_confirmed" ->
+                        "Confirm your email first — there is a link waiting in your inbox."
+                    "over_request_rate_limit", "over_email_send_rate_limit" ->
+                        "Too many attempts. Wait a minute and try again."
+                    else -> "That did not work. Try again."
+                }
+            }
+            if (cause is IOException) return "Cannot reach the server. Check your connection and try again."
+            cause = cause.cause.takeIf { it !== cause }
         }
+        return "That did not work. Try again."
     }
 }
