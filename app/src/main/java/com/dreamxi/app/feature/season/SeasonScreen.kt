@@ -58,6 +58,7 @@ import com.dreamxi.app.sim.SeasonStats
 import com.dreamxi.app.sim.SimFixture
 import com.dreamxi.app.sim.SimTeam
 import com.dreamxi.app.sim.TableRow
+import com.dreamxi.app.sim.Venues
 import com.dreamxi.app.ui.theme.AccentGold
 import com.dreamxi.app.ui.theme.DreamXITheme
 import com.dreamxi.app.ui.theme.OnAccentGold
@@ -496,7 +497,7 @@ private fun ResultsBlock(state: SeasonUiState, modifier: Modifier = Modifier) {
     Column(modifier = modifier.fillMaxWidth()) {
         Spacer(Modifier.height(16.dp))
         state.userResult?.let { fixture ->
-            UserFixtureCard(fixture)
+            UserFixtureCard(fixture, state.leagueName, state.seasonLabel)
             Spacer(Modifier.height(14.dp))
         }
         val others = state.currentResults.filterNot { it.home.isUserTeam || it.away.isUserTeam }
@@ -513,8 +514,14 @@ private fun ResultsBlock(state: SeasonUiState, modifier: Modifier = Modifier) {
 }
 
 @Composable
-private fun UserFixtureCard(fixture: SimFixture, modifier: Modifier = Modifier) {
+private fun UserFixtureCard(
+    fixture: SimFixture,
+    leagueName: String,
+    seasonLabel: String,
+    modifier: Modifier = Modifier,
+) {
     val userIsHome = fixture.home.isUserTeam
+    val venue = remember(fixture, leagueName, seasonLabel) { Venues.of(fixture, leagueName, seasonLabel) }
     val userGoals = if (userIsHome) fixture.result.homeGoals else fixture.result.awayGoals
     val theirGoals = if (userIsHome) fixture.result.awayGoals else fixture.result.homeGoals
     val accent = when {
@@ -530,8 +537,11 @@ private fun UserFixtureCard(fixture: SimFixture, modifier: Modifier = Modifier) 
             .border(1.dp, accent.copy(alpha = 0.45f), RoundedCornerShape(16.dp))
             .padding(16.dp),
     ) {
+        // Where it was played, in place of a bare HOME / AWAY. HOME / AWAY stays as the
+        // fallback for a club with no stadium on record: better than printing a guess.
         Text(
-            text = if (userIsHome) "HOME" else "AWAY",
+            text = venue?.let { "${it.stadium}  ·  ${it.city}".uppercase() }
+                ?: if (userIsHome) "HOME" else "AWAY",
             style = MaterialTheme.typography.labelSmall,
             color = accent,
         )

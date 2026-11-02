@@ -69,6 +69,7 @@ seven points worse at left-back, that is what he is worth there.
 | Source | Used for | Licence |
 |---|---|---|
 | **Wikipedia** | World Cup fixtures, results, scorers, goal minutes, shootouts (2006–2026) | CC BY-SA 4.0 — credited in the app's tournament screen |
+| **Wikipedia** | Stadium and city for every club in every league season (`etl/stadiums.py` → `StadiumData.kt`) | CC BY-SA 4.0 |
 | **FBref** | Club fixtures and box-score statistics | Terms of the source |
 | **Understat** | Expected goals and assists | Terms of the source |
 | **EA / FIFA ratings** | Player overall ratings and positional grids | Terms of the source |
