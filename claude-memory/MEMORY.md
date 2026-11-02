@@ -1,0 +1,20 @@
+- [Dream XI architecture decisions](dream-xi-architecture-decisions.md) — resolved §12 open decisions (backend, sim engine, fixtures, monetization, etc.) from PROJECT_SPEC_v2.md
+- [Dream XI dev setup](dream-xi-dev-setup.md) — migrated to a fresh laptop (2026-11-02); emulator-only now, no physical device
+- [Dream XI design language](dream-xi-design-language.md) — flat/solid components approved; app is named ERA XI; five randomised intro animations and the launcher icon
+- [Dream XI Supabase project](dream-xi-supabase-project.md) — project created, wired in, schema+grants applied and verified (public read + owner-only RLS both confirmed working)
+- [Dream XI ETL pilot](dream-xi-etl-pilot.md) — PL + La Liga 2023/24 loaded into Supabase; FBref needs a real browser (Cloudflare-blocks scripts), lost its advanced-stats feed in Jan 2026, and player identity must key on (name, birth_year) not name alone
+- [Dream XI attribute formula spec](dream-xi-attribute-formula-spec.md) — the real §7.3 doc now exists at ATTRIBUTE_FORMULA_SPEC.md, read it before tuning attributes (its §5 is now superseded)
+- [Dream XI rating anchor](dream-xi-rating-anchor.md) — overall_rating comes from per-season FIFA ratings, NOT box-score stats; defensive stats are provably inverted, don't retry tuning them
+- [Dream XI draft mechanic](dream-xi-draft-mechanic.md) — core loop redesign: every round spins a random SEASON too, sim season/replaced-club chosen after draft completes
+- [Dream XI draft screen state](dream-xi-draft-screen-state.md) — draft is built and approved; biggest remaining gap is that nothing persists (in-memory ActiveRun loses a run mid-season)
+- [Dream XI simulation engine](dream-xi-simulation-engine.md) — engine + counterfactual season are built, calibrated and on-device; read before touching any sim constant
+- [Dream XI Free Mode](dream-xi-free-mode.md) — built, plus the Magic XI button (chosen as one assignment, never greedy; deliberately not deterministic)
+- [Dream XI season screens](dream-xi-season-screens.md) — season + statistics screen behaviour, the analytics layer (xPts, projection, fixture difficulty), and the resolved squad-depth decision
+- [Dream XI FIFA grid faults](dream-xi-fifa-grid-faults.md) — SOLVED: the grids were fine, our name matcher was returning the wrong person (uniqueness is not identity)
+- [Verify edits actually applied](verify-edits-actually-applied.md) — a silent no-op replace let me report a fix that never landed; use Edit or assert, then grep
+- [Dream XI seasons 2014/15-2018/19](dream-xi-seasons-2015-2019.md) — LOADED; 10 seasons per league now, no scraping was needed, and three matcher traps worth reusing
+- [Dream XI missing stats sources](dream-xi-missing-stats-sources.md) — Understat supplies xG/xA/key passes for all 10 seasons; FBref permanently stripped pass%/dribbles/progressive/clearances/aerials; interceptions now loaded for all five seasons
+- [Dream XI older seasons data sources](dream-xi-older-seasons-data-sources.md) — 2009/10-2013/14 LOADED (15 seasons per league); EA FIFA 15-17 rating inflation corrected by band via rating_scale.py; position guard; 2005/06-2008/09 still to do
+- [Dream XI World Cup mode](dream-xi-world-cup-mode.md) — design agreed; 0007 applied + data loaded; knockout ENGINE BUILT (see calibration memory); 0008 applied, goals loaded; no UI yet
+- [Dream XI World Cup engine calibration](dream-xi-world-cup-engine-calibration.md) — measured WC constants (mapping, ET, hosts, shootouts, position costs), FIFA 07 rating bug fixed, Wikipedia scorers, 2026's h2h-first rules
+- [Dream XI repo state](dream-xi-repo-state.md) — everything committed on branch era-xi-app (master is stale); data files deliberately not versioned, so a clone can't run the WC scripts
