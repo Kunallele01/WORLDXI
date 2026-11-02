@@ -1,5 +1,7 @@
 package com.dreamxi.app.feature.season
 
+import android.content.Context
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dreamxi.app.core.ui.components.DreamXiError
@@ -18,6 +20,7 @@ import com.dreamxi.app.sim.SimTeam
 import com.dreamxi.app.sim.TakeoverDraw
 import com.dreamxi.app.sim.mixSeed
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -26,6 +29,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import java.io.File
 import javax.inject.Inject
 import kotlin.random.Random
 
@@ -51,7 +55,27 @@ class SeasonViewModel @Inject constructor(
     private val repository: SeasonRepository,
     private val activeRun: ActiveRun,
     private val runHistory: RunHistoryRepository,
+    @ApplicationContext private val context: Context,
 ) : ViewModel() {
+
+    /**
+     * Records which season each run was dealt, to check by counting that the
+     * draw really is uniform. A feeling that "older seasons are rare" cannot be
+     * settled from memory; a tally over a few dozen runs can.
+     *
+     * Written to a file as well as the log because logcat does not survive the
+     * emulator being closed. Read it back with:
+     *   adb exec-out run-as com.dreamxi.app cat files/season_log.tsv
+     * Diagnostic only: it must never be able to break a run, hence the catch.
+     */
+    private fun logSeasonChoice(league: String, season: String, optionCount: Int, freeMode: Boolean) {
+        val mode = if (freeMode) "free" else "draft"
+        Log.i("DreamXI", "season drawn: $league $season (1 of $optionCount, $mode)")
+        runCatching {
+            File(context.filesDir, "season_log.tsv")
+                .appendText("${System.currentTimeMillis()}\t$league\t$season\t$optionCount\t$mode\n")
+        }
+    }
 
     private val _state = MutableStateFlow(SeasonUiState())
     val state: StateFlow<SeasonUiState> = _state.asStateFlow()
@@ -101,6 +125,7 @@ class SeasonViewModel @Inject constructor(
             check(options.isNotEmpty()) { "No fully loaded season to play in ${draft.leagueName}." }
 
             val chosen = options[Random(mixSeed(draft.seed)).nextInt(options.size)]
+            logSeasonChoice(draft.leagueName, chosen.label, options.size, draft.isFreeMode)
             repository.loadSeason(chosen.seasonId)
         }.onSuccess { season ->
             if (season.teams.size < MIN_CLUBS_FOR_A_SEASON) {
