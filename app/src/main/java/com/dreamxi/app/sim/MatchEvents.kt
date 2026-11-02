@@ -54,7 +54,32 @@ data class MatchEvents(
      */
     fun inOrder(): List<MatchEvent> =
         (goals + cards).sortedWith(compareBy({ it.played }, { if (it is GoalEvent) 0 else 1 }))
+
+    /**
+     * For each goal, in the same order [inOrder] lists them: which goal of the
+     * match it is for its scorer, and which assist of the match it is for its
+     * assister.
+     *
+     * A scoresheet of "Messi 56', Messi 72', Messi 74'" makes the reader count
+     * for themselves. 1 means his first, so a screen can print nothing for it
+     * and "×2" from the second on.
+     *
+     * Keyed by side AND name: the same surname turning out for both teams in
+     * one match is a coincidence worth surviving.
+     */
+    fun goalNumbers(): List<GoalNumbers> {
+        val scored = HashMap<Pair<String, String>, Int>()
+        val assisted = HashMap<Pair<String, String>, Int>()
+        return inOrder().filterIsInstance<GoalEvent>().map { goal ->
+            val nthGoal = scored.merge(goal.teamId to goal.scorer, 1, Int::plus)!!
+            val nthAssist = goal.assist?.let { assisted.merge(goal.teamId to it, 1, Int::plus)!! } ?: 0
+            GoalNumbers(scorer = nthGoal, assist = nthAssist)
+        }
+    }
 }
+
+/** [scorer] is 1 for his first goal of the match; [assist] is 0 when the goal had no assist. */
+data class GoalNumbers(val scorer: Int, val assist: Int)
 
 /**
  * Turns a scoreline into a match report: who scored, who set it up, who was

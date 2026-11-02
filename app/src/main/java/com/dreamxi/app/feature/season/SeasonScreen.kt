@@ -32,6 +32,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -50,6 +51,7 @@ import com.dreamxi.app.core.ui.components.ErrorNotice
 import com.dreamxi.app.sim.CardEvent
 import com.dreamxi.app.sim.FixtureOutlook
 import com.dreamxi.app.sim.GoalEvent
+import com.dreamxi.app.sim.GoalNumbers
 import com.dreamxi.app.sim.FormResult
 import com.dreamxi.app.sim.SeasonProjection
 import com.dreamxi.app.sim.SeasonStats
@@ -580,10 +582,13 @@ private fun MatchReport(fixture: SimFixture, modifier: Modifier = Modifier) {
         modifier = modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
+        val numbers = remember(fixture) { fixture.events.goalNumbers() }
+        var goalIndex = 0
         for (event in fixture.events.inOrder()) {
+            val goalNumber = if (event is GoalEvent) numbers[goalIndex++] else null
             ReportRow(isHome = event.teamId == fixture.home.id) { align ->
                 when (event) {
-                    is GoalEvent -> GoalLine(event, align)
+                    is GoalEvent -> GoalLine(event, goalNumber!!, align)
                     is CardEvent -> CardLine(event, align)
                 }
             }
@@ -618,16 +623,16 @@ private fun ReportRow(isHome: Boolean, content: @Composable ColumnScope.(TextAli
 }
 
 @Composable
-private fun ColumnScope.GoalLine(goal: GoalEvent, align: TextAlign) {
+private fun ColumnScope.GoalLine(goal: GoalEvent, numbers: GoalNumbers, align: TextAlign) {
     Text(
-        text = "⚽  ${surname(goal.scorer)}  ${goalMinute(goal)}",
+        text = "⚽  ${surname(goal.scorer)}${nth(numbers.scorer)}  ${goalMinute(goal)}",
         style = MaterialTheme.typography.bodyMedium,
         color = OnSurfacePrimary,
         textAlign = align,
     )
     goal.assist?.let {
         Text(
-            text = surname(it),
+            text = surname(it) + nth(numbers.assist),
             style = MaterialTheme.typography.labelSmall,
             color = OnSurfaceFaint,
             textAlign = align,
@@ -645,6 +650,9 @@ private fun ColumnScope.CardLine(card: CardEvent, align: TextAlign) {
         textAlign = align,
     )
 }
+
+/** " ×2" from a player's second goal (or assist) of the match; nothing for his first. */
+internal fun nth(n: Int): String = if (n >= 2) " ×$n" else ""
 
 /**
  * "68'", or "90+4'" for a goal in added time.
