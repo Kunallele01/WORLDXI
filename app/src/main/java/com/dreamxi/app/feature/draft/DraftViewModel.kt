@@ -7,15 +7,22 @@ import com.dreamxi.app.core.ui.components.DreamXiError
 import com.dreamxi.app.data.draft.DraftRepository
 import com.dreamxi.app.data.run.ActiveRun
 import com.dreamxi.app.data.run.CompletedDraft
+import com.dreamxi.app.data.run.RunSnapshotStore
+import com.dreamxi.app.data.run.SavedDraft
 import com.dreamxi.app.feature.draft.DefensiveRecord
 import com.dreamxi.app.data.toUserFacingError
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import kotlin.random.Random
 
@@ -33,6 +40,7 @@ import kotlin.random.Random
 class DraftViewModel @Inject constructor(
     private val repository: DraftRepository,
     private val activeRun: ActiveRun,
+    private val store: RunSnapshotStore,
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(DraftUiState())
@@ -63,6 +71,67 @@ class DraftViewModel @Inject constructor(
     private var seasonLabels: Map<Long, String> = emptyMap()
     private var defensiveRecords: Map<Long, DefensiveRecord> = emptyMap()
 
+    /** Set once the XI is handed to the season, after which the draft has nothing left to save. */
+    @Volatile
+    private var seasonBegun = false
+
+    /** True once this run has saved its first snapshot, which is when it replaces any older run. */
+    private var supersededOlderRun = false
+
+    init {
+        // Keeps a snapshot of the draft as it goes, so closing the app does not
+        // lose it. Written when something a player would miss changes (a pick, a
+        // squad dealt, a change spin used), not on every frame of the reel.
+        viewModelScope.launch {
+            _state.map { snapshotOf(it) }
+                .distinctUntilChanged()
+                .collect { snapshot ->
+                    if (snapshot == null || seasonBegun) return@collect
+                    withContext(Dispatchers.IO) {
+                        // Check and write under the store's own lock, so a save
+                        // cannot land after abandon() or the season hand-off has
+                        // cleared the file: those set the flag, then take the same
+                        // lock to delete.
+                        synchronized(store) {
+                            if (seasonBegun) return@synchronized
+                            // The first save of a NEW run is the point it replaces
+                            // an older season in progress: not at the Start button,
+                            // so a mis-tap cannot cost the run the player came back to.
+                            if (!supersededOlderRun) {
+                                supersededOlderRun = true
+                                store.clearSeason()
+                            }
+                            store.saveDraft(snapshot)
+                        }
+                    }
+                }
+        }
+    }
+
+    /** What is worth saving of [s], or null if there is nothing yet (or it is mid-spin). */
+    private fun snapshotOf(s: DraftUiState): SavedDraft? {
+        val league = leagueId ?: return null
+        if (s.isSpinning) return null
+        if (s.picks.isEmpty() && s.spin == null) return null
+        return SavedDraft(
+            leagueId = league,
+            leagueName = s.leagueName,
+            formation = s.formation,
+            rerollsAllowed = s.rerollsAllowed,
+            rerollsUsed = s.rerollsUsed,
+            picks = s.formation.slots.mapNotNull { s.picks[it.id] },
+            spin = s.spin,
+            visited = visited.toList(),
+            bench = s.bench,
+        )
+    }
+
+    /** The player chose to leave: there is nothing to come back to. */
+    fun abandon() {
+        seasonBegun = true // stop the observer writing it back
+        viewModelScope.launch(Dispatchers.IO) { store.clearDraft() }
+    }
+
     /**
      * [leagueId] is null until the Setup screen passes a chosen league through,
      * in which case the first loaded league is used. Resolved from the database
@@ -80,14 +149,33 @@ class DraftViewModel @Inject constructor(
         formationId: String? = null,
         rerollsAllowed: Int = 2,
         runId: Long? = null,
+        resume: Boolean = false,
     ) {
         if (this.leagueId != null) return
         this.runId = runId
-        _state.value = DraftUiState(
-            leagueName = leagueName.orEmpty(),
-            formation = formationById(formationId),
-            rerollsAllowed = rerollsAllowed,
-        )
+        // Picking a draft back up: put the screen back exactly as it was left,
+        // including the squad that was on it. The pool and labels still load
+        // below, as for any draft, because the next spin needs them.
+        val saved = if (resume) store.loadDraft() else null
+        if (saved != null) {
+            visited += saved.visited
+            _state.value = DraftUiState(
+                leagueName = saved.leagueName,
+                formation = saved.formation,
+                rerollsAllowed = saved.rerollsAllowed,
+                rerollsUsed = saved.rerollsUsed,
+                picks = saved.picks.associateBy { it.slot.id },
+                round = (saved.picks.size + 1).coerceAtMost(saved.formation.slots.size),
+                spin = saved.spin,
+                bench = saved.bench,
+            )
+        } else {
+            _state.value = DraftUiState(
+                leagueName = leagueName.orEmpty(),
+                formation = formationById(formationId),
+                rerollsAllowed = rerollsAllowed,
+            )
+        }
         viewModelScope.launch {
             runCatching {
                 val resolvedId: Long
@@ -314,6 +402,9 @@ class DraftViewModel @Inject constructor(
         val s = _state.value
         val league = leagueId ?: return false
         if (!s.isComplete) return false
+        // Before the hand-off, so the snapshot observer stops writing the draft
+        // that activeRun.start is about to replace with the season.
+        seasonBegun = true
         activeRun.start(
             CompletedDraft(
                 leagueId = league,

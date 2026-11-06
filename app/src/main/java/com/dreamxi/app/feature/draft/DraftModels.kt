@@ -3,6 +3,7 @@ package com.dreamxi.app.feature.draft
 import com.dreamxi.app.sim.WingBackCost
 import com.dreamxi.app.core.ui.components.DreamXiError
 import com.dreamxi.app.ui.theme.PlayerPosition
+import kotlinx.serialization.Serializable
 
 /**
  * Transfermarkt's per-season role -> that player's natural key in the EA
@@ -84,6 +85,7 @@ fun sidedRoleLabel(role: String): String = when (role) {
 }
 
 /** A player as offered by a spun squad. */
+@Serializable
 data class SquadPlayer(
     val playerSeasonStatId: Long,
     val playerId: Long,
@@ -203,6 +205,7 @@ fun SquadPlayer.fitAt(slot: FormationSlot): PositionFit = fitForDelta(deltaAt(sl
  * a back line that conceded 29, fewest in the league" is a genuine description
  * of a season, where "2 goals in 31 games" is noise.
  */
+@Serializable
 data class DefensiveRecord(
     val goalsAgainst: Int,
     /** 1 = fewest conceded in that league season. */
@@ -211,6 +214,7 @@ data class DefensiveRecord(
 )
 
 /** The club-season a spin landed on. */
+@Serializable
 data class SpinResult(
     val clubSeasonId: Long,
     val clubName: String,
@@ -230,6 +234,7 @@ data class SpinResult(
 )
 
 /** A completed pick. */
+@Serializable
 data class DraftedPlayer(
     val slot: FormationSlot,
     val player: SquadPlayer,

@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.LifecycleResumeEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.dreamxi.app.data.draft.League
 import com.dreamxi.app.feature.draft.Formation
@@ -15,10 +16,17 @@ fun SetupRoute(
     onStartWorldCup: (Formation, Int) -> Unit = { _, _ -> },
     onStartWorldCupFreeMode: (Formation) -> Unit = {},
     onOpenProfile: () -> Unit = {},
+    onContinue: (ResumeTarget) -> Unit = {},
     modifier: Modifier = Modifier,
     viewModel: SetupViewModel = hiltViewModel(),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
+    // A run can finish, or be quit, while this screen sits underneath it; the
+    // offer has to be re-read each time the screen comes back.
+    LifecycleResumeEffect(Unit) {
+        viewModel.refreshResume()
+        onPauseOrDispose {}
+    }
     SetupScreen(
         state = state,
         onSelectLeague = viewModel::selectLeague,
@@ -30,6 +38,8 @@ fun SetupRoute(
         onStartWorldCup = { onStartWorldCup(state.formation, state.rerollsAllowed) },
         onStartWorldCupFreeMode = { onStartWorldCupFreeMode(state.formation) },
         onOpenProfile = onOpenProfile,
+        onContinue = { viewModel.prepareContinue()?.let(onContinue) },
+        onDiscardRun = viewModel::discardResume,
         onRetry = viewModel::load,
         modifier = modifier,
     )

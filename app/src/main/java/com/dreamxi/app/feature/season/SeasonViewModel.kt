@@ -146,6 +146,30 @@ class SeasonViewModel @Inject constructor(
         val candidates = season.relegatedTeamIds.mapNotNull { id -> season.teams.find { it.id == id } }
         val takeover = TakeoverDraw.draw(candidates.map { it.id }, seed)
 
+        // Coming back to a season already under way: the draw was seen the first
+        // time, so go straight to the matchday the player had reached. Nothing is
+        // re-decided — the season, the takeover and every result come from the
+        // same seed, so this puts back exactly what was there.
+        val resumeAt = activeRun.resumeMatchday
+        if (resumeAt > 0) {
+            _state.update {
+                it.copy(
+                    leagueName = draft.leagueName,
+                    isFreeMode = draft.isFreeMode,
+                    seasonLabel = season.label,
+                    drawCandidates = candidates,
+                    takeover = takeover,
+                    drawTick = takeover.ticks.size,
+                    error = null,
+                )
+            }
+            settleDraw()
+            kickOff()
+            applyMatchday(resumeAt)
+            finishIfOver()
+            return
+        }
+
         _state.update {
             it.copy(
                 phase = SeasonPhase.Drawing,
@@ -342,6 +366,8 @@ class SeasonViewModel @Inject constructor(
         val s = _state.value
         val row = s.userRow
         saved = true
+        // Nothing left to continue once the season is over and on record.
+        viewModelScope.launch(Dispatchers.IO) { activeRun.finish() }
         viewModelScope.launch {
             runHistory.saveLeagueRun(
                 LeagueRunRecord(
@@ -410,5 +436,7 @@ class SeasonViewModel @Inject constructor(
                 table = SeasonSimulator.buildTable(teams, played),
             )
         }
+        // Off the main thread: it writes a file, on every matchday.
+        viewModelScope.launch(Dispatchers.IO) { activeRun.progress(matchday) }
     }
 }

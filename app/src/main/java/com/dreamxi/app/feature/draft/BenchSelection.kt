@@ -1,8 +1,10 @@
 package com.dreamxi.app.feature.draft
 
 import com.dreamxi.app.sim.SimModel
+import kotlinx.serialization.Serializable
 
 /** A substitute, with the position he provides cover for. */
+@Serializable
 data class BenchPlayer(
     val player: SquadPlayer,
     /** The role he is on the bench to cover. */
@@ -16,6 +18,7 @@ data class BenchPlayer(
 }
 
 /** A squad the draft passed through, kept so a bench can be filled from it. */
+@Serializable
 data class VisitedSquad(
     val clubName: String,
     val seasonLabel: String,

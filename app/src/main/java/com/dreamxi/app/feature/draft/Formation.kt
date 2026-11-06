@@ -1,6 +1,7 @@
 package com.dreamxi.app.feature.draft
 
 import com.dreamxi.app.ui.theme.PlayerPosition
+import kotlinx.serialization.Serializable
 
 /**
  * A position in a formation: which role it wants, what to call it, and where
@@ -17,6 +18,7 @@ import com.dreamxi.app.ui.theme.PlayerPosition
  * Winger, LWB/RWB are fullbacks pushed up. The distinction matters because the
  * label is what a manager recognises while the role is what ratings key on.
  */
+@Serializable
 data class FormationSlot(
     val id: String,
     val role: String,
@@ -69,6 +71,7 @@ data class FormationSlot(
  * stable — changing shape later would silently re-price players already
  * drafted, so an XI you were happy with could get worse while you watched.
  */
+@Serializable
 data class Formation(
     val id: String,
     val name: String,

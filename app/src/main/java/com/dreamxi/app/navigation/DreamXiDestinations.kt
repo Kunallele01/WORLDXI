@@ -39,14 +39,23 @@ sealed class DreamXiDestination(val route: String) {
      * changing the difficulty setting later must not retroactively rewrite a
      * run that is already under way.
      */
-    data object Draft : DreamXiDestination("draft/{leagueId}/{leagueName}/{formation}/{rerolls}") {
+    data object Draft : DreamXiDestination("draft/{leagueId}/{leagueName}/{formation}/{rerolls}?resume={resume}") {
         const val ARG_LEAGUE_ID = "leagueId"
         const val ARG_LEAGUE_NAME = "leagueName"
         const val ARG_FORMATION = "formation"
         const val ARG_REROLLS = "rerolls"
 
-        fun build(leagueId: Long, leagueName: String, formationId: String, rerolls: Int): String =
-            "draft/$leagueId/${Uri.encode(leagueName)}/${Uri.encode(formationId)}/$rerolls"
+        /** True to pick a saved draft back up instead of starting a new one. */
+        const val ARG_RESUME = "resume"
+
+        fun build(
+            leagueId: Long,
+            leagueName: String,
+            formationId: String,
+            rerolls: Int,
+            resume: Boolean = false,
+        ): String =
+            "draft/$leagueId/${Uri.encode(leagueName)}/${Uri.encode(formationId)}/$rerolls?resume=$resume"
     }
 
     /** Free Mode carries the same three things a draft does, minus the rerolls. */

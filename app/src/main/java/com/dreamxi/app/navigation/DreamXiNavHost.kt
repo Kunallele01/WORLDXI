@@ -19,6 +19,7 @@ import com.dreamxi.app.feature.profile.ProfileRoute
 import com.dreamxi.app.feature.results.ResultsScreen
 import com.dreamxi.app.feature.season.SeasonRoute
 import com.dreamxi.app.feature.splash.SplashRoute
+import com.dreamxi.app.feature.setup.ResumeTarget
 import com.dreamxi.app.feature.setup.SetupRoute
 import com.dreamxi.app.feature.simulating.SimulatingScreen
 import com.dreamxi.app.feature.worldcup.WcDraftRoute
@@ -78,6 +79,17 @@ fun DreamXiNavHost(
                     )
                 },
                 onOpenProfile = { navController.navigate(DreamXiDestination.Profile.route) },
+                onContinue = { target ->
+                    when (target) {
+                        ResumeTarget.Season -> navController.navigate(DreamXiDestination.Season.route)
+                        is ResumeTarget.Draft -> navController.navigate(
+                            DreamXiDestination.Draft.build(
+                                target.leagueId, target.leagueName, target.formationId,
+                                target.rerollsAllowed, resume = true,
+                            ),
+                        )
+                    }
+                },
                 onStartWorldCup = { formation, rerolls ->
                     navController.navigate(DreamXiDestination.WorldCupDraft.build(formation.id, rerolls))
                 },
@@ -130,6 +142,10 @@ fun DreamXiNavHost(
                 navArgument(DreamXiDestination.Draft.ARG_LEAGUE_NAME) { type = NavType.StringType },
                 navArgument(DreamXiDestination.Draft.ARG_FORMATION) { type = NavType.StringType },
                 navArgument(DreamXiDestination.Draft.ARG_REROLLS) { type = NavType.IntType },
+                navArgument(DreamXiDestination.Draft.ARG_RESUME) {
+                    type = NavType.BoolType
+                    defaultValue = false
+                },
             ),
         ) { entry ->
             val args = entry.arguments
@@ -138,6 +154,7 @@ fun DreamXiNavHost(
                 leagueName = args?.getString(DreamXiDestination.Draft.ARG_LEAGUE_NAME),
                 formationId = args?.getString(DreamXiDestination.Draft.ARG_FORMATION),
                 rerollsAllowed = args?.getInt(DreamXiDestination.Draft.ARG_REROLLS) ?: 2,
+                resume = args?.getBoolean(DreamXiDestination.Draft.ARG_RESUME) ?: false,
                 onQuitRun = { navController.popBackStack() },
                 onStartSeason = { navController.navigate(DreamXiDestination.Season.route) },
             )

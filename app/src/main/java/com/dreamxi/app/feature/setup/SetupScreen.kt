@@ -38,6 +38,7 @@ import com.dreamxi.app.core.ui.components.DreamXiPrimaryButton
 import com.dreamxi.app.core.ui.components.DreamXiSecondaryButton
 import com.dreamxi.app.core.ui.components.ErrorNotice
 import com.dreamxi.app.data.draft.League
+import com.dreamxi.app.data.run.ResumeOffer
 import com.dreamxi.app.feature.draft.Formation
 import com.dreamxi.app.feature.draft.Formations
 import com.dreamxi.app.feature.draft.components.MiniPitch
@@ -81,6 +82,8 @@ fun SetupScreen(
     onStartWorldCup: () -> Unit = {},
     onStartWorldCupFreeMode: () -> Unit = {},
     onOpenProfile: () -> Unit = {},
+    onContinue: () -> Unit = {},
+    onDiscardRun: () -> Unit = {},
 ) {
     val worldCup = state.mode == RunMode.WorldCup
     Column(
@@ -162,6 +165,7 @@ fun SetupScreen(
                         .padding(horizontal = 20.dp),
                     verticalArrangement = Arrangement.spacedBy(12.dp),
                 ) {
+                    state.resume?.let { ContinueCard(it, onContinue = onContinue, onDiscard = onDiscardRun) }
                     if (worldCup) {
                         WorldCupCard()
                     } else {
@@ -222,6 +226,58 @@ fun SetupScreen(
             }
 
         }
+    }
+}
+
+/**
+ * The way back into a run that was left unfinished.
+ *
+ * At the top of the list because it is the first thing a returning player is
+ * looking for, and gold-outlined so it reads as different from the league
+ * choices beneath it. Discard is a quiet text link, well away from Continue:
+ * throwing a run away should take a deliberate tap.
+ */
+@Composable
+private fun ContinueCard(offer: ResumeOffer, onContinue: () -> Unit, onDiscard: () -> Unit) {
+    val what = if (offer.kind == ResumeOffer.Kind.SEASON) "season" else "draft"
+    Column(
+        Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(16.dp))
+            .background(SurfaceRaised1)
+            .border(1.dp, AccentGold.copy(alpha = 0.6f), RoundedCornerShape(16.dp))
+            .padding(16.dp),
+    ) {
+        Text(
+            text = "CONTINUE YOUR $what".uppercase(),
+            style = MaterialTheme.typography.labelSmall,
+            letterSpacing = 1.6.sp,
+            color = AccentGold,
+        )
+        Spacer(Modifier.height(6.dp))
+        Text(
+            text = "${offer.leagueName} · ${offer.formationName}",
+            fontFamily = DisplayFontFamily,
+            fontSize = 22.sp,
+            color = OnSurfacePrimary,
+        )
+        Text(
+            text = offer.progress,
+            style = MaterialTheme.typography.bodyMedium,
+            color = OnSurfaceMuted,
+        )
+        Spacer(Modifier.height(12.dp))
+        DreamXiPrimaryButton(text = "Continue", onClick = onContinue, modifier = Modifier.fillMaxWidth())
+        Spacer(Modifier.height(4.dp))
+        Text(
+            text = "Discard this run",
+            style = MaterialTheme.typography.labelMedium,
+            color = OnSurfaceFaint,
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally)
+                .clickable(onClick = onDiscard)
+                .padding(horizontal = 12.dp, vertical = 8.dp),
+        )
     }
 }
 

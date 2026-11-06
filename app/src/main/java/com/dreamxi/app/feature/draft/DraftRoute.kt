@@ -19,6 +19,7 @@ fun DraftRoute(
     leagueName: String? = null,
     formationId: String? = null,
     rerollsAllowed: Int = 2,
+    resume: Boolean = false,
     onQuitRun: () -> Unit = {},
     onStartSeason: () -> Unit = {},
     viewModel: DraftViewModel = hiltViewModel(),
@@ -29,6 +30,7 @@ fun DraftRoute(
             leagueName = leagueName,
             formationId = formationId,
             rerollsAllowed = rerollsAllowed,
+            resume = resume,
         )
     }
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -45,7 +47,12 @@ fun DraftRoute(
         onCloseTeam = viewModel::closeTeam,
         onHoldPlaced = viewModel::holdPlaced,
         onMoveHeldTo = viewModel::moveHeldTo,
-        onQuitRun = onQuitRun,
+        // Quitting is the player's decision to abandon the run, so the saved
+        // draft goes too: otherwise "Continue" would resurrect what they left.
+        onQuitRun = {
+            viewModel.abandon()
+            onQuitRun()
+        },
         onStartSeason = { if (viewModel.beginSeason()) onStartSeason() },
         modifier = modifier,
     )

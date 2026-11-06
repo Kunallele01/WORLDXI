@@ -5,15 +5,20 @@ import androidx.lifecycle.viewModelScope
 import com.dreamxi.app.core.ui.components.DreamXiError
 import com.dreamxi.app.data.draft.DraftRepository
 import com.dreamxi.app.data.draft.League
+import com.dreamxi.app.data.run.ActiveRun
+import com.dreamxi.app.data.run.ResumeOffer
+import com.dreamxi.app.data.run.RunSnapshotStore
 import com.dreamxi.app.data.toUserFacingError
 import com.dreamxi.app.feature.draft.DefaultFormation
 import com.dreamxi.app.feature.draft.Formation
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 /**
@@ -36,14 +41,32 @@ data class SetupUiState(
     val rerollsAllowed: Int = 2,
     val isLoading: Boolean = true,
     val error: DreamXiError? = null,
+    /** A run left unfinished, if there is one, offered as the way back in. */
+    val resume: ResumeOffer? = null,
 ) {
     val selectedLeague: League? get() = leagues.firstOrNull { it.id == selectedLeagueId }
     val canStart: Boolean get() = selectedLeague?.let { it.seasonCount > 0 } == true
 }
 
+/** Where "Continue" leads. */
+sealed interface ResumeTarget {
+    /** A season in progress: [com.dreamxi.app.data.run.ActiveRun] has been restored. */
+    data object Season : ResumeTarget
+
+    /** A draft in progress: the draft screen restores it itself, given these. */
+    data class Draft(
+        val leagueId: Long,
+        val leagueName: String,
+        val formationId: String,
+        val rerollsAllowed: Int,
+    ) : ResumeTarget
+}
+
 @HiltViewModel
 class SetupViewModel @Inject constructor(
     private val repository: DraftRepository,
+    private val store: RunSnapshotStore,
+    private val activeRun: ActiveRun,
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(SetupUiState())
@@ -51,6 +74,46 @@ class SetupViewModel @Inject constructor(
 
     init {
         load()
+        refreshResume()
+    }
+
+    /**
+     * Looks again for a run to continue. Called whenever this screen comes back
+     * into view, because finishing or quitting a run changes the answer while
+     * this view model is still alive underneath it.
+     */
+    fun refreshResume() {
+        viewModelScope.launch {
+            val offer = withContext(Dispatchers.IO) { store.offer() }
+            _state.update { it.copy(resume = offer) }
+        }
+    }
+
+    /**
+     * Gets the saved run ready and says where to go, or null if it has gone
+     * (unreadable, or finished elsewhere) — in which case the offer is dropped.
+     */
+    fun prepareContinue(): ResumeTarget? {
+        val offer = _state.value.resume ?: return null
+        val target: ResumeTarget? = when (offer.kind) {
+            ResumeOffer.Kind.SEASON -> ResumeTarget.Season.takeIf { activeRun.restore() }
+            ResumeOffer.Kind.DRAFT -> store.loadDraft()?.let {
+                ResumeTarget.Draft(it.leagueId, it.leagueName, it.formation.id, it.rerollsAllowed)
+            }
+        }
+        if (target == null) refreshResume()
+        return target
+    }
+
+    /** Throws the unfinished run away. */
+    fun discardResume() {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                store.clearSeason()
+                store.clearDraft()
+            }
+            _state.update { it.copy(resume = null) }
+        }
     }
 
     fun load() {
