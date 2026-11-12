@@ -26,7 +26,17 @@ sealed class DreamXiDestination(val route: String) {
         fun build(force: Boolean = false): String = "auth?force=$force"
     }
 
-    data object Onboarding : DreamXiDestination("onboarding")
+    /**
+     * How the game works, in four swipes.
+     *
+     * Shown once after the front door, and reopenable from the start screen.
+     * [ARG_REPLAY] is true for the second kind: there is a screen to go back to,
+     * where the first time the player is on their way to the start screen.
+     */
+    data object Onboarding : DreamXiDestination("onboarding?replay={replay}") {
+        const val ARG_REPLAY = "replay"
+        fun build(replay: Boolean = false): String = "onboarding?replay=$replay"
+    }
     data object Home : DreamXiDestination("home")
     data object Setup : DreamXiDestination("setup")
 

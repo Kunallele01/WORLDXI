@@ -82,6 +82,7 @@ fun SetupScreen(
     onStartWorldCup: () -> Unit = {},
     onStartWorldCupFreeMode: () -> Unit = {},
     onOpenProfile: () -> Unit = {},
+    onOpenHowItWorks: () -> Unit = {},
     onContinue: () -> Unit = {},
     onDiscardRun: () -> Unit = {},
 ) {
@@ -104,6 +105,24 @@ fun SetupScreen(
                     color = AccentGold,
                     modifier = Modifier.weight(1f),
                 )
+                // How the game works, for anyone who skipped it or wants it again.
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier
+                        .size(34.dp)
+                        .clip(CircleShape)
+                        .background(SurfaceRaised2)
+                        .border(1.dp, OutlineSubtle, CircleShape)
+                        .clickable(onClick = onOpenHowItWorks),
+                ) {
+                    Text(
+                        text = "?",
+                        fontFamily = DisplayFontFamily,
+                        fontSize = 16.sp,
+                        color = OnSurfaceMuted,
+                    )
+                }
+                Spacer(Modifier.width(10.dp))
                 Box(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier

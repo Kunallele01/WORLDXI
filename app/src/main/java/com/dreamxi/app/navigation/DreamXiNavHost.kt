@@ -13,7 +13,9 @@ import com.dreamxi.app.feature.draft.DraftRoute
 import com.dreamxi.app.feature.finalize.FinalizeScreen
 import com.dreamxi.app.feature.freemode.FreeModeRoute
 import com.dreamxi.app.feature.home.HomeScreen
-import com.dreamxi.app.feature.onboarding.OnboardingScreen
+import com.dreamxi.app.feature.onboarding.OnboardingRoute
+import com.dreamxi.app.feature.onboarding.OnboardingViewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.dreamxi.app.feature.auth.AuthRoute
 import com.dreamxi.app.feature.profile.ProfileRoute
 import com.dreamxi.app.feature.results.ResultsScreen
@@ -63,7 +65,28 @@ fun DreamXiNavHost(
         }
 
         composable(DreamXiDestination.DesignSystem.route) { DesignSystemScreen() }
-        composable(DreamXiDestination.Onboarding.route) { OnboardingScreen() }
+        composable(
+            route = DreamXiDestination.Onboarding.route,
+            arguments = listOf(
+                navArgument(DreamXiDestination.Onboarding.ARG_REPLAY) {
+                    type = NavType.BoolType
+                    defaultValue = false
+                },
+            ),
+        ) { entry ->
+            val replay = entry.arguments?.getBoolean(DreamXiDestination.Onboarding.ARG_REPLAY) == true
+            OnboardingRoute(
+                onDone = {
+                    if (replay) {
+                        navController.popBackStack()
+                    } else {
+                        navController.navigate(DreamXiDestination.Setup.route) {
+                            popUpTo(DreamXiDestination.Onboarding.route) { inclusive = true }
+                        }
+                    }
+                },
+            )
+        }
         composable(DreamXiDestination.Home.route) { HomeScreen() }
 
         composable(DreamXiDestination.Setup.route) {
@@ -79,6 +102,9 @@ fun DreamXiNavHost(
                     )
                 },
                 onOpenProfile = { navController.navigate(DreamXiDestination.Profile.route) },
+                onOpenHowItWorks = {
+                    navController.navigate(DreamXiDestination.Onboarding.build(replay = true))
+                },
                 onContinue = { target ->
                     when (target) {
                         ResumeTarget.Season -> navController.navigate(DreamXiDestination.Season.route)
@@ -194,10 +220,18 @@ fun DreamXiNavHost(
             route = DreamXiDestination.Auth.route,
             arguments = listOf(navArgument(DreamXiDestination.Auth.ARG_FORCE) { defaultValue = false }),
         ) { entry ->
+            val intro: OnboardingViewModel = hiltViewModel()
             AuthRoute(
                 force = entry.arguments?.getBoolean(DreamXiDestination.Auth.ARG_FORCE) == true,
                 onSignedIn = {
-                    navController.navigate(DreamXiDestination.Setup.route) {
+                    // First time through, explain the game before asking anything of
+                    // the player; after that, straight to the start screen.
+                    val next = if (intro.hasSeenIntro()) {
+                        DreamXiDestination.Setup.route
+                    } else {
+                        DreamXiDestination.Onboarding.build()
+                    }
+                    navController.navigate(next) {
                         popUpTo(DreamXiDestination.Auth.route) { inclusive = true }
                     }
                 },
