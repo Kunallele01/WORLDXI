@@ -1,0 +1,47 @@
+[
+ {
+  "id": 223,
+  "stage": "r16",
+  "group_label": null,
+  "leg": 2,
+  "match_date": "2024-03-12",
+  "home_entry_id": 37,
+  "away_entry_id": 62,
+  "home_goals": 1,
+  "away_goals": 0,
+  "extra_time": true,
+  "home_pens": 4,
+  "away_pens": 2,
+  "venue": "Emirates Stadium, London"
+ },
+ {
+  "id": 126,
+  "stage": "group",
+  "group_label": "A",
+  "leg": 1,
+  "match_date": "2023-09-20",
+  "home_entry_id": 35,
+  "away_entry_id": 34,
+  "home_goals": 2,
+  "away_goals": 2,
+  "extra_time": false,
+  "home_pens": null,
+  "away_pens": null,
+  "venue": "Rams Park, Istanbul"
+ },
+ {
+  "id": 250,
+  "stage": "final",
+  "group_label": null,
+  "leg": 1,
+  "match_date": "2024-06-01",
+  "home_entry_id": 53,
+  "away_entry_id": 41,
+  "home_goals": 0,
+  "away_goals": 2,
+  "extra_time": false,
+  "home_pens": null,
+  "away_pens": null,
+  "venue": "Wembley Stadium, London"
+ }
+]

@@ -1,0 +1,38 @@
+[
+ {
+  "id": 41,
+  "season_id": 2,
+  "club_id": 25,
+  "squad_id": 57,
+  "group_label": "C",
+  "group_position": 1,
+  "finished_bottom": false,
+  "reached_stage": "winner",
+  "club": {
+   "name": "Real Madrid"
+  },
+  "squad": {
+   "has_roster": true,
+   "team_strength": 86.5,
+   "strength_source": "squad_top14"
+  }
+ },
+ {
+  "id": 60,
+  "season_id": 2,
+  "club_id": 28,
+  "squad_id": 60,
+  "group_label": "G",
+  "group_position": 4,
+  "finished_bottom": true,
+  "reached_stage": "group",
+  "club": {
+   "name": "Red Star Belgrade"
+  },
+  "squad": {
+   "has_roster": false,
+   "team_strength": 72.7,
+   "strength_source": "estimated_from_6_results"
+  }
+ }
+]

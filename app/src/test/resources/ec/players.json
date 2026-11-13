@@ -1,0 +1,45 @@
+[
+ {
+  "id": 1377,
+  "squad_id": 49,
+  "sofifa_id": "231866",
+  "full_name": "Rodri",
+  "nationality": "Spain",
+  "overall": 89,
+  "rating": 91.0,
+  "rating_edition": "25",
+  "positions": [
+   "CDM",
+   "CM"
+  ],
+  "birth_year": 1996,
+  "grid_cb": -3,
+  "grid_fb": -7,
+  "grid_dm": 0,
+  "grid_cm": -2,
+  "grid_cam": -7,
+  "grid_winger": -11,
+  "grid_st": -10
+ },
+ {
+  "id": 1380,
+  "squad_id": 49,
+  "sofifa_id": "210257",
+  "full_name": "Ederson",
+  "nationality": "Brazil",
+  "overall": 88,
+  "rating": 88.0,
+  "rating_edition": "25",
+  "positions": [
+   "GK"
+  ],
+  "birth_year": 1993,
+  "grid_cb": null,
+  "grid_fb": null,
+  "grid_dm": null,
+  "grid_cm": null,
+  "grid_cam": null,
+  "grid_winger": null,
+  "grid_st": null
+ }
+]

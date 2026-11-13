@@ -53,7 +53,7 @@ import java.util.Locale
  * so "we have them all" is a state this drifts out of every time the dataset
  * expands rather than a state it stays in.
  */
-internal fun crestSlug(clubName: String): String =
+private fun plainSlug(clubName: String): String =
     // Accents are STRIPPED, not replaced. Android resource names allow only
     // [a-z0-9_], and lowercase() leaves an accented character intact — so
     // "Alaves" with an acute e would slug to "alav_s" and never find
@@ -65,6 +65,19 @@ internal fun crestSlug(clubName: String): String =
         .replace("&", "and")
         .replace(Regex("[^a-z0-9]+"), "_")
         .trim('_')
+
+/**
+ * Clubs the European Cup data names differently from the league data, whose
+ * names the crest files were saved under. The files keep the league spelling;
+ * this maps the other one onto it, so neither dataset has to be renamed.
+ */
+private val CREST_ALIASES = mapOf(
+    "manchester_united" to "manchester_utd",
+    "newcastle_united" to "newcastle",
+)
+
+internal fun crestSlug(clubName: String): String =
+    plainSlug(clubName).let { CREST_ALIASES[it] ?: it }
 
 /**
  * Initials for the stand-in. Two letters from two-or-more-word names

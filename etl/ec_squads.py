@@ -56,7 +56,28 @@ FC24_CLUB = {
 NO_ROSTER = {"Red Star Belgrade"}
 
 SEASON_EDITIONS = {2023: ("24", "25")}      # season -> (roster edition, rating edition)
-GRID = ["pos_cb", "pos_fb", "pos_dm", "pos_cm", "pos_cam", "pos_winger", "pos_st"]
+GRID_ROLES = {"cb": "CB", "fb": "FB", "dm": "DM", "cm": "CM", "cam": "CAM", "winger": "Winger", "st": "ST"}
+#: EA position -> the engine's roles, the same table wc_squads uses.
+EA_ROLE = {
+    "GK": "GK", "CB": "CB", "LB": "FB", "RB": "FB", "LWB": "FB", "RWB": "FB",
+    "CDM": "DM", "CM": "CM", "CAM": "CAM", "LM": "Winger", "RM": "Winger",
+    "LW": "Winger", "RW": "Winger", "LF": "ST", "RF": "ST", "CF": "ST", "ST": "ST",
+}
+
+
+def grid_deltas(r: dict) -> dict:
+    """
+    EA's positional grid as the CHANGE from the player's primary role to each role,
+    which is what wc_squad_players stores and what the engine reads (see
+    wc_squads._with_grid for why deltas rather than ratings). Keepers have none.
+    """
+    primary = EA_ROLE.get(r["positions"].split(";")[0])
+    cells = {k: r.get(f"pos_{k}", "") for k in GRID_ROLES}
+    key = next((k for k, role in GRID_ROLES.items() if role == primary), None)
+    if key is None or any(v in ("", None) for v in cells.values()):
+        return {f"grid_{k}": "" for k in GRID_ROLES}
+    base = int(float(cells[key]))
+    return {f"grid_{k}": int(float(v)) - base for k, v in cells.items()}
 
 
 def tokens(r: dict) -> set[str]:
@@ -113,7 +134,7 @@ def build(season: int):
                 "season": season, "club": club, "sofifa_id": r["sofifa_id"], "name": short.get(r["sofifa_id"], r["display_name"]),
                 "birth_year": r["birth_year"], "nationality": r["nationality"],
                 "positions": r["positions"], "rating": rating, "rating_edition": src,
-                "fc24_rating": r["overall"], **{g: r[g] for g in GRID},
+                "fc24_rating": r["overall"], **grid_deltas(r),
             })
     return out
 

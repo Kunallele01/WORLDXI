@@ -179,7 +179,7 @@ def load(d: dict) -> None:
         "nationality": p["nationality"] or None, "overall": int(p["fc24_rating"]), "rating": float(p["rating"]),
         "rating_edition": p["rating_edition"], "positions": p["positions"].split(";"),
         "birth_year": num(p["birth_year"]),
-        **{f"grid_{g}": num(p[f"pos_{g}"]) for g in GRID},
+        **{f"grid_{g}": num(p[f"grid_{g}"]) for g in GRID},
     } for c, ps in d["players"].items() for p in ps]
     api.insert("ec_squad_players", player_rows)
 

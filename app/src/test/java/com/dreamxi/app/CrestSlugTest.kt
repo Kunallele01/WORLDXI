@@ -27,6 +27,27 @@ class CrestSlugTest {
     }
 
     @Test
+    fun `european cup names reach the league spellings the files use`() {
+        assertEquals("manchester_utd", crestSlug("Manchester United"))
+        assertEquals("newcastle", crestSlug("Newcastle United"))
+        assertEquals("paris_saint_germain", crestSlug("Paris Saint-Germain"))
+    }
+
+    @Test
+    fun `every european cup club has a bundled crest`() {
+        // Each club of the loaded European Cup season, read from the strength
+        // file the loader uses, must resolve to a file. Skipped where the ETL
+        // output is absent (a fresh clone does not carry it).
+        val strengths = File("../etl/ec/ec_strength_2023.tsv")
+        val dir = File("src/main/res/drawable-nodpi")
+        if (!strengths.isFile || !dir.isDirectory) return
+        val clubs = strengths.readLines().drop(1).map { it.split("\t")[1] }
+        assertEquals(32, clubs.size)
+        val missing = clubs.filter { !File(dir, "crest_${crestSlug(it)}.png").isFile }
+        assertTrue("clubs with no crest file: $missing", missing.isEmpty())
+    }
+
+    @Test
     fun `slugs are valid android resource names`() {
         val valid = Regex("[a-z][a-z0-9_]*")
         listOf(
