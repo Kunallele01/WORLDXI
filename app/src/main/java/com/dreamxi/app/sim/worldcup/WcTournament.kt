@@ -356,7 +356,7 @@ object WcTournamentSimulator {
      * shares exist (8.0% and 3.0% of the 1,112 real goals), but the own goal
      * needs an opponent to credit it to, and nothing measured says which one.
      */
-    private fun simulatedGoals(
+    internal fun simulatedGoals(
         homeId: String,
         awayId: String,
         score: WcScore,
